@@ -1,5 +1,70 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faedf6"><meta name="description" content="Your daily pop quiz in fandom lore, internet history, and extremely online references."><title>LoreDial — were you there, or did you just like the post?</title><link rel="stylesheet" href="/src/style.css"></head><body>
-<header><a class="logo" href="/">lore<span>dial</span><sup>✳</sup></a><span class="header-note">the internet culture pop quiz</span><button id="about-button" class="plain">about this issue ↗</button></header>
-<main id="app"></main><footer><span>Made for the group chat. No gatekeeping required.</span><span>Original words & graphics · text-only edition</span></footer>
-<dialog id="about"><button id="close-about" class="plain">close ×</button><h2>A little lore. A lot of personality.</h2><p>Ten questions, four departments, one daily issue. Everyone gets the same selection each UTC day. Your progress stays in this browser.</p><p>This prototype mixes archival fandom references with recent internet language. New daily selections come from a small curated bank; a continuously updated editorial feed is planned.</p><p>No audio, fan edits, celebrity photographs, accounts, or global leaderboard. Activity counts stay on your device. LoreDial is a working name, pending trademark and domain checks.</p></dialog><script type="module" src="/src/app.js"></script></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#fff0f5" />
+    <meta
+      name="description"
+      content="Deep Cut: your daily fandom pop quiz. Tumblr years, One Direction, 5SOS, YouTube sleepovers, and the new lore."
+    />
+    <title>Deep Cut — a daily quiz for the lore girls</title>
+    <link rel="icon" href="/src/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#app">Skip to quiz</a>
+    <div class="top-ribbon">
+      ♡ &nbsp; for the girls who remember &nbsp; · &nbsp; and the mutuals still
+      making lore &nbsp; ♡
+    </div>
+    <header>
+      <a class="logo" href="/" aria-label="Deep Cut home"
+        >deep <span>cut</span><sup>✧</sup></a
+      >
+      <span class="header-note">your daily fandom fixation</span>
+      <nav aria-label="Site controls">
+        <button id="sound-button" class="pill" aria-pressed="true">
+          Sound on ♪
+        </button>
+        <button id="about-button" class="pill">
+          The lore?
+          <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M5 19 19 5M5 5h14v14" />
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <main id="app" tabindex="-1"></main>
+    <footer>
+      <span>Made with love for the group chat. ♡</span
+      ><span>Original graphics + little homemade sounds.</span>
+    </footer>
+    <dialog id="about" aria-labelledby="about-title">
+      <button id="close-about" class="pill">Close ×</button>
+      <span class="eyebrow">A NOTE FROM THE ASKBOX</span>
+      <h2 id="about-title">Your fandom phase<br />was never a phase.</h2>
+      <p>
+        Deep Cut is a ten-question daily quiz about Tumblr, band fandoms, 2010s
+        YouTube, and newer creator communities. You don’t have to know
+        everything to belong here.
+      </p>
+      <p>
+        A fresh selection arrives every day at midnight UTC, with the same
+        questions for everyone. Your progress is saved in this browser.
+        Questions rotate through our 48-question starter archive; they don’t
+        repeat on consecutive days.
+      </p>
+      <p>
+        Little chimes are made from scratch, and you can mute them anytime. No
+        celebrity clips or licensed songs. Activity counts stay on your device;
+        there’s no public leaderboard.
+      </p>
+      <p>
+        Deep Cut is a working name, pending trademark and domain checks. Not
+        affiliated with any featured artist, creator, or platform.
+      </p>
+    </dialog>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

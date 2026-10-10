@@ -1,20 +1,20 @@
-# LoreDial: product and launch action plan
+# Deep Cut: product and launch action plan
 
 ## 1. Positioning and naming
 
-**Pitch:** “Your daily pop quiz in fandom lore. Were you there, or did you just like the post?”
+**Pitch:** “Your fandom phase was never a phase. Your daily deep cut in fandom lore.”
 
 Make the niche explicit: Tumblr-era fandom, One Direction, Ariana-era pop culture, stan vocabulary, and current internet references. Invite people who missed an era as well as people who remember it. Explanations should make a wrong answer entertaining rather than embarrassing.
 
-LoreDial connects internet lore with dial-up nostalgia. Alternatives for research: Reblog Relay and Fandom Frequency. None are cleared names. A “copyright-free name” cannot be guaranteed: short names are generally a trademark question, while code, illustrations, and writing involve copyright. Before buying branding or a domain, search the exact name, close spellings, app stores, social handles, web results, and trademark databases in target markets. Have a qualified professional assess conflicting marks before investing. Use a temporary working identity until clearance.
+Deep Cut names the obscure references the game celebrates, without locking it to one era. Backup names to research: Askbox Club, Mutuals Only, and Reblog Relay. Deep Cut is a common phrase, so matching and similar entertainment brands deserve careful checking. None are cleared names. A “copyright-free name” cannot be guaranteed: short names are generally a trademark question, while code, illustrations, and writing involve copyright. Before buying branding or a domain, search the exact name, close spellings, app stores, social handles, web results, and trademark databases in target markets. Have a qualified professional assess conflicting marks before investing. Use a temporary working identity until clearance.
 
-The distinct visual direction is magazine departments, serif cover headlines, lavender browser chrome, pink graph paper, and lime stickers. Avoid copying BuzzFeed layouts, typography, logos, question text, or proprietary result language. This prototype uses CSS artwork, symbols, and original quiz wording. Use neutral public facts; artist and platform names do not imply endorsement.
+The distinct visual direction is magazine departments, serif cover headlines, lilac browser chrome, pink gingham, original ribbon bows, hearts, and scrapbook notes. Avoid copying BuzzFeed layouts, typography, logos, question text, or proprietary result language. This prototype uses CSS and SVG artwork, symbols, original quiz wording, and synthesized Web Audio chimes. No samples or artist recordings are included. Use neutral public facts; artist and platform names do not imply endorsement.
 
 ## 2. Scope for the first release
 
-Keep one free ten-question issue each day. Four recurring departments give the product a recognizable rhythm. Ship homepage → quiz → explanations → score → share → tomorrow reminder. Keep five result tiers: Has Wi-Fi (0–2), Casual Scroller (3–4), Certified Online (5–7), Lore Archivist (8–9), Internet Final Boss (10). No account requirement.
+Keep one free ten-question issue each day. Four recurring departments give the product a recognizable rhythm. Ship homepage → quiz → explanations → score → share → tomorrow reminder. Keep five result tiers: Casual Lurker (0–2), Certified Mutual (3–4), Fandom Archivist (5–7), Keeper of the Lore (8–9), The Deepest Cut (10). No account requirement. The era tabs on the homepage introduce the daily departments; they are not separate game modes.
 
-Before a public release, expand from 20 questions to at least 140 fact-checked questions or prepare 14 manually curated issues. The current seeded daily selector is suitable for demonstration, but it repeats questions and cannot guarantee every day feels fresh. Replace it with dated editorial issue manifests for release. Keep archival issues immutable so shared results stay comparable. Version questions and issue IDs whenever answers change.
+Before a public release, expand from the 48-question starter archive to at least 140 fact-checked questions or prepare 14 manually curated issues. The current deterministic daily selector changes at midnight UTC and avoids consecutive-day repeats, but the finite archive eventually cycles. A daily change is not the same as ten newly authored questions each day. Replace it with dated editorial issue manifests for release. Keep archival issues immutable so shared results stay comparable. Version questions and issue IDs whenever answers change.
 
 Do not add payments, a public leaderboard, multiplayer, or user-submitted content before validating the core loop. Text-based music clues are enough. Licensed audio can come later if there is a clear benefit and budget.
 
@@ -22,7 +22,7 @@ Do not add payments, a public leaderboard, multiplayer, or user-submitted conten
 
 Prepare a spreadsheet with ID, department, prompt, four choices, correct answer, explanation, source URLs, source dates, era, difficulty, author, reviewer, and rights notes. Check every fact against an original source where possible; otherwise use two credible independent sources. Avoid presenting rumors, shipping theories, private information, or allegations as facts.
 
-Suggested daily balance: three archival fandom questions, three pop/stan questions, two recent language or meme questions, and two deep cuts. Start with four easy, four medium, and two hard questions. Rotate fandoms so non-fans can still finish. For current memes, review weekly, timestamp the reference, and avoid “everyone is doing this” claims without evidence. Give ambiguous slang enough context for exactly one best answer.
+Suggested daily balance: three Tumblr questions, three band/pop fandom questions, two 2010s YouTube questions, and two newer creator/community questions. Start with four easy, four medium, and two hard questions. Rotate fandoms so non-fans can still finish. For current memes, review weekly, timestamp the reference, and avoid “everyone is doing this” claims without evidence. Give ambiguous slang enough context for exactly one best answer.
 
 Example tone: “Your fandom degree finally pays off.” Answer feedback should teach the reference in one sentence, not shame the player. Use harmless self-deprecating humor and avoid diagnosing players or targeting creators.
 
@@ -30,20 +30,20 @@ Run a weekly content review: draft 30 questions Monday; fact-check and edit Tues
 
 ## 4. Four-week execution schedule
 
-| Week | Work | Deliverable / exit condition |
-| --- | --- | --- |
-| 1 | Name research, audience interviews, 40 original questions, mobile playtests | 8–12 testers can complete the prototype; document confusion and sharing friction |
-| 2 | Expand content, choose hosting, test production sharing, improve accessibility | 14 curated issues; keyboard and phone checks pass; HTTPS deployment responds correctly |
-| 3 | Add privacy-conscious aggregate analytics and feedback channel; invite a small beta | At least 50 invited testers; a week of measured completion and return behavior |
-| 4 | Fix observed friction; prepare launch posts and editorial schedule | Reliable daily content pipeline, launch assets, documented metrics, and support owner |
+| Week | Work                                                                                | Deliverable / exit condition                                                           |
+| ---- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 1    | Name research, audience interviews, 40 original questions, mobile playtests         | 8–12 testers can complete the prototype; document confusion and sharing friction       |
+| 2    | Expand content, choose hosting, test production sharing, improve accessibility      | 14 curated issues; keyboard and phone checks pass; HTTPS deployment responds correctly |
+| 3    | Add privacy-conscious aggregate analytics and feedback channel; invite a small beta | At least 50 invited testers; a week of measured completion and return behavior         |
+| 4    | Fix observed friction; prepare launch posts and editorial schedule                  | Reliable daily content pipeline, launch assets, documented metrics, and support owner  |
 
 Treat the schedule as a planning estimate, not a commitment to growth. A solo builder should reserve time for editorial review; content is likely the largest recurring workload.
 
 ## 5. Technical release checklist
 
-The prototype is dependency-free JavaScript with a small Node server. A static host is also suitable because no application backend is needed yet. Use HTTPS for clipboard/device-sharing support. Test Chrome, Safari, and Firefox on desktop and phones, including narrow screens, zoom, keyboard-only navigation, reduced motion, and screen readers. Check the exported card in real social apps; add a PNG export before promising one-click Instagram Stories uploads.
+The prototype is dependency-free JavaScript with a small Node server. A static host is also suitable because no application backend is needed yet. Use HTTPS for clipboard/device-sharing support. Test Chrome, Safari, and Firefox on desktop and phones, including narrow screens, zoom, keyboard-only navigation, reduced motion, and screen readers. Check the exported card in real social apps; the PNG export is implemented, but do not promise direct Instagram Stories posting without testing a supported integration.
 
-Test new-day rollover, refresh mid-quiz, repeated clicks, blocked localStorage, sharing cancellation, clipboard denial, and completed-day reopening. The current daily issue is chosen at load; decide whether to retain that issue during a session crossing midnight. Add deployment smoke checks and a content validation tool before publishing larger banks.
+Test new-day rollover, refresh mid-quiz, repeated clicks, blocked localStorage, sharing cancellation, clipboard denial, and completed-day reopening. The homepage and results roll over automatically; an open quiz moves to the new issue on its next answer or Next action after midnight, preserving yesterday’s progress separately. Add deployment smoke checks and a content validation tool before publishing larger banks.
 
 For aggregate analytics, define `quiz_started`, `answer_submitted`, `quiz_completed`, `share_succeeded`, and `card_downloaded`, with issue ID and question ID where relevant. Never call a share attempt a successful share. Use an anonymous first-party identifier only if needed, minimize retention, publish a privacy notice, and review consent requirements for your markets. The current browser counters do not provide these aggregate metrics or measure next-day retention.
 
@@ -74,7 +74,7 @@ Start with low-cost static hosting, one researched domain, and free development 
 ## Immediate next actions
 
 1. Run the prototype and play it on a phone and desktop.
-2. Research LoreDial and two backup names before buying any assets.
+2. Research Deep Cut and two backup names before buying any assets.
 3. Recruit 8–12 people from the intended fandom audience for observed playtests.
 4. Write and fact-check the first 14 curated daily issues.
 5. Choose a host and deploy over HTTPS; test actual sharing and card uploads.
