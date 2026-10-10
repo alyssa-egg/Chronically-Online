@@ -1,6 +1,6 @@
 # Deep Cut editorial archive
 
-The v2 archive has 48 original multiple-choice prompts, twelve per department. IDs are stable zero-based indexes in `src/game.js`. The daily game selects 3/3/2/2 questions. The selection cycles through a finite bank, not a live trend feed.
+The v3 archive has 48 original multiple-choice prompts, twelve per department. IDs are stable zero-based indexes in `src/game.js`. The main daily game selects 3/3/2/2 questions. Era mini quizzes each select five from an eligible pool. All modes use the Eastern calendar day (`America/New_York`), with separate saved answers. The selection cycles through a finite bank, not a live trend feed. The Tumblr pool excludes 2018 releases; YouTube-era items cover creator identities and formats from that era; The New Lore uses IDs 36–47. A fact about a creator active in several eras can appear in both a main issue and a mini quiz.
 
 ## Source checklist for review
 
@@ -25,7 +25,7 @@ These are reference destinations for an editor, not a claim that every linked pa
 2. Record direct source URLs, the relevant public statement/release, date checked, reviewer, era, and difficulty. Prefer creator-owned sources for current facts.
 3. Avoid rumors, shipping theories presented as reality, private information, and unsupported claims about what is currently viral.
 4. Have a second person play and review the item. Check that the explanation answers the question precisely.
-5. Maintain at least twice the daily count in each department so adjacent-day questions can stay disjoint. Keep banks at twelve questions per department for the current rotation, or rerun `npm test` and update coverage assumptions when expanding.
+5. Maintain at least twice the daily count in each department and each eligible era pool so adjacent-day questions stay disjoint. Keep banks at twelve questions per department for the current rotation, or rerun `npm test` and update coverage assumptions when expanding.
 6. Preserve a live edition's order and content. Publish substantive edits with a new `EDITION_VERSION`; do not reuse old stored answers for changed questions.
 7. Grow toward 140+ reviewed questions or dated immutable issue manifests before a broad launch. Keep a weekly editorial slot for newer creator references.
 

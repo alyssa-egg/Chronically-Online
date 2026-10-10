@@ -9,9 +9,11 @@ import {
   bank,
   departments,
   validAnswers,
+  modes,
+  getMode,
 } from "../src/game.js";
 
-test("daily issue is deterministic, unique, and balanced across the four eras", () => {
+test("daily issue is deterministic, unique, and balanced across the four departments", () => {
   const issue = dailyQuestions("2026-10-10");
   assert.deepEqual(issue, dailyQuestions("2026-10-10"));
   assert.equal(issue.length, 10);
@@ -28,7 +30,9 @@ test("questions never repeat on adjacent days, including year and leap-day bound
   ]) {
     let previous = new Set();
     for (let offset = 0; offset < 40; offset++) {
-      const day = dayKey(new Date(Date.parse(start) + offset * 86400000));
+      const day = new Date(Date.parse(start) + offset * 86400000)
+        .toISOString()
+        .slice(0, 10);
       const current = dailyQuestions(day).map((q) => q.id);
       assert.equal(current.filter((id) => previous.has(id)).length, 0, day);
       previous = new Set(current);
@@ -39,7 +43,9 @@ test("selection covers the full archive within twelve days", () => {
   const ids = new Set();
   for (let i = 0; i < 12; i++)
     dailyQuestions(
-      dayKey(new Date(Date.parse("2026-10-10") + i * 86400000)),
+      new Date(Date.parse("2026-10-10") + i * 86400000)
+        .toISOString()
+        .slice(0, 10),
     ).forEach((q) => ids.add(q.id));
   assert.equal(ids.size, bank.length);
 });
@@ -47,7 +53,9 @@ test("answer shuffling preserves the correct text and varies answer positions", 
   const positions = new Set();
   for (let i = 0; i < 30; i++)
     for (const q of dailyQuestions(
-      dayKey(new Date(Date.parse("2026-10-10") + i * 86400000)),
+      new Date(Date.parse("2026-10-10") + i * 86400000)
+        .toISOString()
+        .slice(0, 10),
     )) {
       assert.equal(q.options[q.answer], bank[q.id].options[bank[q.id].answer]);
       positions.add(q.answer);
@@ -90,14 +98,37 @@ test("all ranks have explicit correct boundaries", () => {
     ],
   );
 });
-test("UTC reset works across time zones, months, leap years and DST", () => {
-  assert.equal(dayKey(new Date("2026-10-10T23:30:00-04:00")), "2026-10-11");
+test("Eastern calendar date is independent of the player's time zone", () => {
+  assert.equal(dayKey(new Date("2026-10-10T23:30:00-04:00")), "2026-10-10");
+  assert.equal(dayKey(new Date("2026-10-11T03:59:59.999Z")), "2026-10-10");
+  assert.equal(dayKey(new Date("2026-10-11T04:00:00Z")), "2026-10-11");
+  assert.equal(dayKey(new Date("2026-01-15T04:59:59Z")), "2026-01-14");
+  assert.equal(dayKey(new Date("2026-10-11T13:00:00+09:00")), "2026-10-11");
+});
+test("Eastern reset follows standard time, daylight time, leap days and year boundaries", () => {
   for (const [input, expected] of [
-    ["2026-12-31T23:59:59Z", "2027-01-01T00:00:00.000Z"],
-    ["2028-02-28T12:00:00Z", "2028-02-29T00:00:00.000Z"],
-    ["2026-03-08T01:59:00-05:00", "2026-03-09T00:00:00.000Z"],
+    ["2026-10-10T12:00:00Z", "2026-10-11T04:00:00.000Z"],
+    ["2026-01-14T12:00:00Z", "2026-01-15T05:00:00.000Z"],
+    ["2026-12-31T23:59:59Z", "2027-01-01T05:00:00.000Z"],
+    ["2028-02-28T12:00:00Z", "2028-02-29T05:00:00.000Z"],
+    ["2026-10-11T03:59:59.999Z", "2026-10-11T04:00:00.000Z"],
+    ["2026-10-11T04:00:00Z", "2026-10-12T04:00:00.000Z"],
   ])
     assert.equal(nextReset(new Date(input)).toISOString(), expected);
+});
+test("spring and fall reset days last 23 and 25 hours instead of using a fixed offset", () => {
+  const spring = new Date("2026-03-08T05:00:00Z");
+  const fall = new Date("2026-11-01T04:00:00Z");
+  assert.equal((nextReset(spring) - spring) / 3600000, 23);
+  assert.equal((nextReset(fall) - fall) / 3600000, 25);
+  assert.equal(
+    nextReset(new Date("2026-11-01T05:30:00Z")).toISOString(),
+    "2026-11-02T05:00:00.000Z",
+  );
+  assert.equal(
+    nextReset(new Date("2026-11-01T06:30:00Z")).toISOString(),
+    "2026-11-02T05:00:00.000Z",
+  );
 });
 test("malformed saved progress is rejected instead of generating broken results", () => {
   const q = dailyQuestions("2026-10-10");
@@ -128,4 +159,45 @@ test("all questions have four distinct options and a valid correct answer", () =
     assert.ok(q.options[q.answer]);
     assert.ok(q.explanation);
   }
+});
+
+test("era mini quizzes have five unique, eligible questions and preserve correct answers", () => {
+  for (const mode of modes.slice(1)) {
+    const issue = dailyQuestions("2026-10-10", mode.id);
+    assert.equal(issue.length, 5);
+    assert.equal(new Set(issue.map((q) => q.id)).size, 5);
+    assert.deepEqual(issue, dailyQuestions("2026-10-10", mode.id));
+    for (const q of issue) {
+      assert.equal(q.options[q.answer], bank[q.id].options[bank[q.id].answer]);
+      if (mode.id === "tumblr")
+        assert.ok(q.id < 36 && ![19, 23].includes(q.id));
+      if (mode.id === "youtube")
+        assert.ok((q.id >= 24 && q.id < 36) || q.id === 23);
+      if (mode.id === "modern") assert.ok(q.id >= 36);
+    }
+  }
+});
+test("mini quizzes refresh without repeating yesterday's questions", () => {
+  for (const mode of modes.slice(1)) {
+    let previous = new Set();
+    for (let i = 0; i < 40; i++) {
+      const day = new Date(Date.parse("2026-12-20") + i * 86400000)
+        .toISOString()
+        .slice(0, 10);
+      const ids = dailyQuestions(day, mode.id).map((q) => q.id);
+      assert.equal(
+        ids.filter((id) => previous.has(id)).length,
+        0,
+        mode.id + day,
+      );
+      previous = new Set(ids);
+    }
+  }
+});
+test("mini quiz ranks use the proportion correct and reject unknown modes", () => {
+  assert.equal(rank(5, 5), rank(10, 10));
+  assert.equal(rank(4, 5), rank(8, 10));
+  assert.equal(getMode("modern").count, 5);
+  assert.throws(() => dailyQuestions("2026-10-10", "unknown"));
+  assert.throws(() => getMode("unknown"));
 });

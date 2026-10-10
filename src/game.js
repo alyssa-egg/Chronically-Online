@@ -1,5 +1,52 @@
 // Keep this edition's bank stable. Publish editorial changes under a new version.
-export const EDITION_VERSION = "v2";
+export const EDITION_VERSION = "v3";
+export const TIME_ZONE = "America/New_York";
+export const eras = [
+  {
+    id: "tumblr",
+    name: "The Tumblr Years",
+    years: "2010–2015",
+    count: 5,
+    icon: "♡",
+    description:
+      "One Direction, 5SOS, fanfiction, early YouTube, and the dashboard that raised you.",
+    short: "Your old dashboard remembers.",
+  },
+  {
+    id: "youtube",
+    name: "YouTube Was Everything",
+    years: "2015–2019",
+    count: 5,
+    icon: "▷",
+    description:
+      "Creator collabs, tag videos, conventions, and the comfort uploads you watched after school.",
+    short: "Just one more video before bed.",
+  },
+  {
+    id: "modern",
+    name: "The New Lore",
+    years: "2020–Today",
+    count: 5,
+    icon: "✿",
+    description:
+      "Slushy Noobz, Vanilla Mace, newer creator communities, and the inside jokes still being written.",
+    short: "New tabs. Same fandom brain.",
+  },
+];
+export const modes = [
+  {
+    id: "daily",
+    name: "The daily deep cut",
+    count: 10,
+    short: "A little bit of every era.",
+  },
+  ...eras,
+];
+export function getMode(id = "daily") {
+  const mode = modes.find((mode) => mode.id === id);
+  if (!mode) throw new Error("Unknown game mode");
+  return mode;
+}
 export const departments = [
   {
     name: "The dashboard",
@@ -471,11 +518,30 @@ export const bank = rows.map((q, id) => ({
   answer: q[3],
   explanation: q[4],
 }));
-export const dayKey = (date = new Date()) => date.toISOString().slice(0, 10);
-export const nextReset = (date = new Date()) =>
-  new Date(
-    Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 1),
+const easternDate = new Intl.DateTimeFormat("en-US", {
+  timeZone: TIME_ZONE,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+export function dayKey(date = new Date()) {
+  const parts = Object.fromEntries(
+    easternDate.formatToParts(date).map((part) => [part.type, part.value]),
   );
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+export function nextReset(date = new Date()) {
+  const currentDay = dayKey(date);
+  let before = date.getTime(),
+    after = before + 27 * 3600000;
+  // Find the first millisecond of the next Eastern day, including 23/25-hour DST days.
+  while (after - before > 1) {
+    const middle = Math.floor((before + after) / 2);
+    if (dayKey(new Date(middle)) === currentDay) before = middle;
+    else after = middle;
+  }
+  return new Date(after);
+}
 function random(seed) {
   return () => {
     seed |= 0;
@@ -493,44 +559,68 @@ function shuffle(items, rand) {
   }
   return result;
 }
-export function dailyQuestions(day) {
+export function dailyQuestions(day, mode = "daily") {
   if (
     !/^\d{4}-\d{2}-\d{2}$/.test(day) ||
     !Number.isFinite(Date.parse(day)) ||
-    dayKey(new Date(day)) !== day
+    new Date(day).toISOString().slice(0, 10) !== day
   )
     throw new Error("Invalid issue date");
   const dayNumber = Math.floor(Date.parse(day) / 86400000);
   const rand = random(
     [...day].reduce((s, c) => (Math.imul(s, 31) + c.charCodeAt(0)) | 0, 0),
   );
-  return departments
-    .flatMap((dept, categoryIndex) => {
-      const pool = shuffle(
-        bank.filter((q) => q.category === dept.name),
-        random(12013 + categoryIndex),
-      );
-      // Consecutive blocks prevent questions repeating on adjacent days.
-      return Array.from(
-        { length: dept.count },
-        (_, i) =>
-          pool[
-            (((dayNumber * dept.count + i) % pool.length) + pool.length) %
-              pool.length
-          ],
-      );
-    })
-    .map((q) => {
-      const choices = shuffle(
-        q.options.map((text, index) => ({ text, correct: index === q.answer })),
-        rand,
-      );
-      return {
-        ...q,
-        options: choices.map((c) => c.text),
-        answer: choices.findIndex((c) => c.correct),
-      };
-    });
+  const gameMode = getMode(mode);
+  const picks =
+    mode === "daily"
+      ? departments.flatMap((dept, categoryIndex) => {
+          const pool = shuffle(
+            bank.filter((q) => q.category === dept.name),
+            random(12013 + categoryIndex),
+          );
+          // Consecutive blocks prevent questions repeating on adjacent days.
+          return Array.from(
+            { length: dept.count },
+            (_, i) =>
+              pool[
+                (((dayNumber * dept.count + i) % pool.length) + pool.length) %
+                  pool.length
+              ],
+          );
+        })
+      : (() => {
+          // Era eligibility is editorial: exclude late releases from the Tumblr years.
+          const eligible =
+            mode === "tumblr"
+              ? bank.filter((q) => q.id < 36 && ![19, 23].includes(q.id))
+              : mode === "youtube"
+                ? bank.filter((q) => (q.id >= 24 && q.id < 36) || q.id === 23)
+                : bank.filter((q) => q.id >= 36);
+          const pool = shuffle(
+            eligible,
+            random(62013 + modes.indexOf(gameMode)),
+          );
+          return Array.from(
+            { length: gameMode.count },
+            (_, i) =>
+              pool[
+                (((dayNumber * gameMode.count + i) % pool.length) +
+                  pool.length) %
+                  pool.length
+              ],
+          );
+        })();
+  return picks.map((q) => {
+    const choices = shuffle(
+      q.options.map((text, index) => ({ text, correct: index === q.answer })),
+      rand,
+    );
+    return {
+      ...q,
+      options: choices.map((c) => c.text),
+      answer: choices.findIndex((c) => c.correct),
+    };
+  });
 }
 export function validAnswers(value, questions) {
   return (
@@ -542,14 +632,14 @@ export function validAnswers(value, questions) {
     )
   );
 }
-export function rank(score) {
+export function rank(score, total = 10) {
   return [
     "Casual Lurker",
     "Certified Mutual",
     "Fandom Archivist",
     "Keeper of the Lore",
     "The Deepest Cut",
-  ][Math.min(4, Math.floor(score / 2.5))];
+  ][Math.min(4, Math.floor(((score / total) * 10) / 2.5))];
 }
 export function scoreAnswers(questions, answers) {
   return questions.reduce(

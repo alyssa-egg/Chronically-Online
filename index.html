@@ -3,25 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#fff0f5" />
+    <meta name="theme-color" content="#effbfc" />
     <meta
       name="description"
       content="Deep Cut: your daily fandom pop quiz. Tumblr years, One Direction, 5SOS, YouTube sleepovers, and the new lore."
     />
     <title>Deep Cut — a daily quiz for the lore girls</title>
-    <link rel="icon" href="/src/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="icon" href="./src/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
     <a class="skip-link" href="#app">Skip to quiz</a>
     <div class="top-ribbon">
-      ♡ &nbsp; for the girls who remember &nbsp; · &nbsp; and the mutuals still
-      making lore &nbsp; ♡
+      ♡ &nbsp; you had to be there. &nbsp; · &nbsp; and the mutuals still making
+      lore &nbsp; ♡
     </div>
     <header>
-      <a class="logo" href="/" aria-label="Deep Cut home"
-        >deep <span>cut</span><sup>✧</sup></a
-      >
+      <a class="logo" href="./" aria-label="Deep Cut home"
+        ><img
+          src="./src/assets/deep-cut-logo.png"
+          alt="Deep Cut &lt;3"
+          width="2025"
+          height="777"
+      /></a>
       <span class="header-note">your daily fandom fixation</span>
       <nav aria-label="Site controls">
         <button id="sound-button" class="pill" aria-pressed="true">
@@ -50,10 +54,12 @@
         everything to belong here.
       </p>
       <p>
-        A fresh selection arrives every day at midnight UTC, with the same
-        questions for everyone. Your progress is saved in this browser.
+        A fresh selection arrives every day at midnight Eastern time, with the
+        same questions for everyone and automatic daylight saving adjustments.
+        Your progress is saved in this browser. The main quiz has ten questions.
+        Three era mini quizzes have five questions each and separate progress.
         Questions rotate through our 48-question starter archive; they don’t
-        repeat on consecutive days.
+        repeat on consecutive days within each game mode.
       </p>
       <p>
         Little chimes are made from scratch, and you can mute them anytime. No
@@ -65,6 +71,6 @@
         affiliated with any featured artist, creator, or platform.
       </p>
     </dialog>
-    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="./src/app.js"></script>
   </body>
 </html>

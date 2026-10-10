@@ -2,19 +2,19 @@
 
 ## 1. Positioning and naming
 
-**Pitch:** “Your fandom phase was never a phase. Your daily deep cut in fandom lore.”
+**Pitch:** “you had to be there. A daily deep cut in fandom lore.”
 
 Make the niche explicit: Tumblr-era fandom, One Direction, Ariana-era pop culture, stan vocabulary, and current internet references. Invite people who missed an era as well as people who remember it. Explanations should make a wrong answer entertaining rather than embarrassing.
 
 Deep Cut names the obscure references the game celebrates, without locking it to one era. Backup names to research: Askbox Club, Mutuals Only, and Reblog Relay. Deep Cut is a common phrase, so matching and similar entertainment brands deserve careful checking. None are cleared names. A “copyright-free name” cannot be guaranteed: short names are generally a trademark question, while code, illustrations, and writing involve copyright. Before buying branding or a domain, search the exact name, close spellings, app stores, social handles, web results, and trademark databases in target markets. Have a qualified professional assess conflicting marks before investing. Use a temporary working identity until clearance.
 
-The distinct visual direction is magazine departments, serif cover headlines, lilac browser chrome, pink gingham, original ribbon bows, hearts, and scrapbook notes. Avoid copying BuzzFeed layouts, typography, logos, question text, or proprietary result language. This prototype uses CSS and SVG artwork, symbols, original quiz wording, and synthesized Web Audio chimes. No samples or artist recordings are included. Use neutral public facts; artist and platform names do not imply endorsement.
+The distinct visual direction is magazine departments, serif cover headlines, a turquoise-and-hot-pink wordmark, pastel browser chrome, subtle graph paper, original ribbon bows, hearts, and scrapbook notes. Avoid copying BuzzFeed layouts, typography, logos, question text, or proprietary result language. This prototype uses CSS and SVG artwork, symbols, original quiz wording, and synthesized Web Audio chimes. No samples or artist recordings are included. Use neutral public facts; artist and platform names do not imply endorsement.
 
 ## 2. Scope for the first release
 
-Keep one free ten-question issue each day. Four recurring departments give the product a recognizable rhythm. Ship homepage → quiz → explanations → score → share → tomorrow reminder. Keep five result tiers: Casual Lurker (0–2), Certified Mutual (3–4), Fandom Archivist (5–7), Keeper of the Lore (8–9), The Deepest Cut (10). No account requirement. The era tabs on the homepage introduce the daily departments; they are not separate game modes.
+Keep one free ten-question issue each day. Four recurring departments give the product a recognizable rhythm. Ship homepage → quiz → explanations → score → share → tomorrow reminder. Keep five result tiers: Casual Lurker (0–2), Certified Mutual (3–4), Fandom Archivist (5–7), Keeper of the Lore (8–9), The Deepest Cut (10). No account requirement. Three five-question mini quizzes are playable from the homepage: The Tumblr Years (2010–2015), YouTube Was Everything (2015–2019), and The New Lore (2020–Today). They have separate daily progress, scores, and share cards. Main and mini selections can overlap; measure each mode separately.
 
-Before a public release, expand from the 48-question starter archive to at least 140 fact-checked questions or prepare 14 manually curated issues. The current deterministic daily selector changes at midnight UTC and avoids consecutive-day repeats, but the finite archive eventually cycles. A daily change is not the same as ten newly authored questions each day. Replace it with dated editorial issue manifests for release. Keep archival issues immutable so shared results stay comparable. Version questions and issue IDs whenever answers change.
+Before a public release, expand from the 48-question starter archive to at least 140 fact-checked questions or prepare 14 manually curated issues. The current deterministic daily selector changes at midnight Eastern time, using America/New_York and automatic daylight saving adjustments and avoids consecutive-day repeats, but the finite archive eventually cycles. A daily change is not the same as ten newly authored questions each day. Replace it with dated editorial issue manifests for release. Keep archival issues immutable so shared results stay comparable. Version questions and issue IDs whenever answers change.
 
 Do not add payments, a public leaderboard, multiplayer, or user-submitted content before validating the core loop. Text-based music clues are enough. Licensed audio can come later if there is a clear benefit and budget.
 
@@ -41,11 +41,11 @@ Treat the schedule as a planning estimate, not a commitment to growth. A solo bu
 
 ## 5. Technical release checklist
 
-The prototype is dependency-free JavaScript with a small Node server. A static host is also suitable because no application backend is needed yet. Use HTTPS for clipboard/device-sharing support. Test Chrome, Safari, and Firefox on desktop and phones, including narrow screens, zoom, keyboard-only navigation, reduced motion, and screen readers. Check the exported card in real social apps; the PNG export is implemented, but do not promise direct Instagram Stories posting without testing a supported integration.
+The prototype is dependency-free JavaScript with a small Node server and a tested `npm run build` static export. For a Git-connected Netlify site, use `npm run build` and publish `dist`. A static host is also suitable because no application backend is needed yet. Use HTTPS for clipboard/device-sharing support. Test Chrome, Safari, and Firefox on desktop and phones, including narrow screens, zoom, keyboard-only navigation, reduced motion, and screen readers. Check the exported card in real social apps; the PNG export is implemented, but do not promise direct Instagram Stories posting without testing a supported integration.
 
-Test new-day rollover, refresh mid-quiz, repeated clicks, blocked localStorage, sharing cancellation, clipboard denial, and completed-day reopening. The homepage and results roll over automatically; an open quiz moves to the new issue on its next answer or Next action after midnight, preserving yesterday’s progress separately. Add deployment smoke checks and a content validation tool before publishing larger banks.
+Test new-day rollover, refresh mid-quiz, repeated clicks, blocked localStorage, sharing cancellation, clipboard denial, and completed-day reopening. The homepage and results roll over automatically; an open quiz moves to the new issue on its next answer or Next action after midnight Eastern, preserving yesterday’s progress separately. Add deployment smoke checks and a content validation tool before publishing larger banks.
 
-For aggregate analytics, define `quiz_started`, `answer_submitted`, `quiz_completed`, `share_succeeded`, and `card_downloaded`, with issue ID and question ID where relevant. Never call a share attempt a successful share. Use an anonymous first-party identifier only if needed, minimize retention, publish a privacy notice, and review consent requirements for your markets. The current browser counters do not provide these aggregate metrics or measure next-day retention.
+For aggregate analytics, define `quiz_started`, `answer_submitted`, `quiz_completed`, `share_succeeded`, and `card_downloaded`, with issue ID, mode ID, and question ID where relevant. Never call a share attempt a successful share. Use an anonymous first-party identifier only if needed, minimize retention, publish a privacy notice, and review consent requirements for your markets. The current browser counters do not provide these aggregate metrics or measure next-day retention.
 
 If adding competitive rankings, introduce server-side issue definitions, attempt validation, abuse controls, and a privacy model. LocalStorage scores are not trustworthy for competitive prizes. Add accounts only when a proven feature needs cross-device identity.
 
@@ -73,10 +73,10 @@ Start with low-cost static hosting, one researched domain, and free development 
 
 ## Immediate next actions
 
-1. Run the prototype and play it on a phone and desktop.
+1. Pull the latest GitHub changes, restart the local server, and play the main quiz plus all three eras on a phone and desktop.
 2. Research Deep Cut and two backup names before buying any assets.
 3. Recruit 8–12 people from the intended fandom audience for observed playtests.
 4. Write and fact-check the first 14 curated daily issues.
-5. Choose a host and deploy over HTTPS; test actual sharing and card uploads.
+5. Publish `dist` to Netlify or another static host over HTTPS; test real phone audio, share sheets, and card uploads. Configure Git-connected deployment for automatic updates.
 6. Add aggregate measurement and a privacy notice before public beta.
 7. Use beta evidence to decide whether to shorten the game, change the content balance, or launch.

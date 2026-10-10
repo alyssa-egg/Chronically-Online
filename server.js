@@ -7,6 +7,7 @@ const types = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".svg": "image/svg+xml",
+  ".png": "image/png",
 };
 http
   .createServer(async (req, res) => {
@@ -27,6 +28,7 @@ http
           "/src/sound.js",
           "/src/style.css",
           "/src/favicon.svg",
+          "/src/assets/deep-cut-logo.png",
         ].includes(pathname === "/" ? "/index.html" : pathname)
       ) {
         res.writeHead(404);
