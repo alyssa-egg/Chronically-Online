@@ -6,7 +6,7 @@ The implemented offer is **$5 USD once for all three eras**, with one **24-hour 
 
 Membership uses Supabase email codes and a protected database, plus Stripe-hosted checkout. The server verifies the actual $5 payment and account owner before granting access. A signed payment webhook completes the purchase even if someone closes the checkout tab. Access follows the email account between devices; quiz progress and diary streaks remain local. Clearing browser storage does not reset an account’s trial. A different email account has its own trial; there is no per-person identity check.
 
-**Not connected yet:** no Supabase, Stripe, or site configuration was available in this environment. Automated payment tests use mocked providers. Real email delivery, Stripe test checkout, live checkout, and production access still need the setup and test below. The UI keeps sign-in/purchase controls disabled until their required settings exist.
+**Live check, October 11, 2026:** `https://deepcutt.netlify.app/api/premium?action=config` returned HTTP 200 with `configured: false`, `checkoutReady: false`, `priceCents: 500`, and `trialHours: 24`. The payment function is deployed, but provider settings are not connected. No Supabase, Stripe, or site configuration was available in this environment. Automated payment tests use mocked providers. Real email delivery, Stripe test checkout, live checkout, and production access still need the setup and test below. The UI keeps sign-in/purchase controls disabled until their required settings exist.
 
 ## 1. Use Git-connected Netlify deployment
 
@@ -21,7 +21,7 @@ The committed `netlify.toml` supplies build/function settings. The function hand
 
 ## 2. Create a Supabase project
 
-1. Create a project at Supabase. Copy its project URL, anon API key, and server-only service-role key from project settings. Keep the service-role key private.
+1. Create a project at Supabase. Copy its project URL and the **legacy `anon` and `service_role` keys** from project settings (API/API Keys → Legacy API Keys). This implementation sends those keys as JWT bearer credentials; the newer `sb_publishable_...`/`sb_secret_...` keys are not interchangeable in this code. Keep the service-role key private.
 2. Run [config/membership.sql](config/membership.sql) in its SQL editor. It creates `deep_cut_memberships` with one row per user. Browser roles cannot insert/update trials or purchases; the backend uses the service-role key.
 3. Enable email sign-in. Set the Auth Site URL to `https://deepcutt.netlify.app`.
 4. In the **Magic Link email template**, show the one-time code with `{{ .Token }}` so players can type the code into Deep Cut. The app verifies that emailed code rather than using a magic-link redirect.
@@ -36,7 +36,7 @@ The committed `netlify.toml` supplies build/function settings. The function hand
 
 ## 4. Set private server environment variables in Netlify
 
-Add these to Netlify’s environment-variable settings, available to **Functions/runtime**, then redeploy. Enter keys there securely; do not paste them in chat or commit them to Git.
+Open Netlify → your **deepcutt** project → **Project configuration → Environment variables**. Add these for the production deploy context, available to **Functions/runtime**, then redeploy. Enter keys there securely; do not paste them in chat or commit them to Git.
 
 | Name | Value from your accounts |
 |---|---|
