@@ -18,6 +18,7 @@
   --serif: Georgia, "Times New Roman", serif;
   --sans: ui-rounded, "Avenir Next", Avenir, "Segoe UI", sans-serif;
   --display: "Outfit", "Arial Black", var(--sans);
+  --heading-weight: 700;
   --heading-ink: #123f49;
   --heading-pink: #ff45b8;
 }
@@ -2490,7 +2491,7 @@ header {
   }
 }
 
-/* Bold wordmark lettering, with the scrapbook notes kept in their own hand. */
+/* Wordmark-weight headings, with room between letters and lines. */
 h1,
 .section-heading h2,
 .daily-game h2,
@@ -2499,7 +2500,7 @@ h1,
 dialog h2,
 #membership h2 {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: var(--heading-weight);
   font-style: normal;
   color: var(--heading-ink);
 }
@@ -2524,31 +2525,31 @@ dialog h2 {
 }
 .home-cover .cover-copy h1 {
   font-size: clamp(56px, 6.1vw, 88px);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
 }
 .home-cover .cover-subtitle {
-  font: 900 clamp(24px, 2.4vw, 34px)/1.08 var(--display);
-  letter-spacing: -0.04em;
+  font: var(--heading-weight) clamp(24px, 2.4vw, 34px)/1.16 var(--display);
+  letter-spacing: -0.02em;
 }
 .daily-game h2 {
   font-size: clamp(32px, 3.25vw, 47px);
-  line-height: 1.02;
-  letter-spacing: -0.045em;
-  min-height: 2.04em;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  min-height: 2.24em;
 }
 .section-heading h2 {
   font-size: clamp(28px, 3.2vw, 46px);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
 }
 .era-copy h3 {
   font-size: 26px;
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
 }
 .quiz-body h1 {
-  font-weight: 800;
+  font-weight: var(--heading-weight);
   line-height: 1.15;
 }
 .cursor-sticker {
@@ -2579,7 +2580,7 @@ dialog h2 {
 @media (max-width: 650px) {
   .home-cover .cover-copy h1 {
     font-size: clamp(46px, 12.6vw, 76px);
-    letter-spacing: -0.055em;
+    letter-spacing: -0.025em;
   }
   .home-cover .cover-subtitle {
     font-size: 26px;
