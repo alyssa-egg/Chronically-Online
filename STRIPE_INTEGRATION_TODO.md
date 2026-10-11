@@ -52,6 +52,7 @@ There is no Vite build and no Stripe server SDK dependency. The existing REST cl
 | Stripe.js URL | `https://js.stripe.com/dahlia/stripe.js` |
 | Browser beta flag | `custom_checkout_payment_form_1` |
 | Form layout | `expanded` |
+| Confirmation `returnUrl` | The current website's base URL with `era_purchase=success` and the authenticated `session_id`; returning payments use the existing server receipt-verification flow. |
 
 The old `success_url`, `cancel_url`, `customer_email`, and explicit card-only parameter are removed. No new endpoint, database table, authentication mechanism, webhook handler, server SDK, or dependency was added.
 

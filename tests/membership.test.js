@@ -141,7 +141,9 @@ test("expired, incomplete and rejected email links never create a signed-in sess
 });
 
 test("embedded form confirms once and delegates access to receipt verification", async () => {
-  const originalStripe = globalThis.Stripe;
+  const originalStripe = globalThis.Stripe,
+    originalLocation = globalThis.location;
+  globalThis.location = new URL("https://deepcutt.netlify.app/?old=value#private-fragment");
   const container = { isConnected: true };
   const checkoutSession = { client_secret: "cs_test_secret", session_id: "cs_test" };
   let handler, mounted, confirmations = 0, verified = 0, destroyed = 0;
@@ -165,8 +167,9 @@ test("embedded form confirms once and delegates access to receipt verification",
           },
           async loadActions() {
             return { type: "success", actions: {
-              async confirm({ formConfirmEvent }) {
+              async confirm({ formConfirmEvent, returnUrl }) {
                 assert.equal(formConfirmEvent, event);
+                assert.equal(returnUrl, "https://deepcutt.netlify.app/?era_purchase=success&session_id=cs_test");
                 confirmations++;
                 return { type: "success" };
               },
@@ -190,27 +193,38 @@ test("embedded form confirms once and delegates access to receipt verification",
     assert.equal(confirmations, 1);
     form.destroy();
     assert.equal(destroyed, 1);
-  } finally { globalThis.Stripe = originalStripe; }
+  } finally {
+    globalThis.Stripe = originalStripe;
+    globalThis.location = originalLocation;
+  }
 });
 
 test("a failed payment stays in checkout and cannot unlock eras", async () => {
-  const originalStripe = globalThis.Stripe;
+  const originalStripe = globalThis.Stripe,
+    originalLocation = globalThis.location;
+  globalThis.location = new URL("https://deepcutt.netlify.app/");
   let handler, failure, verified = false;
   globalThis.Stripe = () => ({
     initCheckoutFormSdk: () => ({
       createForm: () => ({ mount() {}, on(name, callback) { handler = callback; } }),
       loadActions: async () => ({ type: "success", actions: {
-        confirm: async () => ({ type: "error", error: { message: "Card declined" } }),
+        confirm: async ({ returnUrl }) => {
+          assert.equal(new URL(returnUrl).searchParams.get("session_id"), "cs_test");
+          return { type: "error", error: { message: "Card declined" } };
+        },
       } }),
     }),
   });
   try {
-    await mountCheckoutForm({ isConnected: true }, { client_secret: "cs_test_secret" }, "pk_test_mock", {
+    await mountCheckoutForm({ isConnected: true }, { client_secret: "cs_test_secret", session_id: "cs_test" }, "pk_test_mock", {
       onComplete: async () => { verified = true; },
       onError: (error) => { failure = error.message; },
     });
     await handler({});
     assert.equal(failure, "Card declined");
     assert.equal(verified, false);
-  } finally { globalThis.Stripe = originalStripe; }
+  } finally {
+    globalThis.Stripe = originalStripe;
+    globalThis.location = originalLocation;
+  }
 });

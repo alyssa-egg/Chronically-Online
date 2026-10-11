@@ -163,11 +163,14 @@ export async function mountCheckoutForm(
       "The secure payment form could not load. Check your connection and try again.",
       503,
     );
-  if (!publishableKey || !checkoutSession.client_secret)
+  if (!publishableKey || !checkoutSession.client_secret || !checkoutSession.session_id)
     throw new MembershipError(
       "Checkout is being connected. Please try again later.",
       503,
     );
+  const returnUrl = new URL("./", location.href);
+  returnUrl.searchParams.set("era_purchase", "success");
+  returnUrl.searchParams.set("session_id", checkoutSession.session_id);
   const stripe = globalThis.Stripe(publishableKey, {
     betas: ["custom_checkout_payment_form_1"],
   });
@@ -212,6 +215,7 @@ export async function mountCheckoutForm(
       try {
         const confirmation = await result.actions.confirm({
           formConfirmEvent: event,
+          returnUrl: returnUrl.href,
         });
         if (confirmation?.type === "error" || confirmation?.error)
           throw new MembershipError(
