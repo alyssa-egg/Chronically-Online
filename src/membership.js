@@ -88,6 +88,55 @@ async function accessToken() {
   return current.access_token;
 }
 export const membershipConfig = () => raw("action=config");
+const emailLinkFields = [
+  "access_token",
+  "refresh_token",
+  "expires_in",
+  "expires_at",
+  "token_type",
+  "type",
+  "error",
+  "error_code",
+  "error_description",
+  "provider_token",
+  "provider_refresh_token",
+];
+export function hasEmailLink(url = new URL(location.href)) {
+  const params = new URLSearchParams(url.hash.slice(1));
+  return [
+    "access_token", "refresh_token", "error", "error_code", "error_description",
+  ].some((field) => params.has(field));
+}
+export async function finishEmailLink(url = new URL(location.href)) {
+  if (!hasEmailLink(url)) return null;
+  const params = new URLSearchParams(url.hash.slice(1));
+  const clean = new URL(url.href);
+  const remaining = new URLSearchParams(params);
+  for (const field of emailLinkFields) remaining.delete(field);
+  clean.hash = remaining.toString();
+  history.replaceState(history.state, "", clean.href);
+  const access_token = params.get("access_token"),
+    refresh_token = params.get("refresh_token"),
+    expires_in = Number(params.get("expires_in"));
+  if (
+    params.has("error") ||
+    params.has("error_code") ||
+    params.has("error_description") ||
+    !access_token ||
+    !refresh_token ||
+    !Number.isFinite(expires_in) ||
+    expires_in <= 0 ||
+    expires_in > 604800
+  )
+    throw new MembershipError(
+      "That sign-in link has expired or is invalid. Request a new sign-in email.",
+      401,
+    );
+  // The backend validates the Supabase token and confirmed account before saving it.
+  const member = await raw("action=status", { token: access_token });
+  keepSession({ access_token, refresh_token, expires_in, email: member.email });
+  return member;
+}
 export const sendCode = (email) =>
   raw("action=auth-start", { body: { email } });
 export async function verifyCode(email, code) {

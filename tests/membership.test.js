@@ -7,6 +7,8 @@ import {
   syncSessionFromStorage,
   forgetSession,
   mountCheckoutForm,
+  hasEmailLink,
+  finishEmailLink,
 } from "../src/membership.js";
 test("refreshed sign-in survives full storage and cross-tab sign-out drops its visit fallback", async () => {
   let old = JSON.stringify({
@@ -53,6 +55,88 @@ test("refreshed sign-in survives full storage and cross-tab sign-out drops its v
     forgetSession();
     globalThis.fetch = originalFetch;
     globalThis.localStorage = originalStorage;
+  }
+});
+
+test("email link sign-in clears URL credentials and validates the account before storing a session", async () => {
+  const originalFetch = globalThis.fetch,
+    originalStorage = globalThis.localStorage,
+    originalHistory = globalThis.history;
+  let stored = null, cleanUrl;
+  globalThis.localStorage = {
+    getItem: () => stored,
+    setItem: (key, value) => { stored = value; },
+    removeItem: () => { stored = null; },
+  };
+  globalThis.history = { state: null, replaceState: (state, title, url) => { cleanUrl = url; } };
+  globalThis.fetch = async (address, options) => {
+    assert.equal(new URL(address, "https://deepcutt.netlify.app").searchParams.get("action"), "status");
+    assert.equal(options.headers.Authorization, "Bearer verified-link-token");
+    assert.equal(stored, null);
+    assert.equal(new URL(cleanUrl).hash, "#chapter=tumblr");
+    return new Response(JSON.stringify({ email: "mutual@example.com", purchased: false, trialStarted: false }));
+  };
+  try {
+    forgetSession();
+    const url = new URL("https://deepcutt.netlify.app/?source=email#access_token=verified-link-token&refresh_token=verified-refresh&expires_in=3600&type=signup&chapter=tumblr");
+    assert.equal(hasEmailLink(url), true);
+    const member = await finishEmailLink(url);
+    assert.equal(member.trialStarted, false);
+    assert.equal(signedIn(), true);
+    assert.equal(JSON.parse(stored).email, "mutual@example.com");
+    assert.equal(JSON.parse(stored).refresh_token, "verified-refresh");
+    assert.equal(new URL(cleanUrl).searchParams.get("source"), "email");
+    assert.equal(new URL(cleanUrl).hash.includes("token"), false);
+    const anchor = new URL("https://deepcutt.netlify.app/#era-tumblr");
+    assert.equal(hasEmailLink(anchor), false);
+    assert.equal(await finishEmailLink(anchor), null);
+  } finally {
+    forgetSession();
+    globalThis.fetch = originalFetch;
+    globalThis.localStorage = originalStorage;
+    globalThis.history = originalHistory;
+  }
+});
+
+test("expired, incomplete and rejected email links never create a signed-in session", async () => {
+  const originalFetch = globalThis.fetch,
+    originalStorage = globalThis.localStorage,
+    originalHistory = globalThis.history;
+  let stored = null, cleanUrl, requests = 0;
+  globalThis.localStorage = {
+    getItem: () => stored,
+    setItem: (key, value) => { stored = value; },
+    removeItem: () => { stored = null; },
+  };
+  globalThis.history = { state: null, replaceState: (state, title, url) => { cleanUrl = url; } };
+  globalThis.fetch = async () => {
+    requests++;
+    return new Response(JSON.stringify({ error: "Sign in again to open your eras." }), { status: 401 });
+  };
+  try {
+    forgetSession();
+    for (const fragment of [
+      "error=access_denied&error_code=otp_expired&error_description=Expired+email+link",
+      "access_token=untrusted&expires_in=3600",
+      "access_token=untrusted&refresh_token=refresh&expires_in=-1",
+      "access_token=untrusted&refresh_token=refresh&expires_in=invalid",
+    ]) {
+      await assert.rejects(finishEmailLink(new URL("https://deepcutt.netlify.app/#" + fragment)), /expired or is invalid/);
+      assert.equal(new URL(cleanUrl).hash, "");
+      assert.equal(signedIn(), false);
+      assert.equal(stored, null);
+    }
+    assert.equal(requests, 0);
+    await assert.rejects(finishEmailLink(new URL("https://deepcutt.netlify.app/#access_token=untrusted&refresh_token=refresh&expires_in=3600")), /Sign in again/);
+    assert.equal(requests, 1);
+    assert.equal(stored, null);
+    assert.equal(signedIn(), false);
+    assert.equal(new URL(cleanUrl).hash, "");
+  } finally {
+    forgetSession();
+    globalThis.fetch = originalFetch;
+    globalThis.localStorage = originalStorage;
+    globalThis.history = originalHistory;
   }
 });
 

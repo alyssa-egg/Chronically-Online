@@ -162,6 +162,14 @@ test("protected era requests reject missing, forged and expired credentials", as
   assert.equal((await h.call("status", { environment: {} })).status, 503);
   assert.equal(h.row, null);
 });
+test("sign-in emails return to the configured website and support the default email templates", async () => {
+  const h = harness();
+  const result = await h.call("auth-start", { body: { email: "mutual@example.com" }, token: null });
+  assert.equal(result.status, 200);
+  const sent = h.calls.find((call) => new URL(call.url).pathname === "/auth/v1/otp");
+  assert.equal(new URL(sent.url).searchParams.get("redirect_to"), env.SITE_URL);
+  assert.deepEqual(JSON.parse(sent.body), { email: "mutual@example.com", create_user: true });
+});
 test("a free trial starts only explicitly and cannot be restarted after 24 hours", async () => {
   const h = harness();
   assert.equal((await h.call("status")).data.trialStarted, false);

@@ -273,7 +273,10 @@ export async function handlePremiumRequest(
     };
     if (action === "auth-start") {
       const body = await emailBody();
-      await provider("/auth/v1/otp", {
+      const redirect = env.SITE_URL
+        ? `?redirect_to=${encodeURIComponent(env.SITE_URL)}`
+        : "";
+      await provider(`/auth/v1/otp${redirect}`, {
         method: "POST",
         body: { email: body.email, create_user: true },
       });

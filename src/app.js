@@ -16,6 +16,8 @@ import {
   membershipConfig,
   sendCode,
   verifyCode,
+  hasEmailLink,
+  finishEmailLink,
   memberStatus,
   startTrial,
   startCheckout,
@@ -423,7 +425,7 @@ async function showMembership(eraId = null, message = "") {
         .catch(reportError);
       return;
     }
-    dialog.innerHTML = `<button class="pill membership-close" aria-label="Close era membership">Close ×</button><span class="eyebrow">A LITTLE MORE OF YOUR INTERNET HISTORY</span><h2>Your eras.<br><em>All the receipts.</em></h2><p class="membership-price">$5 once <span>· all three eras · no subscription</span></p><p>Your first 24 hours of era play are free. Start when you’re ready. The main daily quiz and Anonymous Ask are always free.</p><p id="membership-status" role="status">${escape(message)}</p>${loggedIn ? `<p class="membership-email">Signed in as ${escape(membership?.email || "your account")}</p>${membership?.purchased ? '<div class="membership-note">All three eras are yours. ♡</div>' : membership?.trialActive && access ? `<div class="membership-note">Your free era day ends ${escape(new Intl.DateTimeFormat("en", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/New_York", timeZoneName: "short" }).format(new Date(membership.trialEndsAt)))}.</div>` : membership?.trialStarted ? '<div class="membership-note">Your free era day is filed. Unlock the full archive for $5 once.</div>' : '<button class="primary" id="start-era-trial">Start my free 24 hours ♡</button>'}${access ? `<button class="primary" id="play-member-era">${eraId ? "Play this era" : "Browse my eras"} ${arrow}</button>` : ""}${!membership?.purchased ? `<button class="secondary" id="buy-eras" ${membershipSettings?.checkoutReady ? "" : "disabled"}>Unlock all eras · $5 once ${arrow}</button>${!membershipSettings?.checkoutReady ? '<p class="ask-small">Purchases are coming soon. No payment is collected here yet.</p>' : ""}` : ""}<button class="text-button" id="sign-out-eras">Sign out</button>` : `<p class="ask-small">Sign in by email so your trial and purchase follow you between devices. No password needed.</p><form id="era-signin"><label for="era-email">Your email</label><input id="era-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="you@example.com" maxlength="254" required value="${escape(email)}" ${membershipSettings?.configured ? "" : "disabled"}>${codeSent ? '<label for="era-code">Code from your email</label><input id="era-code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,8}" maxlength="8" required>' : ""}<button class="primary" ${membershipSettings?.configured ? "" : "disabled"}>${codeSent ? "Open my eras" : "Email me a sign-in code"} ♡</button></form>${!membershipSettings?.configured ? '<p class="membership-note">Era membership is coming soon. Your free daily games are ready now.</p>' : ""}${codeSent ? '<button class="text-button" id="resend-era-code">Send a new code</button>' : ""}`}`;
+    dialog.innerHTML = `<button class="pill membership-close" aria-label="Close era membership">Close ×</button><span class="eyebrow">A LITTLE MORE OF YOUR INTERNET HISTORY</span><h2>Your eras.<br><em>All the receipts.</em></h2><p class="membership-price">$5 once <span>· all three eras · no subscription</span></p><p>Your first 24 hours of era play are free. Start when you’re ready. The main daily quiz and Anonymous Ask are always free.</p><p id="membership-status" role="status">${escape(message)}</p>${loggedIn ? `<p class="membership-email">Signed in as ${escape(membership?.email || "your account")}</p>${membership?.purchased ? '<div class="membership-note">All three eras are yours. ♡</div>' : membership?.trialActive && access ? `<div class="membership-note">Your free era day ends ${escape(new Intl.DateTimeFormat("en", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/New_York", timeZoneName: "short" }).format(new Date(membership.trialEndsAt)))}.</div>` : membership?.trialStarted ? '<div class="membership-note">Your free era day is filed. Unlock the full archive for $5 once.</div>' : '<button class="primary" id="start-era-trial">Start my free 24 hours ♡</button>'}${access ? `<button class="primary" id="play-member-era">${eraId ? "Play this era" : "Browse my eras"} ${arrow}</button>` : ""}${!membership?.purchased ? `<button class="secondary" id="buy-eras" ${membershipSettings?.checkoutReady ? "" : "disabled"}>Unlock all eras · $5 once ${arrow}</button>${!membershipSettings?.checkoutReady ? '<p class="ask-small">Purchases are coming soon. No payment is collected here yet.</p>' : ""}` : ""}<button class="text-button" id="sign-out-eras">Sign out</button>` : `<p class="ask-small">Sign in with an email link or code so your trial and purchase follow you between devices. No password needed.</p><form id="era-signin"><label for="era-email">Your email</label><input id="era-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="you@example.com" maxlength="254" required value="${escape(email)}" ${membershipSettings?.configured ? "" : "disabled"}>${codeSent ? '<label for="era-code">Code from your email (if included)</label><input id="era-code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,8}" maxlength="8" required>' : ""}<button class="primary" ${membershipSettings?.configured ? "" : "disabled"}>${codeSent ? "Use email code" : "Send sign-in email"} ♡</button></form>${!membershipSettings?.configured ? '<p class="membership-note">Era membership is coming soon. Your free daily games are ready now.</p>' : ""}${codeSent ? '<button class="text-button" id="resend-era-code">Send another sign-in email</button>' : ""}`}`;
     dialog.querySelector(".membership-close").onclick = () => dialog.close();
     const work = async (action) => {
       dialog
@@ -455,7 +457,8 @@ async function showMembership(eraId = null, message = "") {
           } else {
             await sendCode(email);
             codeSent = true;
-            message = "Check your inbox for your sign-in code.";
+            message =
+              "Check your inbox. Open the sign-in link, or enter a code if your email includes one.";
           }
         });
       };
@@ -465,7 +468,7 @@ async function showMembership(eraId = null, message = "") {
         resend.onclick = () =>
           work(async () => {
             await sendCode(email);
-            message = "A new code is on its way.";
+            message = "A new sign-in email is on its way.";
           });
     } else {
       const trial = dialog.querySelector("#start-era-trial");
@@ -510,15 +513,23 @@ function clearPurchaseReference() {
   history.replaceState(null, "", url);
 }
 async function resumeMembership() {
+  const fromEmail = hasEmailLink();
   try {
+    const linkedMember = await finishEmailLink();
     membershipSettings = await membershipConfig();
     if (signedIn()) {
-      membership = await memberStatus();
+      membership = linkedMember || (await memberStatus());
       if (purchaseReference) {
         membership = await verifyPurchase(purchaseReference);
         clearPurchaseReference();
         showMembership(null, "All three eras are unlocked. ♡");
-      }
+      } else if (fromEmail)
+        showMembership(
+          null,
+          membership.purchased
+            ? "Your eras are unlocked. ♡"
+            : "You’re signed in. Your free day starts when you choose. ♡",
+        );
       if (screen === "home") home();
     } else if (purchaseReference)
       showMembership(
@@ -532,7 +543,7 @@ async function resumeMembership() {
       showMembership(null, "Checkout closed. No era purchase was completed.");
     }
   } catch (error) {
-    if (purchaseReference) showMembership(null, error.message);
+    if (purchaseReference || fromEmail) showMembership(null, error.message);
   }
 }
 function quiz() {
@@ -732,6 +743,9 @@ setSoundEnabled(read("deep-cut-sound", true) !== false);
 updateSoundButton();
 home();
 resumeMembership();
+window.addEventListener("hashchange", () => {
+  if (hasEmailLink()) resumeMembership();
+});
 document.querySelector("#membership-button").onclick = () => showMembership();
 setInterval(tick, 1000);
 window.addEventListener("focus", () => {

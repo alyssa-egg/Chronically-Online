@@ -72,7 +72,7 @@ The configured appearance is `theme: stripe`, `labels: auto`, `inputs: spaced`, 
 ## Setup and Next Steps
 
 1. **Confirm Checkout Form preview access with Stripe.** This task requires the Dahlia preview API version and beta flag above. Account access and the real preview SDK have not been verified. If Stripe rejects a preview parameter or initialization, check its preview availability and version with Stripe before enabling real purchases.
-2. **Create/configure Supabase.** Run [config/membership.sql](config/membership.sql) in the SQL editor. Enable email sign-in, set the Auth Site URL to `https://deepcutt.netlify.app`, and include `{{ .Token }}` in the Magic Link email template so players can type the emailed code. Configure production SMTP and delivery limits. This code uses legacy JWT keys, not interchangeable `sb_publishable_...`/`sb_secret_...` keys.
+2. **Create/configure Supabase.** Run [config/membership.sql](config/membership.sql) in the SQL editor. Enable email sign-in and set the Auth Site URL and allowed redirect URL to `https://deepcutt.netlify.app/`. Deep Cut supports the default verification/sign-in email link: it completes the Supabase implicit-flow return, clears credentials from the address bar, and validates the account with the backend before saving the session. Email templates can remain unchanged for this testing flow. If you prefer codes, optionally include `{{ .Token }}` in the Magic Link and Confirm signup templates. Production SMTP and delivery limits still need configuration for public email delivery; the built-in sender restricts recipients and rate limits. This code uses legacy JWT keys, not interchangeable `sb_publishable_...`/`sb_secret_...` keys.
 3. **Create the Stripe test product and price.** Create “Deep Cut — all eras” with one $5.00 USD price, billed once. Copy the price ID into `STRIPE_PRICE_ID`. Keep the price ID consistent with stored receipts; replacing it later requires a receipt/price migration.
 4. **Create a test webhook destination** at `https://deepcutt.netlify.app/api/stripe-webhook` for `checkout.session.completed`, and set its signing secret. The existing handler verifies the signature and retrieves the paid receipt before granting access.
 5. **Use immediate-payment methods for this implementation.** Payment methods are now controlled by Stripe settings because the old explicit card filter was removed as requested. Enable only methods that complete payment immediately until delayed-payment fulfillment is implemented. The existing handler does not process `checkout.session.async_payment_succeeded`.
@@ -84,7 +84,7 @@ For local development, copy `.env.example` to `.env.local`, fill it privately, a
 
 ### How the integration works
 
-1. A verified email account opens **My eras** and selects **Unlock all eras · $5 once**.
+1. A player opens **My eras**, requests a sign-in email, and follows its link (or enters its code). A successful link return opens the signed-in membership panel; an expired or invalid link offers another sign-in request. The player then selects **Unlock all eras · $5 once**.
 2. The existing authenticated `POST /api/premium?action=checkout` validates the actual price and creates a session. It returns JSON containing `client_secret` and `session_id`, with no redirect. The ID is used for server receipt verification; the secret is passed to Stripe's form SDK and is not logged or persisted by the app.
 3. The membership panel mounts Stripe's hosted iframe inside `#checkout-form`, with the specified appearance. Its confirm event invokes the SDK's loaded confirmation actions.
 4. After confirmation, the browser asks the existing verify action to check the session. Only a complete, paid, unrefunded $5 receipt linked to that authenticated account unlocks the eras. A client-side success message alone never grants access.
@@ -92,7 +92,7 @@ For local development, copy `.env.example` to `.env.local`, fill it privately, a
 
 ### Project changes
 
-The only new repository file is this checklist. Existing files changed: [.env.example](.env.example), [server/premium.mjs](server/premium.mjs), [index.html](index.html), [src/membership.js](src/membership.js), [src/app.js](src/app.js), and [src/style.css](src/style.css). Existing payment/client tests were updated to cover the new flow. Authentication, database structure, price validation, webhook verification, and entitlement checks remain in their existing locations.
+The only new repository file is this checklist. Existing files changed: [.env.example](.env.example), [server/premium.mjs](server/premium.mjs), [index.html](index.html), [src/membership.js](src/membership.js), [src/app.js](src/app.js), and [src/style.css](src/style.css). Later email-link support also updates these same authentication modules; no new endpoint or dependency is needed. Existing payment/client tests were updated to cover the new flow. Authentication, database structure, price validation, webhook verification, and entitlement checks remain in their existing locations.
 
 ### Test checklist
 
