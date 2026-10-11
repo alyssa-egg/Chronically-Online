@@ -1797,3 +1797,272 @@ header {
     font-size: 7px;
   }
 }
+
+/* Pinned posts and the anonymous inbox keep the game in its blog world. */
+.ask-post {
+  margin: 28px 0 68px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 48px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-top: 4px solid #ed89c7;
+  box-shadow: 6px 6px 0 #dceff1;
+}
+.ask-post h2 {
+  font: 42px/1.13 var(--serif);
+  letter-spacing: -1.4px;
+  margin: 16px 0;
+  max-width: 540px;
+}
+.ask-post h2 em {
+  color: var(--rose);
+}
+.ask-post-copy > p {
+  max-width: 530px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 23px;
+}
+.ask-small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 13px;
+}
+.diary-card {
+  background: #fff4fa;
+  border: 1px dashed #d995bf;
+  padding: 25px 18px;
+  text-align: center;
+  align-self: center;
+  transform: rotate(1deg);
+}
+.diary-card .eyebrow {
+  font-size: 9px;
+}
+.diary-stamp {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px dotted #c770a6;
+  margin: 20px auto 15px;
+  display: grid;
+  place-items: center;
+  color: var(--rose);
+  font-size: 30px;
+}
+.diary-card strong {
+  font: 26px var(--serif);
+}
+.diary-card p {
+  font-size: 11px;
+  color: var(--muted);
+}
+.diary-card small {
+  font-size: 10px;
+  line-height: 1.8;
+  display: block;
+}
+.ask-window h1 {
+  font-size: clamp(35px, 5vw, 52px);
+  margin: 18px 0;
+}
+.ask-window h1 em {
+  color: var(--rose);
+}
+.ask-rules {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.clue-notes {
+  list-style: none;
+  margin: 27px 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.clue-notes li {
+  background: #f0fafb;
+  border-left: 3px solid #81cdd5;
+  padding: 16px 20px;
+}
+.clue-notes li:last-child {
+  background: #fff0f8;
+  border-left-color: #ed89c7;
+}
+.clue-notes span {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  color: var(--purple);
+  font-weight: 700;
+}
+.clue-notes p {
+  margin: 7px 0 0;
+  font: 19px/1.5 var(--serif);
+}
+.ask-turns {
+  display: flex;
+  gap: 9px;
+  list-style: none;
+  padding: 0;
+  margin: 26px 0;
+}
+.ask-turns li {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed #b1d2d9;
+  color: var(--muted);
+  font-size: 13px;
+}
+.ask-turns .turn-used {
+  background: #eef2f3;
+  border-style: solid;
+}
+.ask-turns .turn-won {
+  background: #ffdaef;
+  color: var(--rose);
+  border: 1px solid #ed89c7;
+  font-size: 22px;
+}
+.guess-form label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  margin: 20px 0 10px;
+}
+.guess-form label span {
+  font-size: 11px;
+  color: var(--muted);
+}
+.guess-controls {
+  display: flex;
+  gap: 10px;
+}
+.guess-controls input {
+  flex: 1;
+  min-width: 0;
+  font: 16px var(--sans);
+  border: 1px solid #adced5;
+  background: white;
+  border-radius: 5px;
+  padding: 15px;
+  color: var(--ink);
+}
+.guess-controls input:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+}
+.guess-controls .primary {
+  white-space: nowrap;
+  margin: 0;
+}
+#guess-error {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--rose);
+  margin: 10px 0;
+}
+.guess-form .text-button {
+  font-size: 12px;
+}
+.guess-history {
+  margin-top: 22px;
+}
+.guess-history ol {
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+.guess-history li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.guess-history li span {
+  float: right;
+  color: var(--rose);
+}
+.ask-reveal {
+  margin: 25px 0;
+  padding: 23px;
+  background: #fff0f8;
+  border: 1px solid #f3cee5;
+}
+.ask-reveal h2 {
+  font: 32px var(--serif);
+  color: var(--rose);
+  margin: 15px 0;
+}
+.ask-reveal p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.diary-receipt {
+  color: var(--purple);
+}
+.ask-feedback {
+  color: var(--purple);
+  font-size: 12px;
+  line-height: 1.7;
+}
+@media (max-width: 800px) {
+  .ask-post {
+    gap: 28px;
+    padding: 28px;
+    grid-template-columns: minmax(0, 1fr) 230px;
+  }
+  .ask-post h2 {
+    font-size: 34px;
+  }
+}
+@media (max-width: 600px) {
+  .ask-post {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px 20px;
+    margin-bottom: 48px;
+    gap: 27px;
+  }
+  .ask-post h2 {
+    font-size: 36px;
+  }
+  .ask-post-copy > p {
+    font-size: 12px;
+  }
+  .diary-card {
+    transform: none;
+  }
+  .diary-stamp {
+    margin: 15px auto;
+  }
+  .guess-controls {
+    flex-direction: column;
+  }
+  .guess-controls .primary {
+    justify-content: center;
+  }
+  .ask-turns {
+    gap: 7px;
+  }
+  .ask-turns li {
+    width: 35px;
+    height: 38px;
+  }
+  .clue-notes li {
+    padding: 13px 15px;
+  }
+  .clue-notes p {
+    font-size: 17px;
+  }
+  .ask-rules {
+    font-size: 12px;
+  }
+}

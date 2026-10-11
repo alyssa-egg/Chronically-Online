@@ -12,11 +12,23 @@ The distinct visual direction is magazine departments, serif cover headlines, a 
 
 ## 2. Scope for the first release
 
-Keep one free ten-question issue each day. Four recurring departments give the product a recognizable rhythm. Ship homepage → quiz → explanations → score → share → tomorrow reminder. Keep five result tiers: Casual Lurker (0–2), Certified Mutual (3–4), Fandom Archivist (5–7), Keeper of the Lore (8–9), The Deepest Cut (10). No account requirement. Three five-question mini quizzes are playable from the homepage: The Tumblr Years (2010–2015), YouTube Was Everything (2015–2019), and The New Lore (2020–Today). They have separate daily progress, scores, and share cards. Main and mini selections can overlap; measure each mode separately.
+Keep one free ten-question issue each day. Four recurring departments give the product a recognizable rhythm. Ship homepage → quiz → explanations → score → share → tomorrow reminder. Keep five result tiers: Casual Lurker (0–2), Certified Mutual (3–4), Fandom Archivist (5–7), Keeper of the Lore (8–9), The Deepest Cut (10). No account requirement. Three five-question mini quizzes are playable from the homepage: The Tumblr Years (2010–2015), YouTube Was Everything (2015–2019), and The New Lore (2020–Today). They have separate daily progress, scores, and share cards. Main and mini selections use exclusive pools; measure each mode separately. The Anonymous Ask adds one daily reference guessed from six increasingly clear clues, with six turns and spoiler-free result sharing. A reading diary stamps any completed game, including losses.
 
-Before a public release, expand from the 48-question starter archive to at least 140 fact-checked questions or prepare 14 manually curated issues. The current deterministic daily selector changes at midnight Eastern time, using America/New_York and automatic daylight saving adjustments and avoids consecutive-day repeats, but the finite archive eventually cycles. A daily change is not the same as ten newly authored questions each day. Replace it with dated editorial issue manifests for release. Keep archival issues immutable so shared results stay comparable. Version questions and issue IDs whenever answers change.
+The archive now contains 150 original questions, plus 30 clue puzzles. Before a public release, complete source review and playtesting, or prepare 14 manually curated issues. The current deterministic daily selector changes at midnight Eastern time, using America/New_York and automatic daylight saving adjustments and avoids question repeats within six daily issues, but the finite quiz archive cycles on the seventh day. Ask puzzles cycle after 30 days. A daily change is not the same as ten newly authored questions each day. Replace it with dated editorial issue manifests for release. Keep archival issues immutable so shared results stay comparable. Version questions and issue IDs whenever answers change.
 
 Do not add payments, a public leaderboard, multiplayer, or user-submitted content before validating the core loop. Text-based music clues are enough. Licensed audio can come later if there is a clear benefit and budget.
+
+## Interactive ideas that keep the blog feeling
+
+The daily Ask now supplies the repeated-guess loop: a shared mystery, limited turns, clearer feedback, a spoiler-free result, and a reason to return tomorrow. Keep the original ask-box presentation, clues, sounds, and hearts. The diary supplies progress without turning a casual fandom game into a high-pressure ranking.
+
+Next, test **one** of these with players:
+
+- **Queue the lore:** order four public fandom moments from oldest to newest. Use movable scrapbook cards with keyboard-accessible move buttons and explain the chronology after submission.
+- **Find your mutual:** match old usernames to creators or albums to their eras. Present it like matching saved posts to blog folders, with a small daily set.
+- **Personal blog stamps:** let players choose a local blog nickname/theme and collect diary stamps. Keep sharing optional. Accounts are only needed later if people request syncing across devices.
+
+Prioritize timeline ordering if players want a different challenge; prioritize matching if the audience wants a quick, approachable mini game. A small, well-edited daily puzzle is a better next experiment than adding a large feature list at once. Keep main/era question pools separate and rotate topics and difficulty, as well as IDs.
 
 ## 3. Editorial system
 
@@ -43,7 +55,7 @@ Treat the schedule as a planning estimate, not a commitment to growth. A solo bu
 
 The prototype is dependency-free JavaScript with a small Node server and a tested `npm run build` static export. For a Git-connected Netlify site, use `npm run build` and publish `dist`. A static host is also suitable because no application backend is needed yet. Use HTTPS for clipboard/device-sharing support. Test Chrome, Safari, and Firefox on desktop and phones, including narrow screens, zoom, keyboard-only navigation, reduced motion, and screen readers. Check the exported card in real social apps; the PNG export is implemented, but do not promise direct Instagram Stories posting without testing a supported integration.
 
-Test new-day rollover, refresh mid-quiz, repeated clicks, blocked localStorage, sharing cancellation, clipboard denial, and completed-day reopening. The homepage and results roll over automatically; an open quiz moves to the new issue on its next answer or Next action after midnight Eastern, preserving yesterday’s progress separately. Add deployment smoke checks and a content validation tool before publishing larger banks.
+Test new-day rollover, refresh mid-quiz, repeated clicks, blocked localStorage, sharing cancellation, clipboard denial, and completed-day reopening. The homepage and results roll over automatically; an open quiz or ask moves to the new issue on its next answer, guess, pass, or Next action after midnight Eastern, preserving yesterday’s progress separately. Add deployment smoke checks and a content validation tool before publishing larger banks.
 
 For aggregate analytics, define `quiz_started`, `answer_submitted`, `quiz_completed`, `share_succeeded`, and `card_downloaded`, with issue ID, mode ID, and question ID where relevant. Never call a share attempt a successful share. Use an anonymous first-party identifier only if needed, minimize retention, publish a privacy notice, and review consent requirements for your markets. The current browser counters do not provide these aggregate metrics or measure next-day retention.
 
@@ -73,7 +85,7 @@ Start with low-cost static hosting, one researched domain, and free development 
 
 ## Immediate next actions
 
-1. Pull the latest GitHub changes, restart the local server, and play the main quiz plus all three eras on a phone and desktop.
+1. Pull the latest GitHub changes, restart the local server, and play the main quiz, all three eras, and The Anonymous Ask on a phone and desktop.
 2. Research Deep Cut and two backup names before buying any assets.
 3. Recruit 8–12 people from the intended fandom audience for observed playtests.
 4. Write and fact-check the first 14 curated daily issues.

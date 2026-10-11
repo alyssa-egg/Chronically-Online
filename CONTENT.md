@@ -1,32 +1,47 @@
 # Deep Cut editorial archive
 
-The v3 archive has 48 original multiple-choice prompts, twelve per department. IDs are stable zero-based indexes in `src/game.js`. The main daily game selects 3/3/2/2 questions. Era mini quizzes each select five from an eligible pool. All modes use the Eastern calendar day (`America/New_York`), with separate saved answers. The selection cycles through a finite bank, not a live trend feed. The Tumblr pool excludes 2018 releases; YouTube-era items cover creator identities and formats from that era; The New Lore uses IDs 36–47. A fact about a creator active in several eras can appear in both a main issue and a mini quiz.
+The v4 archive contains **150 original multiple-choice prompts** in `src/questions.js`. Each has a stable group/index ID, four choices, one best answer, and an explanation. Scheduling is in `src/game.js`; saved progress is versioned. The Eastern calendar day (`America/New_York`) selects the same questions for everyone.
+
+| Exclusive pool         | Questions | Daily selection | ID prefixes                                            |
+| ---------------------- | --------: | --------------: | ------------------------------------------------------ |
+| Main quiz: dashboard   |        18 |               3 | `daily-dashboard-`                                     |
+| Main quiz: band files  |        18 |               3 | `daily-band-`                                          |
+| Main quiz: YouTube     |        12 |               2 | `daily-youtube-`                                       |
+| Main quiz: new lore    |        12 |               2 | `daily-modern-`                                        |
+| The Tumblr Years       |        30 |               5 | `tumblr-dashboard-`, `tumblr-band-`, `tumblr-youtube-` |
+| YouTube Was Everything |        30 |               5 | `youtube-archive-`                                     |
+| The New Lore           |        30 |               5 | `modern-archive-`                                      |
+
+A fixed shuffled order supplies sequential daily blocks. The pools are exclusive, and no question repeats within any six-day window, including a cycle boundary. All 150 are covered across all four modes in six days. The seventh day cycles back to earlier questions, with newly shuffled answer positions. New wording is not authored automatically; a long-term daily product needs ongoing editorial work. Related artists/topics can appear in different modes even though the prompts and facts differ.
+
+`src/puzzle.js` contains **30 original Anonymous Ask puzzles**, each with six clues, one reference answer, and common accepted aliases. The date selects a reference without repeating for 30 days. A wrong guess or pass consumes a turn; empty and duplicate guesses do not. Revise `PUZZLE_VERSION` when changing a published clue archive. The last clue intentionally makes the answer accessible; a six-turn solve still counts.
 
 ## Source checklist for review
 
-These are reference destinations for an editor, not a claim that every linked page was fetched and checked in this task. Direct YouTube requests from the cloud machine returned a proxy 403, so recent creator details need an independent live source review before public launch. The prompts deliberately avoid private relationships, unverified drama, allegations, or fabricated quotes.
+These are reference destinations for an editor, not a claim that every linked page was fetched and checked in this task. Direct YouTube requests from the cloud machine returned a proxy 403 during the earlier setup. Recent creator details need an independent live source review before public launch. The prompts avoid private relationships, unverified drama, allegations, and fabricated quotes.
 
-| IDs              | Topic                                             | Reference destinations / review route                                                                                                                                                               |
-| ---------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0–11             | Tumblr and fanfiction terminology                 | [Tumblr Help](https://help.tumblr.com/), [Fanlore](https://fanlore.org/) entries for SuperWhoLock, alternate universe, OTP, headcanon, slow burn, and blorbo                                        |
-| 12–14, 18, 20–21 | One Direction formation, albums, and fan campaign | [One Direction](https://www.onedirectionmusic.com/), album liner notes/official release listings; contemporaneous reporting for the 2015 No Control campaign                                        |
-| 15–17, 19        | 5SOS lineup, origins, and releases                | [5SOS official site](https://5sos.com/), official album/single credits                                                                                                                              |
-| 22–23            | Ariana Grande's acting and music video            | Victorious official credits and Ariana Grande's official “thank u, next” music video                                                                                                                |
-| 24–29, 34–35     | British YouTube names and fandom                  | Creator-owned channels: AmazingPhil, Daniel Howell, DanAndPhilGAMES, Zoella, ThatcherJoe, PointlessBlog, Louise Pentland; Fanlore for fandom terminology                                            |
-| 30               | Troye Sivan release                               | [Troye Sivan official site](https://www.troyesivan.com/), Blue Neighbourhood official release/credits                                                                                               |
-| 31–33            | Tags, conventions, collabs                        | Archived creator tag/collab videos; [VidCon official site](https://www.vidcon.com/)                                                                                                                 |
-| 36–38            | Slushy Noobz / Out of Character / Vanilla Mace    | Creator-owned Slushy Noobz and Vanilla Mace channels; Out of Character official podcast listing. Vanilla Mace's first prompt is a handle recognition item; add deeper lore after live verification. |
-| 39–42            | Creator podcasts and communities                  | Official Anything Goes, Very Really Good, Danny Gonzalez, and Good Mythical Morning channels/listings                                                                                               |
-| 43–47            | Creator-community language                        | Contextual dictionary definitions and public usage; wording distinguishes slang from literal fact                                                                                                   |
+| Topics                                                    | Review route                                                                                                                                                                          |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tumblr, fanfiction terminology, SuperWhoLock, conventions | [Tumblr Help](https://help.tumblr.com/), [Fanlore](https://fanlore.org/); archived contemporary reporting for DashCon and the shoelace joke                                           |
+| TV fandoms, characters, actors                            | Official BBC/CW/Nickelodeon cast and episode credits; distinguish fandom pairing names from claims about real relationships                                                           |
+| One Direction, 5SOS, solo releases, Ariana Grande         | [One Direction](https://www.onedirectionmusic.com/), [5SOS](https://5sos.com/), official release/track listings, album liner notes, music videos, contemporary tour reporting         |
+| British YouTube identities, books, tours, collaborations  | Creator-owned channels and archived videos; publisher book catalogs and official tour listings                                                                                        |
+| YouTube series, makeup videos, formats, conventions       | Original creator uploads; official BuzzFeed/Smosh channels; [VidCon](https://www.vidcon.com/) event history                                                                           |
+| Slushy Noobz, Out of Character, Emergency Intercom        | Creator-owned channels and official podcast listings; keep older facts explicitly dated                                                                                               |
+| Podcasts, fan community names, creator brands             | Creator-owned websites/channels and official podcast/brand listings: Broski Report, Very Really Good, Anything Goes, Two Idiot Girls, Holo Taco, r.e.m. beauty, Rare Beauty, rhode    |
+| Community vocabulary                                      | Contextual dictionary definitions and public usage; slang questions describe usual meaning rather than asserting one universal definition                                             |
+| Anonymous Ask clues                                       | Review every clue against creator-owned biographies, release listings, book catalogs, platform histories, and the sources above; check accepted aliases against likely player answers |
+
+Vanilla Mace remains part of the intended New Lore editorial direction. The former handle-recognition question was removed because it effectively gave away its own answer. Add specific, deeper references only after checking the original public uploads; this build does not invent that lore.
 
 ## Updating the archive
 
-1. Write an original prompt with one best answer, three plausible distractors, and a short explanation.
+1. Write an original prompt with one best answer, three plausible distractors, and a short explanation. Mix releases, public moments, usernames, platform history, and fandom vocabulary rather than repeated versions of the same fact.
 2. Record direct source URLs, the relevant public statement/release, date checked, reviewer, era, and difficulty. Prefer creator-owned sources for current facts.
 3. Avoid rumors, shipping theories presented as reality, private information, and unsupported claims about what is currently viral.
-4. Have a second person play and review the item. Check that the explanation answers the question precisely.
-5. Maintain at least twice the daily count in each department and each eligible era pool so adjacent-day questions stay disjoint. Keep banks at twelve questions per department for the current rotation, or rerun `npm test` and update coverage assumptions when expanding.
-6. Preserve a live edition's order and content. Publish substantive edits with a new `EDITION_VERSION`; do not reuse old stored answers for changed questions.
-7. Grow toward 140+ reviewed questions or dated immutable issue manifests before a broad launch. Keep a weekly editorial slot for newer creator references.
+4. Have a second person play and review the item. Check explanation precision, distractors, difficulty, and near-duplicate facts. For asks, test likely aliases and clue progression.
+5. Keep each pool at a multiple of its daily count and at least six times that count to retain the six-day promise. Current pools are exactly six times their daily counts. Update coverage tests and advertised cycle length when expanding.
+6. Preserve a live edition's IDs/order/content. Publish substantive edits with a new version; do not reuse old saved attempts for changed questions or clues.
+7. Maintain a weekly editorial slot for newer references. Longer-term, dated immutable issue manifests allow deliberate variety and truly new daily content.
 
-Naming note: Deep Cut, Askbox Club, Mutuals Only, and Reblog Relay are unverified candidates. Being different from Chronically Online does not establish trademark clearance. Do exact and similar-name searches in the intended markets before investing in a permanent identity.
+Naming note: Deep Cut remains a working name. Being different from Chronically Online does not establish trademark availability; exact and similar-name research remains part of launch preparation.

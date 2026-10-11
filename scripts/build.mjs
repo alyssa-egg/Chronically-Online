@@ -15,6 +15,8 @@ const files = [
   "index.html",
   "src/app.js",
   "src/game.js",
+  "src/questions.js",
+  "src/puzzle.js",
   "src/sound.js",
   "src/style.css",
   "src/favicon.svg",
@@ -24,4 +26,4 @@ for (const file of files) {
   await mkdir(path.dirname(path.join(output, file)), { recursive: true });
   await copyFile(path.join(root, file), path.join(output, file));
 }
-console.log("Deep Cut static website built in dist/ (7 public files).");
+console.log(`Deep Cut static website built in dist/ (${files.length} public files).`);

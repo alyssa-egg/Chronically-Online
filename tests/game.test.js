@@ -39,15 +39,34 @@ test("questions never repeat on adjacent days, including year and leap-day bound
     }
   }
 });
-test("selection covers the full archive within twelve days", () => {
+test("exclusive game pools cover all 150 questions in six days without overlap", () => {
   const ids = new Set();
-  for (let i = 0; i < 12; i++)
-    dailyQuestions(
-      new Date(Date.parse("2026-10-10") + i * 86400000)
-        .toISOString()
-        .slice(0, 10),
-    ).forEach((q) => ids.add(q.id));
+  for (let i = 0; i < 6; i++) {
+    const day = new Date(Date.parse("2026-10-10") + i * 86400000)
+      .toISOString()
+      .slice(0, 10);
+    for (const mode of modes)
+      for (const q of dailyQuestions(day, mode.id)) {
+        assert.equal(ids.has(q.id), false, `${day}: ${q.id} repeated`);
+        ids.add(q.id);
+      }
+  }
   assert.equal(ids.size, bank.length);
+});
+test("every six-day window stays disjoint at calendar and cycle boundaries", () => {
+  for (const start of ["2026-12-25", "2028-02-25", "1969-12-25"]) {
+    for (let offset = 0; offset < 12; offset++) {
+      const ids = [];
+      for (let i = 0; i < 6; i++) {
+        const day = new Date(Date.parse(start) + (offset + i) * 86400000)
+          .toISOString()
+          .slice(0, 10);
+        for (const mode of modes)
+          ids.push(...dailyQuestions(day, mode.id).map((q) => q.id));
+      }
+      assert.equal(new Set(ids).size, 150);
+    }
+  }
 });
 test("answer shuffling preserves the correct text and varies answer positions", () => {
   const positions = new Set();
@@ -57,7 +76,8 @@ test("answer shuffling preserves the correct text and varies answer positions", 
         .toISOString()
         .slice(0, 10),
     )) {
-      assert.equal(q.options[q.answer], bank[q.id].options[bank[q.id].answer]);
+      const original = bank.find((item) => item.id === q.id);
+      assert.equal(q.options[q.answer], original.options[original.answer]);
       positions.add(q.answer);
     }
   assert.equal(positions.size, 4);
@@ -152,7 +172,9 @@ test("invalid issue dates are rejected", () => {
     assert.throws(() => dailyQuestions(day));
 });
 test("all questions have four distinct options and a valid correct answer", () => {
-  assert.equal(bank.length, 48);
+  assert.equal(bank.length, 150);
+  assert.equal(new Set(bank.map((q) => q.id)).size, bank.length);
+  assert.equal(new Set(bank.map((q) => q.question)).size, bank.length);
   for (const q of bank) {
     assert.equal(q.options.length, 4);
     assert.equal(new Set(q.options).size, 4);
@@ -168,12 +190,9 @@ test("era mini quizzes have five unique, eligible questions and preserve correct
     assert.equal(new Set(issue.map((q) => q.id)).size, 5);
     assert.deepEqual(issue, dailyQuestions("2026-10-10", mode.id));
     for (const q of issue) {
-      assert.equal(q.options[q.answer], bank[q.id].options[bank[q.id].answer]);
-      if (mode.id === "tumblr")
-        assert.ok(q.id < 36 && ![19, 23].includes(q.id));
-      if (mode.id === "youtube")
-        assert.ok((q.id >= 24 && q.id < 36) || q.id === 23);
-      if (mode.id === "modern") assert.ok(q.id >= 36);
+      const original = bank.find((item) => item.id === q.id);
+      assert.equal(q.options[q.answer], original.options[original.answer]);
+      assert.equal(q.mode, mode.id);
     }
   }
 });
