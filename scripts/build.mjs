@@ -18,6 +18,9 @@ const files = new Set([
   "src/assets/deep-cut-logo.png",
   "src/assets/case-doodle.svg",
   "src/assets/ask-moustache.png",
+  "src/assets/pixel-cursor.png",
+  "src/assets/fonts/outfit-variable.ttf",
+  "src/assets/fonts/OFL.txt",
 ]);
 for (const issue of Object.values(issues).filter(
   (issue) => issue.status === "approved",

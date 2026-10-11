@@ -14,6 +14,8 @@ const types = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".webp": "image/webp",
+  ".ttf": "font/ttf",
+  ".txt": "text/plain; charset=utf-8",
 };
 const publicFiles = new Set([
   "/index.html",
@@ -29,6 +31,9 @@ const publicFiles = new Set([
   "/src/assets/deep-cut-logo.png",
   "/src/assets/case-doodle.svg",
   "/src/assets/ask-moustache.png",
+  "/src/assets/pixel-cursor.png",
+  "/src/assets/fonts/outfit-variable.ttf",
+  "/src/assets/fonts/OFL.txt",
 ]);
 http
   .createServer(async (req, res) => {
