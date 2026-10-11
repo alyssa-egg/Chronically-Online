@@ -1,0 +1,385 @@
+{
+  "date": "2026-10-13",
+  "id": "deep-cut-2026-10-13",
+  "revision": 1,
+  "theme": "The internet-girl moodboard",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Broader audience direction requested. Reference URLs are review destinations; live source requests were blocked in this workspace. Verify sources before approving.",
+  "games": {
+    "daily": [
+      {
+        "question": "Devon Lee Carlson’s younger sister is…",
+        "options": [
+          "Sydney Carlson",
+          "Carlson Violet",
+          "Emma Carlson",
+          "Mia Carlson"
+        ],
+        "answer": 0,
+        "explanation": "Devon Lee and Sydney Carlson are sisters and part of the family behind Wildflower Cases.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Devon_Lee_Carlson"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-1"
+      },
+      {
+        "question": "Depop’s feed is mainly built around buying and selling…",
+        "options": [
+          "Secondhand fashion",
+          "Concert tickets",
+          "Fanfiction subscriptions",
+          "Gaming accounts"
+        ],
+        "answer": 0,
+        "explanation": "Depop combines a social-style feed with buying and selling fashion, especially secondhand clothes.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Depop"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-2"
+      },
+      {
+        "question": "Polyvore was especially known for letting users build…",
+        "options": [
+          "Fashion and shopping collages",
+          "Six-second comedy loops",
+          "Private podcast feeds",
+          "Multiplayer servers"
+        ],
+        "answer": 0,
+        "explanation": "Polyvore let users assemble shoppable fashion sets and moodboards before it shut down in 2018.",
+        "department": 0,
+        "sources": ["https://en.wikipedia.org/wiki/Polyvore"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-3"
+      },
+      {
+        "question": "Which platform was associated with collecting hearted inspiration images?",
+        "options": ["We Heart It", "Vine", "Discord", "Twitch"],
+        "answer": 0,
+        "explanation": "We Heart It was an image-sharing and inspiration platform built around hearting images.",
+        "department": 0,
+        "sources": ["https://en.wikipedia.org/wiki/We_Heart_It"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-4"
+      },
+      {
+        "question": "Glossier grew out of which beauty website?",
+        "options": [
+          "Into The Gloss",
+          "The Coveteur",
+          "Refinery29",
+          "Man Repeller"
+        ],
+        "answer": 0,
+        "explanation": "Into The Gloss was the beauty publication Emily Weiss started before launching Glossier.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Glossier"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-5"
+      },
+      {
+        "question": "Which online teen magazine did Tavi Gevinson launch in 2011?",
+        "options": ["Rookie", "Teen Vogue", "Nylon", "Dazed"],
+        "answer": 0,
+        "explanation": "Tavi Gevinson launched Rookie in 2011 after building her Style Rookie blog.",
+        "department": 3,
+        "sources": ["https://www.rookiemag.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-6"
+      },
+      {
+        "question": "In Pinterest vocabulary, a collection of saved Pins is a…",
+        "options": ["Board", "Queue", "Kudos list", "Duet"],
+        "answer": 0,
+        "explanation": "Pinterest calls a collection of saved Pins a board; users can organize it into sections.",
+        "department": 0,
+        "sources": ["https://en.wikipedia.org/wiki/Pinterest"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-7"
+      },
+      {
+        "question": "BAGGU’s reusable shopping bags fold into what for carrying?",
+        "options": [
+          "A small flat pouch",
+          "A hard sunglasses case",
+          "A wheeled suitcase",
+          "A glass storage jar"
+        ],
+        "answer": 0,
+        "explanation": "BAGGU’s reusable shopping bags fold into a small, flat pouch so they can travel in another bag.",
+        "department": 3,
+        "sources": ["https://www.baggu.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-8"
+      },
+      {
+        "question": "Devon Lee and Sydney Carlson co-founded Wildflower Cases with which family member?",
+        "options": [
+          "Their mother Michelle",
+          "Their aunt Emily",
+          "Their cousin Lauren",
+          "Their grandmother Beth"
+        ],
+        "answer": 0,
+        "explanation": "Michelle Carlson co-founded Wildflower Cases with her daughters Devon Lee and Sydney.",
+        "department": 3,
+        "sources": ["https://www.wildflowercases.com/pages/about-us"],
+        "sourceReview": "needs-check",
+        "image": {
+          "src": "./src/assets/case-doodle.svg",
+          "alt": "Original drawing of a pink floral phone case on turquoise graph paper.",
+          "caption": "An original moodboard illustration, not a product photograph.",
+          "credit": "Deep Cut",
+          "rights": "original"
+        },
+        "id": "issue-2026-10-13-daily-9"
+      },
+      {
+        "question": "Cristine Rotenberg’s nail-polish brand is…",
+        "options": [
+          "Holo Taco",
+          "Glossier",
+          "Chamberlain Coffee",
+          "r.e.m. beauty"
+        ],
+        "answer": 0,
+        "explanation": "Cristine Rotenberg, known for Simply Nailogical, launched the nail-polish brand Holo Taco.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Holo_Taco"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-13-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "id": "issue-2026-10-13-tumblr-1",
+        "department": 1,
+        "question": "Who was One Direction’s mentor on The X Factor?",
+        "options": ["Simon Cowell", "Louis Walsh", "Cheryl", "Dannii Minogue"],
+        "answer": 0,
+        "explanation": "Simon Cowell mentored the groups category in 2010.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-tumblr-2",
+        "department": 1,
+        "question": "One Direction’s 2013 concert documentary was titled…",
+        "options": [
+          "This Is Us",
+          "Where We Are",
+          "Bring Me Home",
+          "Behind the Dashboard"
+        ],
+        "answer": 0,
+        "explanation": "This Is Us was released as the band’s concert documentary in 2013.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-tumblr-3",
+        "department": 1,
+        "question": "5SOS supported which band’s Take Me Home Tour?",
+        "options": ["One Direction", "The Vamps", "McFly", "Big Time Rush"],
+        "answer": 0,
+        "explanation": "5SOS supported One Direction on the 2013 Take Me Home Tour.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-tumblr-4",
+        "department": 1,
+        "question": "Which 5SOS member plays bass?",
+        "options": [
+          "Calum Hood",
+          "Luke Hemmings",
+          "Michael Clifford",
+          "Ashton Irwin"
+        ],
+        "answer": 0,
+        "explanation": "Calum Hood is the band’s bassist.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-tumblr-5",
+        "department": 1,
+        "question": "5SOS’s second studio album was…",
+        "options": ["Sounds Good Feels Good", "Youngblood", "CALM", "5SOS5"],
+        "answer": 0,
+        "explanation": "Sounds Good Feels Good was released in 2015.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      }
+    ],
+    "youtube": [
+      {
+        "id": "issue-2026-10-13-youtube-1",
+        "department": 2,
+        "question": "Guava Juice is the online name of…",
+        "options": [
+          "Roi Fabito",
+          "Alex Wassabi",
+          "Ryan Higa",
+          "Anthony Padilla"
+        ],
+        "answer": 0,
+        "explanation": "Roi Fabito posts as Guava Juice.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-youtube-2",
+        "department": 2,
+        "question": "Which creator is associated with the name nigahiga?",
+        "options": ["Ryan Higa", "KevJumba", "Roi Fabito", "Joey Graceffa"],
+        "answer": 0,
+        "explanation": "Ryan Higa built his channel under nigahiga.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-youtube-3",
+        "department": 2,
+        "question": "Smosh was originally founded by…",
+        "options": [
+          "Ian Hecox and Anthony Padilla",
+          "Rhett and Link",
+          "Dan and Phil",
+          "Kian and JC"
+        ],
+        "answer": 0,
+        "explanation": "Ian Hecox and Anthony Padilla founded Smosh.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-youtube-4",
+        "department": 2,
+        "question": "Epic Rap Battles of History was created by…",
+        "options": [
+          "Nice Peter and EpicLLOYD",
+          "Rhett and Link",
+          "The Dolan Twins",
+          "Dan and Phil"
+        ],
+        "answer": 0,
+        "explanation": "Nice Peter and EpicLLOYD created the musical comedy series.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-youtube-5",
+        "department": 2,
+        "question": "Vlogmas traditionally means posting vlogs around…",
+        "options": [
+          "December and Christmas",
+          "Summer holidays",
+          "Valentine’s Day",
+          "Halloween only"
+        ],
+        "answer": 0,
+        "explanation": "Vlogmas is the December vlogging tradition.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ],
+    "modern": [
+      {
+        "id": "issue-2026-10-13-modern-1",
+        "department": 3,
+        "question": "Trixie and Katya’s Netflix reaction series is called…",
+        "options": [
+          "I Like to Watch",
+          "UNHhhh",
+          "Royal Court",
+          "Very Really Good"
+        ],
+        "answer": 0,
+        "explanation": "I Like to Watch features Trixie Mattel and Katya reacting to Netflix programming.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-modern-2",
+        "department": 3,
+        "question": "Holo Taco is a brand founded by…",
+        "options": [
+          "Cristine Rotenberg",
+          "Emma Chamberlain",
+          "Safiya Nygaard",
+          "Nikkie de Jager"
+        ],
+        "answer": 0,
+        "explanation": "Cristine Rotenberg, of Simply Nailogical, founded Holo Taco.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-modern-3",
+        "department": 3,
+        "question": "Which creator’s brand name is rhode?",
+        "options": [
+          "Hailey Bieber",
+          "Emma Chamberlain",
+          "Brittany Broski",
+          "Ariana Grande"
+        ],
+        "answer": 0,
+        "explanation": "Hailey Bieber founded rhode, a beauty brand.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-modern-4",
+        "department": 3,
+        "question": "r.e.m. beauty is associated with…",
+        "options": [
+          "Ariana Grande",
+          "Hailey Bieber",
+          "Selena Gomez",
+          "Emma Chamberlain"
+        ],
+        "answer": 0,
+        "explanation": "Ariana Grande founded r.e.m. beauty.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-13-modern-5",
+        "department": 3,
+        "question": "Rare Beauty was founded by…",
+        "options": [
+          "Selena Gomez",
+          "Ariana Grande",
+          "Hailey Bieber",
+          "Brittany Broski"
+        ],
+        "answer": 0,
+        "explanation": "Selena Gomez founded Rare Beauty.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-13",
+    "answer": "Wildflower",
+    "aliases": ["Wildflower Cases"],
+    "clues": [
+      "A brand you might see in a mirror selfie before you read the caption.",
+      "Its designs turn an everyday object into part of an outfit.",
+      "Devon Lee and Sydney are part of its family story.",
+      "Their mother Michelle co-founded it with them.",
+      "The brand makes patterned phone cases.",
+      "The brand is Wildflower Cases."
+    ],
+    "theme": "The internet-girl moodboard",
+    "explanation": "Wildflower belongs to today’s the internet-girl moodboard archive.",
+    "sources": ["https://www.wildflowercases.com/pages/about-us"],
+    "sourceReview": "needs-check"
+  }
+}

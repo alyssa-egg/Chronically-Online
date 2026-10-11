@@ -1,0 +1,402 @@
+{
+  "date": "2026-10-14",
+  "id": "deep-cut-2026-10-14",
+  "revision": 1,
+  "theme": "The Emma-era comfort feed",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Broader audience direction requested. Reference URLs are review destinations; live source requests were blocked in this workspace. Verify sources before approving.",
+  "games": {
+    "daily": [
+      {
+        "question": "Which Bay Area creator was part of the original Sister Squad?",
+        "options": [
+          "Emma Chamberlain",
+          "Bethany Mota",
+          "Enya Umanzor",
+          "Brittany Broski"
+        ],
+        "answer": 0,
+        "explanation": "Emma Chamberlain was part of the Sister Squad alongside the Dolan twins and James Charles.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Emma_Chamberlain"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-1"
+      },
+      {
+        "question": "The Dolan twins’ 2016 fan tour was titled…",
+        "options": [
+          "4OU Tour",
+          "Interactive Introverts",
+          "We’re All Doomed",
+          "The Amazing Tour Is Not on Fire"
+        ],
+        "answer": 0,
+        "explanation": "Ethan and Grayson Dolan toured as the 4OU Tour in 2016.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Dolan_Twins"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-2"
+      },
+      {
+        "question": "In Emma’s early “We All Owe … an Apology” video title, which store fills the blank?",
+        "options": ["The Dollar Store", "Sephora", "Target", "Whole Foods"],
+        "answer": 0,
+        "explanation": "“We All Owe The Dollar Store An Apology” is one of Emma’s early 2017 video references.",
+        "department": 2,
+        "sources": [
+          "https://www.youtube.com/results?search_query=Emma+Chamberlain+We+All+Owe+The+Dollar+Store+An+Apology"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-3"
+      },
+      {
+        "question": "Emma’s coffee brand uses which part of her name?",
+        "options": ["Chamberlain", "Emma", "Frances", "A nickname from Vine"],
+        "answer": 0,
+        "explanation": "Chamberlain Coffee takes its name from Emma Chamberlain’s surname.",
+        "department": 3,
+        "sources": ["https://chamberlaincoffee.com/pages/about-us"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-4"
+      },
+      {
+        "question": "Emma Chamberlain won which creator award at the 2018 Streamys?",
+        "options": [
+          "Breakout Creator",
+          "Best Gaming Channel",
+          "Best Animated Series",
+          "Best Food Series"
+        ],
+        "answer": 0,
+        "explanation": "Emma Chamberlain won the Breakout Creator award at the 2018 Streamy Awards.",
+        "department": 2,
+        "sources": [
+          "https://www.streamys.org/nominees-winners/8th-annual-nominees/"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-5"
+      },
+      {
+        "question": "Alisha Marie co-hosts Pretty Basic with…",
+        "options": [
+          "Remi Cruz",
+          "Mia Maples",
+          "Lauren Riihimaki",
+          "Aspyn Ovard"
+        ],
+        "answer": 0,
+        "explanation": "Pretty Basic is the podcast co-hosted by Alisha Marie and Remi Cruz.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Alisha_Marie"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-6"
+      },
+      {
+        "question": "Emma Chamberlain’s original 2019 podcast title was…",
+        "options": [
+          "Stupid Genius",
+          "Anything Goes",
+          "Pretty Basic",
+          "Call Her Daddy"
+        ],
+        "answer": 0,
+        "explanation": "Emma’s podcast launched as Stupid Genius in 2019 before being renamed Anything Goes.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Emma_Chamberlain"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-7"
+      },
+      {
+        "question": "Which creator used the username beautybymarie?",
+        "options": [
+          "Alisha Marie",
+          "Bethany Mota",
+          "Remi Cruz",
+          "Eva Gutowski"
+        ],
+        "answer": 0,
+        "explanation": "Alisha Marie’s original channel name was beautybymarie.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Alisha_Marie"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-8"
+      },
+      {
+        "question": "Casual “day in my life” videos are generally a form of…",
+        "options": [
+          "Vlogging",
+          "Speedrunning",
+          "Fanfiction tagging",
+          "Album mastering"
+        ],
+        "answer": 0,
+        "explanation": "A day-in-my-life vlog follows everyday experiences rather than a scripted scene.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Vlog"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-9"
+      },
+      {
+        "question": "A jump cut removes footage between shots to create…",
+        "options": [
+          "A noticeable edit in continuous action",
+          "A longer unbroken take",
+          "An automatic livestream",
+          "A split-screen duet"
+        ],
+        "answer": 0,
+        "explanation": "A jump cut creates a visible break in a continuous shot, often trimming pauses or adding comic timing.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Jump_cut"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-14-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "id": "issue-2026-10-14-tumblr-1",
+        "department": 1,
+        "question": "Ariana Grande’s debut studio album was…",
+        "options": [
+          "Yours Truly",
+          "My Everything",
+          "Dangerous Woman",
+          "Sweetener"
+        ],
+        "answer": 0,
+        "explanation": "Yours Truly was released in 2013.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-tumblr-2",
+        "department": 2,
+        "question": "Zoe Sugg’s first novel was called…",
+        "options": [
+          "Girl Online",
+          "The Pointless Book",
+          "Binge",
+          "A Work in Progress"
+        ],
+        "answer": 0,
+        "explanation": "Girl Online was published in 2014.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-tumblr-3",
+        "department": 2,
+        "question": "Alfie Deyes’s 2014 activity book was called…",
+        "options": [
+          "The Pointless Book",
+          "Girl Online",
+          "Binge",
+          "Username: Evie"
+        ],
+        "answer": 0,
+        "explanation": "The Pointless Book extended the PointlessBlog identity into a book.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-tumblr-4",
+        "department": 2,
+        "question": "Who wrote the 2015 memoir Binge?",
+        "options": [
+          "Tyler Oakley",
+          "Troye Sivan",
+          "Connor Franta",
+          "Caspar Lee"
+        ],
+        "answer": 0,
+        "explanation": "Tyler Oakley published Binge in 2015.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-tumblr-5",
+        "department": 2,
+        "question": "The 2015 book A Work in Progress was by…",
+        "options": [
+          "Connor Franta",
+          "Tyler Oakley",
+          "Joe Sugg",
+          "Marcus Butler"
+        ],
+        "answer": 0,
+        "explanation": "Connor Franta’s memoir A Work in Progress was published in 2015.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ],
+    "youtube": [
+      {
+        "id": "issue-2026-10-14-youtube-1",
+        "department": 2,
+        "question": "A GRWM video is a…",
+        "options": [
+          "Get ready with me video",
+          "Gaming reaction with music video",
+          "Group reunion watch marathon",
+          "Google review weekly meeting"
+        ],
+        "answer": 0,
+        "explanation": "GRWM invites viewers into a getting-ready routine.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-youtube-2",
+        "department": 2,
+        "question": "YouTube Rewind was an annual…",
+        "options": [
+          "Recap of creators and trends",
+          "Private message archive",
+          "Creator award ceremony only",
+          "Music streaming subscription"
+        ],
+        "answer": 0,
+        "explanation": "YouTube Rewind recapped parts of the platform’s culture and trends.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-youtube-3",
+        "department": 2,
+        "question": "Who hosted Hot Ones during its rise in the 2010s?",
+        "options": [
+          "Sean Evans",
+          "James Corden",
+          "Jimmy Fallon",
+          "Rhett McLaughlin"
+        ],
+        "answer": 0,
+        "explanation": "Sean Evans conducts Hot Ones interviews over increasingly spicy wings.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-youtube-4",
+        "department": 2,
+        "question": "Which group is associated with the series Worth It?",
+        "options": ["BuzzFeed", "Smosh", "The Sidemen", "Rooster Teeth"],
+        "answer": 0,
+        "explanation": "Worth It became a BuzzFeed series comparing food at different price points.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-youtube-5",
+        "department": 2,
+        "question": "In a collab, two creators usually…",
+        "options": [
+          "Make a video together",
+          "Swap legal names",
+          "Delete their old channels",
+          "Merge all their subscribers"
+        ],
+        "answer": 0,
+        "explanation": "A collaboration puts creators together without merging their accounts.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ],
+    "modern": [
+      {
+        "id": "issue-2026-10-14-modern-1",
+        "department": 3,
+        "question": "A “comfort video” is one you…",
+        "options": [
+          "Return to for familiar enjoyment",
+          "Can only watch on subscription",
+          "Watch without subtitles",
+          "Upload without sound"
+        ],
+        "answer": 0,
+        "explanation": "Comfort viewing is about the viewer’s familiar enjoyment.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-modern-2",
+        "department": 3,
+        "question": "“The crossover episode!” under a collab means…",
+        "options": [
+          "Two familiar creator worlds have met",
+          "A creator is leaving YouTube",
+          "The video is an advertisement",
+          "The upload has been deleted"
+        ],
+        "answer": 0,
+        "explanation": "It borrows the television crossover idea for overlapping creator communities.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-modern-3",
+        "department": 3,
+        "question": "“Aged like milk” says a take has…",
+        "options": [
+          "Looked worse as time passed",
+          "Become more accurate",
+          "Turned into a recipe",
+          "Gained better audio"
+        ],
+        "answer": 0,
+        "explanation": "It is a negative judgment about how something held up over time.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-modern-4",
+        "department": 3,
+        "question": "“Understood the assignment” praises someone for…",
+        "options": [
+          "Delivering exactly the right vibe",
+          "Copying a classmate’s homework",
+          "Scheduling a post",
+          "Deleting a draft"
+        ],
+        "answer": 0,
+        "explanation": "The phrase is praise for fitting the moment.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-14-modern-5",
+        "department": 3,
+        "question": "“Lurking” in a fandom community means…",
+        "options": [
+          "Reading without participating much",
+          "Running the moderation team",
+          "Posting daily fan edits",
+          "Hosting a paid livestream"
+        ],
+        "answer": 0,
+        "explanation": "A lurker mainly reads or watches without contributing publicly.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-14",
+    "answer": "Anything Goes",
+    "aliases": ["Anything Goes with Emma Chamberlain"],
+    "clues": [
+      "A listening habit that grew out of a familiar creator’s world.",
+      "Its host talks through personal thoughts and everyday subjects.",
+      "Before this title, the show was called Stupid Genius.",
+      "Its host also has a coffee brand.",
+      "Emma Chamberlain is the host.",
+      "The podcast is Anything Goes."
+    ],
+    "theme": "The Emma-era comfort feed",
+    "explanation": "Anything Goes belongs to today’s the emma-era comfort feed archive.",
+    "sources": ["https://en.wikipedia.org/wiki/Emma_Chamberlain"],
+    "sourceReview": "needs-check"
+  }
+}

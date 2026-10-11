@@ -1,7 +1,33 @@
 // Keep this edition's bank stable. Publish editorial changes under a new version.
 export const EDITION_VERSION = "v4";
 import { bank as archive } from "./questions.js";
+import { approvedIssues } from "./issues.js";
 export const TIME_ZONE = "America/New_York";
+export const getIssue = (day) => approvedIssues[day] || null;
+export const issueVersion = (day) =>
+  getIssue(day)
+    ? `${getIssue(day).id}-r${getIssue(day).revision}`
+    : EDITION_VERSION;
+export function shuffleQuestions(picks, day) {
+  const rand = random(
+    [...day].reduce(
+      (seed, char) => (Math.imul(seed, 31) + char.charCodeAt(0)) | 0,
+      0,
+    ),
+  );
+  return picks.map((q) => {
+    const choices = shuffle(
+      q.options.map((text, index) => ({ text, correct: index === q.answer })),
+      rand,
+    );
+    return {
+      ...q,
+      category: q.category || departments[q.department].name,
+      options: choices.map((choice) => choice.text),
+      answer: choices.findIndex((choice) => choice.correct),
+    };
+  });
+}
 export const eras = [
   {
     id: "tumblr",
@@ -139,6 +165,8 @@ export function dailyQuestions(day, mode = "daily") {
     [...day].reduce((s, c) => (Math.imul(s, 31) + c.charCodeAt(0)) | 0, 0),
   );
   const gameMode = getMode(mode);
+  const curated = getIssue(day)?.games?.[mode];
+  if (curated) return shuffleQuestions(curated, day);
   const pools =
     mode === "daily"
       ? departments.map((dept, index) => ({

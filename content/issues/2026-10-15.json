@@ -1,0 +1,377 @@
+{
+  "date": "2026-10-15",
+  "id": "deep-cut-2026-10-15",
+  "revision": 1,
+  "theme": "Enya, Drew, and the group chat",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Broader audience direction requested. Reference URLs are review destinations; live source requests were blocked in this workspace. Verify sources before approving.",
+  "games": {
+    "daily": [
+      {
+        "question": "Enya Umanzor’s early online name was…",
+        "options": ["enjajaja", "Macbarbie07", "Lizzza", "AmazingPhil"],
+        "answer": 0,
+        "explanation": "Enya Umanzor built an early audience under the handle enjajaja.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/@enjajaja"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-1"
+      },
+      {
+        "question": "Drew Phillips co-hosts Emergency Intercom with…",
+        "options": [
+          "Enya Umanzor",
+          "Brittany Broski",
+          "Emma Chamberlain",
+          "Sarah Schauer"
+        ],
+        "answer": 0,
+        "explanation": "Emergency Intercom is co-hosted by Drew Phillips and Enya Umanzor.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/@EmergencyIntercom"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-2"
+      },
+      {
+        "question": "Which two first names belong to the Slushy Noobz duo?",
+        "options": [
+          "Hamzah and Martin",
+          "Drew and Enya",
+          "Rhett and Link",
+          "Kian and JC"
+        ],
+        "answer": 0,
+        "explanation": "Slushy Noobz is the duo of Hamzah and Martin.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/@SlushyNoobz"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-3"
+      },
+      {
+        "question": "Hamzah and Martin’s podcast is…",
+        "options": [
+          "Out of Character",
+          "Emergency Intercom",
+          "Pretty Basic",
+          "The Broski Report"
+        ],
+        "answer": 0,
+        "explanation": "Out of Character is Hamzah and Martin’s podcast, separate from their Slushy Noobz videos.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/@OutofCharacter"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-4"
+      },
+      {
+        "question": "Drew Afualo co-hosts Two Idiot Girls with which sister?",
+        "options": [
+          "Deison Afualo",
+          "Sydney Carlson",
+          "Emma Afualo",
+          "Sarah Schauer"
+        ],
+        "answer": 0,
+        "explanation": "Two Idiot Girls is co-hosted by sisters Drew and Deison Afualo.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Drew_Afualo"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-5"
+      },
+      {
+        "question": "Brittany Broski’s viral tasting reaction involved…",
+        "options": ["Kombucha", "Bubble tea", "An energy drink", "Cold brew"],
+        "answer": 0,
+        "explanation": "Brittany Broski’s 2019 kombucha tasting reaction became one of her early widely shared clips.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Brittany_Broski"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-6"
+      },
+      {
+        "question": "Violating Community Guidelines paired Brittany Broski with…",
+        "options": [
+          "Sarah Schauer",
+          "Drew Phillips",
+          "Enya Umanzor",
+          "Remi Cruz"
+        ],
+        "answer": 0,
+        "explanation": "Violating Community Guidelines was the podcast co-hosted by Brittany Broski and Sarah Schauer.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Brittany_Broski"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-7"
+      },
+      {
+        "question": "Brittany Broski’s playful interview series is titled…",
+        "options": [
+          "Royal Court",
+          "Emergency Intercom",
+          "Hot Ones",
+          "The Comment Section"
+        ],
+        "answer": 0,
+        "explanation": "Royal Court is Brittany Broski’s interview series with a playful royal setting.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/@BrittanyBroski"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-8"
+      },
+      {
+        "question": "The comedy web series The Gay and Wondrous Life of Caleb Gallo was created by…",
+        "options": [
+          "Brian Jordan Alvarez",
+          "Drew Phillips",
+          "Kurtis Conner",
+          "Danny Gonzalez"
+        ],
+        "answer": 0,
+        "explanation": "Brian Jordan Alvarez created The Gay and Wondrous Life of Caleb Gallo, a 2016 comedy web series.",
+        "department": 3,
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_Gay_and_Wondrous_Life_of_Caleb_Gallo"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-9"
+      },
+      {
+        "question": "Drew Afualo’s interview podcast is…",
+        "options": [
+          "The Comment Section",
+          "Anything Goes",
+          "Out of Character",
+          "Very Really Good"
+        ],
+        "answer": 0,
+        "explanation": "The Comment Section is Drew Afualo’s interview podcast.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Drew_Afualo"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "id": "issue-2026-10-15-tumblr-1",
+        "department": 2,
+        "question": "Dan and Phil’s 2015 book was titled…",
+        "options": [
+          "The Amazing Book Is Not on Fire",
+          "Interactive Introverts",
+          "Girl Online",
+          "The Pointless Book"
+        ],
+        "answer": 0,
+        "explanation": "The Amazing Book Is Not on Fire combines references to their old channel names.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-15-tumblr-2",
+        "department": 2,
+        "question": "Troye Sivan’s 2014 EP was titled…",
+        "options": ["TRXYE", "Bloom", "Blue Neighbourhood", "In a Dream"],
+        "answer": 0,
+        "explanation": "TRXYE was released in 2014.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-15-tumblr-3",
+        "department": 2,
+        "question": "Hannah Hart’s cooking series was called…",
+        "options": [
+          "My Drunk Kitchen",
+          "Nerdy Nummies",
+          "Hot Ones",
+          "Sorted Food"
+        ],
+        "answer": 0,
+        "explanation": "My Drunk Kitchen was Hannah Hart’s breakout web series.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-15-tumblr-4",
+        "department": 2,
+        "question": "Grace Helbig’s earlier channel name was…",
+        "options": [
+          "DailyGrace",
+          "SprinkleofGlitter",
+          "Superwoman",
+          "PointlessBlog"
+        ],
+        "answer": 0,
+        "explanation": "Grace Helbig became known through DailyGrace before her own channel.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-15-tumblr-5",
+        "department": 2,
+        "question": "Joe Sugg and Caspar Lee’s 2015 travel film was…",
+        "options": [
+          "Joe and Caspar Hit the Road",
+          "This Is Us",
+          "Interactive Introverts",
+          "Escape the Night"
+        ],
+        "answer": 0,
+        "explanation": "Their travel documentary was released in 2015.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ],
+    "youtube": [
+      {
+        "question": "Markiplier’s interactive 2019 YouTube project was…",
+        "options": [
+          "A Heist with Markiplier",
+          "In Space with Markiplier",
+          "Escape the Night",
+          "Smosh: The Movie"
+        ],
+        "answer": 0,
+        "explanation": "A Heist with Markiplier was released in 2019 as an interactive story with branching choices.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/A_Heist_with_Markiplier"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-youtube-1"
+      },
+      {
+        "question": "Markiplier’s interactive romance-comedy project released in 2017 was…",
+        "options": [
+          "A Date with Markiplier",
+          "In Space with Markiplier",
+          "A Heist with Markiplier",
+          "Escape the Night"
+        ],
+        "answer": 0,
+        "explanation": "A Date with Markiplier was his interactive romance-comedy project released in 2017.",
+        "department": 2,
+        "sources": [
+          "https://www.youtube.com/results?search_query=A+Date+with+Markiplier+2017"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-youtube-2"
+      },
+      {
+        "question": "Jacksepticeye is from which country?",
+        "options": ["Ireland", "Sweden", "Canada", "Australia"],
+        "answer": 0,
+        "explanation": "Jacksepticeye, whose name is Seán McLoughlin, is Irish.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Jacksepticeye"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-youtube-3"
+      },
+      {
+        "question": "PewDiePie was born in which country?",
+        "options": ["Sweden", "Ireland", "United Kingdom", "Australia"],
+        "answer": 0,
+        "explanation": "Felix Kjellberg, known as PewDiePie, was born in Sweden.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/PewDiePie"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-youtube-4"
+      },
+      {
+        "question": "Five Nights at Freddy’s was created by…",
+        "options": [
+          "Scott Cawthon",
+          "Toby Fox",
+          "Markus Persson",
+          "Jim Bonacci"
+        ],
+        "answer": 0,
+        "explanation": "Scott Cawthon created the original Five Nights at Freddy’s, released in 2014.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Five_Nights_at_Freddy’s"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-youtube-5"
+      }
+    ],
+    "modern": [
+      {
+        "question": "Wildflower Cases was co-founded by Devon, Sydney, and their mother…",
+        "options": [
+          "Michelle Carlson",
+          "Emily Weiss",
+          "Kris Jenner",
+          "Cindy Crawford"
+        ],
+        "answer": 0,
+        "explanation": "Michelle Carlson co-founded Wildflower Cases with her daughters Devon Lee and Sydney.",
+        "department": 3,
+        "sources": ["https://www.wildflowercases.com/pages/about-us"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-modern-1"
+      },
+      {
+        "question": "Enya Umanzor and Drew Phillips’s joint podcast launched in…",
+        "options": ["2021", "2011", "2014", "2017"],
+        "answer": 0,
+        "explanation": "Emergency Intercom’s first episode was released in July 2021.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/@EmergencyIntercom"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-modern-2"
+      },
+      {
+        "question": "Devon Lee Carlson is associated with which sister-founded accessories brand?",
+        "options": ["Wildflower Cases", "rhode", "Rare Beauty", "Holo Taco"],
+        "answer": 0,
+        "explanation": "Devon Lee and Sydney Carlson co-founded Wildflower Cases with their mother Michelle.",
+        "department": 3,
+        "sources": ["https://www.wildflowercases.com/pages/about-us"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-modern-3"
+      },
+      {
+        "question": "Top of the Mornin’ Coffee is associated with…",
+        "options": [
+          "Jacksepticeye",
+          "Emma Chamberlain",
+          "PewDiePie",
+          "Bethany Mota"
+        ],
+        "answer": 0,
+        "explanation": "Top of the Mornin’ Coffee is the brand launched by Jacksepticeye.",
+        "department": 3,
+        "sources": ["https://topofthemornincoffee.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-modern-4"
+      },
+      {
+        "question": "Jacksepticeye’s annual charity event is known as…",
+        "options": ["Thankmas", "Vlogmas", "VidCon", "Rewind"],
+        "answer": 0,
+        "explanation": "Thankmas is Jacksepticeye’s recurring charity fundraising event.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Jacksepticeye"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-15-modern-5"
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-15",
+    "answer": "Emergency Intercom",
+    "aliases": [],
+    "clues": [
+      "A podcast with the feeling of catching up on a very specific friend group.",
+      "Its hosts have histories in short-form and long-form creator culture.",
+      "One host’s original online name was enjajaja.",
+      "The hosts’ first names are Enya and Drew.",
+      "Enya Umanzor and Drew Phillips host it.",
+      "The title is Emergency Intercom."
+    ],
+    "theme": "Enya, Drew, and the group chat",
+    "explanation": "Emergency Intercom belongs to today’s enya, drew, and the group chat archive.",
+    "sources": ["https://www.youtube.com/@EmergencyIntercom"],
+    "sourceReview": "needs-check"
+  }
+}

@@ -1,0 +1,27 @@
+name: Tomorrow's Deep Cut review
+on:
+  workflow_dispatch:
+  schedule:
+    # Two UTC schedules cover EST and EDT; the job checks the Eastern hour.
+    - cron: "0 13 * * *"
+    - cron: "0 14 * * *"
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Show tomorrow's existing draft at 9 a.m. Eastern
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            EASTERN_REVIEW_HOUR=$(TZ=America/New_York date +%H)
+            if [ "$EASTERN_REVIEW_HOUR" != "09" ]; then exit 0; fi
+          fi
+          npm run content:check
+          npm run content:tomorrow

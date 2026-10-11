@@ -1,0 +1,368 @@
+{
+  "date": "2026-10-11",
+  "id": "deep-cut-2026-10-11",
+  "revision": 1,
+  "theme": "After-school beauty YouTube",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Broader audience direction requested. Reference URLs are review destinations; live source requests were blocked in this workspace. Verify sources before approving.",
+  "games": {
+    "daily": [
+      {
+        "question": "Before Bethany Mota used her name, what was her YouTube channel called?",
+        "options": [
+          "Macbarbie07",
+          "BeautyByBeth",
+          "BethanysCloset",
+          "MotaDaily"
+        ],
+        "answer": 0,
+        "explanation": "Bethany’s original beauty-channel handle was Macbarbie07; she later used her own name.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Bethany_Mota"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-1"
+      },
+      {
+        "question": "Bethany Mota’s early fashion collection was a collaboration with which mall brand?",
+        "options": ["Aéropostale", "Hollister", "American Eagle", "Forever 21"],
+        "answer": 0,
+        "explanation": "Bethany’s Aéropostale collection brought her online fashion audience into a mall retailer.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Bethany_Mota"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-2"
+      },
+      {
+        "question": "Michelle Phan’s beauty subscription project became which brand?",
+        "options": ["Ipsy", "BoxyCharm", "Glossier", "Birchbox"],
+        "answer": 0,
+        "explanation": "Michelle Phan co-founded the subscription service originally called MyGlam, later renamed Ipsy.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Michelle_Phan"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-3"
+      },
+      {
+        "question": "Blair Fowler’s early beauty-channel name was…",
+        "options": [
+          "juicystar07",
+          "AllThatGlitters21",
+          "Macbarbie07",
+          "missglamorazzi"
+        ],
+        "answer": 0,
+        "explanation": "Blair Fowler uploaded beauty videos as juicystar07 before using her own name.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Blair_Fowler"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-4"
+      },
+      {
+        "question": "Blair’s sister Elle Fowler originally uploaded as…",
+        "options": [
+          "AllThatGlitters21",
+          "juicystar07",
+          "MakeupByMandy24",
+          "FleurDeForce"
+        ],
+        "answer": 0,
+        "explanation": "Elle Fowler’s early channel was AllThatGlitters21; her sister Blair used juicystar07.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Elle_Fowler"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-5"
+      },
+      {
+        "question": "Which creator posted under missglamorazzi before using her own name?",
+        "options": [
+          "Ingrid Nilsen",
+          "Bethany Mota",
+          "Eva Gutowski",
+          "Meredith Foster"
+        ],
+        "answer": 0,
+        "explanation": "Ingrid Nilsen’s early beauty videos were published under missglamorazzi.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Ingrid_Nilsen"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-6"
+      },
+      {
+        "question": "MyLifeAsEva is the channel name of…",
+        "options": [
+          "Eva Gutowski",
+          "Alisha Marie",
+          "Sierra Furtado",
+          "Lauren Riihimaki"
+        ],
+        "answer": 0,
+        "explanation": "MyLifeAsEva is Eva Gutowski’s long-running channel identity.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Eva_Gutowski"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-7"
+      },
+      {
+        "question": "Meredith Foster’s old username was…",
+        "options": ["StilaBabe09", "MayBaby", "Macbarbie07", "ThatcherJoe"],
+        "answer": 0,
+        "explanation": "Meredith Foster’s early beauty-channel handle was StilaBabe09.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Meredith_Foster"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-8"
+      },
+      {
+        "question": "MayBaby was the online name of which creator?",
+        "options": [
+          "Meg DeAngelis",
+          "Mia Stammer",
+          "Aspyn Ovard",
+          "Tanya Burr"
+        ],
+        "answer": 0,
+        "explanation": "Meg DeAngelis built her early YouTube audience under MayBaby.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Meg_DeAngelis"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-9"
+      },
+      {
+        "question": "Which creator built a channel around DIYs under the name LaurDIY?",
+        "options": [
+          "Lauren Riihimaki",
+          "Eva Gutowski",
+          "Bethany Mota",
+          "Rosanna Pansino"
+        ],
+        "answer": 0,
+        "explanation": "Lauren Riihimaki is the creator behind LaurDIY, known for craft and DIY videos.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Lauren_Riihimaki"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-11-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "id": "issue-2026-10-11-tumblr-1",
+        "department": 0,
+        "question": "Sherlock’s Jim Moriarty was played by…",
+        "options": [
+          "Andrew Scott",
+          "Benedict Cumberbatch",
+          "Martin Freeman",
+          "Tom Hiddleston"
+        ],
+        "answer": 0,
+        "explanation": "Andrew Scott played Moriarty in the BBC Sherlock series.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      },
+      {
+        "id": "issue-2026-10-11-tumblr-2",
+        "department": 0,
+        "question": "Who played Merlin in the BBC series Merlin?",
+        "options": [
+          "Colin Morgan",
+          "Bradley James",
+          "David Tennant",
+          "Jensen Ackles"
+        ],
+        "answer": 0,
+        "explanation": "Colin Morgan played Merlin; Bradley James played Arthur.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      },
+      {
+        "id": "issue-2026-10-11-tumblr-3",
+        "department": 0,
+        "question": "Which actor played Dean Winchester?",
+        "options": [
+          "Jensen Ackles",
+          "Jared Padalecki",
+          "Misha Collins",
+          "Andrew Scott"
+        ],
+        "answer": 0,
+        "explanation": "Jensen Ackles played Dean in Supernatural.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      },
+      {
+        "id": "issue-2026-10-11-tumblr-4",
+        "department": 0,
+        "question": "Which actor played Sam Winchester?",
+        "options": [
+          "Jared Padalecki",
+          "Jensen Ackles",
+          "Misha Collins",
+          "Matt Smith"
+        ],
+        "answer": 0,
+        "explanation": "Jared Padalecki played Sam in Supernatural.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      },
+      {
+        "id": "issue-2026-10-11-tumblr-5",
+        "department": 0,
+        "question": "David Tennant first played which numbered Doctor?",
+        "options": [
+          "The Tenth Doctor",
+          "The Ninth Doctor",
+          "The Eleventh Doctor",
+          "The Twelfth Doctor"
+        ],
+        "answer": 0,
+        "explanation": "Tennant’s first Doctor incarnation was the Tenth.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      }
+    ],
+    "youtube": [
+      {
+        "id": "issue-2026-10-11-youtube-1",
+        "department": 2,
+        "question": "Which creator launched the series Escape the Night?",
+        "options": [
+          "Joey Graceffa",
+          "Tyler Oakley",
+          "Connor Franta",
+          "Joe Sugg"
+        ],
+        "answer": 0,
+        "explanation": "Joey Graceffa created and starred in Escape the Night.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-youtube-2",
+        "department": 2,
+        "question": "The Dolan Twins’ first names are…",
+        "options": [
+          "Ethan and Grayson",
+          "Kian and JC",
+          "Jack and Finn",
+          "Dan and Phil"
+        ],
+        "answer": 0,
+        "explanation": "Ethan and Grayson Dolan are the Dolan Twins.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-youtube-3",
+        "department": 2,
+        "question": "Which duo’s shared channel is called KianAndJc?",
+        "options": [
+          "Kian Lawley and JC Caylen",
+          "Ethan and Grayson Dolan",
+          "Rhett and Link",
+          "Joe Sugg and Caspar Lee"
+        ],
+        "answer": 0,
+        "explanation": "Kian Lawley and JC Caylen post together as KianAndJc.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-youtube-4",
+        "department": 2,
+        "question": "Our2ndLife is often abbreviated…",
+        "options": ["O2L", "OTP", "OOC", "OOTD"],
+        "answer": 0,
+        "explanation": "O2L was the shorthand for the collaborative channel Our2ndLife.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-youtube-5",
+        "department": 2,
+        "question": "Lilly Singh’s earlier YouTube name was…",
+        "options": ["IISuperwomanII", "DailyGrace", "SuperMega", "AmazingPhil"],
+        "answer": 0,
+        "explanation": "Lilly Singh became known under IISuperwomanII.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ],
+    "modern": [
+      {
+        "id": "issue-2026-10-11-modern-1",
+        "department": 3,
+        "question": "Which Slushy Noobz collaborator is known as Hamzah the Fantastic?",
+        "options": ["Hamzah", "Martin", "Danny", "Kurtis"],
+        "answer": 0,
+        "explanation": "Hamzah uses the online name Hamzah the Fantastic.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-modern-2",
+        "department": 3,
+        "question": "Martin’s recurring online name includes…",
+        "options": ["martin909", "AmazingPhil", "PointlessBlog", "ThatcherJoe"],
+        "answer": 0,
+        "explanation": "Martin is associated with the name martin909.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-modern-3",
+        "department": 3,
+        "question": "Kurtis Conner’s fan community is often called…",
+        "options": ["Kurtistown", "Greg", "Broski Nation", "Mythical Beasts"],
+        "answer": 0,
+        "explanation": "Kurtistown is the community name associated with Kurtis Conner.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-modern-4",
+        "department": 3,
+        "question": "Broski Nation is associated with…",
+        "options": [
+          "Brittany Broski",
+          "Danny Gonzalez",
+          "Drew Gooden",
+          "Kurtis Conner"
+        ],
+        "answer": 0,
+        "explanation": "Brittany Broski’s community uses the name Broski Nation.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-11-modern-5",
+        "department": 3,
+        "question": "Good Mythical Morning viewers are often called…",
+        "options": ["Mythical Beasts", "Directioners", "Greg", "The Try Guys"],
+        "answer": 0,
+        "explanation": "Mythical Beasts is the community name used by Rhett and Link.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-11",
+    "answer": "Girl Online",
+    "aliases": ["Zoe Sugg’s Girl Online"],
+    "clues": [
+      "A title that sits where creator culture meets teenage fiction.",
+      "Its narrator documents life on a blog.",
+      "The story follows a teenager named Penny.",
+      "A trip to New York is part of the story.",
+      "The author named on the cover is Zoe Sugg.",
+      "This 2014 novel is called Girl Online."
+    ],
+    "theme": "After-school beauty YouTube",
+    "explanation": "Girl Online belongs to today’s after-school beauty youtube archive.",
+    "sources": ["https://en.wikipedia.org/wiki/Girl_Online"],
+    "sourceReview": "needs-check"
+  }
+}

@@ -1,14 +1,18 @@
 {
   "name": "deep-cut",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
     "test": "node --test",
-    "check": "node --check server.js && node --check src/app.js && node --check src/game.js && node --check src/questions.js && node --check src/puzzle.js && node --check src/sound.js && node --check scripts/build.mjs",
-    "build": "node scripts/build.mjs"
+    "check": "node --check server.js && node --check src/app.js && node --check src/game.js && node --check src/questions.js && node --check src/puzzle.js && node --check src/sound.js && node --check scripts/build.mjs && node --check src/membership.js && node --check src/issue-schema.js && node --check server/premium.mjs && node --check server/editorial.mjs && node --check scripts/editorial.mjs && node --check netlify/functions/api.mjs",
+    "build": "node scripts/build.mjs",
+    "content:check": "node scripts/editorial.mjs check",
+    "content:review": "node scripts/editorial.mjs review",
+    "content:approve": "node scripts/editorial.mjs approve",
+    "content:tomorrow": "node scripts/editorial.mjs tomorrow"
   },
   "engines": {
     "node": ">=22"

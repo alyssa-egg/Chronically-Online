@@ -34,7 +34,7 @@ Prioritize timeline ordering if players want a different challenge; prioritize m
 
 Prepare a spreadsheet with ID, department, prompt, four choices, correct answer, explanation, source URLs, source dates, era, difficulty, author, reviewer, and rights notes. Check every fact against an original source where possible; otherwise use two credible independent sources. Avoid presenting rumors, shipping theories, private information, or allegations as facts.
 
-Suggested daily balance: three Tumblr questions, three band/pop fandom questions, two 2010s YouTube questions, and two newer creator/community questions. Start with four easy, four medium, and two hard questions. Rotate fandoms so non-fans can still finish. For current memes, review weekly, timestamp the reference, and avoid “everyone is doing this” claims without evidence. Give ambiguous slang enough context for exactly one best answer.
+For dated issues, pair the main quiz and Anonymous Ask around one theme, rotating beauty, gaming, bands/fandoms, creator groups, and internet-girl references. The legacy fallback keeps its original department balance. Start with four easy, four medium, and two hard questions. Rotate fandoms so non-fans can still finish. For current memes, review weekly, timestamp the reference, and avoid “everyone is doing this” claims without evidence. Give ambiguous slang enough context for exactly one best answer.
 
 Example tone: “Your fandom degree finally pays off.” Answer feedback should teach the reference in one sentence, not shame the player. Use harmless self-deprecating humor and avoid diagnosing players or targeting creators.
 
@@ -53,7 +53,7 @@ Treat the schedule as a planning estimate, not a commitment to growth. A solo bu
 
 ## 5. Technical release checklist
 
-The prototype is dependency-free JavaScript with a small Node server and a tested `npm run build` static export. For a Git-connected Netlify site, use `npm run build` and publish `dist`. A static host is also suitable because no application backend is needed yet. Use HTTPS for clipboard/device-sharing support. Test Chrome, Safari, and Firefox on desktop and phones, including narrow screens, zoom, keyboard-only navigation, reduced motion, and screen readers. Check the exported card in real social apps; the PNG export is implemented, but do not promise direct Instagram Stories posting without testing a supported integration.
+The prototype is dependency-free JavaScript with a small Node server and a tested `npm run build` static export. For a Git-connected Netlify site, use `npm run build` and publish `dist`. Static hosting supports the free games. The era trial and purchase now require the Netlify function, Supabase email/database setup, and Stripe checkout/webhook; see PREMIUM_SETUP.md. Use HTTPS for clipboard/device-sharing support. Test Chrome, Safari, and Firefox on desktop and phones, including narrow screens, zoom, keyboard-only navigation, reduced motion, and screen readers. Check the exported card in real social apps; the PNG export is implemented, but do not promise direct Instagram Stories posting without testing a supported integration.
 
 Test new-day rollover, refresh mid-quiz, repeated clicks, blocked localStorage, sharing cancellation, clipboard denial, and completed-day reopening. The homepage and results roll over automatically; an open quiz or ask moves to the new issue on its next answer, guess, pass, or Next action after midnight Eastern, preserving yesterday’s progress separately. Add deployment smoke checks and a content validation tool before publishing larger banks.
 
@@ -73,9 +73,9 @@ Create original short videos using screen recordings and your own graphics: “W
 
 Invite fandom-community moderators to review the game before posting; follow each community’s promotional rules. Start with small groups, listen to corrections, and keep a public feedback route. Publish three recurring formats per week rather than chasing every trend. Compare traffic sources and completed quizzes, not just views. No spam, unsolicited bulk messages, or fake engagement.
 
-## 8. Monetization after retention
+## 8. Era membership
 
-Keep daily play free. First test one optional themed pack at $3 after beta players demonstrate return behavior and request more content. Show what the pack contains before checkout. Use a reputable payment provider; calculate fees, refunds, tax obligations, and support effort before pricing. 1,000 sales at $3 is $3,000 gross, not profit or a prediction.
+Keep the main daily quiz and Anonymous Ask free. Offer all three eras for $5 USD once, after one explicit 24-hour trial per verified email account. No recurring subscription. Supabase stores access and Stripe handles checkout; signed webhooks fulfill purchases after the checkout tab closes. No payments are connected yet. Complete PREMIUM_SETUP.md, test refunds and account restoration, and set a support/refund policy before selling.
 
 Sponsorships can fund a clearly labeled themed issue when there is measurable engaged traffic. Keep sponsor approval separate from factual answer accuracy. Offer aggregate starts, completion, and successful share counts, with the measurement definitions. Avoid intrusive ads during answers. Private party quizzes can follow if players explicitly ask for group play.
 
@@ -88,7 +88,7 @@ Start with low-cost static hosting, one researched domain, and free development 
 1. Pull the latest GitHub changes, restart the local server, and play the main quiz, all three eras, and The Anonymous Ask on a phone and desktop.
 2. Research Deep Cut and two backup names before buying any assets.
 3. Recruit 8–12 people from the intended fandom audience for observed playtests.
-4. Write and fact-check the first 14 curated daily issues.
-5. Publish `dist` to Netlify or another static host over HTTPS; test real phone audio, share sheets, and card uploads. Configure Git-connected deployment for automatic updates.
+4. Review the six drafted dated issues, then extend the calendar with eight more sourced issues.
+5. Connect the Netlify project to GitHub and deploy both `dist` and the membership function over HTTPS; test real phone audio, share sheets, and card uploads. Configure Git-connected deployment for automatic updates.
 6. Add aggregate measurement and a privacy notice before public beta.
 7. Use beta evidence to decide whether to shorten the game, change the content balance, or launch.

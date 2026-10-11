@@ -1,5 +1,9 @@
 # Deep Cut editorial archive
 
+New dated drafts are in `content/issues/`, reviewed in [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md). The October 11–16 drafts broaden beauty YouTube, Emma Chamberlain, gamer creators, Enya/Drew, Wildflower and internet-girl culture. Main questions and Anonymous Ask share a theme. Only explicitly approved issues publish; see [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md). Draft sources still need checking because external source requests returned proxy 403. Optional local images require alt text, credits and appropriate usage rights.
+
+The archive below is the fallback for missing or unapproved dated issues. Premium era pools remain server-side in the website build.
+
 The v4 archive contains **150 original multiple-choice prompts** in `src/questions.js`. Each has a stable group/index ID, four choices, one best answer, and an explanation. Scheduling is in `src/game.js`; saved progress is versioned. The Eastern calendar day (`America/New_York`) selects the same questions for everyone.
 
 | Exclusive pool         | Questions | Daily selection | ID prefixes                                            |

@@ -1,0 +1,352 @@
+{
+  "date": "2026-10-16",
+  "id": "deep-cut-2026-10-16",
+  "revision": 1,
+  "theme": "From Vine to the TikTok feed",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Broader audience direction requested. Reference URLs are review destinations; live source requests were blocked in this workspace. Verify sources before approving.",
+  "games": {
+    "daily": [
+      {
+        "question": "Liza Koshy posted on Vine under which name?",
+        "options": ["Lizzza", "enjajaja", "Macbarbie07", "MayBaby"],
+        "answer": 0,
+        "explanation": "Liza Koshy’s Vine account used the handle Lizzza.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Liza_Koshy"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-1"
+      },
+      {
+        "question": "“Road work ahead? Uh, yeah, I sure hope it does” is associated with…",
+        "options": [
+          "Drew Gooden",
+          "Danny Gonzalez",
+          "Kurtis Conner",
+          "PewDiePie"
+        ],
+        "answer": 0,
+        "explanation": "Drew Gooden made the Vine joke responding literally to a “Road Work Ahead” sign.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Drew_Gooden"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-2"
+      },
+      {
+        "question": "The creator associated with “What are those?” was…",
+        "options": [
+          "Brandon Moore",
+          "Drew Gooden",
+          "Liza Koshy",
+          "Danny Gonzalez"
+        ],
+        "answer": 0,
+        "explanation": "Brandon Moore, who posted as Young Busco, made the original “What are those?” clip.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/What_Are_Those"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-3"
+      },
+      {
+        "question": "Addison Rae starred in which 2021 teen-film remake?",
+        "options": ["He’s All That", "Mean Girls", "Clueless", "Easy A"],
+        "answer": 0,
+        "explanation": "He’s All That is the 2021 remake of She’s All That starring Addison Rae.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/He’s_All_That"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-4"
+      },
+      {
+        "question": "Bella Poarch’s widely shared 2020 lip-sync used which track?",
+        "options": ["M to the B", "Say So", "Renegade", "Old Town Road"],
+        "answer": 0,
+        "explanation": "Bella Poarch’s 2020 lip-sync used Millie B’s “M to the B.”",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Bella_Poarch"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-5"
+      },
+      {
+        "question": "The original Renegade dance was created by…",
+        "options": [
+          "Jalaiah Harmon",
+          "Charli D’Amelio",
+          "Addison Rae",
+          "Bella Poarch"
+        ],
+        "answer": 0,
+        "explanation": "Jalaiah Harmon created the Renegade choreography; its creator credit matters to the story.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Jalaiah_Harmon"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-6"
+      },
+      {
+        "question": "Remi Bader became known for which recurring fashion-video format?",
+        "options": [
+          "Realistic clothing hauls",
+          "Gaming speedruns",
+          "Nail-art tutorials",
+          "Record-store tours"
+        ],
+        "answer": 0,
+        "explanation": "Remi Bader’s realistic hauls show how clothing fits and looks on her, including the awkward parts.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Remi_Bader"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-7"
+      },
+      {
+        "question": "Which creator started posting as Baddie Winkle?",
+        "options": [
+          "Helen Ruth Elam",
+          "Iris Apfel",
+          "Lyn Slater",
+          "Brittany Broski"
+        ],
+        "answer": 0,
+        "explanation": "Helen Ruth Elam is the creator known online as Baddie Winkle.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Baddie_Winkle"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-8"
+      },
+      {
+        "question": "A TikTok Stitch lets a creator include…",
+        "options": [
+          "A clip from another video before their response",
+          "Every video from an account",
+          "A private message thread",
+          "A full downloaded album"
+        ],
+        "answer": 0,
+        "explanation": "Stitch incorporates a segment of someone else’s TikTok before a creator adds their own video.",
+        "department": 3,
+        "sources": [
+          "https://support.tiktok.com/en/using-tiktok/creating-videos/stitch"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-9"
+      },
+      {
+        "question": "A TikTok Duet generally places two videos…",
+        "options": [
+          "Side by side",
+          "In a paid-only folder",
+          "Inside an email newsletter",
+          "In a podcast feed"
+        ],
+        "answer": 0,
+        "explanation": "Duet places a new video alongside the original, usually in a split-screen layout.",
+        "department": 3,
+        "sources": [
+          "https://support.tiktok.com/en/using-tiktok/creating-videos/duets"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "question": "Michelle Phan’s early channel focused on…",
+        "options": [
+          "Makeup tutorials",
+          "Minecraft builds",
+          "Concert recaps",
+          "Sketch comedy"
+        ],
+        "answer": 0,
+        "explanation": "Michelle Phan’s early makeup tutorial videos helped establish her beauty audience.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Michelle_Phan"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-tumblr-1"
+      },
+      {
+        "question": "Bethany Mota competed on which televised dance contest?",
+        "options": [
+          "Dancing with the Stars",
+          "So You Think You Can Dance",
+          "Dance Moms",
+          "The X Factor"
+        ],
+        "answer": 0,
+        "explanation": "Bethany Mota competed on season 19 of Dancing with the Stars in 2014.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Bethany_Mota"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-tumblr-2"
+      },
+      {
+        "question": "Michelle Phan’s cosmetics brand is called…",
+        "options": ["EM Cosmetics", "Ipsy", "Holo Taco", "Rare Beauty"],
+        "answer": 0,
+        "explanation": "EM Cosmetics is Michelle Phan’s cosmetics brand.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Michelle_Phan"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-tumblr-3"
+      },
+      {
+        "question": "Tanya Burr’s early YouTube channel centered on…",
+        "options": [
+          "Beauty and makeup",
+          "Gaming speedruns",
+          "Horror-film reviews",
+          "Coding lessons"
+        ],
+        "answer": 0,
+        "explanation": "Tanya Burr’s early YouTube work included beauty tutorials and makeup videos.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Tanya_Burr"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-tumblr-4"
+      },
+      {
+        "question": "Fleur De Force became known primarily through which YouTube genre?",
+        "options": [
+          "Beauty and lifestyle",
+          "Esports commentary",
+          "Sketch animation",
+          "Competitive cooking"
+        ],
+        "answer": 0,
+        "explanation": "Fleur De Force built her audience through beauty and lifestyle videos.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Fleur_De_Force"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-tumblr-5"
+      }
+    ],
+    "youtube": [
+      {
+        "question": "Undertale was created by…",
+        "options": ["Toby Fox", "Scott Cawthon", "Notch", "Sean Murray"],
+        "answer": 0,
+        "explanation": "Toby Fox created Undertale, which was released in 2015.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Undertale"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-youtube-1"
+      },
+      {
+        "question": "Which studio developed Among Us?",
+        "options": ["Innersloth", "Mojang", "Valve", "Frictional Games"],
+        "answer": 0,
+        "explanation": "Innersloth developed Among Us, first released in 2018.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Among_Us"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-youtube-2"
+      },
+      {
+        "question": "Emma Chamberlain began posting to YouTube in which year?",
+        "options": ["2017", "2009", "2012", "2021"],
+        "answer": 0,
+        "explanation": "Emma Chamberlain began publishing YouTube videos in 2017.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Emma_Chamberlain"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-youtube-3"
+      },
+      {
+        "question": "Which YouTuber is known for Lovely World Minecraft videos?",
+        "options": ["Stampy", "PewDiePie", "Markiplier", "NikkieTutorials"],
+        "answer": 0,
+        "explanation": "Stampy is the creator behind the long-running Lovely World Minecraft series.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Stampy"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-youtube-4"
+      },
+      {
+        "question": "Markiplier’s collaborative clothing brand with Jacksepticeye is…",
+        "options": ["Cloak", "Holo Taco", "rhode", "Wildflower"],
+        "answer": 0,
+        "explanation": "Cloak is the clothing brand co-founded by Markiplier and Jacksepticeye in 2018.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Cloak_(brand)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-youtube-5"
+      }
+    ],
+    "modern": [
+      {
+        "question": "Bella Poarch’s debut single was…",
+        "options": ["Build a Bitch", "M to the B", "Say So", "He’s All That"],
+        "answer": 0,
+        "explanation": "Bella Poarch released her debut single Build a Bitch in 2021.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Bella_Poarch"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-modern-1"
+      },
+      {
+        "question": "Which Carlson sister is older?",
+        "options": [
+          "Devon Lee",
+          "Sydney",
+          "They are twins",
+          "They are not sisters"
+        ],
+        "answer": 0,
+        "explanation": "Devon Lee Carlson is the older Carlson sister; Sydney is younger.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Devon_Lee_Carlson"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-modern-2"
+      },
+      {
+        "question": "LaurDIY’s first name is…",
+        "options": ["Lauren", "Alisha", "Remi", "Bethany"],
+        "answer": 0,
+        "explanation": "Lauren Riihimaki is known online as LaurDIY.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Lauren_Riihimaki"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-modern-3"
+      },
+      {
+        "question": "Enya Umanzor’s co-host Drew has which surname?",
+        "options": ["Phillips", "Gooden", "Afualo", "Gonzalez"],
+        "answer": 0,
+        "explanation": "Drew Phillips is Enya Umanzor’s Emergency Intercom co-host.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/@EmergencyIntercom"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-modern-4"
+      },
+      {
+        "question": "Trixie Mattel’s makeup brand is…",
+        "options": ["Trixie Cosmetics", "rhode", "Ipsy", "Glossier"],
+        "answer": 0,
+        "explanation": "Trixie Mattel’s cosmetics brand is Trixie Cosmetics.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Trixie_Mattel"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-16-modern-5"
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-16",
+    "answer": "Vine",
+    "aliases": [],
+    "clues": [
+      "A short-video platform whose jokes kept traveling after the app was gone.",
+      "Its clips replayed in a loop.",
+      "A lot of later YouTube and TikTok creators built audiences there.",
+      "Six seconds was the original video length.",
+      "Its name is also a climbing plant.",
+      "The platform was Vine."
+    ],
+    "theme": "From Vine to the TikTok feed",
+    "explanation": "Vine belongs to today’s from vine to the tiktok feed archive.",
+    "sources": ["https://en.wikipedia.org/wiki/Vine_(service)"],
+    "sourceReview": "needs-check"
+  }
+}

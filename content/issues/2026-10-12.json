@@ -1,0 +1,350 @@
+{
+  "date": "2026-10-12",
+  "id": "deep-cut-2026-10-12",
+  "revision": 1,
+  "theme": "Gaming videos at 2 a.m.",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Broader audience direction requested. Reference URLs are review destinations; live source requests were blocked in this workspace. Verify sources before approving.",
+  "games": {
+    "daily": [
+      {
+        "question": "PewDiePie’s first name is…",
+        "options": ["Felix", "Mark", "Seán", "Dan"],
+        "answer": 0,
+        "explanation": "PewDiePie’s full name is Felix Kjellberg.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/PewDiePie"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-1"
+      },
+      {
+        "question": "Markiplier’s first and last name are…",
+        "options": [
+          "Mark Fischbach",
+          "Felix Kjellberg",
+          "Seán McLoughlin",
+          "Daniel Middleton"
+        ],
+        "answer": 0,
+        "explanation": "Mark Fischbach is the creator who publishes as Markiplier.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Markiplier"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-2"
+      },
+      {
+        "question": "Jacksepticeye’s first name is commonly written…",
+        "options": ["Seán", "Felix", "Ethan", "Mark"],
+        "answer": 0,
+        "explanation": "Jacksepticeye’s full name is Seán McLoughlin; Sean without the accent is also commonly written.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Jacksepticeye"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-3"
+      },
+      {
+        "question": "Which gaming creator made “Top of the mornin’ to ya” part of his intro?",
+        "options": ["Jacksepticeye", "Markiplier", "PewDiePie", "DanTDM"],
+        "answer": 0,
+        "explanation": "The energetic “Top of the mornin’ to ya” greeting became associated with Jacksepticeye’s videos.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Jacksepticeye"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-4"
+      },
+      {
+        "question": "The Diamond Minecart was an earlier channel name associated with…",
+        "options": ["DanTDM", "PopularMMOs", "CaptainSparklez", "Stampy"],
+        "answer": 0,
+        "explanation": "DanTDM’s earlier name, The Diamond Minecart, referenced Minecraft.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/DanTDM"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-5"
+      },
+      {
+        "question": "The Minecraft parody “Revenge” is associated with which creator?",
+        "options": ["CaptainSparklez", "DanTDM", "Stampy", "Jacksepticeye"],
+        "answer": 0,
+        "explanation": "CaptainSparklez released “Revenge,” a Minecraft parody of Usher’s “DJ Got Us Fallin’ in Love.”",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/CaptainSparklez"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-6"
+      },
+      {
+        "question": "“Tiny Box Tim” is a recurring character in which creator’s community?",
+        "options": ["Markiplier", "PewDiePie", "Jacksepticeye", "DanTDM"],
+        "answer": 0,
+        "explanation": "Tiny Box Tim is the small box character from Markiplier’s Amnesia community lore.",
+        "department": 2,
+        "sources": [
+          "https://www.youtube.com/results?search_query=Markiplier+Tiny+Box+Tim"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-7"
+      },
+      {
+        "question": "PewDiePie’s early “brofist” sign-off usually involved…",
+        "options": [
+          "A fist toward the camera",
+          "A keyboard thrown in the air",
+          "A sung nursery rhyme",
+          "A spinning office chair"
+        ],
+        "answer": 0,
+        "explanation": "PewDiePie’s brofist sign-off mimicked a fist bump with the viewer through the camera.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/PewDiePie"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-8"
+      },
+      {
+        "question": "Which game studio made Amnesia: The Dark Descent?",
+        "options": ["Frictional Games", "Mojang", "Telltale Games", "Valve"],
+        "answer": 0,
+        "explanation": "Frictional Games developed Amnesia: The Dark Descent, a recurring game in early horror Let’s Plays.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Amnesia:_The_Dark_Descent"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-9"
+      },
+      {
+        "question": "The original Minecraft creator was known by which online name?",
+        "options": ["Notch", "Jeb", "Dinnerbone", "CaptainSparklez"],
+        "answer": 0,
+        "explanation": "Markus Persson, known online as Notch, created the original Minecraft.",
+        "department": 2,
+        "sources": ["https://en.wikipedia.org/wiki/Minecraft"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-12-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "id": "issue-2026-10-12-tumblr-1",
+        "department": 0,
+        "question": "Tumblr’s queue is useful when you want to…",
+        "options": [
+          "Publish saved posts over time",
+          "Change a username automatically",
+          "Download every GIF",
+          "Delete all asks"
+        ],
+        "answer": 0,
+        "explanation": "The queue schedules posts across the posting times you configure.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      },
+      {
+        "id": "issue-2026-10-12-tumblr-2",
+        "department": 0,
+        "question": "Which fanfiction platform is associated with an orange W logo?",
+        "options": ["Wattpad", "Tumblr", "AO3", "LiveJournal"],
+        "answer": 0,
+        "explanation": "Wattpad’s branding is associated with an orange W.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      },
+      {
+        "id": "issue-2026-10-12-tumblr-3",
+        "department": 0,
+        "question": "Tumblr users often put extra commentary in a post’s…",
+        "options": [
+          "Tags",
+          "Password field",
+          "Browser address bar",
+          "Image filename"
+        ],
+        "answer": 0,
+        "explanation": "Tags can organize posts and carry a second layer of commentary.",
+        "sourceReview": "needs-check",
+        "sources": ["https://fanlore.org/"]
+      },
+      {
+        "id": "issue-2026-10-12-tumblr-4",
+        "department": 1,
+        "question": "One Direction placed where in the 2010 X Factor final?",
+        "options": ["Third", "First", "Second", "Fourth"],
+        "answer": 0,
+        "explanation": "The group finished third; Matt Cardle won that series.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-tumblr-5",
+        "department": 1,
+        "question": "Which 1D member is from Mullingar, Ireland?",
+        "options": [
+          "Niall Horan",
+          "Harry Styles",
+          "Louis Tomlinson",
+          "Zayn Malik"
+        ],
+        "answer": 0,
+        "explanation": "Niall Horan grew up in Mullingar.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.onedirectionmusic.com/"]
+      }
+    ],
+    "youtube": [
+      {
+        "id": "issue-2026-10-12-youtube-1",
+        "department": 2,
+        "question": "Jenna Marbles’s surname is…",
+        "options": ["Mourey", "Sugg", "Pentland", "Pansino"],
+        "answer": 0,
+        "explanation": "Jenna Mourey used Jenna Marbles as her online name.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-youtube-2",
+        "department": 2,
+        "question": "Simply Nailogical is the channel of…",
+        "options": [
+          "Cristine Rotenberg",
+          "Safiya Nygaard",
+          "Nikkie de Jager",
+          "Tanya Burr"
+        ],
+        "answer": 0,
+        "explanation": "Cristine Rotenberg is the creator behind Simply Nailogical.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-youtube-3",
+        "department": 2,
+        "question": "NikkieTutorials is the online name of…",
+        "options": [
+          "Nikkie de Jager",
+          "Niki DeMartino",
+          "Tanya Burr",
+          "Niomi Smart"
+        ],
+        "answer": 0,
+        "explanation": "Nikkie de Jager posts as NikkieTutorials.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-youtube-4",
+        "department": 2,
+        "question": "Liza Koshy’s name on Vine was…",
+        "options": ["Lizzza", "Zoella", "DailyGrace", "ThatcherJoe"],
+        "answer": 0,
+        "explanation": "Liza Koshy became known on Vine under Lizzza.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-youtube-5",
+        "department": 2,
+        "question": "Which creator is associated with the Vlog Squad?",
+        "options": [
+          "David Dobrik",
+          "Phil Lester",
+          "Kurtis Conner",
+          "Tyler Oakley"
+        ],
+        "answer": 0,
+        "explanation": "David Dobrik’s videos were associated with the Vlog Squad creator group.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ],
+    "modern": [
+      {
+        "id": "issue-2026-10-12-modern-1",
+        "department": 3,
+        "question": "Which creator often says he is not the same person as Danny Gonzalez?",
+        "options": ["Drew Gooden", "Hamzah", "Phil Lester", "Joe Sugg"],
+        "answer": 0,
+        "explanation": "Drew Gooden and Danny Gonzalez have made their mistaken-identity joke a recurring reference.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-modern-2",
+        "department": 3,
+        "question": "The We Are Two Different People Tour featured Danny Gonzalez, Drew Gooden, and…",
+        "options": [
+          "Kurtis Conner",
+          "Rhett McLaughlin",
+          "Tyler Oakley",
+          "Hamzah"
+        ],
+        "answer": 0,
+        "explanation": "Kurtis joined Danny and Drew on the 2019 tour, a reference that persists in their communities.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-modern-3",
+        "department": 3,
+        "question": "Two Idiot Girls is hosted by Drew Afualo and…",
+        "options": [
+          "Deison Afualo",
+          "Brittany Broski",
+          "Emma Chamberlain",
+          "Trixie Mattel"
+        ],
+        "answer": 0,
+        "explanation": "Drew and her sister Deison host Two Idiot Girls.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-modern-4",
+        "department": 3,
+        "question": "The Comment Section is a podcast hosted by…",
+        "options": [
+          "Drew Afualo",
+          "Emma Chamberlain",
+          "Drew Gooden",
+          "Danny Gonzalez"
+        ],
+        "answer": 0,
+        "explanation": "Drew Afualo hosts The Comment Section.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      },
+      {
+        "id": "issue-2026-10-12-modern-5",
+        "department": 3,
+        "question": "Violating Community Guidelines was hosted by Brittany Broski and…",
+        "options": [
+          "Sarah Schauer",
+          "Drew Afualo",
+          "Katya",
+          "Emma Chamberlain"
+        ],
+        "answer": 0,
+        "explanation": "Brittany Broski and Sarah Schauer hosted the podcast.",
+        "sourceReview": "needs-check",
+        "sources": ["https://www.youtube.com/"]
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-12",
+    "answer": "Happy Wheels",
+    "aliases": [],
+    "clues": [
+      "A game whose chaos was very at home in a loud commentary video.",
+      "Its characters do not all travel in the same way.",
+      "Some use a bicycle; another uses a wheelchair.",
+      "Obstacle courses are part of the challenge.",
+      "Jim Bonacci created this physics-based browser game.",
+      "Its title is Happy Wheels."
+    ],
+    "theme": "Gaming videos at 2 a.m.",
+    "explanation": "Happy Wheels belongs to today’s gaming videos at 2 a.m. archive.",
+    "sources": ["https://en.wikipedia.org/wiki/Happy_Wheels"],
+    "sourceReview": "needs-check"
+  }
+}

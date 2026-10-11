@@ -1,5 +1,6 @@
 // Original clue sets. Change the version when editing a published puzzle archive.
 export const PUZZLE_VERSION = "v1";
+import { getIssue } from "./game.js";
 export const MAX_TURNS = 6;
 const entries = [
   [
@@ -380,6 +381,7 @@ export function validDay(day) {
 }
 export function dailyPuzzle(day) {
   if (!validDay(day)) throw new Error("Invalid issue date");
+  if (getIssue(day)?.ask) return getIssue(day).ask;
   const index = Math.floor(Date.parse(day) / 86400000);
   return puzzles[
     (((index * 7) % puzzles.length) + puzzles.length) % puzzles.length
