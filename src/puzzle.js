@@ -455,7 +455,7 @@ export function puzzleShare(puzzle, guesses, day, link) {
       matches(puzzle, guess) ? "💗" : guess === null ? "🤍" : "🩶",
     )
     .join("");
-  return `Deep Cut <3 · The Anonymous Ask\n${day} · Eastern edition\n${status === "won" ? guesses.length : "X"}/6 ${tiles}\nyou had to be there.\nYour turn → ${link}`;
+  return `Deep Cut <3 · The Anonymous Ask\n${day}\n${status === "won" ? guesses.length : "X"}/6 ${tiles}\nyou had to be there.\nYour turn → ${link}`;
 }
 // A reading streak counts completed days, regardless of score. No accounts needed.
 export function diaryStats(value, today) {

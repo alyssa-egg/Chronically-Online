@@ -100,7 +100,8 @@ test("shared puzzle results show turns and Eastern day without revealing guesses
     "https://example.com/#anonymous-ask",
   );
   assert.match(text, /3\/6 🤍🩶💗/);
-  assert.match(text, /Eastern edition/);
+  assert.match(text, /2026-10-10/);
+  assert.ok(!text.includes("Eastern edition"));
   assert.ok(!text.includes(puzzle.answer));
   assert.ok(!text.includes("secret wrong guess"));
   assert.match(

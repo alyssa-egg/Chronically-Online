@@ -115,7 +115,7 @@ function issueLabel() {
 }
 function chrome(content) {
   app.dataset.mode = mode.id;
-  app.innerHTML = `<div class="issue-line"><span><i class="online-dot"></i> THE DAILY FIXATION</span><span>${issueLabel()} <span class="issue-heart">♡</span> EASTERN EDITION</span></div>${content}<p id="storage-note" class="storage"></p>`;
+  app.innerHTML = `<div class="issue-line"><span><i class="online-dot"></i> THE DAILY FIXATION</span><span>${issueLabel()} <span class="issue-heart">♡</span></span></div>${content}<p id="storage-note" class="storage"></p>`;
   updateStorageNote();
   tick();
 }
@@ -287,7 +287,7 @@ function quiz() {
     q = questions[i],
     dept = departments.find((d) => d.name === q.category);
   chrome(
-    `<section class="quiz-window"><div class="window-bar"><span>${escape(mode.name)} / Eastern edition</span>${windowDots}</div><div class="quiz-body"><div class="quiz-meta"><span>${dept.icon} ${escape(q.category)}</span><span>QUESTION ${i + 1} OF ${mode.count}</span></div><progress value="${i}" max="${mode.count}" aria-label="Quiz progress"></progress><p class="question-kicker">${mode.id === "daily" ? escape(dept.tag) : escape(mode.years) + " / era mini quiz"}</p><h1 tabindex="-1">${escape(q.question)}</h1><p class="answer-hint">Trust the part of your brain that remembers everyone’s old username.</p><div class="answers">${q.options.map((o, j) => `<button data-answer="${j}"><span class="answer-letter">${"ABCD"[j]}</span><span>${escape(o)}</span><span class="answer-mark" aria-hidden="true">♡</span></button>`).join("")}</div><div id="feedback" aria-live="polite"></div></div><div class="quiz-footer"><button class="text-button" id="all-eras">← All eras</button><span>you belong here, even if you guess. ♡</span><span>${i + 1}/${mode.count}</span></div></section>`,
+    `<section class="quiz-window"><div class="window-bar"><span>${escape(mode.name)} / today’s issue</span>${windowDots}</div><div class="quiz-body"><div class="quiz-meta"><span>${dept.icon} ${escape(q.category)}</span><span>QUESTION ${i + 1} OF ${mode.count}</span></div><progress value="${i}" max="${mode.count}" aria-label="Quiz progress"></progress><p class="question-kicker">${mode.id === "daily" ? escape(dept.tag) : escape(mode.years) + " / era mini quiz"}</p><h1 tabindex="-1">${escape(q.question)}</h1><p class="answer-hint">Trust the part of your brain that remembers everyone’s old username.</p><div class="answers">${q.options.map((o, j) => `<button data-answer="${j}"><span class="answer-letter">${"ABCD"[j]}</span><span>${escape(o)}</span><span class="answer-mark" aria-hidden="true">♡</span></button>`).join("")}</div><div id="feedback" aria-live="polite"></div></div><div class="quiz-footer"><button class="text-button" id="all-eras">← All eras</button><span>you belong here, even if you guess. ♡</span><span>${i + 1}/${mode.count}</span></div></section>`,
   );
   document.querySelector("h1").focus();
   document.querySelector("#all-eras").onclick = home;
@@ -344,7 +344,7 @@ function shareText() {
     link =
       new URL("./", location.href).href +
       (mode.id === "daily" ? "" : `#era-${mode.id}`);
-  return `Deep Cut <3 · ${mode.name}\n${day} · Eastern edition\n${answers.map((a, i) => (a === questions[i].answer ? "💗" : "🤍")).join("")}\n${score}/${mode.count} — ${rank(score, mode.count)}\nyou had to be there.\nYour turn → ${link}`;
+  return `Deep Cut <3 · ${mode.name}\n${day}\n${answers.map((a, i) => (a === questions[i].answer ? "💗" : "🤍")).join("")}\n${score}/${mode.count} — ${rank(score, mode.count)}\nyou had to be there.\nYour turn → ${link}`;
 }
 function results() {
   screen = "results";
@@ -352,7 +352,7 @@ function results() {
   const score = scoreAnswers(questions, answers),
     ratio = score / mode.count;
   chrome(
-    `<section class="results"><div class="result-card"><span class="result-sparkle" aria-hidden="true">✧</span>${bow}<span class="eyebrow">${mode.id === "daily" ? "THE DAILY REPORT CARD" : escape(mode.name).toUpperCase() + " / MINI QUIZ"}</span><h1>${ratio >= 0.8 ? "You kept<br><em>every receipt.</em>" : ratio >= 0.5 ? "A little lore.<br><em>A lot of heart.</em>" : "Cute guesses.<br><em>New lore unlocked.</em>"}</h1><div class="score">${score}<span>/ ${mode.count}</span></div><div class="rank-label">${rank(score, mode.count)} ♡</div><div class="score-hearts" role="img" aria-label="${score} correct answers out of ${mode.count}">${answers.map((a, i) => `<span class="${a === questions[i].answer ? "filled" : ""}" aria-hidden="true">${a === questions[i].answer ? "♥" : "♡"}</span>`).join("")}</div><p>you had to be there. <span>and clearly, a part of you was.</span></p><span class="card-date">DEEP CUT · ${issueLabel()} · EASTERN EDITION</span></div><div class="result-actions"><button class="primary" id="share">Send to the group chat ${arrow}</button><button class="secondary" id="download">Save my card ↓</button></div><p id="share-status" aria-live="polite"></p><p class="diary-receipt">Today’s reading diary is stamped. ♡</p><button id="result-ask" class="text-button">Open today’s anonymous ask →</button><div class="daily-note result-reset"><span class="tiny-heart" aria-hidden="true">♡</span><div><strong>Same time tomorrow, mutual?</strong><p>Next issue in <span data-countdown>--:--:--</span> <span class="reset-label">· midnight Eastern</span></p></div></div><details><summary>Open the receipts <span>answer review +</span></summary>${questions.map((q, i) => `<article><span class="eyebrow">${escape(q.category)}</span><h3>${i + 1}. ${escape(q.question)}</h3><p>Your answer: ${escape(q.options[answers[i]])} ${answers[i] === q.answer ? "✓" : "×"}</p><p><strong>${escape(q.options[q.answer])}</strong> — ${escape(q.explanation)}</p></article>`).join("")}</details><button id="home-button" class="text-button">Back to all eras ♡</button></section>`,
+    `<section class="results"><div class="result-card"><span class="result-sparkle" aria-hidden="true">✧</span>${bow}<span class="eyebrow">${mode.id === "daily" ? "THE DAILY REPORT CARD" : escape(mode.name).toUpperCase() + " / MINI QUIZ"}</span><h1>${ratio >= 0.8 ? "You kept<br><em>every receipt.</em>" : ratio >= 0.5 ? "A little lore.<br><em>A lot of heart.</em>" : "Cute guesses.<br><em>New lore unlocked.</em>"}</h1><div class="score">${score}<span>/ ${mode.count}</span></div><div class="rank-label">${rank(score, mode.count)} ♡</div><div class="score-hearts" role="img" aria-label="${score} correct answers out of ${mode.count}">${answers.map((a, i) => `<span class="${a === questions[i].answer ? "filled" : ""}" aria-hidden="true">${a === questions[i].answer ? "♥" : "♡"}</span>`).join("")}</div><p>you had to be there. <span>and clearly, a part of you was.</span></p><span class="card-date">DEEP CUT · ${issueLabel()}</span></div><div class="result-actions"><button class="primary" id="share">Send to the group chat ${arrow}</button><button class="secondary" id="download">Save my card ↓</button></div><p id="share-status" aria-live="polite"></p><p class="diary-receipt">Today’s reading diary is stamped. ♡</p><button id="result-ask" class="text-button">Open today’s anonymous ask →</button><div class="daily-note result-reset"><span class="tiny-heart" aria-hidden="true">♡</span><div><strong>Same time tomorrow, mutual?</strong><p>Next issue in <span data-countdown>--:--:--</span> <span class="reset-label">· midnight Eastern</span></p></div></div><details><summary>Open the receipts <span>answer review +</span></summary>${questions.map((q, i) => `<article><span class="eyebrow">${escape(q.category)}</span><h3>${i + 1}. ${escape(q.question)}</h3><p>Your answer: ${escape(q.options[answers[i]])} ${answers[i] === q.answer ? "✓" : "×"}</p><p><strong>${escape(q.options[q.answer])}</strong> — ${escape(q.explanation)}</p></article>`).join("")}</details><button id="home-button" class="text-button">Back to all eras ♡</button></section>`,
   );
   document.querySelector("#home-button").onclick = home;
   document.querySelector("#result-ask").onclick = startPuzzle;
@@ -422,7 +422,7 @@ function downloadCard(score) {
     ),
   );
   text("you had to be there.", 1030, 56, "#ba347e", true);
-  text(`${cardDay} · MIDNIGHT EASTERN RESET`, 1160, 23);
+  text(`DEEP CUT · ${cardDay}`, 1160, 23);
   canvas.toBlob((blob) => {
     if (!blob) return;
     const url = URL.createObjectURL(blob),
