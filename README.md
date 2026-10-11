@@ -25,6 +25,8 @@ npm start
 
 ## Daily game
 
+Review upcoming questions, answers, and Anonymous Ask clues in [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md). The October 11–November 9, 2026 calendar includes editable approval and niche-idea fields, with every day's exact questions in expandable sections.
+
 - Ten questions: three **The dashboard**, three **Band girl files**, two **YouTube sleepover**, and two **The new lore**.
 - All games change every day at **midnight Eastern time** (`America/New_York`). Daylight saving changes are automatic: reset is 04:00 UTC in summer and 05:00 UTC in winter. A countdown shows the time remaining. Players worldwide get the same Eastern-day selection.
 - 150 questions in exclusive pools: 60 for the main quiz and 30 per era. Main and era games never share a question. No question ID repeats within any six daily issues; the pool cycles on the seventh day. This does not automatically author new content or ingest trends.
