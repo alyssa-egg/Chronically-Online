@@ -1,0 +1,405 @@
+{
+  "date": "2026-10-19",
+  "id": "deep-cut-2026-10-19",
+  "revision": 1,
+  "theme": "The original fangirl group chat",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Added from your pop-culture notes: KATSEYE, PinkPantheress, and original fangirl references. Main quiz and Ask share a theme, with distinct Ask answers. Reference URLs need source review before approval.",
+  "games": {
+    "daily": [
+      {
+        "question": "One Direction’s “Kiss You” music video includes which matching costume scene?",
+        "options": [
+          "Striped jailhouse outfits",
+          "Spacesuits on the moon",
+          "Medieval armor in a castle",
+          "Formal gowns at a ball"
+        ],
+        "answer": 0,
+        "explanation": "The playful Kiss You video includes a striped jailhouse scene among its staged settings.",
+        "department": 1,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Kiss_You_(One_Direction_song)"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-1"
+      },
+      {
+        "question": "5SOS’s “She Looks So Perfect” name-checks which underwear brand?",
+        "options": [
+          "American Apparel",
+          "Calvin Klein",
+          "Hanes",
+          "Victoria’s Secret"
+        ],
+        "answer": 0,
+        "explanation": "American Apparel is the brand named in the song’s well-known reference.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/She_Looks_So_Perfect"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-2"
+      },
+      {
+        "question": "Which Jonas brother played Shane Gray in Camp Rock?",
+        "options": ["Joe", "Nick", "Kevin", "Frankie"],
+        "answer": 0,
+        "explanation": "Joe Jonas played Shane Gray; Nick and Kevin also appeared in Camp Rock.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Camp_Rock"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-3"
+      },
+      {
+        "question": "Demi Lovato’s Camp Rock character was named…",
+        "options": [
+          "Mitchie Torres",
+          "Tess Tyler",
+          "Caitlyn Gellar",
+          "Ella Pador"
+        ],
+        "answer": 0,
+        "explanation": "Demi Lovato played Mitchie Torres in Camp Rock.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Camp_Rock"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-4"
+      },
+      {
+        "question": "Taylor Swift’s original 2012 album with “I Knew You Were Trouble” is…",
+        "options": ["Red", "Speak Now", "1989", "Fearless"],
+        "answer": 0,
+        "explanation": "I Knew You Were Trouble appears on the original 2012 release of Red.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Red_(Taylor_Swift_album)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-5"
+      },
+      {
+        "question": "Justin Bieber’s 2011 concert film is titled…",
+        "options": [
+          "Never Say Never",
+          "Believe",
+          "This Is Us",
+          "Best of Both Worlds"
+        ],
+        "answer": 0,
+        "explanation": "Never Say Never was Bieber’s 2011 concert film; Believe followed in 2013.",
+        "department": 1,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Justin_Bieber:_Never_Say_Never"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-6"
+      },
+      {
+        "question": "On Big Time Rush, the aspiring band’s manager was…",
+        "options": [
+          "Gustavo Rocque",
+          "Spencer Shay",
+          "Rico Suave",
+          "Jackson Stewart"
+        ],
+        "answer": 0,
+        "explanation": "Gustavo Rocque, played by Stephen Kramer Glickman, manages the fictional band.",
+        "department": 1,
+        "sources": [
+          "https://en.wikipedia.org/wiki/List_of_Big_Time_Rush_characters"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-7"
+      },
+      {
+        "question": "The Vamps’ 2013 debut single was…",
+        "options": [
+          "Can We Dance",
+          "Somebody to You",
+          "Wild Heart",
+          "Last Night"
+        ],
+        "answer": 0,
+        "explanation": "Can We Dance was released as The Vamps’ debut single in 2013.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Can_We_Dance"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-8"
+      },
+      {
+        "question": "Paramore’s “Misery Business” first appeared on which album?",
+        "options": [
+          "Riot!",
+          "Brand New Eyes",
+          "After Laughter",
+          "All We Know Is Falling"
+        ],
+        "answer": 0,
+        "explanation": "Misery Business appears on Paramore’s 2007 album Riot!.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Riot!"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-9"
+      },
+      {
+        "question": "Miley Stewart’s pop-star alter ego in the Disney series was…",
+        "options": [
+          "Hannah Montana",
+          "Lola Luftnagle",
+          "Ashley O",
+          "Alex Russo"
+        ],
+        "answer": 0,
+        "explanation": "Miley Stewart lived a double life as Hannah Montana in the original Disney series.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Hannah_Montana_(character)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "question": "David Tennant first played which numbered Doctor?",
+        "options": [
+          "The Tenth Doctor",
+          "The Eleventh Doctor",
+          "The Ninth Doctor",
+          "The Twelfth Doctor"
+        ],
+        "answer": 0,
+        "explanation": "Tennant’s first Doctor incarnation was the Tenth.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-tumblr-1"
+      },
+      {
+        "question": "Dan and Phil’s 2015 book was titled…",
+        "options": [
+          "The Amazing Book Is Not on Fire",
+          "The Pointless Book",
+          "Girl Online",
+          "Interactive Introverts"
+        ],
+        "answer": 0,
+        "explanation": "The Amazing Book Is Not on Fire combines references to their old channel names.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-tumblr-2"
+      },
+      {
+        "question": "Who played Merlin in the BBC series Merlin?",
+        "options": [
+          "Bradley James",
+          "Colin Morgan",
+          "Jensen Ackles",
+          "David Tennant"
+        ],
+        "answer": 1,
+        "explanation": "Colin Morgan played Merlin; Bradley James played Arthur.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-tumblr-3"
+      },
+      {
+        "question": "Which fanfiction platform is associated with an orange W logo?",
+        "options": ["AO3", "Tumblr", "Wattpad", "LiveJournal"],
+        "answer": 2,
+        "explanation": "Wattpad’s branding is associated with an orange W.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-tumblr-4"
+      },
+      {
+        "question": "Which album includes One Direction’s “Night Changes”?",
+        "options": [
+          "Four",
+          "Up All Night",
+          "Midnight Memories",
+          "Take Me Home"
+        ],
+        "answer": 0,
+        "explanation": "Night Changes is a track on Four, released in 2014.",
+        "department": 1,
+        "sources": ["https://www.onedirectionmusic.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-tumblr-5"
+      }
+    ],
+    "youtube": [
+      {
+        "question": "Which creator is associated with the Vlog Squad?",
+        "options": [
+          "David Dobrik",
+          "Kurtis Conner",
+          "Phil Lester",
+          "Tyler Oakley"
+        ],
+        "answer": 0,
+        "explanation": "David Dobrik’s videos were associated with the Vlog Squad creator group.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-youtube-1"
+      },
+      {
+        "question": "Which creator made the viral “Power of Makeup” video in 2015?",
+        "options": [
+          "NikkieTutorials",
+          "Emma Chamberlain",
+          "Simply Nailogical",
+          "Zoella"
+        ],
+        "answer": 0,
+        "explanation": "NikkieTutorials’s Power of Makeup video became a major 2015 beauty reference.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-youtube-2"
+      },
+      {
+        "question": "Which duo’s shared channel is called KianAndJc?",
+        "options": [
+          "Ethan and Grayson Dolan",
+          "Kian Lawley and JC Caylen",
+          "Joe Sugg and Caspar Lee",
+          "Rhett and Link"
+        ],
+        "answer": 1,
+        "explanation": "Kian Lawley and JC Caylen post together as KianAndJc.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-youtube-3"
+      },
+      {
+        "question": "YouTube Rewind was an annual…",
+        "options": [
+          "Creator award ceremony only",
+          "Private message archive",
+          "Recap of creators and trends",
+          "Music streaming subscription"
+        ],
+        "answer": 2,
+        "explanation": "YouTube Rewind recapped parts of the platform’s culture and trends.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-youtube-4"
+      },
+      {
+        "question": "Our2ndLife is often abbreviated…",
+        "options": ["O2L", "OOTD", "OTP", "OOC"],
+        "answer": 0,
+        "explanation": "O2L was the shorthand for the collaborative channel Our2ndLife.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-youtube-5"
+      }
+    ],
+    "modern": [
+      {
+        "question": "“Aged like milk” says a take has…",
+        "options": [
+          "Looked worse as time passed",
+          "Turned into a recipe",
+          "Become more accurate",
+          "Gained better audio"
+        ],
+        "answer": 0,
+        "explanation": "It is a negative judgment about how something held up over time.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-modern-1"
+      },
+      {
+        "question": "Violating Community Guidelines was hosted by Brittany Broski and…",
+        "options": [
+          "Sarah Schauer",
+          "Emma Chamberlain",
+          "Katya",
+          "Drew Afualo"
+        ],
+        "answer": 0,
+        "explanation": "Brittany Broski and Sarah Schauer hosted the podcast.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-modern-2"
+      },
+      {
+        "question": "A fancam originally focuses on…",
+        "options": [
+          "A laptop’s front camera",
+          "A performer filmed by a fan",
+          "A brand’s product demo",
+          "A film trailer"
+        ],
+        "answer": 1,
+        "explanation": "Fan-shot performance videos helped popularize fancams, particularly in K-pop.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-modern-3"
+      },
+      {
+        "question": "Trixie and Katya’s Netflix reaction series is called…",
+        "options": [
+          "Royal Court",
+          "UNHhhh",
+          "I Like to Watch",
+          "Very Really Good"
+        ],
+        "answer": 2,
+        "explanation": "I Like to Watch features Trixie Mattel and Katya reacting to Netflix programming.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-modern-4"
+      },
+      {
+        "question": "Holo Taco is a brand founded by…",
+        "options": [
+          "Cristine Rotenberg",
+          "Nikkie de Jager",
+          "Emma Chamberlain",
+          "Safiya Nygaard"
+        ],
+        "answer": 0,
+        "explanation": "Cristine Rotenberg, of Simply Nailogical, founded Holo Taco.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-19-modern-5"
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-19",
+    "answer": "The Adventurous Adventures of One Direction",
+    "aliases": [
+      "Adventurous Adventures of One Direction",
+      "AAOOD",
+      "The Adventurous Adventures of 1D"
+    ],
+    "clues": [
+      "A fan-made animation, rather than an official band film.",
+      "Its creator supplied the cartoon and the voices.",
+      "The original installment appeared on YouTube in 2012.",
+      "Mark Parsons created it.",
+      "It turns the members of One Direction into cartoon adventurers.",
+      "Its title is The Adventurous Adventures of One Direction."
+    ],
+    "theme": "The original fangirl group chat",
+    "explanation": "Mark Parsons created the fan-made 2012 animation The Adventurous Adventures of One Direction.",
+    "sources": [
+      "https://www.youtube.com/results?search_query=Mark+Parsons+The+Adventurous+Adventures+of+One+Direction"
+    ],
+    "sourceReview": "needs-check"
+  }
+}

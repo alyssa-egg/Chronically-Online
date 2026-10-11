@@ -1,8 +1,8 @@
 # Your day-before review ♡
 
-You have the final say on Deep Cut’s questions. I can draft and edit issues when you send ideas in this chat; nothing automatically writes new questions while we’re away. The first six broader issues, October 11–16, 2026, are **drafts awaiting your approval**.
+You have the final say on Deep Cut’s questions. I can draft and edit issues when you send ideas in this chat; nothing automatically writes new questions while we’re away. The first nine broader issues, October 11–19, 2026, are **drafts awaiting your approval**.
 
-Open [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) to see every question, answer, explanation, and Anonymous Ask clue. Main themes now cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, and Vine/TikTok. The main quiz and its Ask share a theme. The three era quizzes keep their own era boundaries and separate questions.
+Open [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) to see every question, answer, explanation, and Anonymous Ask clue. Main themes now cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, Vine/TikTok, KATSEYE/global pop girls, PinkPantheress/bedroom pop, and the original fangirl group chat. The main quiz and its Ask share a theme. The three era quizzes keep their own era boundaries and separate questions.
 
 ## Each day, before publication
 
@@ -27,7 +27,7 @@ git push origin main
 
 Replace `YYYY-MM-DD` with the future issue’s date. The approval command requires the reviewer and source-review flag. It refuses past/current Eastern days and already approved issues. Do not run it before you’ve reviewed the complete issue.
 
-**Unapproved or missing date:** the existing rotating archive remains playable. A draft never becomes live just because its date arrives. This keeps the site available, but fallback days do not guarantee a matching quiz/Ask theme. Add more dated drafts to extend the six-day calendar; there is no unreviewed automatic question generation.
+**Unapproved or missing date:** the existing rotating archive remains playable. A draft never becomes live just because its date arrives. This keeps the site available, but fallback days do not guarantee a matching quiz/Ask theme. Add more dated drafts to extend the nine-day draft calendar; there is no unreviewed automatic question generation.
 
 ## Authoring and edits
 

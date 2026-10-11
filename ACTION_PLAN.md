@@ -88,7 +88,7 @@ Start with low-cost static hosting, one researched domain, and free development 
 1. Pull the latest GitHub changes, restart the local server, and play the main quiz, all three eras, and The Anonymous Ask on a phone and desktop.
 2. Research Deep Cut and two backup names before buying any assets.
 3. Recruit 8–12 people from the intended fandom audience for observed playtests.
-4. Review the six drafted dated issues, then extend the calendar with eight more sourced issues.
+4. Review the nine drafted dated issues, then extend the calendar with five more sourced issues.
 5. Connect the Netlify project to GitHub and deploy both `dist` and the membership function over HTTPS; test real phone audio, share sheets, and card uploads. Configure Git-connected deployment for automatic updates.
 6. Add aggregate measurement and a privacy notice before public beta.
 7. Use beta evidence to decide whether to shorten the game, change the content balance, or launch.

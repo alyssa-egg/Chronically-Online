@@ -11,8 +11,8 @@ const approved = () => ({
   approvedAt: "2026-10-12T14:00:00Z",
   sourcesConfirmed: true,
 });
-test("six drafted days contain complete games and asks paired to the main theme", () => {
-  assert.equal(Object.keys(issues).length, 6);
+test("nine drafted days contain complete games and asks paired to the main theme", () => {
+  assert.equal(Object.keys(issues).length, 9);
   for (const issue of Object.values(issues)) {
     assert.equal(issue.status, "draft");
     assert.equal(issue.ask.theme, issue.theme);
@@ -20,9 +20,9 @@ test("six drafted days contain complete games and asks paired to the main theme"
     validateIssue(issue);
   }
 });
-test("the main drafts include beauty, gaming, Emma, Enya and Wildflower without repeating a prompt", () => {
+test("the main drafts include beauty, gaming, pop culture and fangirl references without repeating a prompt", () => {
   const all = Object.values(issues).flatMap((issue) => issue.games.daily);
-  assert.equal(new Set(all.map((q) => q.question)).size, 60);
+  assert.equal(new Set(all.map((q) => q.question)).size, 90);
   const text = JSON.stringify(all).toLowerCase();
   for (const name of [
     "Bethany",
@@ -32,6 +32,10 @@ test("the main drafts include beauty, gaming, Emma, Enya and Wildflower without 
     "jacksepticeye",
     "Enya",
     "Wildflower",
+    "KATSEYE",
+    "PinkPantheress",
+    "One Direction",
+    "Spice Girls",
   ])
     assert.ok(text.includes(name.toLowerCase()), name);
 });

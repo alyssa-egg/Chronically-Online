@@ -1,0 +1,379 @@
+{
+  "date": "2026-10-18",
+  "id": "deep-cut-2026-10-18",
+  "revision": 1,
+  "theme": "Bedroom-pop tabs and PinkPantheress",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Added from your pop-culture notes: KATSEYE, PinkPantheress, and original fangirl references. Main quiz and Ask share a theme, with distinct Ask answers. Reference URLs need source review before approval.",
+  "games": {
+    "daily": [
+      {
+        "question": "PinkPantheress’s first mixtape, released in 2021, is titled…",
+        "options": [
+          "To Hell with It",
+          "Heaven Knows",
+          "Fancy That",
+          "Caprisongs"
+        ],
+        "answer": 0,
+        "explanation": "To Hell with It is her debut 2021 mixtape.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/To_Hell_with_It"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-1"
+      },
+      {
+        "question": "“Boy’s a Liar Pt. 2” pairs PinkPantheress with…",
+        "options": [
+          "Ice Spice",
+          "Doja Cat",
+          "Rico Nasty",
+          "Megan Thee Stallion"
+        ],
+        "answer": 0,
+        "explanation": "Ice Spice joined PinkPantheress for the 2023 part-two version.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Boy%27s_a_Liar_Pt._2"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-2"
+      },
+      {
+        "question": "PinkPantheress’s debut studio album was…",
+        "options": [
+          "Heaven Knows",
+          "Fancy That",
+          "To Hell with It",
+          "Take Me Apart"
+        ],
+        "answer": 0,
+        "explanation": "Heaven Knows was released in 2023 as her first studio album.",
+        "department": 3,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Heaven_Knows_(PinkPantheress_album)"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-3"
+      },
+      {
+        "question": "Which PinkPantheress mixtape arrived in 2025?",
+        "options": [
+          "Fancy That",
+          "To Hell with It",
+          "Heaven Knows",
+          "Number 1 Angel"
+        ],
+        "answer": 0,
+        "explanation": "Fancy That is her 2025 mixtape; To Hell with It was released in 2021.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Fancy_That"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-4"
+      },
+      {
+        "question": "Which of these is PinkPantheress’s 2024 single?",
+        "options": ["Turn It Up", "Good Luck, Babe!", "360", "Espresso"],
+        "answer": 0,
+        "explanation": "PinkPantheress released Turn It Up in 2024.",
+        "department": 3,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Turn_It_Up_(PinkPantheress_song)"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-5"
+      },
+      {
+        "question": "Clairo’s early bedroom video that spread in 2017 was for…",
+        "options": ["Pretty Girl", "Bags", "Sofia", "Juna"],
+        "answer": 0,
+        "explanation": "The homemade Pretty Girl video helped introduce Clairo to a wider audience in 2017.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Pretty_Girl_(Clairo_song)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-6"
+      },
+      {
+        "question": "Beabadoobee’s “Coffee” is sampled in which Powfu song?",
+        "options": [
+          "Death Bed (Coffee for Your Head)",
+          "Sweet but Psycho",
+          "Heather",
+          "Sweater Weather"
+        ],
+        "answer": 0,
+        "explanation": "Powfu’s Death Bed samples Beabadoobee’s Coffee.",
+        "department": 3,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Death_Bed_(Coffee_for_Your_Head)"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-7"
+      },
+      {
+        "question": "The deliberately bright green 2024 album cover belongs to…",
+        "options": ["Brat", "Melodrama", "Sour", "Punisher"],
+        "answer": 0,
+        "explanation": "Charli XCX’s Brat cover uses its distinctive bright green background.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Brat_(album)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-8"
+      },
+      {
+        "question": "Lorde’s 2013 debut album featuring “Royals” is…",
+        "options": [
+          "Pure Heroine",
+          "Melodrama",
+          "Solar Power",
+          "The Love Club EP"
+        ],
+        "answer": 0,
+        "explanation": "Pure Heroine is Lorde’s debut album; Royals also appeared on her earlier EP.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Pure_Heroine"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-9"
+      },
+      {
+        "question": "Before her solo career, Caroline Polachek was part of…",
+        "options": ["Chairlift", "HAIM", "MUNA", "The xx"],
+        "answer": 0,
+        "explanation": "Caroline Polachek was a member of the band Chairlift.",
+        "department": 3,
+        "sources": ["https://en.wikipedia.org/wiki/Caroline_Polachek"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "question": "Hannah Hart’s cooking series was called…",
+        "options": [
+          "Hot Ones",
+          "My Drunk Kitchen",
+          "Sorted Food",
+          "Nerdy Nummies"
+        ],
+        "answer": 1,
+        "explanation": "My Drunk Kitchen was Hannah Hart’s breakout web series.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-tumblr-1"
+      },
+      {
+        "question": "Tumblr’s queue is useful when you want to…",
+        "options": [
+          "Publish saved posts over time",
+          "Change a username automatically",
+          "Download every GIF",
+          "Delete all asks"
+        ],
+        "answer": 0,
+        "explanation": "The queue schedules posts across the posting times you configure.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-tumblr-2"
+      },
+      {
+        "question": "Ariana Grande’s debut studio album was…",
+        "options": [
+          "Dangerous Woman",
+          "Sweetener",
+          "Yours Truly",
+          "My Everything"
+        ],
+        "answer": 2,
+        "explanation": "Yours Truly was released in 2013.",
+        "department": 1,
+        "sources": ["https://www.onedirectionmusic.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-tumblr-3"
+      },
+      {
+        "question": "Tumblr users often put extra commentary in a post’s…",
+        "options": [
+          "Tags",
+          "Password field",
+          "Image filename",
+          "Browser address bar"
+        ],
+        "answer": 0,
+        "explanation": "Tags can organize posts and carry a second layer of commentary.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-tumblr-4"
+      },
+      {
+        "question": "5SOS’s second studio album was…",
+        "options": ["Sounds Good Feels Good", "5SOS5", "Youngblood", "CALM"],
+        "answer": 0,
+        "explanation": "Sounds Good Feels Good was released in 2015.",
+        "department": 1,
+        "sources": ["https://www.onedirectionmusic.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-tumblr-5"
+      }
+    ],
+    "youtube": [
+      {
+        "question": "The initials TATINOF referred to which Dan and Phil tour?",
+        "options": [
+          "The Annual Tour of Internet Friends",
+          "The Amazing Tour Is Not on Fire",
+          "The Amazing Trip Into Nostalgia",
+          "The Archive Tour Is Now Official"
+        ],
+        "answer": 1,
+        "explanation": "The Amazing Tour Is Not on Fire began in 2015.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-youtube-1"
+      },
+      {
+        "question": "Which creator is associated with the name nigahiga?",
+        "options": ["Ryan Higa", "KevJumba", "Roi Fabito", "Joey Graceffa"],
+        "answer": 0,
+        "explanation": "Ryan Higa built his channel under nigahiga.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-youtube-2"
+      },
+      {
+        "question": "A GRWM video is a…",
+        "options": [
+          "Group reunion watch marathon",
+          "Google review weekly meeting",
+          "Get ready with me video",
+          "Gaming reaction with music video"
+        ],
+        "answer": 2,
+        "explanation": "GRWM invites viewers into a getting-ready routine.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-youtube-3"
+      },
+      {
+        "question": "A “mukbang” centers on…",
+        "options": [
+          "Eating food on camera",
+          "Applying makeup",
+          "Playing a horror game",
+          "Reviewing a film"
+        ],
+        "answer": 0,
+        "explanation": "Mukbang is an eating-broadcast format that originated in South Korea.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-youtube-4"
+      },
+      {
+        "question": "Lilly Singh’s earlier YouTube name was…",
+        "options": ["IISuperwomanII", "AmazingPhil", "DailyGrace", "SuperMega"],
+        "answer": 0,
+        "explanation": "Lilly Singh became known under IISuperwomanII.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-youtube-5"
+      }
+    ],
+    "modern": [
+      {
+        "question": "Which creator often says he is not the same person as Danny Gonzalez?",
+        "options": ["Phil Lester", "Drew Gooden", "Joe Sugg", "Hamzah"],
+        "answer": 1,
+        "explanation": "Drew Gooden and Danny Gonzalez have made their mistaken-identity joke a recurring reference.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-modern-1"
+      },
+      {
+        "question": "A “comfort video” is one you…",
+        "options": [
+          "Return to for familiar enjoyment",
+          "Can only watch on subscription",
+          "Watch without subtitles",
+          "Upload without sound"
+        ],
+        "answer": 0,
+        "explanation": "Comfort viewing is about the viewer’s familiar enjoyment.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-modern-2"
+      },
+      {
+        "question": "A creator’s “lore” is usually their community’s…",
+        "options": [
+          "Copyright license",
+          "Payment password",
+          "Accumulated backstory and references",
+          "Video export settings"
+        ],
+        "answer": 2,
+        "explanation": "Lore helps inside jokes make sense; speculation should stay separate from fact.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-modern-3"
+      },
+      {
+        "question": "Which creator’s brand name is rhode?",
+        "options": [
+          "Hailey Bieber",
+          "Emma Chamberlain",
+          "Ariana Grande",
+          "Brittany Broski"
+        ],
+        "answer": 0,
+        "explanation": "Hailey Bieber founded rhode, a beauty brand.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-modern-4"
+      },
+      {
+        "question": "The We Are Two Different People Tour featured Danny Gonzalez, Drew Gooden, and…",
+        "options": [
+          "Kurtis Conner",
+          "Hamzah",
+          "Rhett McLaughlin",
+          "Tyler Oakley"
+        ],
+        "answer": 0,
+        "explanation": "Kurtis joined Danny and Drew on the 2019 tour, a reference that persists in their communities.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-18-modern-5"
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-18",
+    "answer": "Just for Me",
+    "aliases": ["Just for Me by PinkPantheress", "Just for Me PinkPantheress"],
+    "clues": [
+      "A short song that belonged to the early PinkPantheress feed.",
+      "It was released as a single in 2021.",
+      "Mura Masa produced it.",
+      "It appears on the mixtape To Hell with It.",
+      "Its three-word title sounds like someone saving a reference for themselves.",
+      "The track is called Just for Me."
+    ],
+    "theme": "Bedroom-pop tabs and PinkPantheress",
+    "explanation": "Just for Me is a 2021 PinkPantheress single produced by Mura Masa, included on To Hell with It.",
+    "sources": ["https://en.wikipedia.org/wiki/Just_for_Me"],
+    "sourceReview": "needs-check"
+  }
+}

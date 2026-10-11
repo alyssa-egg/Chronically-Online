@@ -28,6 +28,7 @@ const publicFiles = new Set([
   "/src/favicon.svg",
   "/src/assets/deep-cut-logo.png",
   "/src/assets/case-doodle.svg",
+  "/src/assets/ask-moustache.png",
 ]);
 http
   .createServer(async (req, res) => {

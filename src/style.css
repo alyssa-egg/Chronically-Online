@@ -2193,3 +2193,289 @@ header {
     font-size: 36px;
   }
 }
+
+/* Two equally featured games, like facing pages in the same blog issue. */
+.home-cover {
+  padding: 20px 0 32px;
+  gap: 48px;
+}
+.home-cover .cover-copy h1 {
+  font-size: clamp(52px, 5.6vw, 76px);
+  margin: 20px 0 0;
+}
+.home-cover .cover-subtitle {
+  font-size: 29px;
+  line-height: 1.2;
+  margin: 0 0 14px;
+}
+.home-cover .intro {
+  max-width: 460px;
+  font-size: 13px;
+  margin: 0;
+}
+.home-cover .daily-note {
+  margin-top: 18px;
+}
+.daily-games {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  align-items: stretch;
+}
+.daily-game {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--paper);
+  border: 1px solid #badde2;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 5px 5px 0 #dceff1;
+  scroll-margin-top: 20px;
+}
+.daily-game .window-bar {
+  border-bottom: 1px solid var(--line);
+}
+.daily-game-art {
+  position: relative;
+  height: 145px;
+  flex: 0 0 145px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.quiz-art {
+  background: #ffe8f5;
+  background-image: radial-gradient(#e9bddb 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+.quiz-art .bow {
+  right: 24px;
+  top: 18px;
+  width: 74px;
+}
+.quiz-art-note {
+  position: relative;
+  padding: 14px 24px;
+  background: #fffafd;
+  border: 1px solid #ecc5df;
+  box-shadow: 3px 3px 0 #e7c7dc55;
+  font: 23px/1.25 var(--serif);
+  color: var(--rose);
+  transform: rotate(-3deg);
+}
+.quiz-art-tag {
+  font: 9px var(--sans);
+  margin-top: 14px;
+  color: #8e5981;
+}
+.ask-art {
+  background: #e2f7f9;
+  background-image:
+    linear-gradient(#b9e3e750 1px, transparent 1px),
+    linear-gradient(90deg, #b9e3e750 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.ask-art-note {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  font: italic 13px var(--serif);
+  color: var(--purple);
+}
+.ask-moustache {
+  display: block;
+  width: 228px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 0 white) drop-shadow(0 -3px 0 white)
+    drop-shadow(3px 0 0 white) drop-shadow(-3px 0 0 white)
+    drop-shadow(2px 5px 0 #80bac733);
+  transform: rotate(-5deg);
+}
+.ask-art-tag {
+  position: absolute;
+  bottom: 15px;
+  right: 22px;
+  font: 9px monospace;
+  color: var(--purple);
+}
+.daily-game-copy {
+  padding: 27px 30px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.daily-game-copy .eyebrow {
+  font-size: 9px;
+}
+.daily-game h2 {
+  font: 43px/1.12 var(--serif);
+  letter-spacing: -1.3px;
+  margin: 16px 0;
+  min-height: 96px;
+}
+.daily-game h2 em {
+  color: var(--rose);
+}
+.daily-game-copy > p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0 0 22px;
+  max-width: none;
+}
+.daily-game-copy .primary {
+  width: 100%;
+  margin-top: auto;
+}
+.game-status {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 15px;
+}
+.diary-strip {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin: 28px 0 48px;
+  padding: 22px 25px;
+  border: 1px dashed #dab3cd;
+  border-radius: 7px;
+  background: #fff4faa8;
+}
+.diary-strip-heart {
+  font-size: 34px;
+  color: var(--rose);
+}
+.diary-strip .eyebrow {
+  font-size: 8px;
+}
+.diary-strip p {
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+.diary-strip strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.diary-strip .diary-strip-note {
+  margin: 0 0 0 auto;
+  text-align: right;
+}
+.ask-game-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.ask-game-heading .ask-moustache {
+  width: 95px;
+  flex: 0 0 95px;
+}
+@media (max-width: 800px) {
+  .home-cover {
+    gap: 24px;
+  }
+  .daily-games {
+    gap: 18px;
+  }
+  .daily-game-copy {
+    padding: 24px;
+  }
+  .daily-game h2 {
+    font-size: 35px;
+    min-height: 80px;
+  }
+  .daily-game-copy .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 650px) {
+  .home-cover {
+    grid-template-columns: 1fr;
+    padding: 16px 0 26px;
+    gap: 20px;
+  }
+  .home-cover .cover-copy h1 {
+    font-size: 55px;
+    letter-spacing: -2px;
+  }
+  .home-cover .cover-subtitle {
+    font-size: 23px;
+  }
+
+  .home-cover .intro {
+    font-size: 12px;
+  }
+  .daily-games {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+  .daily-game h2 {
+    min-height: 80px;
+    font-size: 38px;
+  }
+  .daily-game-copy > p {
+    min-height: 66px;
+    font-size: 12px;
+  }
+  .diary-strip {
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    padding: 20px;
+  }
+  .diary-strip .diary-strip-note {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+  .ask-game-heading {
+    gap: 10px;
+  }
+  .ask-game-heading .eyebrow {
+    font-size: 8px;
+  }
+  .ask-game-heading .ask-moustache {
+    width: 74px;
+    flex-basis: 74px;
+  }
+}
+
+.game-shortcuts {
+  display: none;
+}
+@media (max-width: 650px) {
+  .game-shortcuts {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .game-shortcuts a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--purple);
+    border-color: #b7dde1;
+    font-size: 11px;
+  }
+  .daily-game h2 {
+    font-size: clamp(28px, 8.4vw, 38px);
+    min-height: 2.3em;
+  }
+}

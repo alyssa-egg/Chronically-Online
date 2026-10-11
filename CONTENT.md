@@ -1,6 +1,6 @@
 # Deep Cut editorial archive
 
-New dated drafts are in `content/issues/`, reviewed in [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md). The October 11–16 drafts broaden beauty YouTube, Emma Chamberlain, gamer creators, Enya/Drew, Wildflower and internet-girl culture. Main questions and Anonymous Ask share a theme. Only explicitly approved issues publish; see [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md). Draft sources still need checking because external source requests returned proxy 403. Optional local images require alt text, credits and appropriate usage rights.
+New dated drafts are in `content/issues/`, reviewed in [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md). The October 11–19 drafts broaden beauty YouTube, Emma Chamberlain, gamer creators, Enya/Drew, Wildflower and internet-girl culture, followed by KATSEYE, PinkPantheress and classic fangirl pop. Main questions and Anonymous Ask share a theme. Only explicitly approved issues publish; see [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md). Draft sources still need checking because external source requests returned proxy 403. Optional local images require alt text, credits and appropriate usage rights.
 
 The archive below is the fallback for missing or unapproved dated issues. Premium era pools remain server-side in the website build.
 

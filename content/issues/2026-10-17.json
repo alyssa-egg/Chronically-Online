@@ -1,0 +1,374 @@
+{
+  "date": "2026-10-17",
+  "id": "deep-cut-2026-10-17",
+  "revision": 1,
+  "theme": "Global pop girls: KATSEYE and company",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Added from your pop-culture notes: KATSEYE, PinkPantheress, and original fangirl references. Main quiz and Ask share a theme, with distinct Ask answers. Reference URLs need source review before approval.",
+  "games": {
+    "daily": [
+      {
+        "question": "How many members debuted in KATSEYE in 2024?",
+        "options": ["Six", "Four", "Five", "Seven"],
+        "answer": 0,
+        "explanation": "KATSEYE debuted with Sophia, Manon, Daniela, Lara, Megan, and Yoonchae.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Katseye"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-1"
+      },
+      {
+        "question": "KATSEYE’s first EP expanded S.I.S. into which phrase?",
+        "options": [
+          "Soft Is Strong",
+          "Stars in Stereo",
+          "Sisters in Sync",
+          "Stay in Style"
+        ],
+        "answer": 0,
+        "explanation": "Their 2024 EP is titled S.I.S. (Soft Is Strong).",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/S.I.S._(Soft_Is_Strong)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-2"
+      },
+      {
+        "question": "KATSEYE’s fandom name is written…",
+        "options": ["EYEKONS", "MYs", "BLINKs", "FEARNOTs"],
+        "answer": 0,
+        "explanation": "EYEKONS is KATSEYE’s fan-community name.",
+        "department": 1,
+        "sources": ["https://www.katseye.world/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-3"
+      },
+      {
+        "question": "KATSEYE’s first official single, released in June 2024, was…",
+        "options": ["Debut", "Touch", "Gnarly", "Gabriela"],
+        "answer": 0,
+        "explanation": "Debut was the group’s first official single; Touch followed in July 2024.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Debut_(Katseye_song)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-4"
+      },
+      {
+        "question": "Which KATSEYE member is from Switzerland?",
+        "options": ["Manon", "Sophia", "Daniela", "Yoonchae"],
+        "answer": 0,
+        "explanation": "Manon Bannerman is the Swiss member of the group.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Katseye"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-5"
+      },
+      {
+        "question": "Little Mix became the first group to win which UK competition in 2011?",
+        "options": [
+          "The X Factor",
+          "Britain’s Got Talent",
+          "The Voice UK",
+          "Pop Idol"
+        ],
+        "answer": 0,
+        "explanation": "Little Mix won the eighth UK series of The X Factor in 2011.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Little_Mix"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-6"
+      },
+      {
+        "question": "Fifth Harmony’s “Work from Home” features which artist?",
+        "options": ["Ty Dolla Sign", "Sean Paul", "Pitbull", "Nicki Minaj"],
+        "answer": 0,
+        "explanation": "Ty Dolla Sign features on the group’s 2016 single Work from Home.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Work_from_Home_(song)"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-7"
+      },
+      {
+        "question": "The Spice Girls’ debut single was…",
+        "options": [
+          "Wannabe",
+          "Spice Up Your Life",
+          "Stop",
+          "Say You’ll Be There"
+        ],
+        "answer": 0,
+        "explanation": "Wannabe was released as the Spice Girls’ debut single in 1996.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Wannabe"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-8"
+      },
+      {
+        "question": "BLACKPINK debuted with how many members?",
+        "options": ["Four", "Three", "Five", "Six"],
+        "answer": 0,
+        "explanation": "BLACKPINK debuted with Jisoo, Jennie, Rosé, and Lisa.",
+        "department": 1,
+        "sources": ["https://en.wikipedia.org/wiki/Blackpink"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-9"
+      },
+      {
+        "question": "“Say My Name” appeared on which Destiny’s Child album?",
+        "options": [
+          "The Writing’s on the Wall",
+          "Survivor",
+          "Destiny Fulfilled",
+          "Dangerously in Love"
+        ],
+        "answer": 0,
+        "explanation": "Say My Name appears on the group’s 1999 album The Writing’s on the Wall.",
+        "department": 1,
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_Writing%27s_on_the_Wall"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "question": "Who wrote the 2015 memoir Binge?",
+        "options": [
+          "Connor Franta",
+          "Troye Sivan",
+          "Tyler Oakley",
+          "Caspar Lee"
+        ],
+        "answer": 2,
+        "explanation": "Tyler Oakley published Binge in 2015.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-tumblr-1"
+      },
+      {
+        "question": "Which One Direction album includes “Little Things”?",
+        "options": ["Four", "Take Me Home", "Up All Night", "Made in the A.M."],
+        "answer": 1,
+        "explanation": "Little Things appears on Take Me Home, released in 2012.",
+        "department": 1,
+        "sources": ["https://www.onedirectionmusic.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-tumblr-2"
+      },
+      {
+        "question": "Which actor played Dean Winchester?",
+        "options": [
+          "Jensen Ackles",
+          "Jared Padalecki",
+          "Andrew Scott",
+          "Misha Collins"
+        ],
+        "answer": 0,
+        "explanation": "Jensen Ackles played Dean in Supernatural.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-tumblr-3"
+      },
+      {
+        "question": "Which actor played Sam Winchester?",
+        "options": [
+          "Jared Padalecki",
+          "Misha Collins",
+          "Matt Smith",
+          "Jensen Ackles"
+        ],
+        "answer": 0,
+        "explanation": "Jared Padalecki played Sam in Supernatural.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-tumblr-4"
+      },
+      {
+        "question": "A fic described as a “one-shot” is usually…",
+        "options": [
+          "A self-contained story in one installment",
+          "An official screenplay",
+          "A multi-season television recap",
+          "A story with no ending"
+        ],
+        "answer": 0,
+        "explanation": "A one-shot is a single, self-contained installment.",
+        "department": 0,
+        "sources": ["https://fanlore.org/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-tumblr-5"
+      }
+    ],
+    "youtube": [
+      {
+        "question": "In a YouTube video title, “ft.” usually means…",
+        "options": [
+          "First take only",
+          "Full transcript",
+          "Featuring",
+          "Fan theory"
+        ],
+        "answer": 2,
+        "explanation": "The abbreviation flags a guest or collaborator.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-youtube-1"
+      },
+      {
+        "question": "A “storytime” upload typically tells…",
+        "options": [
+          "An album track list",
+          "A personal anecdote",
+          "A fictional bedtime story only",
+          "A daily weather forecast"
+        ],
+        "answer": 1,
+        "explanation": "Storytime videos center on the creator recounting an experience.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-youtube-2"
+      },
+      {
+        "question": "A “haul” video usually shows…",
+        "options": [
+          "Items someone has bought",
+          "A gaming speedrun",
+          "A comment-section debate",
+          "A live concert"
+        ],
+        "answer": 0,
+        "explanation": "Hauls became a familiar shopping and beauty video format.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-youtube-3"
+      },
+      {
+        "question": "Who hosted Hot Ones during its rise in the 2010s?",
+        "options": [
+          "Sean Evans",
+          "Jimmy Fallon",
+          "Rhett McLaughlin",
+          "James Corden"
+        ],
+        "answer": 0,
+        "explanation": "Sean Evans conducts Hot Ones interviews over increasingly spicy wings.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-youtube-4"
+      },
+      {
+        "question": "Liza Koshy’s name on Vine was…",
+        "options": ["Lizzza", "DailyGrace", "ThatcherJoe", "Zoella"],
+        "answer": 0,
+        "explanation": "Liza Koshy became known on Vine under Lizzza.",
+        "department": 2,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-youtube-5"
+      }
+    ],
+    "modern": [
+      {
+        "question": "Kurtis Conner’s fan community is often called…",
+        "options": ["Broski Nation", "Greg", "Kurtistown", "Mythical Beasts"],
+        "answer": 2,
+        "explanation": "Kurtistown is the community name associated with Kurtis Conner.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-modern-1"
+      },
+      {
+        "question": "“Main character energy” usually praises…",
+        "options": [
+          "Owning an official fan page",
+          "A confident, protagonist-like presence",
+          "Having the first comment",
+          "Being the oldest subscriber"
+        ],
+        "answer": 1,
+        "explanation": "It borrows the idea of a story’s central character.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-modern-2"
+      },
+      {
+        "question": "Which creator is associated with the nickname “Kombucha Girl”?",
+        "options": [
+          "Brittany Broski",
+          "Emma Chamberlain",
+          "Safiya Nygaard",
+          "Drew Afualo"
+        ],
+        "answer": 0,
+        "explanation": "Brittany Broski’s kombucha reaction helped bring her widespread attention.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-modern-3"
+      },
+      {
+        "question": "The Comment Section is a podcast hosted by…",
+        "options": [
+          "Drew Afualo",
+          "Drew Gooden",
+          "Danny Gonzalez",
+          "Emma Chamberlain"
+        ],
+        "answer": 0,
+        "explanation": "Drew Afualo hosts The Comment Section.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-modern-4"
+      },
+      {
+        "question": "A parasocial connection is generally…",
+        "options": [
+          "A one-sided feeling of knowing a public figure",
+          "A shared business account",
+          "An offline fan convention",
+          "A private friendship between two creators"
+        ],
+        "answer": 0,
+        "explanation": "Parasocial connections come from knowing someone through media.",
+        "department": 3,
+        "sources": ["https://www.youtube.com/"],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-17-modern-5"
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-17",
+    "answer": "The Dream Academy",
+    "aliases": [
+      "Dream Academy",
+      "The Debut Dream Academy",
+      "The Debut: Dream Academy"
+    ],
+    "clues": [
+      "A global pop group’s story had a competition chapter before its first official single.",
+      "Fans followed the contestants through online videos and missions in 2023.",
+      "HYBE and Geffen were behind the project.",
+      "Twenty contestants took part in the competition.",
+      "Its final six members went on to debut as KATSEYE.",
+      "The competition’s title is The Debut: Dream Academy."
+    ],
+    "theme": "Global pop girls: KATSEYE and company",
+    "explanation": "The Debut: Dream Academy was the 2023 competition that selected the members of KATSEYE.",
+    "sources": ["https://en.wikipedia.org/wiki/The_Debut:_Dream_Academy"],
+    "sourceReview": "needs-check"
+  }
+}

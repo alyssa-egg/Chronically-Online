@@ -16,6 +16,8 @@ Open `http://localhost:3000`. Requires Node.js **22+**, with no dependencies to 
 
 ## Play
 
+The homepage features the Daily Quiz and Anonymous Ask in equally sized blog-window cards, with separate buttons and saved progress. Both are free main games. The Ask has a transparent moustache sticker prepared from your attached reference; it also appears inside the inbox game.
+
 - **Main daily quiz:** ten questions, always free; explanations, ranks, answer review, sharing, and downloadable PNG report cards.
 - **Anonymous Ask:** one mystery reference, six increasingly helpful clues. Type a guess or pass. Empty/repeated guesses use no turns. Always free.
 - **Three eras:** The Tumblr Years (2010–2015), YouTube Was Everything (2015–2019), The New Lore (2020–today). Five questions each. One explicit **24-hour trial per email account**, then **$5 once for all three eras**. No subscription.
@@ -27,7 +29,7 @@ Email/trials/payments require the configured backend. Until it is connected, the
 
 ## Review questions before they go live
 
-Read [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) for **six dated draft issues, October 11–16, 2026**, with every answer and Ask clue. Themes cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, and Vine/TikTok. Each main quiz and Ask share a theme. All six drafts await editorial/source review; they are not approved or live.
+Read [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) for **nine dated draft issues, October 11–19, 2026**, with every answer and Ask clue. Themes cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, Vine/TikTok, KATSEYE/global pop girls, PinkPantheress/bedroom pop, and the original fangirl group chat. Each main quiz and Ask share a theme. All nine drafts await editorial/source review; they are not approved or live.
 
 [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md) explains JSON edits, pictures with credits, approval, and GitHub Actions’ **9 a.m. Eastern day-before review**. The workflow displays existing drafts; it does not author or approve them. I can draft/edit when you bring ideas into chat. Additional dates need new issues.
 
@@ -43,7 +45,7 @@ Only approved issues are packaged for publication on their date. Unapproved/miss
 
 Site provided: **https://deepcutt.netlify.app/**. Connect that Netlify project to this GitHub repository’s `main` branch for automatic deployments. The committed settings use `npm run build`, publish `dist`, and bundle `netlify/functions`. See [PREMIUM_SETUP.md](PREMIUM_SETUP.md) for the Supabase database/email setup, Stripe’s one-time $5 price/webhook, and private Netlify variables.
 
-The public build has 12 files, plus any additional approved local image assets. It includes only the legacy free question pool and approved free issue content. Premium questions are returned by the API after checking trial/payment access. Drafts, credentials, and backend source are excluded from `dist`. Build replaces the generated folder; keep personal files elsewhere.
+The public build has 13 files, plus any additional approved local image assets. It includes only the legacy free question pool and approved free issue content. Premium questions are returned by the API after checking trial/payment access. Drafts, credentials, and backend source are excluded from `dist`. Build replaces the generated folder; keep personal files elsewhere.
 
 A static upload/Netlify Drop serves the free games, but **does not deploy the membership function**. Use Git-connected deployment for trials/payments. Publishing only `dist` to other static hosts also needs a compatible backend to offer eras. A Node host can run `npm start` with the same private environment settings. Use HTTPS for real checkout and device sharing.
 
@@ -66,6 +68,6 @@ Browser checks cover free play, disabled membership without configuration, mocke
 
 Dated content: `content/issues/`. Review/publication: `scripts/editorial.mjs`, `src/issue-schema.js`, `server/editorial.mjs`. Browser: `src/app.js`, `src/style.css`, `src/game.js`, `src/puzzle.js`, `src/sound.js`. Auth/checkout/access: `src/membership.js`, `server/premium.mjs`, `netlify/functions/api.mjs`. Database: `config/membership.sql`.
 
-See [CONTENT.md](CONTENT.md) for writing/source checks and [ACTION_PLAN.md](ACTION_PLAN.md) for launch work. Deep Cut remains a working name; trademark/domain availability has not been verified. The logo is a prepared derivative of the supplied reference; retain your original PNG for a future exact replacement. Other bundled illustrations and sounds are original.
+See [CONTENT.md](CONTENT.md) for writing/source checks and [ACTION_PLAN.md](ACTION_PLAN.md) for launch work. Deep Cut remains a working name; trademark/domain availability has not been verified. The logo and Ask sticker were prepared from your supplied image references; retain the originals for future exact replacements. Other bundled illustrations and sounds are original.
 
 Scores are browser-local, with no server-validated leaderboard or aggregate analytics. The GitHub review files contain future answers; a public repository makes them public. The game controls paid gameplay access rather than hiding facts in a public repository.
