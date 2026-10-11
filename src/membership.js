@@ -103,6 +103,86 @@ export async function startTrial() {
 export async function startCheckout() {
   return raw("action=checkout", { body: {}, token: await accessToken() });
 }
+export async function mountCheckoutForm(
+  container,
+  checkoutSession,
+  publishableKey,
+  { onComplete, onError },
+) {
+  if (typeof globalThis.Stripe !== "function")
+    throw new MembershipError(
+      "The secure payment form could not load. Check your connection and try again.",
+      503,
+    );
+  if (!publishableKey || !checkoutSession.client_secret)
+    throw new MembershipError(
+      "Checkout is being connected. Please try again later.",
+      503,
+    );
+  const stripe = globalThis.Stripe(publishableKey, {
+    betas: ["custom_checkout_payment_form_1"],
+  });
+  const checkout = await stripe.initCheckoutFormSdk({
+    clientSecret: Promise.resolve(checkoutSession.client_secret),
+    appearance: {
+      theme: "stripe",
+      labels: "auto",
+      inputs: "spaced",
+      variables: {
+        borderRadius: "4px",
+        colorBackground: "#ffffff",
+        colorDanger: "#df1b41",
+        colorPrimary: "#0570de",
+        colorSuccess: "#00c853",
+        colorText: "#30313d",
+        fontFamily: "default",
+        fontSizeBase: "16px",
+        spacingUnit: "4px",
+      },
+    },
+  });
+  if (!container.isConnected) return null;
+  const form = checkout.createForm({ layout: "expanded" });
+  const destroy = () => {
+    if (typeof form.destroy === "function") form.destroy();
+    else form.unmount?.();
+  };
+  try {
+    form.mount("#checkout-form");
+    const result = await checkout.loadActions();
+    if (result.type !== "success")
+      throw new MembershipError("Checkout could not load. Please try again.", 503);
+    if (!container.isConnected) {
+      destroy();
+      return null;
+    }
+    let confirming = false;
+    form.on("confirm", async (event) => {
+      if (confirming || !container.isConnected) return;
+      confirming = true;
+      try {
+        const confirmation = await result.actions.confirm({
+          formConfirmEvent: event,
+        });
+        if (confirmation?.type === "error" || confirmation?.error)
+          throw new MembershipError(
+            confirmation.error?.message ||
+              "Payment was not completed. Please try again.",
+            400,
+          );
+        await onComplete();
+      } catch (error) {
+        onError(error);
+      } finally {
+        confirming = false;
+      }
+    });
+    return { destroy };
+  } catch (error) {
+    destroy();
+    throw error;
+  }
+}
 export async function verifyPurchase(id) {
   return raw("action=verify", {
     body: { session_id: id },

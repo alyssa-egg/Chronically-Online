@@ -16,6 +16,7 @@ const env = {
   SUPABASE_ANON_KEY: "anon-test",
   SUPABASE_SERVICE_ROLE_KEY: "service-test",
   STRIPE_SECRET_KEY: "sk_test_mock",
+  STRIPE_PUBLISHABLE_KEY: "pk_test_mock",
   STRIPE_PRICE_ID: "price_test_5",
   STRIPE_WEBHOOK_SECRET: "whsec_test",
   SITE_URL: "https://deep-cut.example",
@@ -88,7 +89,7 @@ function harness({
     if (url.pathname === "/v1/checkout/sessions")
       return out({
         id: "cs_test_new",
-        url: "https://checkout.stripe.com/c/pay/test",
+        client_secret: "cs_test_new_secret_mock",
       });
     if (url.pathname.startsWith("/v1/checkout/sessions/")) return out(payment);
     throw new Error("Unexpected provider call: " + url.pathname);
@@ -140,11 +141,16 @@ test("membership configuration reveals readiness without exposing credentials", 
   assert.equal(off.data.trialHours, 24);
   const on = await h.call("config");
   assert.equal(on.data.checkoutReady, true);
+  assert.equal(on.data.publishableKey, env.STRIPE_PUBLISHABLE_KEY);
   assert.ok(!JSON.stringify(on).includes("sk_test"));
   const noHook = await h.call("config", {
     environment: { ...env, STRIPE_WEBHOOK_SECRET: "" },
   });
   assert.equal(noHook.data.checkoutReady, false);
+  const noPublicKey = await h.call("config", {
+    environment: { ...env, STRIPE_PUBLISHABLE_KEY: "" },
+  });
+  assert.equal(noPublicKey.data.checkoutReady, false);
 });
 test("protected era requests reject missing, forged and expired credentials", async () => {
   const h = harness();
@@ -236,7 +242,12 @@ test("approved dated premium games are served instead of the archive, while draf
 });
 test("checkout uses exactly a one-time $5 price and the verified account", async () => {
   const h = harness();
-  assert.equal((await h.call("checkout", { body: {} })).status, 200);
+  const created = await h.call("checkout", { body: {} });
+  assert.equal(created.status, 200);
+  assert.deepEqual(created.data, {
+    client_secret: "cs_test_new_secret_mock",
+    session_id: "cs_test_new",
+  });
   const c = h.calls.find(
     (c) => new URL(c.url).pathname === "/v1/checkout/sessions",
   );
@@ -244,7 +255,17 @@ test("checkout uses exactly a one-time $5 price and the verified account", async
   assert.equal(body.get("mode"), "payment");
   assert.equal(body.get("client_reference_id"), userId);
   assert.equal(body.get("line_items[0][price]"), env.STRIPE_PRICE_ID);
-  assert.equal(body.get("payment_method_types[0]"), "card");
+  assert.equal(body.get("line_items[0][quantity]"), "1");
+  assert.equal(body.get("metadata[user_id]"), userId);
+  assert.equal(body.get("ui_mode"), "form");
+  assert.equal(body.get("billing_address_collection"), "auto");
+  assert.equal(body.get("phone_number_collection[enabled]"), "false");
+  assert.equal(body.get("automatic_tax[enabled]"), "false");
+  assert.equal(body.get("submit_type"), "auto");
+  assert.equal(body.get("integration_identifier"), "custom_embedded_web_0001");
+  for (const field of ["success_url", "cancel_url", "customer_email", "payment_method_types[0]", "payment_method_collection"])
+    assert.equal(body.has(field), false);
+  assert.equal(c.headers["Stripe-Version"], "2026-03-25.dahlia; custom_checkout_payment_form_preview=v1");
   for (const invalid of [
     { active: true, unit_amount: 600, currency: "usd" },
     { active: true, unit_amount: 500, currency: "eur" },

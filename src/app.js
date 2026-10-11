@@ -19,6 +19,7 @@ import {
   memberStatus,
   startTrial,
   startCheckout,
+  mountCheckoutForm,
   verifyPurchase,
   eraQuestions,
   signOut,
@@ -360,7 +361,17 @@ function questionImage(image) {
 async function showMembership(eraId = null, message = "") {
   const dialog = document.querySelector("#membership");
   let email = "",
-    codeSent = false;
+    codeSent = false,
+    checkoutSession = null,
+    checkoutForm = null,
+    checkoutAttempt = 0;
+  const clearCheckout = () => {
+    checkoutAttempt += 1;
+    checkoutForm?.destroy();
+    checkoutForm = null;
+    checkoutSession = null;
+  };
+  dialog.addEventListener("close", clearCheckout, { once: true });
   if (!dialog.open) dialog.showModal();
   dialog.innerHTML = '<p role="status">Opening your little era archive…</p>';
   try {
@@ -372,6 +383,46 @@ async function showMembership(eraId = null, message = "") {
   const render = () => {
     const loggedIn = signedIn(),
       access = canPlayEras();
+    if (checkoutSession) {
+      const session = checkoutSession,
+        attempt = ++checkoutAttempt;
+      dialog.innerHTML = `<button class="pill membership-close" aria-label="Close era checkout">Close ×</button><span class="eyebrow">YOUR LITTLE ERA ARCHIVE</span><h2>Your eras.<br><em>Yours to keep.</em></h2><p class="membership-price">$5 once <span>· all three eras · no subscription</span></p><p id="checkout-status" role="status">Opening your secure payment form…</p><div id="checkout-form"></div><button class="text-button" id="checkout-back">← Back to my eras</button>`;
+      const container = dialog.querySelector("#checkout-form"),
+        status = dialog.querySelector("#checkout-status");
+      dialog.querySelector(".membership-close").onclick = () => dialog.close();
+      dialog.querySelector("#checkout-back").onclick = () => {
+        clearCheckout();
+        render();
+      };
+      const reportError = (error) => {
+        if (attempt === checkoutAttempt && dialog.open)
+          status.textContent =
+            error.message || "Checkout could not load. Please try again.";
+      };
+      mountCheckoutForm(container, session, membershipSettings?.publishableKey, {
+        onComplete: async () => {
+          const verified = await verifyPurchase(session.session_id);
+          if (attempt !== checkoutAttempt || !dialog.open) return;
+          membership = verified;
+          clearCheckout();
+          message = "Your eras are unlocked. ♡";
+          render();
+          if (screen === "home") home();
+        },
+        onError: reportError,
+      })
+        .then((form) => {
+          if (attempt !== checkoutAttempt || !dialog.open) {
+            form?.destroy();
+            return;
+          }
+          checkoutForm = form;
+          status.textContent =
+            "Your payment is $5 once. Your eras unlock after confirmation.";
+        })
+        .catch(reportError);
+      return;
+    }
     dialog.innerHTML = `<button class="pill membership-close" aria-label="Close era membership">Close ×</button><span class="eyebrow">A LITTLE MORE OF YOUR INTERNET HISTORY</span><h2>Your eras.<br><em>All the receipts.</em></h2><p class="membership-price">$5 once <span>· all three eras · no subscription</span></p><p>Your first 24 hours of era play are free. Start when you’re ready. The main daily quiz and Anonymous Ask are always free.</p><p id="membership-status" role="status">${escape(message)}</p>${loggedIn ? `<p class="membership-email">Signed in as ${escape(membership?.email || "your account")}</p>${membership?.purchased ? '<div class="membership-note">All three eras are yours. ♡</div>' : membership?.trialActive && access ? `<div class="membership-note">Your free era day ends ${escape(new Intl.DateTimeFormat("en", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/New_York", timeZoneName: "short" }).format(new Date(membership.trialEndsAt)))}.</div>` : membership?.trialStarted ? '<div class="membership-note">Your free era day is filed. Unlock the full archive for $5 once.</div>' : '<button class="primary" id="start-era-trial">Start my free 24 hours ♡</button>'}${access ? `<button class="primary" id="play-member-era">${eraId ? "Play this era" : "Browse my eras"} ${arrow}</button>` : ""}${!membership?.purchased ? `<button class="secondary" id="buy-eras" ${membershipSettings?.checkoutReady ? "" : "disabled"}>Unlock all eras · $5 once ${arrow}</button>${!membershipSettings?.checkoutReady ? '<p class="ask-small">Purchases are coming soon. No payment is collected here yet.</p>' : ""}` : ""}<button class="text-button" id="sign-out-eras">Sign out</button>` : `<p class="ask-small">Sign in by email so your trial and purchase follow you between devices. No password needed.</p><form id="era-signin"><label for="era-email">Your email</label><input id="era-email" type="email" autocomplete="email" maxlength="254" required value="${escape(email)}" ${membershipSettings?.configured ? "" : "disabled"}>${codeSent ? '<label for="era-code">Code from your email</label><input id="era-code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,8}" maxlength="8" required>' : ""}<button class="primary" ${membershipSettings?.configured ? "" : "disabled"}>${codeSent ? "Open my eras" : "Email me a sign-in code"} ♡</button></form>${!membershipSettings?.configured ? '<p class="membership-note">Era membership is coming soon. Your free daily games are ready now.</p>' : ""}${codeSent ? '<button class="text-button" id="resend-era-code">Send a new code</button>' : ""}`}`;
     dialog.querySelector(".membership-close").onclick = () => dialog.close();
     const work = async (action) => {
@@ -431,7 +482,7 @@ async function showMembership(eraId = null, message = "") {
             if (checkout.alreadyPurchased) {
               membership = await memberStatus();
               message = "Your eras are already unlocked. ♡";
-            } else location.assign(checkout.url);
+            } else checkoutSession = checkout;
           });
       const play = dialog.querySelector("#play-member-era");
       if (play)

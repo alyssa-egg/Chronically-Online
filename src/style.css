@@ -2115,6 +2115,17 @@ header {
   font: 12px/1.5 var(--sans);
   margin-top: 4px;
 }
+#checkout-form {
+  min-height: 300px;
+  margin: 20px 0;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+#checkout-status {
+  line-height: 1.6;
+}
 #membership .primary,
 #membership .secondary {
   width: 100%;

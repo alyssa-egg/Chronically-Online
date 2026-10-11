@@ -97,6 +97,7 @@ export async function handlePremiumRequest(
       configured &&
       Boolean(
         env.STRIPE_SECRET_KEY &&
+        env.STRIPE_PUBLISHABLE_KEY &&
         env.STRIPE_PRICE_ID &&
         env.SITE_URL &&
         env.STRIPE_WEBHOOK_SECRET,
@@ -109,6 +110,7 @@ export async function handlePremiumRequest(
       return response({
         configured,
         checkoutReady,
+        publishableKey: env.STRIPE_PUBLISHABLE_KEY || null,
         priceCents: PRICE_CENTS,
         trialHours: 24,
       });
@@ -167,6 +169,8 @@ export async function handlePremiumRequest(
         method: body ? "POST" : "GET",
         headers: {
           Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+          "Stripe-Version":
+            "2026-03-25.dahlia; custom_checkout_payment_form_preview=v1",
           ...(body
             ? { "Content-Type": "application/x-www-form-urlencoded" }
             : {}),
@@ -411,24 +415,24 @@ export async function handlePremiumRequest(
       )
         throw new ApiError(503, "Checkout is being connected.");
       const session = await stripe("checkout/sessions", {
+        ui_mode: "form",
         mode: "payment",
-        "payment_method_types[0]": "card",
+        billing_address_collection: "auto",
+        "phone_number_collection[enabled]": "false",
+        "automatic_tax[enabled]": "false",
+        submit_type: "auto",
+        integration_identifier: "custom_embedded_web_0001",
         "line_items[0][price]": env.STRIPE_PRICE_ID,
         "line_items[0][quantity]": "1",
-        customer_email: user.email,
         client_reference_id: user.id,
         "metadata[user_id]": user.id,
-        success_url: new URL(
-          "?era_purchase=success&session_id={CHECKOUT_SESSION_ID}",
-          site,
-        ).href
-          .replace(/%7B/g, "{")
-          .replace(/%7D/g, "}"),
-        cancel_url: new URL("?era_purchase=cancelled", site).href,
       });
-      if (!session.url?.startsWith("https://checkout.stripe.com/"))
+      if (!session.client_secret || !session.id)
         throw new ApiError(503, "Checkout could not be opened.");
-      return response({ url: session.url });
+      return response({
+        client_secret: session.client_secret,
+        session_id: session.id,
+      });
     }
     if (action === "verify") {
       const body = await readBody();
