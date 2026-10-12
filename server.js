@@ -1,3 +1,4 @@
+import { publicArchiveModule } from "./server/archive.mjs";
 import http from "node:http";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -20,6 +21,12 @@ const types = {
 const publicFiles = new Set([
   "/index.html",
   "/src/app.js",
+  "/src/archive-ui.js",
+  "/src/collection.js",
+  "/src/sideblog.js",
+  "/src/sideblog-export.js",
+  "/src/lost-post.js",
+  "/src/archive-catalog.js",
   "/src/game.js",
   "/src/questions.js",
   "/src/issues.js",
@@ -93,6 +100,8 @@ http
       const data =
         name === "/src/questions.js"
           ? `export const bank = ${JSON.stringify(bank.filter((q) => q.mode === "daily"))};\n`
+          : name === "/src/archive-catalog.js"
+            ? publicArchiveModule()
           : name === "/src/issues.js"
             ? publicIssueModule(issues)
             : await readFile(file);

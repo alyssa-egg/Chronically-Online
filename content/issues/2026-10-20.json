@@ -1,0 +1,468 @@
+{
+  "date": "2026-10-20",
+  "id": "deep-cut-2026-10-20",
+  "revision": 1,
+  "theme": "From recommendations to the For You page",
+  "status": "draft",
+  "reviewedBy": "",
+  "approvedAt": null,
+  "sourcesConfirmed": false,
+  "editorNotes": "Draft from the expanded master archive: Emma, SoundCloud, Musical.ly, gaming, and pop-girl crossover. Review sources and wording before approval; all new ideas remain off the live site.",
+  "games": {
+    "daily": [
+      {
+        "question": "Which creator launched Chamberlain Coffee in 2019?",
+        "options": [
+          "Emma Chamberlain",
+          "Bethany Mota",
+          "Liza Koshy",
+          "Jenna Marbles"
+        ],
+        "answer": 0,
+        "explanation": "Emma Chamberlain launched her namesake coffee brand in 2019.",
+        "department": 2,
+        "sources": [
+          "https://chamberlaincoffee.com/pages/about-us"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-1"
+      },
+      {
+        "question": "Which future pop star first uploaded “Ocean Eyes” to SoundCloud in 2015?",
+        "options": [
+          "Billie Eilish",
+          "Olivia Rodrigo",
+          "Sabrina Carpenter",
+          "Tate McRae"
+        ],
+        "answer": 0,
+        "explanation": "Billie Eilish uploaded Ocean Eyes, written and produced by Finneas, to SoundCloud in 2015.",
+        "department": 2,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ocean_Eyes_(song)"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-2"
+      },
+      {
+        "question": "Which lip-sync app merged into TikTok in August 2018?",
+        "options": [
+          "Musical.ly",
+          "Vine",
+          "Dubsmash",
+          "Periscope"
+        ],
+        "answer": 0,
+        "explanation": "Musical.ly accounts and content were integrated into TikTok in August 2018.",
+        "department": 2,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Musical.ly"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-3"
+      },
+      {
+        "question": "Which group’s fans use the name “EYEKONS”?",
+        "options": [
+          "KATSEYE",
+          "Little Mix",
+          "FLO",
+          "BLACKPINK"
+        ],
+        "answer": 0,
+        "explanation": "EYEKONS is KATSEYE’s official fandom name.",
+        "department": 3,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Katseye"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-4"
+      },
+      {
+        "question": "PinkPantheress and Ice Spice teamed up on which 2023 track?",
+        "options": [
+          "Boy’s a Liar Pt. 2",
+          "Just for Me",
+          "Break It Off",
+          "Pain"
+        ],
+        "answer": 0,
+        "explanation": "Boy’s a Liar Pt. 2 is the PinkPantheress collaboration featuring Ice Spice.",
+        "department": 3,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Boy%27s_a_Liar"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-5"
+      },
+      {
+        "question": "Emma’s 2018 Sister Squad videos also featured James Charles and which twins?",
+        "options": [
+          "Ethan and Grayson Dolan",
+          "Jack and Finn Harries",
+          "Brooklyn and Bailey McKnight",
+          "Niki and Gabi DeMartino"
+        ],
+        "answer": 0,
+        "explanation": "The Sister Squad featured Emma Chamberlain, James Charles, Ethan Dolan, and Grayson Dolan.",
+        "department": 2,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Emma_Chamberlain"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-6"
+      },
+      {
+        "question": "Which YouTuber’s channel was known as “Macbarbie07”?",
+        "options": [
+          "Bethany Mota",
+          "Michelle Phan",
+          "Zoella",
+          "NikkieTutorials"
+        ],
+        "answer": 0,
+        "explanation": "Bethany Mota began posting under Macbarbie07, a username tied to the early beauty and lifestyle era.",
+        "department": 2,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Bethany_Mota"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-7"
+      },
+      {
+        "question": "In the early YouTube gaming era, whose fans were called the “Bro Army”?",
+        "options": [
+          "PewDiePie",
+          "Markiplier",
+          "jacksepticeye",
+          "DanTDM"
+        ],
+        "answer": 0,
+        "explanation": "Bro Army was the name associated with PewDiePie’s early fan community.",
+        "department": 2,
+        "sources": [
+          "https://en.wikipedia.org/wiki/PewDiePie"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-8"
+      },
+      {
+        "question": "What was Vine’s original maximum video length?",
+        "options": [
+          "Six seconds",
+          "Ten seconds",
+          "Fifteen seconds",
+          "Thirty seconds"
+        ],
+        "answer": 0,
+        "explanation": "Vine’s defining format was a looping video of up to six seconds.",
+        "department": 0,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Vine_(service)"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-9"
+      },
+      {
+        "question": "Which One Direction member’s debut solo album was “Flicker”?",
+        "options": [
+          "Niall Horan",
+          "Harry Styles",
+          "Liam Payne",
+          "Louis Tomlinson"
+        ],
+        "answer": 0,
+        "explanation": "Niall Horan released his debut solo album Flicker in 2017.",
+        "department": 1,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Flicker_(Niall_Horan_album)"
+        ],
+        "sourceReview": "needs-check",
+        "id": "issue-2026-10-20-daily-10"
+      }
+    ],
+    "tumblr": [
+      {
+        "id": "issue-2026-10-20-tumblr-1",
+        "department": 0,
+        "question": "Sherlock’s Jim Moriarty was played by…",
+        "options": [
+          "Andrew Scott",
+          "Benedict Cumberbatch",
+          "Martin Freeman",
+          "Tom Hiddleston"
+        ],
+        "answer": 0,
+        "explanation": "Andrew Scott played Moriarty in the BBC Sherlock series.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://fanlore.org/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-tumblr-2",
+        "department": 0,
+        "question": "Who played Merlin in the BBC series Merlin?",
+        "options": [
+          "Colin Morgan",
+          "Bradley James",
+          "David Tennant",
+          "Jensen Ackles"
+        ],
+        "answer": 0,
+        "explanation": "Colin Morgan played Merlin; Bradley James played Arthur.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://fanlore.org/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-tumblr-3",
+        "department": 0,
+        "question": "Which actor played Dean Winchester?",
+        "options": [
+          "Jensen Ackles",
+          "Jared Padalecki",
+          "Misha Collins",
+          "Andrew Scott"
+        ],
+        "answer": 0,
+        "explanation": "Jensen Ackles played Dean in Supernatural.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://fanlore.org/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-tumblr-4",
+        "department": 0,
+        "question": "Which actor played Sam Winchester?",
+        "options": [
+          "Jared Padalecki",
+          "Jensen Ackles",
+          "Misha Collins",
+          "Matt Smith"
+        ],
+        "answer": 0,
+        "explanation": "Jared Padalecki played Sam in Supernatural.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://fanlore.org/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-tumblr-5",
+        "department": 0,
+        "question": "David Tennant first played which numbered Doctor?",
+        "options": [
+          "The Tenth Doctor",
+          "The Ninth Doctor",
+          "The Eleventh Doctor",
+          "The Twelfth Doctor"
+        ],
+        "answer": 0,
+        "explanation": "Tennant’s first Doctor incarnation was the Tenth.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://fanlore.org/"
+        ]
+      }
+    ],
+    "youtube": [
+      {
+        "id": "issue-2026-10-20-youtube-1",
+        "department": 2,
+        "question": "Which creator launched the series Escape the Night?",
+        "options": [
+          "Joey Graceffa",
+          "Tyler Oakley",
+          "Connor Franta",
+          "Joe Sugg"
+        ],
+        "answer": 0,
+        "explanation": "Joey Graceffa created and starred in Escape the Night.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-youtube-2",
+        "department": 2,
+        "question": "The Dolan Twins’ first names are…",
+        "options": [
+          "Ethan and Grayson",
+          "Kian and JC",
+          "Jack and Finn",
+          "Dan and Phil"
+        ],
+        "answer": 0,
+        "explanation": "Ethan and Grayson Dolan are the Dolan Twins.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-youtube-3",
+        "department": 2,
+        "question": "Which duo’s shared channel is called KianAndJc?",
+        "options": [
+          "Kian Lawley and JC Caylen",
+          "Ethan and Grayson Dolan",
+          "Rhett and Link",
+          "Joe Sugg and Caspar Lee"
+        ],
+        "answer": 0,
+        "explanation": "Kian Lawley and JC Caylen post together as KianAndJc.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-youtube-4",
+        "department": 2,
+        "question": "Our2ndLife is often abbreviated…",
+        "options": [
+          "O2L",
+          "OTP",
+          "OOC",
+          "OOTD"
+        ],
+        "answer": 0,
+        "explanation": "O2L was the shorthand for the collaborative channel Our2ndLife.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-youtube-5",
+        "department": 2,
+        "question": "Lilly Singh’s earlier YouTube name was…",
+        "options": [
+          "IISuperwomanII",
+          "DailyGrace",
+          "SuperMega",
+          "AmazingPhil"
+        ],
+        "answer": 0,
+        "explanation": "Lilly Singh became known under IISuperwomanII.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      }
+    ],
+    "modern": [
+      {
+        "id": "issue-2026-10-20-modern-1",
+        "department": 3,
+        "question": "Which Slushy Noobz collaborator is known as Hamzah the Fantastic?",
+        "options": [
+          "Hamzah",
+          "Martin",
+          "Danny",
+          "Kurtis"
+        ],
+        "answer": 0,
+        "explanation": "Hamzah uses the online name Hamzah the Fantastic.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-modern-2",
+        "department": 3,
+        "question": "Martin’s recurring online name includes…",
+        "options": [
+          "martin909",
+          "AmazingPhil",
+          "PointlessBlog",
+          "ThatcherJoe"
+        ],
+        "answer": 0,
+        "explanation": "Martin is associated with the name martin909.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-modern-3",
+        "department": 3,
+        "question": "Kurtis Conner’s fan community is often called…",
+        "options": [
+          "Kurtistown",
+          "Greg",
+          "Broski Nation",
+          "Mythical Beasts"
+        ],
+        "answer": 0,
+        "explanation": "Kurtistown is the community name associated with Kurtis Conner.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-modern-4",
+        "department": 3,
+        "question": "Broski Nation is associated with…",
+        "options": [
+          "Brittany Broski",
+          "Danny Gonzalez",
+          "Drew Gooden",
+          "Kurtis Conner"
+        ],
+        "answer": 0,
+        "explanation": "Brittany Broski’s community uses the name Broski Nation.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "id": "issue-2026-10-20-modern-5",
+        "department": 3,
+        "question": "Good Mythical Morning viewers are often called…",
+        "options": [
+          "Mythical Beasts",
+          "Directioners",
+          "Greg",
+          "The Try Guys"
+        ],
+        "answer": 0,
+        "explanation": "Mythical Beasts is the community name used by Rhett and Link.",
+        "sourceReview": "needs-check",
+        "sources": [
+          "https://www.youtube.com/"
+        ]
+      }
+    ]
+  },
+  "ask": {
+    "id": "ask-2026-10-20",
+    "theme": "From recommendations to the For You page",
+    "answer": "SoundCloud",
+    "aliases": [
+      "Sound Cloud"
+    ],
+    "clues": [
+      "A place where a bedroom upload could find its first listeners.",
+      "Creators shared audio through profiles, links, and reposts.",
+      "Its waveforms made a track look like something you could trace.",
+      "“Ocean Eyes” found an early home here in 2015.",
+      "An orange cloud is part of its branding.",
+      "This music-sharing platform’s name joins sound with cloud."
+    ],
+    "explanation": "SoundCloud connects the era’s independent music uploads and online discovery. Billie Eilish’s Ocean Eyes was uploaded there in 2015.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/SoundCloud",
+      "https://en.wikipedia.org/wiki/Ocean_Eyes_(song)"
+    ],
+    "sourceReview": "needs-check"
+  }
+}

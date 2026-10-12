@@ -1,3 +1,4 @@
+import { publicArchiveModule } from "../server/archive.mjs";
 import { mkdir, copyFile, rm, lstat, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -9,6 +10,11 @@ const issues = await loadIssues(root);
 const files = new Set([
   "index.html",
   "src/app.js",
+  "src/archive-ui.js",
+  "src/collection.js",
+  "src/sideblog.js",
+  "src/sideblog-export.js",
+  "src/lost-post.js",
   "src/game.js",
   "src/membership.js",
   "src/puzzle.js",
@@ -47,6 +53,7 @@ await writeFile(
   `export const bank = ${JSON.stringify(bank.filter((q) => q.mode === "daily"))};\n`,
 );
 await writeFile(path.join(output, "src/issues.js"), publicIssueModule(issues));
+await writeFile(path.join(output, "src/archive-catalog.js"), publicArchiveModule());
 console.log(
-  `Deep Cut built in dist/ (${files.size + 2} public files; premium questions stay in the server function).`,
+  `Deep Cut built in dist/ (${files.size + 3} public files; premium questions stay in the server function).`,
 );

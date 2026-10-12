@@ -248,6 +248,9 @@ export async function eraQuestions(mode, date) {
     { path: "era", token: await accessToken() },
   );
 }
+export async function archiveCollection(id) {
+  return raw(`id=${encodeURIComponent(id)}`, { path: "archive", token: await accessToken() });
+}
 export async function signOut() {
   try {
     if (signedIn())

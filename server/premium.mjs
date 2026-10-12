@@ -5,6 +5,7 @@ import {
   EDITION_VERSION,
 } from "../src/game.js";
 import { loadIssues } from "./editorial.mjs";
+import { findCollection } from "./archive.mjs";
 import { createHmac, timingSafeEqual } from "node:crypto";
 
 export const TRIAL_MS = 24 * 60 * 60 * 1000;
@@ -76,7 +77,7 @@ export async function handlePremiumRequest(
     });
   try {
     if (
-      !["/api/premium", "/api/era", "/api/stripe-webhook"].includes(
+      !["/api/premium", "/api/era", "/api/archive", "/api/stripe-webhook"].includes(
         url.pathname,
       )
     )
@@ -105,7 +106,7 @@ export async function handlePremiumRequest(
     const action =
       url.pathname === "/api/era"
         ? "questions"
-        : url.searchParams.get("action") || "status";
+        : url.pathname === "/api/archive" ? "archive" : url.searchParams.get("action") || "status";
     if (action === "config")
       return response({
         configured,
@@ -114,6 +115,12 @@ export async function handlePremiumRequest(
         priceCents: PRICE_CENTS,
         trialHours: 24,
       });
+    const collection = action === "archive" ? findCollection(url.searchParams.get("id")) : null;
+    if (action === "archive") {
+      if (request.method !== "GET") throw new ApiError(405, "Use GET for archive files.");
+      if (!collection) throw new ApiError(404, "That archive folder was not found.");
+      if (collection.free) return response({ collection });
+    }
     if (!configured)
       throw new ApiError(
         503,
@@ -370,6 +377,10 @@ export async function handlePremiumRequest(
         email: user.email,
       };
     };
+    if (action === "archive") {
+      if (!(await state()).canPlay) throw new ApiError(402, "Your free era day is finished. All three eras are $5 once.");
+      return response({ collection });
+    }
     if (action === "status") return response(await state());
     if (action === "start-trial") {
       await readBody();

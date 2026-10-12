@@ -67,9 +67,9 @@ const render = (issue) => {
   ];
   for (const [mode, name] of Object.entries({
     daily: "Main daily quiz — FREE",
-    tumblr: "The Tumblr Years — era membership",
-    youtube: "YouTube Was Everything — era membership",
-    modern: "The New Lore — era membership",
+    tumblr: "The Fandom Years — era membership",
+    youtube: "The YouTube Era — era membership",
+    modern: "Current Lore — era membership",
   })) {
     lines.push(`### ${name}`, "");
     issue.games[mode].forEach((q, index) => {

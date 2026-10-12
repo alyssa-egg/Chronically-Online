@@ -11,8 +11,8 @@ const approved = () => ({
   approvedAt: "2026-10-12T14:00:00Z",
   sourcesConfirmed: true,
 });
-test("nine drafted days contain complete games and asks paired to the main theme", () => {
-  assert.equal(Object.keys(issues).length, 9);
+test("ten drafted days contain complete games and asks paired to the main theme", () => {
+  assert.equal(Object.keys(issues).length, 10);
   for (const issue of Object.values(issues)) {
     assert.equal(issue.status, "draft");
     assert.equal(issue.ask.theme, issue.theme);
@@ -22,7 +22,7 @@ test("nine drafted days contain complete games and asks paired to the main theme
 });
 test("the main drafts include beauty, gaming, pop culture and fangirl references without repeating a prompt", () => {
   const all = Object.values(issues).flatMap((issue) => issue.games.daily);
-  assert.equal(new Set(all.map((q) => q.question)).size, 90);
+  assert.equal(new Set(all.map((q) => q.question)).size, 100);
   const text = JSON.stringify(all).toLowerCase();
   for (const name of [
     "Bethany",

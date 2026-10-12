@@ -416,3 +416,28 @@ test("API refuses cross-origin mutations and oversized input", async () => {
   );
   assert.equal(h.row, null);
 });
+
+test('free archive folders need no account or configuration; paid files require verified active access', async () => {
+  const h=harness();
+  const sample=await h.call('',{path:'archive',query:'id=youtube-starter',token:null,environment:{}});
+  assert.equal(sample.status,200);assert.equal(sample.data.collection.files.length,3);
+  const missing=await h.call('',{path:'archive',query:'id=missing',token:null,environment:{}});
+  assert.equal(missing.status,404);
+  const noAuth=await h.call('',{path:'archive',query:'id=creator-connections',token:null});
+  assert.equal(noAuth.status,401);assert.equal(noAuth.data.collection,undefined);
+  const noAccess=await h.call('',{path:'archive',query:'id=creator-connections'});
+  assert.equal(noAccess.status,402);assert.equal(noAccess.data.collection,undefined);
+  await h.call('start-trial',{body:{}});
+  const allowed=await h.call('',{path:'archive',query:'id=creator-connections'});
+  assert.equal(allowed.status,200);assert.equal(allowed.data.collection.files.length,3);
+  const expired=await h.call('',{path:'archive',query:'id=creator-connections',clock:current+TRIAL_MS});
+  assert.equal(expired.status,402);
+});
+test('paid archive access is revoked after a refund, even with a previously valid account',async()=>{
+  const h=harness({member:{user_id:userId,stripe_session_id:'cs_test_owned'}});
+  assert.equal((await h.call('',{path:'archive',query:'id=beauty-tabs'})).status,200);
+  h.payment.payment_intent.latest_charge.amount_refunded=500;
+  h.payment.payment_intent.latest_charge.refunded=true;
+  const revoked=await h.call('',{path:'archive',query:'id=beauty-tabs'});
+  assert.equal(revoked.status,402);assert.equal(revoked.data.collection,undefined);
+});

@@ -1,6 +1,6 @@
 # Your day-before review ♡
 
-You have the final say on Deep Cut’s questions. I can draft and edit issues when you send ideas in this chat; nothing automatically writes new questions while we’re away. The first nine broader issues, October 11–19, 2026, are **drafts awaiting your approval**.
+You have the final say on Deep Cut’s questions. I can draft and edit issues when you send ideas in this chat; nothing automatically writes new questions while we’re away. The first ten broader issues, October 11–20, 2026, are **drafts awaiting your approval**.
 
 Open [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) to see every question, answer, explanation, and Anonymous Ask clue. Main themes now cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, Vine/TikTok, KATSEYE/global pop girls, PinkPantheress/bedroom pop, and the original fangirl group chat. The main quiz and its Ask share a theme. The three era quizzes keep their own era boundaries and separate questions.
 
@@ -27,7 +27,7 @@ git push origin main
 
 Replace `YYYY-MM-DD` with the future issue’s date. The approval command requires the reviewer and source-review flag. It refuses past/current Eastern days and already approved issues. Do not run it before you’ve reviewed the complete issue.
 
-**Unapproved or missing date:** the existing rotating archive remains playable. A draft never becomes live just because its date arrives. This keeps the site available, but fallback days do not guarantee a matching quiz/Ask theme. Add more dated drafts to extend the nine-day draft calendar; there is no unreviewed automatic question generation.
+**Unapproved or missing date:** the existing rotating archive remains playable. A draft never becomes live just because its date arrives. This keeps the site available, but fallback days do not guarantee a matching quiz/Ask theme. Add more dated drafts to extend the ten-day draft calendar; there is no unreviewed automatic question generation.
 
 ## Authoring and edits
 
@@ -55,3 +55,7 @@ An optional question `image` supports a local asset, alt text, a caption, creato
 Put the file in `src/assets/` using lowercase letters, numbers, and hyphens. Accepted formats: SVG, PNG, JPG, WebP. Rights must be `original`, `licensed`, `permission`, or `public-domain`; non-original work needs an HTTPS source. A source URL alone does not grant permission. The October 13 draft contains an original phone-case doodle showing the visual layout.
 
 The browser build contains only approved free issue content; premium question sets are served after the backend checks access. The GitHub review files contain future answers and premium questions. If the repository is public, that review material is public too. The access system controls gameplay, not secrecy of a public repository.
+
+## The living archive
+
+[CONTENT_ARCHIVE.md](CONTENT_ARCHIVE.md) holds your complete master topic brief. [ARCHIVE_REVIEW.md](ARCHIVE_REVIEW.md) lists the starter collection files for edits. [ARCHIVE_GUIDE.md](ARCHIVE_GUIDE.md) explains the new Lost Post and Sideblog. These game additions preserve your approval gate for dated daily questions. The October 20 draft expands into Emma, SoundCloud, Musical.ly, gaming, and crossover pop. Its sources still need review.

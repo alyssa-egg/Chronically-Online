@@ -25,6 +25,7 @@ A daily GitHub Actions review at 9 a.m. Eastern shows the next day’s existing 
 | 2026-10-17 | Global pop girls: KATSEYE and company | The Dream Academy | draft |
 | 2026-10-18 | Bedroom-pop tabs and PinkPantheress | Just for Me | draft |
 | 2026-10-19 | The original fangirl group chat | The Adventurous Adventures of One Direction | draft |
+| 2026-10-20 | From recommendations to the For You page | SoundCloud | draft |
 
 ## 2026-10-11 — After-school beauty YouTube
 
@@ -197,7 +198,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Lauren_Riihimaki>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Sherlock’s Jim Moriarty was played by…**
 
@@ -279,7 +280,7 @@ Reference URLs for checking: <https://fanlore.org/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. Which creator launched the series Escape the Night?**
 
@@ -361,7 +362,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. Which Slushy Noobz collaborator is known as Hamzah the Fantastic?**
 
@@ -632,7 +633,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Minecraft>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Tumblr’s queue is useful when you want to…**
 
@@ -714,7 +715,7 @@ Reference URLs for checking: <https://www.onedirectionmusic.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. Jenna Marbles’s surname is…**
 
@@ -796,7 +797,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. Which creator often says he is not the same person as Danny Gonzalez?**
 
@@ -1069,7 +1070,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Holo_Taco>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Who was One Direction’s mentor on The X Factor?**
 
@@ -1151,7 +1152,7 @@ Reference URLs for checking: <https://www.onedirectionmusic.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. Guava Juice is the online name of…**
 
@@ -1233,7 +1234,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. Trixie and Katya’s Netflix reaction series is called…**
 
@@ -1504,7 +1505,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Jump_cut>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Ariana Grande’s debut studio album was…**
 
@@ -1586,7 +1587,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. A GRWM video is a…**
 
@@ -1668,7 +1669,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. A “comfort video” is one you…**
 
@@ -1939,7 +1940,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Drew_Afualo>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Dan and Phil’s 2015 book was titled…**
 
@@ -2021,7 +2022,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. Markiplier’s interactive 2019 YouTube project was…**
 
@@ -2103,7 +2104,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Five_Nights_at_Fredd
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. Wildflower Cases was co-founded by Devon, Sydney, and their mother…**
 
@@ -2374,7 +2375,7 @@ Reference URLs for checking: <https://support.tiktok.com/en/using-tiktok/creatin
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Michelle Phan’s early channel focused on…**
 
@@ -2456,7 +2457,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Fleur_De_Force>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. Undertale was created by…**
 
@@ -2538,7 +2539,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Cloak_(brand)>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. Bella Poarch’s debut single was…**
 
@@ -2809,7 +2810,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/The_Writing%27s_on_t
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Who wrote the 2015 memoir Binge?**
 
@@ -2891,7 +2892,7 @@ Reference URLs for checking: <https://fanlore.org/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. In a YouTube video title, “ft.” usually means…**
 
@@ -2973,7 +2974,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. Kurtis Conner’s fan community is often called…**
 
@@ -3244,7 +3245,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Caroline_Polachek>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. Hannah Hart’s cooking series was called…**
 
@@ -3326,7 +3327,7 @@ Reference URLs for checking: <https://www.onedirectionmusic.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. The initials TATINOF referred to which Dan and Phil tour?**
 
@@ -3408,7 +3409,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. Which creator often says he is not the same person as Danny Gonzalez?**
 
@@ -3679,7 +3680,7 @@ Reference URLs for checking: <https://en.wikipedia.org/wiki/Hannah_Montana_(char
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The Tumblr Years — era membership
+### The Fandom Years — era membership
 
 **Q1. David Tennant first played which numbered Doctor?**
 
@@ -3761,7 +3762,7 @@ Reference URLs for checking: <https://www.onedirectionmusic.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### YouTube Was Everything — era membership
+### The YouTube Era — era membership
 
 **Q1. Which creator is associated with the Vlog Squad?**
 
@@ -3843,7 +3844,7 @@ Reference URLs for checking: <https://www.youtube.com/>
 - Keep / Replace / Rewrite:
 - Your note:
 
-### The New Lore — era membership
+### Current Lore — era membership
 
 **Q1. “Aged like milk” says a take has…**
 
@@ -3939,6 +3940,441 @@ Theme: The original fangirl group chat. Accepted answers: The Adventurous Advent
 Mark Parsons created the fan-made 2012 animation The Adventurous Adventures of One Direction.
 
 Reference URLs: <https://www.youtube.com/results?search_query=Mark+Parsons+The+Adventurous+Adventures+of+One+Direction>
+
+- Keep / Replace / Rewrite:
+- Your clue or answer changes:
+
+## 2026-10-20 — From recommendations to the For You page
+
+**Status: DRAFT** · Revision 1 · Reviewer: awaiting your review
+
+Draft from the expanded master archive: Emma, SoundCloud, Musical.ly, gaming, and pop-girl crossover. Review sources and wording before approval; all new ideas remain off the live site.
+
+- Decision: Needs review / Keep / Replace / Rewrite
+- Your edits or niche references:
+
+### Main daily quiz — FREE
+
+**Q1. Which creator launched Chamberlain Coffee in 2019?**
+
+- **A.** Emma Chamberlain
+- **B.** Bethany Mota
+- **C.** Liza Koshy
+- **D.** Jenna Marbles
+
+**Answer: A. Emma Chamberlain**
+
+Emma Chamberlain launched her namesake coffee brand in 2019.
+
+Reference URLs for checking: <https://chamberlaincoffee.com/pages/about-us>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q2. Which future pop star first uploaded “Ocean Eyes” to SoundCloud in 2015?**
+
+- **A.** Billie Eilish
+- **B.** Olivia Rodrigo
+- **C.** Sabrina Carpenter
+- **D.** Tate McRae
+
+**Answer: A. Billie Eilish**
+
+Billie Eilish uploaded Ocean Eyes, written and produced by Finneas, to SoundCloud in 2015.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Ocean_Eyes_(song)>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q3. Which lip-sync app merged into TikTok in August 2018?**
+
+- **A.** Musical.ly
+- **B.** Vine
+- **C.** Dubsmash
+- **D.** Periscope
+
+**Answer: A. Musical.ly**
+
+Musical.ly accounts and content were integrated into TikTok in August 2018.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Musical.ly>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q4. Which group’s fans use the name “EYEKONS”?**
+
+- **A.** KATSEYE
+- **B.** Little Mix
+- **C.** FLO
+- **D.** BLACKPINK
+
+**Answer: A. KATSEYE**
+
+EYEKONS is KATSEYE’s official fandom name.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Katseye>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q5. PinkPantheress and Ice Spice teamed up on which 2023 track?**
+
+- **A.** Boy’s a Liar Pt. 2
+- **B.** Just for Me
+- **C.** Break It Off
+- **D.** Pain
+
+**Answer: A. Boy’s a Liar Pt. 2**
+
+Boy’s a Liar Pt. 2 is the PinkPantheress collaboration featuring Ice Spice.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Boy%27s_a_Liar>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q6. Emma’s 2018 Sister Squad videos also featured James Charles and which twins?**
+
+- **A.** Ethan and Grayson Dolan
+- **B.** Jack and Finn Harries
+- **C.** Brooklyn and Bailey McKnight
+- **D.** Niki and Gabi DeMartino
+
+**Answer: A. Ethan and Grayson Dolan**
+
+The Sister Squad featured Emma Chamberlain, James Charles, Ethan Dolan, and Grayson Dolan.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Emma_Chamberlain>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q7. Which YouTuber’s channel was known as “Macbarbie07”?**
+
+- **A.** Bethany Mota
+- **B.** Michelle Phan
+- **C.** Zoella
+- **D.** NikkieTutorials
+
+**Answer: A. Bethany Mota**
+
+Bethany Mota began posting under Macbarbie07, a username tied to the early beauty and lifestyle era.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Bethany_Mota>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q8. In the early YouTube gaming era, whose fans were called the “Bro Army”?**
+
+- **A.** PewDiePie
+- **B.** Markiplier
+- **C.** jacksepticeye
+- **D.** DanTDM
+
+**Answer: A. PewDiePie**
+
+Bro Army was the name associated with PewDiePie’s early fan community.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/PewDiePie>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q9. What was Vine’s original maximum video length?**
+
+- **A.** Six seconds
+- **B.** Ten seconds
+- **C.** Fifteen seconds
+- **D.** Thirty seconds
+
+**Answer: A. Six seconds**
+
+Vine’s defining format was a looping video of up to six seconds.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Vine_(service)>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q10. Which One Direction member’s debut solo album was “Flicker”?**
+
+- **A.** Niall Horan
+- **B.** Harry Styles
+- **C.** Liam Payne
+- **D.** Louis Tomlinson
+
+**Answer: A. Niall Horan**
+
+Niall Horan released his debut solo album Flicker in 2017.
+
+Reference URLs for checking: <https://en.wikipedia.org/wiki/Flicker_(Niall_Horan_album)>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+### The Fandom Years — era membership
+
+**Q1. Sherlock’s Jim Moriarty was played by…**
+
+- **A.** Andrew Scott
+- **B.** Benedict Cumberbatch
+- **C.** Martin Freeman
+- **D.** Tom Hiddleston
+
+**Answer: A. Andrew Scott**
+
+Andrew Scott played Moriarty in the BBC Sherlock series.
+
+Reference URLs for checking: <https://fanlore.org/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q2. Who played Merlin in the BBC series Merlin?**
+
+- **A.** Colin Morgan
+- **B.** Bradley James
+- **C.** David Tennant
+- **D.** Jensen Ackles
+
+**Answer: A. Colin Morgan**
+
+Colin Morgan played Merlin; Bradley James played Arthur.
+
+Reference URLs for checking: <https://fanlore.org/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q3. Which actor played Dean Winchester?**
+
+- **A.** Jensen Ackles
+- **B.** Jared Padalecki
+- **C.** Misha Collins
+- **D.** Andrew Scott
+
+**Answer: A. Jensen Ackles**
+
+Jensen Ackles played Dean in Supernatural.
+
+Reference URLs for checking: <https://fanlore.org/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q4. Which actor played Sam Winchester?**
+
+- **A.** Jared Padalecki
+- **B.** Jensen Ackles
+- **C.** Misha Collins
+- **D.** Matt Smith
+
+**Answer: A. Jared Padalecki**
+
+Jared Padalecki played Sam in Supernatural.
+
+Reference URLs for checking: <https://fanlore.org/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q5. David Tennant first played which numbered Doctor?**
+
+- **A.** The Tenth Doctor
+- **B.** The Ninth Doctor
+- **C.** The Eleventh Doctor
+- **D.** The Twelfth Doctor
+
+**Answer: A. The Tenth Doctor**
+
+Tennant’s first Doctor incarnation was the Tenth.
+
+Reference URLs for checking: <https://fanlore.org/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+### The YouTube Era — era membership
+
+**Q1. Which creator launched the series Escape the Night?**
+
+- **A.** Joey Graceffa
+- **B.** Tyler Oakley
+- **C.** Connor Franta
+- **D.** Joe Sugg
+
+**Answer: A. Joey Graceffa**
+
+Joey Graceffa created and starred in Escape the Night.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q2. The Dolan Twins’ first names are…**
+
+- **A.** Ethan and Grayson
+- **B.** Kian and JC
+- **C.** Jack and Finn
+- **D.** Dan and Phil
+
+**Answer: A. Ethan and Grayson**
+
+Ethan and Grayson Dolan are the Dolan Twins.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q3. Which duo’s shared channel is called KianAndJc?**
+
+- **A.** Kian Lawley and JC Caylen
+- **B.** Ethan and Grayson Dolan
+- **C.** Rhett and Link
+- **D.** Joe Sugg and Caspar Lee
+
+**Answer: A. Kian Lawley and JC Caylen**
+
+Kian Lawley and JC Caylen post together as KianAndJc.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q4. Our2ndLife is often abbreviated…**
+
+- **A.** O2L
+- **B.** OTP
+- **C.** OOC
+- **D.** OOTD
+
+**Answer: A. O2L**
+
+O2L was the shorthand for the collaborative channel Our2ndLife.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q5. Lilly Singh’s earlier YouTube name was…**
+
+- **A.** IISuperwomanII
+- **B.** DailyGrace
+- **C.** SuperMega
+- **D.** AmazingPhil
+
+**Answer: A. IISuperwomanII**
+
+Lilly Singh became known under IISuperwomanII.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+### Current Lore — era membership
+
+**Q1. Which Slushy Noobz collaborator is known as Hamzah the Fantastic?**
+
+- **A.** Hamzah
+- **B.** Martin
+- **C.** Danny
+- **D.** Kurtis
+
+**Answer: A. Hamzah**
+
+Hamzah uses the online name Hamzah the Fantastic.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q2. Martin’s recurring online name includes…**
+
+- **A.** martin909
+- **B.** AmazingPhil
+- **C.** PointlessBlog
+- **D.** ThatcherJoe
+
+**Answer: A. martin909**
+
+Martin is associated with the name martin909.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q3. Kurtis Conner’s fan community is often called…**
+
+- **A.** Kurtistown
+- **B.** Greg
+- **C.** Broski Nation
+- **D.** Mythical Beasts
+
+**Answer: A. Kurtistown**
+
+Kurtistown is the community name associated with Kurtis Conner.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q4. Broski Nation is associated with…**
+
+- **A.** Brittany Broski
+- **B.** Danny Gonzalez
+- **C.** Drew Gooden
+- **D.** Kurtis Conner
+
+**Answer: A. Brittany Broski**
+
+Brittany Broski’s community uses the name Broski Nation.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+**Q5. Good Mythical Morning viewers are often called…**
+
+- **A.** Mythical Beasts
+- **B.** Directioners
+- **C.** Greg
+- **D.** The Try Guys
+
+**Answer: A. Mythical Beasts**
+
+Mythical Beasts is the community name used by Rhett and Link.
+
+Reference URLs for checking: <https://www.youtube.com/>
+
+- Keep / Replace / Rewrite:
+- Your note:
+
+### Anonymous Ask — FREE: SoundCloud
+
+Theme: From recommendations to the For You page. Accepted answers: SoundCloud; Sound Cloud.
+
+1. A place where a bedroom upload could find its first listeners.
+2. Creators shared audio through profiles, links, and reposts.
+3. Its waveforms made a track look like something you could trace.
+4. “Ocean Eyes” found an early home here in 2015.
+5. An orange cloud is part of its branding.
+6. This music-sharing platform’s name joins sound with cloud.
+
+SoundCloud connects the era’s independent music uploads and online discovery. Billie Eilish’s Ocean Eyes was uploaded there in 2015.
+
+Reference URLs: <https://en.wikipedia.org/wiki/SoundCloud> · <https://en.wikipedia.org/wiki/Ocean_Eyes_(song)>
 
 - Keep / Replace / Rewrite:
 - Your clue or answer changes:

@@ -20,8 +20,10 @@ The homepage features the Daily Quiz and Anonymous Ask in equally sized blog-win
 
 - **Main daily quiz:** ten questions, always free; explanations, ranks, answer review, sharing, and downloadable PNG report cards.
 - **Anonymous Ask:** one mystery reference, six increasingly helpful clues. Type a guess or pass. Empty/repeated guesses use no turns. Always free.
-- **Three eras:** The Tumblr Years (2010–2015), YouTube Was Everything (2015–2019), The New Lore (2020–today). Five questions each. One explicit **24-hour trial per email account**, then **$5 once for all three eras**. No subscription.
-- Every game refreshes at **midnight Eastern**, automatically accounting for daylight saving. Worldwide players see the same day’s questions. The trial itself lasts 24 elapsed hours from activation.
+- **The Lost Post:** four clues, three guesses, one recovered reference. Always free.
+- **Your Sideblog:** collect correct-answer receipts and completion stamps, unlock themes, pin a moodboard, and export a PNG. Saved in this browser.
+- **Three eras:** The Fandom Years (2010–2016), The YouTube Era (2017–2019), Current Lore (2020–now). Twelve interactive folders / 36 files, with one free sample folder per era. Classic five-question daily remixes remain available. One explicit **24-hour trial per email account**, then **$5 once for all three eras**. No subscription.
+- Daily games and classic remixes refresh at **midnight Eastern**, automatically accounting for daylight saving. Worldwide players see the same day’s questions. The trial itself lasts 24 elapsed hours from activation.
 - Progress, sound preference, and reading-diary streaks save in this browser. The game still works for the current visit when storage is unavailable. Purchase/trial access follows a verified email account between devices; progress does not sync.
 - The blog aesthetic and “you had to be there.” copy remain. “Eastern edition” is removed; reset explanations still describe the actual timing.
 
@@ -29,7 +31,7 @@ Email/trials/payments require the configured backend. Until it is connected, the
 
 ## Review questions before they go live
 
-Read [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) for **nine dated draft issues, October 11–19, 2026**, with every answer and Ask clue. Themes cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, Vine/TikTok, KATSEYE/global pop girls, PinkPantheress/bedroom pop, and the original fangirl group chat. Each main quiz and Ask share a theme. All nine drafts await editorial/source review; they are not approved or live.
+Read [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) for **ten dated draft issues, October 11–20, 2026**, with every answer and Ask clue. Themes cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, Vine/TikTok, KATSEYE/global pop girls, PinkPantheress/bedroom pop, and the original fangirl group chat. Each main quiz and Ask share a theme. All ten drafts await editorial/source review; they are not approved or live.
 
 [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md) explains JSON edits, pictures with credits, approval, and GitHub Actions’ **9 a.m. Eastern day-before review**. The workflow displays existing drafts; it does not author or approve them. I can draft/edit when you bring ideas into chat. Additional dates need new issues.
 
@@ -71,3 +73,5 @@ Dated content: `content/issues/`. Review/publication: `scripts/editorial.mjs`, `
 See [CONTENT.md](CONTENT.md) for writing/source checks and [ACTION_PLAN.md](ACTION_PLAN.md) for launch work. Deep Cut remains a working name; trademark/domain availability has not been verified. The logo and Ask sticker were prepared from your supplied image references; retain the originals for future exact replacements. Other bundled illustrations and sounds are original.
 
 Scores are browser-local, with no server-validated leaderboard or aggregate analytics. The GitHub review files contain future answers; a public repository makes them public. The game controls paid gameplay access rather than hiding facts in a public repository.
+
+See [ARCHIVE_GUIDE.md](ARCHIVE_GUIDE.md) for the new game flow and [CONTENT_ARCHIVE.md](CONTENT_ARCHIVE.md) for your full topic brief. New daily question material remains draft until owner approval.

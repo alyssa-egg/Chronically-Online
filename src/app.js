@@ -40,6 +40,8 @@ import {
   MAX_TURNS,
 } from "./puzzle.js";
 
+import { createArchiveUI } from "./archive-ui.js";
+
 const app = document.querySelector("#app");
 let storageAvailable = true;
 const visitStorage = new Map();
@@ -169,19 +171,8 @@ const eraArtwork = {
     '<div class="notification-note"><span>the group chat</span><strong>new lore just dropped.</strong><small>3 mutuals are typing...</small></div><span class="new-tag">NEW POST!</span>',
 };
 function eraCard(era) {
-  const saved = savedAnswers(era.id, day),
-    completed = saved.length === era.count;
-  const action = !canPlayEras()
-    ? membership?.trialStarted
-      ? "Unlock all eras · $5 once"
-      : "Try my free era day"
-    : completed
-      ? "Open my era score"
-      : saved.length
-        ? "Continue this era"
-        : "Play this era";
-  const accessibleAction = `${!canPlayEras() ? "Open membership for" : completed ? "Results for" : saved.length ? "Continue" : "Play"} ${era.name}`;
-  return `<article class="era-card ${era.id}" id="era-${era.id}"><div class="era-art" aria-hidden="true">${eraArtwork[era.id]}</div><div class="era-copy"><span class="era-years">${era.years} <b class="premium-tag">PREMIUM</b></span><h3>${era.name}</h3><p>${era.description}</p><div class="era-meta"><span>5 questions · one free era day</span><span>${completed ? "filed ✓" : saved.length ? `${saved.length}/5 saved` : "daily mini quiz"}</span></div><button class="secondary" data-mode="${era.id}" aria-label="${accessibleAction}">${action} ${arrow}</button></div></article>`;
+  const count = era.id === "youtube" ? 6 : 3;
+  return `<article class="era-card ${era.id}" id="era-${era.id}"><div class="era-art" aria-hidden="true">${eraArtwork[era.id]}</div><div class="era-copy"><span class="era-years">${era.years} <b class="premium-tag">ONE FREE FOLDER</b></span><h3>${era.name}</h3><p>${era.description}</p><div class="era-meta"><span>${count} collections · ${era.mechanic}</span></div><button class="secondary" data-archive="${era.id}">Explore this era ${arrow}</button></div></article>`;
 }
 const askSticker =
   '<img class="ask-moustache" src="./src/assets/ask-moustache.png" alt="" width="1672" height="941" aria-hidden="true">';
@@ -196,14 +187,15 @@ function quizPost() {
 }
 function readingDiary() {
   const journal = diary();
-  return `<aside class="diary-strip" aria-label="Your reading diary"><span class="diary-strip-heart" aria-hidden="true">${journal.completedToday ? "♥" : "♡"}</span><div><span class="eyebrow">MY LITTLE READING DIARY</span><p><strong>${journal.streak} ${journal.streak === 1 ? "day" : "days"} in a row</strong> · ${journal.total} ${journal.total === 1 ? "day" : "days"} filed · best streak ${journal.best}</p></div><p class="diary-strip-note">${journal.completedToday ? "Today’s page is stamped. See you tomorrow!" : "Finish either game to stamp today’s page."}<br>A wrong answer still counts. ♡</p></aside>`;
+  return `<aside class="diary-strip" aria-label="Your reading diary"><span class="diary-strip-heart" aria-hidden="true">${journal.completedToday ? "♥" : "♡"}</span><div><span class="eyebrow">MY LITTLE READING DIARY</span><p><strong>${journal.streak} ${journal.streak === 1 ? "day" : "days"} in a row</strong> · ${journal.total} ${journal.total === 1 ? "day" : "days"} filed · best streak ${journal.best}</p></div><p class="diary-strip-note">${journal.completedToday ? "Today’s page is stamped. See you tomorrow!" : "Finish a daily game to stamp today’s page."}<br>A wrong answer still counts. ♡</p></aside>`;
 }
 function home() {
   loadIssue("daily");
   screen = "home";
   chrome(
-    `<section class="cover home-cover"><div class="cover-copy"><span class="label-sticker">${getIssue(day) ? escape(getIssue(day).theme) : "your daily dose of internet lore"} <span>♡</span></span><h1>you had to<br><em>be there.</em></h1><img class="cursor-sticker" src="./src/assets/pixel-cursor.png" alt="" aria-hidden="true" width="68" height="90"></div><div class="cover-note"><p class="cover-subtitle">Two daily games.<br>One very online brain.</p><p class="intro">For the fan accounts, the pop-girl playlists, and the late-night rabbit holes. Pick a quiz, open an ask, or do both. Your old dashboard would be proud.</p><nav class="game-shortcuts" aria-label="Find your daily game"><a class="pill" href="#daily-quiz">Daily Quiz ↘</a><a class="pill" href="#anonymous-ask">Anonymous Ask ↘</a></nav><div class="daily-note"><span class="tiny-heart" aria-hidden="true">♡</span><div><strong>A new little obsession, every day.</strong><p>Next issue in <span data-countdown>--:--:--</span> <span class="reset-label">· midnight Eastern</span></p></div></div></div></section><div class="daily-games" role="group" aria-label="Two free daily games">${quizPost()}${askPost()}</div>${readingDiary()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">THE ARCHIVE / DAILY MINI QUIZZES</span><h2 id="archive-title">Choose your <em>internet era.</em></h2><p>Pick a chapter. Your first 24 hours are free, then $5 once for all three eras.</p></div><span class="small-scribble">pick your personal canon ↙</span></div><div class="era-grid">${eras.map(eraCard).join("")}</div><p class="archive-note">The daily quiz and Anonymous Ask stay free. Era membership is $5 once after your free 24-hour trial. Each era refreshes at midnight Eastern. ♡</p></section>`,
+    `<section class="cover home-cover"><div class="cover-copy"><span class="label-sticker">${getIssue(day) ? escape(getIssue(day).theme) : "your daily dose of internet lore"} <span>♡</span></span><h1>you had to<br><em>be there.</em></h1><img class="cursor-sticker" src="./src/assets/pixel-cursor.png" alt="" aria-hidden="true" width="68" height="90"></div><div class="cover-note"><p class="cover-subtitle">Three daily games.<br>One very online brain.</p><p class="intro">For the fan accounts, the pop-girl playlists, and the late-night rabbit holes. Take the quiz, open an ask, or recover a lost post. Your old dashboard would be proud.</p><nav class="game-shortcuts" aria-label="Find your daily game"><a class="pill" href="#daily-quiz">Daily Quiz ↘</a><a class="pill" href="#anonymous-ask">Anonymous Ask ↘</a></nav><div class="daily-note"><span class="tiny-heart" aria-hidden="true">♡</span><div><strong>A new little obsession, every day.</strong><p>Next issue in <span data-countdown>--:--:--</span> <span class="reset-label">· midnight Eastern</span></p></div></div></div></section><div class="daily-games" role="group" aria-label="Two free daily games">${quizPost()}${askPost()}</div>${readingDiary()}${archiveUI.homeExtras()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">THE ARCHIVE / RECOVER YOUR INTERNET HISTORY</span><h2 id="archive-title">Choose your <em>internet era.</em></h2><p>Try a free folder in every era. Unlock the full archive for $5 once, with a 24-hour trial.</p></div><span class="small-scribble">pick your personal canon ↙</span></div><div class="era-grid">${eras.map(eraCard).join("")}</div><p class="archive-note">The daily quiz and Anonymous Ask stay free. Era membership is $5 once after your free 24-hour trial. Archive folders stay recovered; classic era remixes refresh daily. ♡</p></section>`,
   );
+  archiveUI.bindHome();
   document.querySelector("#play-ask").onclick = startPuzzle;
   document.querySelector("#play").onclick = () => startGame("daily");
   document
@@ -225,6 +217,10 @@ function renderPuzzle() {
   const status = puzzleStatus(activeAsk, guesses),
     finished = status !== "playing",
     visibleClues = Math.min(MAX_TURNS, guesses.length + (finished ? 0 : 1));
+  if (finished) {
+    archiveUI.stamp({ id: `ask:${askKey(day)}`, title: "Anonymous Ask", kind: "ask" });
+    if (status === "won") archiveUI.receipt({ id: `ask:${askKey(day)}`, title: activeAsk.answer, explanation: activeAsk.explanation, kind: "ask" });
+  }
   screen = finished ? "puzzle-results" : "puzzle";
   chrome(
     `<section class="quiz-window ask-window"><div class="window-bar"><span>deepcut.blog / inbox (1)</span>${windowDots}</div><div class="quiz-body"><div class="ask-game-heading"><span class="eyebrow">THE ANONYMOUS ASK / DAILY CLUE PUZZLE</span>${askSticker}</div><h1>${finished ? (status === "won" ? "You knew the <em>reference.</em>" : "A new receipt for <em>your archive.</em>") : "Anonymous asked: <em>who am I?</em>"}</h1><p class="ask-rules">Guess the person, fandom, platform, or title. Each miss or pass opens one clue and uses one of your six turns.</p><ol class="clue-notes">${activeAsk.clues
@@ -360,7 +356,7 @@ function questionImage(image) {
     : "";
 }
 
-async function showMembership(eraId = null, message = "") {
+async function showMembership(eraId = null, message = "", afterUnlock = null) {
   const dialog = document.querySelector("#membership");
   let email = "",
     codeSent = false,
@@ -492,7 +488,8 @@ async function showMembership(eraId = null, message = "") {
       if (play)
         play.onclick = () => {
           dialog.close();
-          if (eraId) startGame(eraId);
+          if (afterUnlock) afterUnlock();
+          else if (eraId) archiveUI.openEra(eraId);
           else home();
         };
       dialog.querySelector("#sign-out-eras").onclick = () =>
@@ -570,6 +567,7 @@ function quiz() {
         revealed = true;
         const choice = Number(button.dataset.answer),
           correct = choice === q.answer;
+        if (correct) archiveUI.receipt({ id: `quiz:${key}:${q.id}`, title: q.options[q.answer], explanation: q.explanation, era: mode.id, kind: "quiz" });
         answers.push(choice);
         save(key, answers);
         playSound(correct ? "correct" : "incorrect");
@@ -615,6 +613,7 @@ function shareText() {
   return `Deep Cut <3 · ${mode.name}\n${day}\n${answers.map((a, i) => (a === questions[i].answer ? "💗" : "🤍")).join("")}\n${score}/${mode.count} — ${rank(score, mode.count)}\nyou had to be there.\nYour turn → ${link}`;
 }
 function results() {
+  archiveUI.stamp({ id: `quiz:${key}`, title: mode.name, kind: "quiz" });
   screen = "results";
   finishDay();
   const score = scoreAnswers(questions, answers),
@@ -718,7 +717,7 @@ function refreshDay() {
   return true;
 }
 function tick() {
-  if (dayKey() !== day && !["quiz", "puzzle"].includes(screen)) {
+  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog"].includes(screen)) {
     refreshDay();
     return;
   }
@@ -739,6 +738,13 @@ function updateSoundButton() {
   button.setAttribute("aria-pressed", String(soundEnabled()));
   button.textContent = soundEnabled() ? "Sound on ♪" : "Sound off ♡";
 }
+const archiveUI = createArchiveUI({
+  root: app, read, save, home, render: chrome,
+  begin: next => { loadIssue("daily"); screen = next; },
+  getScreen: () => screen, canPlay: canPlayEras, membership: showMembership,
+  finishDay, startGame, share: shareResult,
+});
+document.querySelector("#sideblog-button").onclick = archiveUI.openSideblog;
 setSoundEnabled(read("deep-cut-sound", true) !== false);
 updateSoundButton();
 home();
@@ -749,7 +755,7 @@ window.addEventListener("hashchange", () => {
 document.querySelector("#membership-button").onclick = () => showMembership();
 setInterval(tick, 1000);
 window.addEventListener("focus", () => {
-  if (!["quiz", "puzzle"].includes(screen)) refreshDay();
+  if (!["quiz", "puzzle", "archive-file", "sideblog"].includes(screen)) refreshDay();
   tick();
 });
 window.addEventListener("storage", (event) => {

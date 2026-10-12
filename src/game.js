@@ -31,8 +31,9 @@ export function shuffleQuestions(picks, day) {
 export const eras = [
   {
     id: "tumblr",
-    name: "The Tumblr Years",
-    years: "2010–2015",
+    name: "The Fandom Years",
+    years: "2010–2016",
+    mechanic: "Finish the Lore",
     count: 5,
     icon: "♡",
     description:
@@ -41,8 +42,9 @@ export const eras = [
   },
   {
     id: "youtube",
-    name: "YouTube Was Everything",
-    years: "2015–2019",
+    name: "The YouTube Era",
+    years: "2017–2019",
+    mechanic: "Connect the Dots",
     count: 5,
     icon: "▷",
     description:
@@ -51,8 +53,9 @@ export const eras = [
   },
   {
     id: "modern",
-    name: "The New Lore",
-    years: "2020–Today",
+    name: "Current Lore",
+    years: "2020–now",
+    mechanic: "Decode the Feed",
     count: 5,
     icon: "✿",
     description:
