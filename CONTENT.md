@@ -1,4 +1,4 @@
-# Deep Cut editorial archive
+# The Fandom Files editorial archive
 
 New dated drafts are in `content/issues/`, reviewed in [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md). The October 11–19 drafts broaden beauty YouTube, Emma Chamberlain, gamer creators, Enya/Drew, Wildflower and internet-girl culture, followed by KATSEYE, PinkPantheress and classic fangirl pop. Main questions and Anonymous Ask share a theme. Only explicitly approved issues publish; see [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md). Draft sources still need checking because external source requests returned proxy 403. Optional local images require alt text, credits and appropriate usage rights.
 
@@ -48,4 +48,4 @@ Vanilla Mace remains part of the intended New Lore editorial direction. The form
 6. Preserve a live edition's IDs/order/content. Publish substantive edits with a new version; do not reuse old saved attempts for changed questions or clues.
 7. Maintain a weekly editorial slot for newer references. Longer-term, dated immutable issue manifests allow deliberate variety and truly new daily content.
 
-Naming note: Deep Cut remains a working name. Being different from Chronically Online does not establish trademark availability; exact and similar-name research remains part of launch preparation.
+Naming note: The Fandom Files remains a working name. Being different from Chronically Online does not establish trademark availability; exact and similar-name research remains part of launch preparation.

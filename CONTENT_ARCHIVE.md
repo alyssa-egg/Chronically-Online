@@ -1,8 +1,10 @@
-# Deep Cut: the master topic archive
+# The Fandom Files: the master topic archive
 
 **Owner’s topic brief · awaiting editorial development.** This is a planning catalog, not a list of approved live questions. Keep the existing **$5 one-time** price. The proposed $4.99 in the accompanying concept was superseded by your confirmation.
 
 The starter archive uses previously published references. The broader ideas below become sourced prompts, matching files, timelines, or Lost Post clues only after review. Public collaborations and releases can support questions; private relationship speculation is not a fact source. Sound Files use written music clues; no licensed song clips are included. Visual ideas need an original, licensed, or permitted asset with credit and alt text.
+
+The supplied brief below predates the rename from Deep Cut to **The Fandom Files**. Its topic suggestions remain editorial planning material.
 
 ## Your complete topic brief
 

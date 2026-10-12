@@ -1,3 +1,5 @@
+import { drawBrand, saveCanvas } from "./collectibles-export.js";
+import { featuredBadge } from "./badges.js";
 import { pinnedReceipts, stickers } from "./sideblog.js";
 export async function exportSideblog(state) {
   await document.fonts.ready;
@@ -19,18 +21,25 @@ export async function exportSideblog(state) {
     }
     if (count < maxLines) ctx.fillText(line, x, y + count * 29);
   };
-  write("deepcut<3", 65, 105, 58, "#147680", true);
+  await drawBrand(ctx,65,32,730);
   write("YOUR SIDEBLOG / YOU HAD TO BE THERE.", 65, 157, 18);
+  const badge = featuredBadge(state);
   const name = state.name || "my little sideblog";
   ctx.font = "700 48px Outfit, sans-serif";
-  write(name, 65, 248, Math.min(48, 48 * 1070 / ctx.measureText(name).width), ink, true);
-  write(`${state.receipts.length} receipts · ${state.stamps.length} stamps · ${state.chapters.length} chapters`, 65, 296, 23);
+  write(name, 65, 248, Math.min(48, 48 * (badge ? 790 : 1070) / ctx.measureText(name).width), ink, true);
+  write(`${state.receipts.length} receipt${state.receipts.length === 1 ? "" : "s"} · ${state.stamps.length} stamp${state.stamps.length === 1 ? "" : "s"} · ${state.chapters.length} chapter${state.chapters.length === 1 ? "" : "s"}`, 65, 296, 23);
   const cursor = new Image(); cursor.src = new URL("./assets/pixel-cursor.png", import.meta.url).href;
   await cursor.decode();
   state.decorations.forEach((id, index) => {
     if (id === "cursor") ctx.drawImage(cursor, 65 + index * 90, 325, 30, 40);
     else write(stickers.find(sticker => sticker.id === id)?.label || "", 65 + index * 90, 365, 42, "#b52c7b");
   });
+  if (badge) {
+    const art = new Image(); art.src = new URL(`./assets/collectibles/${badge.art}.svg`, import.meta.url).href; await art.decode();
+    ctx.drawImage(art, 890, 195, 90, 90);
+    ctx.font = "700 18px Outfit, sans-serif"; ctx.fillStyle = ink;
+    wrap(badge.title, 890, 315, 240, 2);
+  }
   const receipts = pinnedReceipts(state);
   receipts.forEach((receipt, i) => {
     const x = 65 + (i % 2) * 550, y = 422 + Math.floor(i / 2) * 265;
@@ -43,12 +52,6 @@ export async function exportSideblog(state) {
   if (!receipts.length) write("your future lore goes here. ♡", 65, 520, 32);
   state.stamps.slice(-4).forEach((stamp, index) => write(`✧ ${stamp.title.slice(0, 42)}`, 65 + (index % 2) * 550, 1240 + Math.floor(index / 2) * 30, 18));
   write("a little archive of a very online life.", 65, 1340, 34, ink, true);
-  write("deepcutt.netlify.app · made with Deep Cut", 65, 1410, 22);
-  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-  if (!blob) throw new Error("Your scrapbook could not be exported. Please try again.");
-  const file = new File([blob], "my-deep-cut-sideblog.png", { type: "image/png" });
-  if (navigator.canShare?.({ files: [file] })) { await navigator.share({ title: "My Deep Cut sideblog", files: [file] }); return; }
-  const url = URL.createObjectURL(blob), link = document.createElement("a");
-  link.href = url; link.download = file.name; link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  write(`${new URL("./", location.href).host} · made with The Fandom Files`, 65, 1410, 22);
+  await saveCanvas(canvas, "my-fandom-files-sideblog.png", "My Fandom Files sideblog");
 }

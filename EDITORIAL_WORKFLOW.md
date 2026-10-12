@@ -1,12 +1,12 @@
 # Your day-before review ♡
 
-You have the final say on Deep Cut’s questions. I can draft and edit issues when you send ideas in this chat; nothing automatically writes new questions while we’re away. The first ten broader issues, October 11–20, 2026, are **drafts awaiting your approval**.
+You have the final say on The Fandom Files’s questions. I can draft and edit issues when you send ideas in this chat; nothing automatically writes new questions while we’re away. The first ten broader issues, October 11–20, 2026, are **drafts awaiting your approval**.
 
 Open [QUESTION_SCHEDULE.md](QUESTION_SCHEDULE.md) to see every question, answer, explanation, and Anonymous Ask clue. Main themes now cover beauty YouTube, gaming, internet-girl moodboards, Emma, Enya/Drew, Vine/TikTok, KATSEYE/global pop girls, PinkPantheress/bedroom pop, and the original fangirl group chat. The main quiz and its Ask share a theme. The three era quizzes keep their own era boundaries and separate questions.
 
 ## Each day, before publication
 
-1. Review tomorrow’s issue. In GitHub, open **Actions → Tomorrow’s Deep Cut review → latest run → Summary**. It runs around **9 a.m. Eastern**, with both UTC schedules accommodating daylight saving. GitHub scheduled runs can be delayed; you can also use **Run workflow** or read the Markdown calendar anytime.
+1. Review tomorrow’s issue. In GitHub, open **Actions → Tomorrow’s Fandom Files review → latest run → Summary**. It runs around **9 a.m. Eastern**, with both UTC schedules accommodating daylight saving. GitHub scheduled runs can be delayed; you can also use **Run workflow** or read the Markdown calendar anytime.
 2. Send your edits here, such as “October 14 Q5: use this Emma clip instead,” or edit `content/issues/YYYY-MM-DD.json` in GitHub. Send a public source link with niche references and visual ideas. I can turn them into a clear prompt, plausible choices, an explanation, and matching Ask clues.
 3. Check the source links, correct answers, distractors, and image rights. Draft links are reference destinations; this environment could not fetch the original source sites. They are **not live fact-checked**. `sourcesConfirmed` stays false until a reviewer checks them.
 4. Explicitly approve a **complete dated issue**. “Approve October 14, including all games and the Ask” is enough for me to record approval after your source review. Unresolved individual questions should keep the whole issue in draft.
@@ -21,7 +21,7 @@ npm run content:review
 npm test
 npm run build
 git add content/issues QUESTION_SCHEDULE.md
-git commit -m "Approve the next Deep Cut issue"
+git commit -m "Approve the next The Fandom Files issue"
 git push origin main
 ```
 

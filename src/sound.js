@@ -11,6 +11,7 @@ const melodies = {
   incorrect: [392, 349.23],
   finish: [523.25, 659.25, 783.99, 1046.5],
   click: [880],
+  unlock: [659.25, 987.77, 1318.51, 1567.98],
 };
 export function playSound(kind = "click") {
   if (!enabled) return;

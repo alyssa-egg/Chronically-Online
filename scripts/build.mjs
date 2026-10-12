@@ -11,6 +11,10 @@ const files = new Set([
   "index.html",
   "src/app.js",
   "src/archive-ui.js",
+  "src/badges.js",
+  "src/collectibles-ui.js",
+  "src/collectibles-export.js",
+
   "src/collection.js",
   "src/sideblog.js",
   "src/sideblog-export.js",
@@ -21,10 +25,18 @@ const files = new Set([
   "src/sound.js",
   "src/style.css",
   "src/favicon.svg",
-  "src/assets/deep-cut-logo.png",
+  "src/assets/fandom-files-logo.png",
   "src/assets/case-doodle.svg",
   "src/assets/ask-moustache.png",
   "src/assets/pixel-cursor.png",
+  "src/assets/collectibles/butterfly.svg",
+  "src/assets/collectibles/camera.svg",
+  "src/assets/collectibles/player.svg",
+  "src/assets/collectibles/folder.svg",
+  "src/assets/collectibles/stamp.svg",
+  "src/assets/collectibles/chat.svg",
+  "src/assets/collectibles/cursor.svg",
+
   "src/assets/fonts/outfit-variable.ttf",
   "src/assets/fonts/OFL.txt",
 ]);
@@ -55,5 +67,5 @@ await writeFile(
 await writeFile(path.join(output, "src/issues.js"), publicIssueModule(issues));
 await writeFile(path.join(output, "src/archive-catalog.js"), publicArchiveModule());
 console.log(
-  `Deep Cut built in dist/ (${files.size + 3} public files; premium questions stay in the server function).`,
+  `The Fandom Files built in dist/ (${files.size + 3} public files; premium questions stay in the server function).`,
 );

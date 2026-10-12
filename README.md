@@ -1,4 +1,4 @@
-# Deep Cut ♡
+# The Fandom Files ♡
 
 “you had to be there.” A daily internet-culture quiz and Anonymous Ask, styled like an old Tumblr blog meets a magazine. Beauty YouTube, gaming rabbit holes, fan accounts, and the group chat—in turquoise, hot pink, scrapbook notes, and original chimes.
 
@@ -12,7 +12,7 @@ git pull origin main
 npm start
 ```
 
-Open `http://localhost:3000`. Requires Node.js **22+**, with no dependencies to install. If that port is occupied, use `PORT=3001 npm start`. The repository/folder remains `Chronically-Online`; the website is Deep Cut. In the cloud, use `/workspace/Chronically-Online`.
+Open `http://localhost:3000`. Requires Node.js **22+**, with no dependencies to install. If that port is occupied, use `PORT=3001 npm start`. The repository/folder remains `Chronically-Online`; the website is The Fandom Files. In the cloud, use `/workspace/Chronically-Online`.
 
 ## Play
 
@@ -70,8 +70,14 @@ Browser checks cover free play, disabled membership without configuration, mocke
 
 Dated content: `content/issues/`. Review/publication: `scripts/editorial.mjs`, `src/issue-schema.js`, `server/editorial.mjs`. Browser: `src/app.js`, `src/style.css`, `src/game.js`, `src/puzzle.js`, `src/sound.js`. Auth/checkout/access: `src/membership.js`, `server/premium.mjs`, `netlify/functions/api.mjs`. Database: `config/membership.sql`.
 
-See [CONTENT.md](CONTENT.md) for writing/source checks and [ACTION_PLAN.md](ACTION_PLAN.md) for launch work. Deep Cut remains a working name; trademark/domain availability has not been verified. The logo and Ask sticker were prepared from your supplied image references; retain the originals for future exact replacements. Other bundled illustrations and sounds are original.
+See [CONTENT.md](CONTENT.md) for writing/source checks and [ACTION_PLAN.md](ACTION_PLAN.md) for launch work. The logo and Ask sticker were prepared from your supplied image references; retain the originals for future exact replacements. Other bundled illustrations and sounds are original.
 
 Scores are browser-local, with no server-validated leaderboard or aggregate analytics. The GitHub review files contain future answers; a public repository makes them public. The game controls paid gameplay access rather than hiding facts in a public repository.
 
 See [ARCHIVE_GUIDE.md](ARCHIVE_GUIDE.md) for the new game flow and [CONTENT_ARCHIVE.md](CONTENT_ARCHIVE.md) for your full topic brief. New daily question material remains draft until owner approval.
+
+## Collectible files and public launch
+
+The Sideblog includes fourteen artifact cards, locked goals, a featured collectible and pinned finds. New unlocks reveal with a short animation and an optional original chime; reduced motion and sound off are respected. The Lore Book organizes correct-answer receipts with search, era filters, and related pages. Badges stay earned when you miss a day, and legacy progress is retained under the existing internal storage keys. [COLLECTIBLES_BRIEF.md](COLLECTIBLES_BRIEF.md) records the supplied ideas and what shipped.
+
+Start with [LAUNCH_GUIDE.md](LAUNCH_GUIDE.md). The current URL remains `https://deepcutt.netlify.app/`; the new brand does not change hosting, account identifiers, or the $5 one-time price. [STRIPE_INTEGRATION_TODO.md](STRIPE_INTEGRATION_TODO.md) is the payment launch checklist, including public SMTP and test-to-live steps. Real payment success has not been verified in this cloud environment.

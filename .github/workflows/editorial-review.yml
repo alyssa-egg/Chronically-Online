@@ -1,4 +1,4 @@
-name: Tomorrow's Deep Cut review
+name: Tomorrow's Fandom Files review
 on:
   workflow_dispatch:
   schedule:

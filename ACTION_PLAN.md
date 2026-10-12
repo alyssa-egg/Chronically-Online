@@ -1,4 +1,4 @@
-# Deep Cut: product and launch action plan
+# The Fandom Files: product and launch action plan
 
 ## 1. Positioning and naming
 
@@ -6,7 +6,7 @@
 
 Make the niche explicit: Tumblr-era fandom, One Direction, Ariana-era pop culture, stan vocabulary, and current internet references. Invite people who missed an era as well as people who remember it. Explanations should make a wrong answer entertaining rather than embarrassing.
 
-Deep Cut names the obscure references the game celebrates, without locking it to one era. Backup names to research: Askbox Club, Mutuals Only, and Reblog Relay. Deep Cut is a common phrase, so matching and similar entertainment brands deserve careful checking. None are cleared names. A “copyright-free name” cannot be guaranteed: short names are generally a trademark question, while code, illustrations, and writing involve copyright. Before buying branding or a domain, search the exact name, close spellings, app stores, social handles, web results, and trademark databases in target markets. Have a qualified professional assess conflicting marks before investing. Use a temporary working identity until clearance.
+The Fandom Files names the obscure references the game celebrates, without locking it to one era. Backup names to research: Askbox Club, Mutuals Only, and Reblog Relay. The Fandom Files is a common phrase, so matching and similar entertainment brands deserve careful checking. None are cleared names. A “copyright-free name” cannot be guaranteed: short names are generally a trademark question, while code, illustrations, and writing involve copyright. Before buying branding or a domain, search the exact name, close spellings, app stores, social handles, web results, and trademark databases in target markets. Have a qualified professional assess conflicting marks before investing. Use a temporary working identity until clearance.
 
 The distinct visual direction is magazine departments, serif cover headlines, a turquoise-and-hot-pink wordmark, pastel browser chrome, subtle graph paper, original ribbon bows, hearts, and scrapbook notes. Avoid copying BuzzFeed layouts, typography, logos, question text, or proprietary result language. This prototype uses CSS and SVG artwork, symbols, original quiz wording, and synthesized Web Audio chimes. No samples or artist recordings are included. Use neutral public facts; artist and platform names do not imply endorsement.
 
@@ -86,7 +86,7 @@ Start with low-cost static hosting, one researched domain, and free development 
 ## Immediate next actions
 
 1. Pull the latest GitHub changes, restart the local server, and play the main quiz, all three eras, and The Anonymous Ask on a phone and desktop.
-2. Research Deep Cut and two backup names before buying any assets.
+2. Research The Fandom Files and two backup names before buying any assets.
 3. Recruit 8–12 people from the intended fandom audience for observed playtests.
 4. Review the nine drafted dated issues, then extend the calendar with five more sourced issues.
 5. Connect the Netlify project to GitHub and deploy both `dist` and the membership function over HTTPS; test real phone audio, share sheets, and card uploads. Configure Git-connected deployment for automatic updates.

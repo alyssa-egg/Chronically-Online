@@ -118,7 +118,7 @@ if (action === "tomorrow") {
     .slice(0, 10);
   const summary = issues[tomorrow]
     ? render(issues[tomorrow])
-    : `# Deep Cut day-before review\n\nNo draft has been prepared for ${tomorrow}. Prepare one before approving publication. The existing archive remains the fallback.\n`;
+    : `# The Fandom Files day-before review\n\nNo draft has been prepared for ${tomorrow}. Prepare one before approving publication. The existing archive remains the fallback.\n`;
   if (process.env.GITHUB_STEP_SUMMARY)
     await writeFile(process.env.GITHUB_STEP_SUMMARY, summary);
   console.log(summary);
@@ -129,7 +129,7 @@ if (action === "tomorrow") {
       `| ${issue.date} | ${issue.theme} | ${issue.ask.answer} | ${issue.status} |`,
   );
   const text = [
-    "# Deep Cut — day-before question review ♡",
+    "# The Fandom Files — day-before question review ♡",
     "",
     "This replaces the earlier repeating-calendar review with dated, themed issues. Every main quiz and its Anonymous Ask share one theme. All new issues below are drafts until you approve them.",
     "",

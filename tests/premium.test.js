@@ -441,3 +441,13 @@ test('paid archive access is revoked after a refund, even with a previously vali
   const revoked=await h.call('',{path:'archive',query:'id=beauty-tabs'});
   assert.equal(revoked.status,402);assert.equal(revoked.data.collection,undefined);
 });
+
+test('switching to live Stripe ignores a saved sandbox purchase without deleting the account or restarting its trial',async()=>{
+ const h=harness({member:{user_id:userId,stripe_session_id:'cs_test_owned',trial_started_at:new Date(current-TRIAL_MS-1).toISOString()}});
+ const live={...env,STRIPE_PUBLISHABLE_KEY:'pk_live_mock',STRIPE_SECRET_KEY:'sk_live_mock',STRIPE_PRICE_ID:'price_live_5'};
+ const status=await h.call('status',{environment:live});
+ assert.equal(status.status,200);assert.equal(status.data.purchased,false);assert.equal(status.data.trialStarted,true);assert.equal(status.data.trialActive,false);
+ assert.ok(!h.calls.some(call=>call.url.includes('/checkout/sessions/cs_test_owned')));
+ const checkout=await h.call('checkout',{environment:live,body:{}});assert.equal(checkout.status,200);assert.ok(checkout.data.client_secret);
+ assert.equal(h.row.stripe_session_id,'cs_test_owned');
+});

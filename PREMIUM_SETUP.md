@@ -1,4 +1,4 @@
-# Connect Deep Cut’s $5 eras
+# Connect The Fandom Files’s $5 eras
 
 Live site provided: **https://deepcutt.netlify.app/**.
 
@@ -24,12 +24,12 @@ The committed `netlify.toml` supplies build/function settings. The function hand
 1. Create a project at Supabase. Copy its project URL and the **legacy `anon` and `service_role` keys** from project settings (API/API Keys → Legacy API Keys). This implementation sends those keys as JWT bearer credentials; the newer `sb_publishable_...`/`sb_secret_...` keys are not interchangeable in this code. Keep the service-role key private.
 2. Run [config/membership.sql](config/membership.sql) in its SQL editor. It creates `deep_cut_memberships` with one row per user. Browser roles cannot insert/update trials or purchases; the backend uses the service-role key.
 3. Enable email sign-in. Set the Auth Site URL to `https://deepcutt.netlify.app`.
-4. In the **Magic Link email template**, show the one-time code with `{{ .Token }}` so players can type the code into Deep Cut. The app verifies that emailed code rather than using a magic-link redirect.
+4. The working default email link can stay unchanged. The app handles both email links and optional codes. For public delivery, configure custom SMTP; use [STRIPE_INTEGRATION_TODO.md](STRIPE_INTEGRATION_TODO.md) for current authentication and payment launch steps.
 5. Configure a production mail sender/SMTP and appropriate sign-up/OTP rate limits. The built-in development sender may limit delivery to approved addresses and is not a public-launch email service. Check the current Supabase plan’s limits.
 
 ## 3. Create the Stripe product
 
-1. Start in Stripe **test mode**. Create a product “Deep Cut — all eras.”
+1. Start in Stripe **test mode**. Create a product “The Fandom Files — all eras.”
 2. Add a **one-time $5.00 USD price**. Do not select a recurring subscription or add an extra checkout fee. Copy its `price_...` ID.
 3. Create a webhook destination at `https://deepcutt.netlify.app/api/stripe-webhook` for **`checkout.session.completed`**. Copy the destination’s signing secret `whsec_...`.
 4. The app allows card payments, including supported card wallets, and checks the charged total is exactly $5. Keep this price ID stable for existing purchases. Price migration requires a code/data migration; changing it alone will make old receipts fail validation.

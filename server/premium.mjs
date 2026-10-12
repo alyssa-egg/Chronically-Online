@@ -88,7 +88,7 @@ export async function handlePremiumRequest(
       request.headers.get("origin") &&
       request.headers.get("origin") !== url.origin
     )
-      throw new ApiError(403, "Open membership from the Deep Cut website.");
+      throw new ApiError(403, "Open membership from the The Fandom Files website.");
     const configured = Boolean(
       env.SUPABASE_URL &&
       env.SUPABASE_ANON_KEY &&
@@ -352,7 +352,7 @@ export async function handlePremiumRequest(
       return response({ signedOut: true });
     }
     const paid = async () =>
-      member?.stripe_session_id
+      member?.stripe_session_id && !(member.stripe_session_id.startsWith("cs_test_") && env.STRIPE_PUBLISHABLE_KEY?.startsWith("pk_live_"))
         ? receiptIsValid(
             await receipt(member.stripe_session_id),
             user.id,

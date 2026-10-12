@@ -1,4 +1,4 @@
-# Deep Cut — day-before question review ♡
+# The Fandom Files — day-before question review ♡
 
 This replaces the earlier repeating-calendar review with dated, themed issues. Every main quiz and its Anonymous Ask share one theme. All new issues below are drafts until you approve them.
 

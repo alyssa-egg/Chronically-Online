@@ -186,3 +186,11 @@ If I were prioritizing your next build, I'd do just three things:
 2. Develop The Lost Post into your signature visual puzzle.
 3. Build Sideblog as the creative reward that grows with every game played.
 That's a clearer identity than adding more quizzes. It's a game that lets fan girls demonstrate what they know and create something that feels like theirs.
+
+## Collectible artifact cards and Lore Book
+
+The Fandom Files now has fourteen collectible cards with original pixel-style SVG artwork, locked silhouettes and visible goals. The Sideblog can feature one favorite find and pin up to three cards. New unlocks reveal with a brief animation and optional original chime, with reduced motion respected. Export an individual spoiler-free badge card or your entire scrapbook. Existing local progress is migrated into eligible collectibles without resetting receipts or chapters; missing a day does not remove earned cards. The seven-day badge requires seven different completion days, not a consecutive streak.
+
+The Lore Book turns correct-answer receipts into searchable pages, with era filters, the recovered explanation, and links to related collected pages or an era folder. It lives in the same browser as the Sideblog. A separate Redacted File game remains an experiment; the Lore Book is the selected priority from your brief. [COLLECTIBLES_BRIEF.md](COLLECTIBLES_BRIEF.md) lists what shipped. [LAUNCH_GUIDE.md](LAUNCH_GUIDE.md) covers public release, with the Stripe checklist as the source of truth for payment steps.
+
+The website is **The Fandom Files**. The hosting URL, repository name, `deep-cut-*` local keys and `deep_cut_memberships` table retain their internal names to preserve continuity. The logo was prepared from your supplied wordmark reference; keep the original upload for an exact source-asset replacement later. No account or saved-purchase migration is required for this display-name change.

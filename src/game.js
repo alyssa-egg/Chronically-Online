@@ -66,7 +66,7 @@ export const eras = [
 export const modes = [
   {
     id: "daily",
-    name: "The daily deep cut",
+    name: "The daily fandom file",
     count: 10,
     short: "A little bit of every era.",
   },
