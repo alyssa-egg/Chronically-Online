@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <base href="/" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#effbfc" />
     <meta
       name="description"
-      content="The Fandom Files: daily fandom quizzes, anonymous clue puzzles, and a living archive. Tumblr years, YouTube sleepovers, and the new lore."
+      content="The Fandom Files: music, fandom, fashion, and internet memory. Read the lore, explore its connections, and keep your discoveries."
     />
-    <title>The Fandom Files — a daily quiz for the lore girls</title>
+    <title>The Fandom Files — music, fandom &amp; internet memory</title>
     <script src="https://js.stripe.com/dahlia/stripe.js" defer></script>
     <link
       rel="preload"
@@ -21,7 +22,7 @@
     <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
-    <a class="skip-link" href="#app">Skip to quiz</a>
+    <a class="skip-link" href="#app">Skip to content</a>
     <div class="top-ribbon">
       ♡ &nbsp; you had to be there. &nbsp; · &nbsp; and the mutuals still making
       lore &nbsp; ♡
@@ -34,8 +35,10 @@
           width="2146"
           height="733"
       /></a>
-      <span class="header-note">your daily fandom fixation</span>
+      <span class="header-note">your internet culture files</span>
       <nav aria-label="Site controls">
+        <button id="read-button" class="pill">Read the files ↗</button>
+        <button id="saved-stories-button" class="pill">Saved stories ♡</button>
         <button id="sideblog-button" class="pill">My sideblog ♡</button>
         <button id="membership-button" class="pill">My eras ♡</button>
         <button id="sound-button" class="pill" aria-pressed="true">
@@ -52,15 +55,14 @@
     <main id="app" tabindex="-1"></main>
     <footer>
       <span>Made with love for the group chat. ♡</span
-      ><span>Original graphics + little homemade sounds.</span>
+      ><span><a href="/admin/">Editorial login ↗</a></span>
     </footer>
     <dialog id="about" aria-labelledby="about-title">
       <button id="close-about" class="pill">Close ×</button>
       <span class="eyebrow">A NOTE FROM THE ASKBOX</span>
       <h2 id="about-title">Your fandom phase<br />was never a phase.</h2>
       <p>
-        The Fandom Files is a ten-question daily quiz about Tumblr, band fandoms, 2010s
-        YouTube, and newer creator communities. You don’t have to know
+        The Fandom Files is an independent publication about music, fandom, fashion, creators, and internet memory—with timelines, moodboards, saved stories, and daily games. You don’t have to know
         everything to belong here.
       </p>
       <p>
@@ -84,7 +86,7 @@
         there’s no public leaderboard.
       </p>
       <p>
-        The Fandom Files is an independent fan-culture game, not affiliated
+        The Fandom Files is an independent fan-culture publication, not affiliated
         with any featured artist, creator, or platform.
       </p>
     </dialog>

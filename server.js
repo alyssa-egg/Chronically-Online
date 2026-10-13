@@ -1,5 +1,6 @@
 import { publicArchiveModule } from "./server/archive.mjs";
 import http from "node:http";
+import { handleArticleRequest } from "./server/articles.mjs";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -21,6 +22,8 @@ const types = {
 const publicFiles = new Set([
   "/index.html",
   "/src/app.js",
+  "/src/publication.js",
+  "/src/article-content.js",
   "/src/archive-ui.js",
   "/src/badges.js",
   "/src/collectibles-ui.js",
@@ -62,6 +65,22 @@ http
         "http://" + (req.headers.host || "localhost"),
       );
       const pathname = decodeURIComponent(url.pathname);
+      if (pathname === "/api/articles") {
+        const result = await handleArticleRequest(new Request(url, { method: req.method }));
+        res.writeHead(result.status, Object.fromEntries(result.headers));
+        return res.end(Buffer.from(await result.arrayBuffer()));
+      }
+      if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+        const adminRoot = path.resolve(root, "dist/admin");
+        const relative = pathname.slice(7);
+        const adminFile = relative && path.extname(relative) ? path.resolve(adminRoot, relative) : path.join(adminRoot, "index.html");
+        if (!adminFile.startsWith(adminRoot + path.sep)) { res.writeHead(404); return res.end("Not found"); }
+        try {
+          const data = await readFile(adminFile);
+          res.writeHead(200, { "Content-Type": types[path.extname(adminFile)] || "application/octet-stream", "X-Content-Type-Options": "nosniff" });
+          return res.end(data);
+        } catch { res.writeHead(404); return res.end("Build the editorial dashboard first: npm run build"); }
+      }
       if (pathname.startsWith("/api/")) {
         const chunks = [];
         let size = 0;
@@ -90,7 +109,7 @@ http
         res.writeHead(result.status, Object.fromEntries(result.headers));
         return res.end(Buffer.from(await result.arrayBuffer()));
       }
-      const name = pathname === "/" ? "/index.html" : pathname;
+      const name = pathname === "/" || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
       const issues = await loadIssues(root);
       const images = Object.values(issues)
         .filter((issue) => issue.status === "approved")

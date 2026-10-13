@@ -1,6 +1,6 @@
 # The Fandom Files ♡
 
-“you had to be there.” A daily internet-culture quiz and Anonymous Ask, styled like an old Tumblr blog meets a magazine. Beauty YouTube, gaming rabbit holes, fan accounts, and the group chat—in turquoise, hot pink, scrapbook notes, and original chimes.
+“you had to be there.” An interactive internet-culture publication in turquoise and hot pink: music, fandom, fashion, creators, and internet memory. Read the lore, explore timelines and moodboards, and keep stories in your Sideblog. The daily games and collectible archive remain part of the dashboard.
 
 ## Run it on your Mac
 
@@ -9,10 +9,18 @@ Stop an existing server with **Ctrl+C**, then:
 ```sh
 cd ~/Projects/Chronically-Online
 git pull origin main
+npm run studio:install
+npm run build
 npm start
 ```
 
-Open `http://localhost:3000`. Requires Node.js **22+**, with no dependencies to install. If that port is occupied, use `PORT=3001 npm start`. The repository/folder remains `Chronically-Online`; the website is The Fandom Files. In the cloud, use `/workspace/Chronically-Online`.
+Open `http://localhost:3000`. Requires Node.js **22.12+** (Node 24 recommended). Sanity Studio dependencies are installed separately in `studio/`; the game server has no runtime dependencies. If that port is occupied, use `PORT=3001 npm start`. The repository/folder remains `Chronically-Online`; the website is The Fandom Files. In the cloud, use `/workspace/Chronically-Online`.
+
+## Write articles without editing code
+
+Open **https://fandomfiles.netlify.app/admin/** and sign in with your Sanity GitHub account. [BLOG_GUIDE.md](BLOG_GUIDE.md) walks through writing, images, interactive extras, scheduling, publishing and access. The five editorial desks appear above the games. Article updates appear after refreshing the site, without redeployment. Drafts remain hidden. Saved stories and personal poll choices are browser-local.
+
+[EDITORIAL_PUBLICATION_BRIEF.md](EDITORIAL_PUBLICATION_BRIEF.md) preserves the supplied magazine concept and future ideas. This release includes the article dashboard and interactive reader experience; shared community submissions/vote totals and a newsletter remain future work.
 
 ## Play
 
@@ -45,13 +53,13 @@ Only approved issues are packaged for publication on their date. Unapproved/miss
 
 ## Deploy to your Netlify website
 
-Site provided: **https://deepcutt.netlify.app/**. Connect that Netlify project to this GitHub repository’s `main` branch for automatic deployments. The committed settings use `npm run build`, publish `dist`, and bundle `netlify/functions`. See [PREMIUM_SETUP.md](PREMIUM_SETUP.md) for the Supabase database/email setup, Stripe’s one-time $5 price/webhook, and private Netlify variables.
+Current site: **https://fandomfiles.netlify.app/**. Connect that Netlify project to this GitHub repository’s `main` branch for automatic deployments. The committed settings install Studio dependencies, run `npm run build`, publish `dist` including `/admin/`, and bundle `netlify/functions`. See [PREMIUM_SETUP.md](PREMIUM_SETUP.md) for the Supabase database/email setup, Stripe’s one-time $5 price/webhook, and private Netlify variables.
 
-The public build has 13 files, plus any additional approved local image assets. It includes only the legacy free question pool and approved free issue content. Premium questions are returned by the API after checking trial/payment access. Drafts, credentials, and backend source are excluded from `dist`. Build replaces the generated folder; keep personal files elsewhere.
+The public build includes explicitly listed game/reader modules, generated free content, and compiled Sanity Studio assets, plus approved local image assets. It includes only the legacy free question pool and approved free issue content. Premium questions are returned by the API after checking trial/payment access. Drafts, credentials, and backend source are excluded from `dist`. Build replaces the generated folder; keep personal files elsewhere.
 
 A static upload/Netlify Drop serves the free games, but **does not deploy the membership function**. Use Git-connected deployment for trials/payments. Publishing only `dist` to other static hosts also needs a compatible backend to offer eras. A Node host can run `npm start` with the same private environment settings. Use HTTPS for real checkout and device sharing.
 
-No provider credentials were available during implementation, and the Netlify URL could not be fetched because the cloud egress proxy returned 403. Local/backend checks are documented below; a production deploy and real provider checks are still required.
+The Sanity production dataset connection and a temporary draft/publish/read/delete cycle were verified October 13, 2026. Public article reads do not require editor credentials. Owner login and the first real story remain owner checks. Payment tests use mocks and do not establish successful real Stripe charges.
 
 ## Verify changes
 
@@ -80,4 +88,4 @@ See [ARCHIVE_GUIDE.md](ARCHIVE_GUIDE.md) for the new game flow and [CONTENT_ARCH
 
 The Sideblog includes fourteen artifact cards, locked goals, a featured collectible and pinned finds. New unlocks reveal with a short animation and an optional original chime; reduced motion and sound off are respected. The Lore Book organizes correct-answer receipts with search, era filters, and related pages. Badges stay earned when you miss a day, and legacy progress is retained under the existing internal storage keys. [COLLECTIBLES_BRIEF.md](COLLECTIBLES_BRIEF.md) records the supplied ideas and what shipped.
 
-Start with [LAUNCH_GUIDE.md](LAUNCH_GUIDE.md). The current URL remains `https://deepcutt.netlify.app/`; the new brand does not change hosting, account identifiers, or the $5 one-time price. [STRIPE_INTEGRATION_TODO.md](STRIPE_INTEGRATION_TODO.md) is the payment launch checklist, including public SMTP and test-to-live steps. Real payment success has not been verified in this cloud environment.
+Start with [LAUNCH_GUIDE.md](LAUNCH_GUIDE.md). The current URL is `https://fandomfiles.netlify.app/`; existing internal account/progress identifiers and the $5 one-time price are retained. [STRIPE_INTEGRATION_TODO.md](STRIPE_INTEGRATION_TODO.md) is the payment launch checklist, including public SMTP and test-to-live steps. Real payment success has not been verified in this cloud environment.

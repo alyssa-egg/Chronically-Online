@@ -1,0 +1,16 @@
+{
+  "name": "fandom-files-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev --host 0.0.0.0 --port 3333",
+    "build": "sanity build ../dist/admin -y"
+  },
+  "dependencies": {
+    "sanity": "6.19.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "styled-components": "6.1.19"
+  },
+  "engines": { "node": ">=22.12" }
+}

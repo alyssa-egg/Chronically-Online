@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { publicArchiveModule } from "../server/archive.mjs";
 import { mkdir, copyFile, rm, lstat, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -10,6 +11,8 @@ const issues = await loadIssues(root);
 const files = new Set([
   "index.html",
   "src/app.js",
+  "src/publication.js",
+  "src/article-content.js",
   "src/archive-ui.js",
   "src/badges.js",
   "src/collectibles-ui.js",
@@ -69,3 +72,5 @@ await writeFile(path.join(output, "src/archive-catalog.js"), publicArchiveModule
 console.log(
   `The Fandom Files built in dist/ (${files.size + 3} public files; premium questions stay in the server function).`,
 );
+
+execFileSync("npm", ["--prefix", "studio", "run", "build"], { cwd: root, stdio: "inherit", env: { ...process.env, SANITY_STUDIO_TELEMETRY_ENABLED: "false" } });

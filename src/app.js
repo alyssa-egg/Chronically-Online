@@ -41,8 +41,11 @@ import {
 } from "./puzzle.js";
 
 import { createArchiveUI } from "./archive-ui.js";
+import { createPublicationUI } from "./publication.js";
+let booting = true;
 
 const app = document.querySelector("#app");
+document.querySelector(".skip-link").onclick = event => { event.preventDefault(); app.focus(); app.scrollIntoView(); };
 let storageAvailable = true;
 const visitStorage = new Map();
 const read = (key, fallback) => {
@@ -151,8 +154,12 @@ function issueLabel() {
   }).format(new Date(day + "T12:00:00Z"));
 }
 function chrome(content) {
+  if (!["editorial", "story"].includes(screen)) {
+    publication.leave();
+    if (!booting && (location.pathname.startsWith("/stories/") || new URL(location.href).searchParams.has("desk"))) history.pushState({}, "", "/");
+  }
   app.dataset.mode = mode.id;
-  app.innerHTML = `<div class="issue-line"><span><i class="online-dot"></i> THE DAILY FIXATION</span><span>${issueLabel()} <span class="issue-heart">♡</span></span></div>${content}<p id="storage-note" class="storage"></p>`;
+  app.innerHTML = `<div class="issue-line"><span><i class="online-dot"></i> THE FANDOM FILES / INTERNET MEMORY</span><span>${issueLabel()} <span class="issue-heart">♡</span></span></div>${content}<p id="storage-note" class="storage"></p>`;
   updateStorageNote();
   tick();
 }
@@ -183,7 +190,7 @@ function askPost() {
   return `<section class="daily-game ask-post" aria-labelledby="ask-title" id="anonymous-ask"><div class="window-bar"><span>fandomfiles.blog / inbox (1)</span>${windowDots}</div><div class="daily-game-art ask-art" aria-hidden="true"><span class="ask-art-note">anonymous left you a little mystery…</span>${askSticker}<span class="ask-art-tag">#name-that-reference</span></div><div class="daily-game-copy ask-post-copy"><span class="eyebrow">DAILY GAME 02 / SIX CLUES, ONE REFERENCE</span><h2 id="ask-title">The <em>Anonymous<br>Ask.</em></h2><p>Name the person, fandom, platform, or title hiding in six clues. Each miss or pass opens another.</p><button id="play-ask" class="primary">${finished ? "Open my ask result" : saved.length ? "Back to my ask" : "Open today’s ask"} ${arrow}</button><span class="game-status">${finished ? "today’s ask is filed ✓" : saved.length ? `${saved.length}/6 turns saved` : "6 turns · one mystery · free, always"}</span></div></section>`;
 }
 function quizPost() {
-  return `<section class="daily-game quiz-post" id="daily-quiz" aria-labelledby="quiz-title"><div class="window-bar"><span>fandomfiles.blog / pop-quiz</span>${windowDots}</div><div class="daily-game-art quiz-art" aria-hidden="true">${bow}<span class="quiz-art-note">your fandom phase<br><em>was never a phase.</em></span><span class="quiz-art-tag">♡ you remember. we remember.</span></div><div class="daily-game-copy"><span class="eyebrow">DAILY GAME 01 / TEN LITTLE FANDOM FILESS</span><h2 id="quiz-title">The <em>Daily Quiz.</em></h2><p>Ten questions for your fandom brain. Pick your answers, collect the receipts, and find your rank.</p><button class="primary" id="play">${answers.length === mode.count ? "Open my report card" : answers.length ? "Back to the daily quiz" : "Open today’s quiz"} ${arrow}</button><span class="game-status">${answers.length === mode.count ? "today’s quiz is filed ✓" : answers.length ? `${answers.length}/10 answers saved` : "10 questions · 3-ish minutes · free, always"}</span></div></section>`;
+  return `<section class="daily-game quiz-post" id="daily-quiz" aria-labelledby="quiz-title"><div class="window-bar"><span>fandomfiles.blog / pop-quiz</span>${windowDots}</div><div class="daily-game-art quiz-art" aria-hidden="true">${bow}<span class="quiz-art-note">your fandom phase<br><em>was never a phase.</em></span><span class="quiz-art-tag">♡ you remember. we remember.</span></div><div class="daily-game-copy"><span class="eyebrow">DAILY GAME 01 / TEN LITTLE FANDOM FILES</span><h2 id="quiz-title">The <em>Daily Quiz.</em></h2><p>Ten questions for your fandom brain. Pick your answers, collect the receipts, and find your rank.</p><button class="primary" id="play">${answers.length === mode.count ? "Open my report card" : answers.length ? "Back to the daily quiz" : "Open today’s quiz"} ${arrow}</button><span class="game-status">${answers.length === mode.count ? "today’s quiz is filed ✓" : answers.length ? `${answers.length}/10 answers saved` : "10 questions · 3-ish minutes · free, always"}</span></div></section>`;
 }
 function readingDiary() {
   const journal = diary();
@@ -193,8 +200,9 @@ function home() {
   loadIssue("daily");
   screen = "home";
   chrome(
-    `<section class="cover home-cover"><div class="cover-copy"><span class="label-sticker">${getIssue(day) ? escape(getIssue(day).theme) : "your daily dose of internet lore"} <span>♡</span></span><h1>you had to<br><em>be there.</em></h1><img class="cursor-sticker" src="./src/assets/pixel-cursor.png" alt="" aria-hidden="true" width="68" height="90"></div><div class="cover-note"><p class="cover-subtitle">Three daily games.<br>One very online brain.</p><p class="intro">For the fan accounts, the pop-girl playlists, and the late-night rabbit holes. Take the quiz, open an ask, or recover a lost post. Your old dashboard would be proud.</p><nav class="game-shortcuts" aria-label="Find your daily game"><a class="pill" href="#daily-quiz">Daily Quiz ↘</a><a class="pill" href="#anonymous-ask">Anonymous Ask ↘</a></nav><div class="daily-note"><span class="tiny-heart" aria-hidden="true">♡</span><div><strong>A new little obsession, every day.</strong><p>Next issue in <span data-countdown>--:--:--</span> <span class="reset-label">· midnight Eastern</span></p></div></div></div></section><div class="daily-games" role="group" aria-label="Two free daily games">${quizPost()}${askPost()}</div>${readingDiary()}${archiveUI.homeExtras()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">THE ARCHIVE / RECOVER YOUR INTERNET HISTORY</span><h2 id="archive-title">Choose your <em>internet era.</em></h2><p>Try a free folder in every era. Unlock the full archive for $5 once, with a 24-hour trial.</p></div><span class="small-scribble">pick your personal canon ↙</span></div><div class="era-grid">${eras.map(eraCard).join("")}</div><p class="archive-note">The daily quiz and Anonymous Ask stay free. Era membership is $5 once after your free 24-hour trial. Archive folders stay recovered; classic era remixes refresh daily. ♡</p></section>`,
+    `<section class="cover home-cover"><div class="cover-copy"><span class="label-sticker">${getIssue(day) ? escape(getIssue(day).theme) : "an internet culture publication"} <span>♡</span></span><h1>you had to<br><em>be there.</em></h1><img class="cursor-sticker" src="./src/assets/pixel-cursor.png" alt="" aria-hidden="true" width="68" height="90"></div><div class="cover-note"><p class="cover-subtitle">Music. Fandom.<br>Internet memory.</p><p class="intro">A little magazine for the fan accounts, the pop-girl playlists, and the late-night rabbit holes. Read the lore, follow its connections, and keep your favorite discoveries. Your old dashboard would be proud.</p><nav class="game-shortcuts" aria-label="Find your daily game"><a class="pill" href="#editorial-home">Read the files ↘</a><a class="pill" href="#play-section">Play today’s games ↘</a></nav><div class="daily-note"><span class="tiny-heart" aria-hidden="true">♡</span><div><strong>A new little obsession, every day.</strong><p>Next issue in <span data-countdown>--:--:--</span> <span class="reset-label">· midnight Eastern</span></p></div></div></div></section><section class="editorial-home" id="editorial-home" aria-label="The editorial files"><p class="editorial-notice" role="status">Opening the editorial files…</p></section><div class="section-heading" id="play-section"><div><span class="eyebrow">THE GAME ROOM / FREE DAILY FILES</span><h2>stay a little. <em>play a little.</em></h2></div></div><div class="daily-games" role="group" aria-label="Two free daily games">${quizPost()}${askPost()}</div>${readingDiary()}${archiveUI.homeExtras()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">THE ARCHIVE / RECOVER YOUR INTERNET HISTORY</span><h2 id="archive-title">Choose your <em>internet era.</em></h2><p>Try a free folder in every era. Unlock the full archive for $5 once, with a 24-hour trial.</p></div><span class="small-scribble">pick your personal canon ↙</span></div><div class="era-grid">${eras.map(eraCard).join("")}</div><p class="archive-note">The daily quiz and Anonymous Ask stay free. Era membership is $5 once after your free 24-hour trial. Archive folders stay recovered; classic era remixes refresh daily. ♡</p></section>`,
   );
+  publication.mountHome();
   archiveUI.bindHome();
   document.querySelector("#play-ask").onclick = startPuzzle;
   document.querySelector("#play").onclick = () => startGame("daily");
@@ -717,7 +725,7 @@ function refreshDay() {
   return true;
 }
 function tick() {
-  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page"].includes(screen)) {
+  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "story", "editorial"].includes(screen)) {
     refreshDay();
     return;
   }
@@ -745,10 +753,17 @@ const archiveUI = createArchiveUI({
   finishDay, startGame, startPuzzle, share: shareResult,
   dailyProgress: () => ({ quiz: savedAnswers("daily", day).length, ask: savedGuesses(day).length, askFinished: puzzleStatus(dailyPuzzle(day), savedGuesses(day)) !== "playing" }),
 });
+const publication = createPublicationUI({ root: app, render: chrome, begin: next => { loadIssue("daily"); screen = next; }, read, save, home });
+document.querySelector("#read-button").onclick = () => publication.openDesk("all");
+document.querySelector("#saved-stories-button").onclick = publication.openSaved;
 document.querySelector("#sideblog-button").onclick = archiveUI.openSideblog;
+app.addEventListener("click", event => { if (event.target.closest("[data-saved-stories]")) publication.openSaved(); });
 setSoundEnabled(read("deep-cut-sound", true) !== false);
 updateSoundButton();
 home();
+booting = false;
+publication.route();
+window.addEventListener("popstate", () => { if (!publication.route()) home(); });
 resumeMembership();
 window.addEventListener("hashchange", () => {
   if (hasEmailLink()) resumeMembership();
@@ -756,7 +771,7 @@ window.addEventListener("hashchange", () => {
 document.querySelector("#membership-button").onclick = () => showMembership();
 setInterval(tick, 1000);
 window.addEventListener("focus", () => {
-  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page"].includes(screen)) refreshDay();
+  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "story", "editorial"].includes(screen)) refreshDay();
   tick();
 });
 window.addEventListener("storage", (event) => {
