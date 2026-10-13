@@ -7,7 +7,8 @@ export default defineConfig({
   title: "The Fandom Files · Editorial",
   projectId: "rjg4g3cl",
   dataset: "production",
-  basePath: "/admin",
+  // The CLI mounts the Studio at /admin; this is the workspace within it.
+  basePath: "/",
   plugins: [structureTool()],
   schema: { types: [article] },
   document: {
