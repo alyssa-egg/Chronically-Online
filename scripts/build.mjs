@@ -12,6 +12,11 @@ const files = new Set([
   "index.html",
   "src/app.js",
   "src/publication.js",
+  "src/archive-topics.js",
+  "src/cover.js",
+  "src/design-symbols.js",
+  "src/article-layout.js",
+  "src/redesign.css",
   "src/article-content.js",
   "src/archive-ui.js",
   "src/badges.js",
@@ -42,6 +47,8 @@ const files = new Set([
 
   "src/assets/fonts/outfit-variable.ttf",
   "src/assets/fonts/OFL.txt",
+  "src/assets/fonts/caveat-variable.woff",
+  "src/assets/fonts/CAVEAT-OFL.txt",
 ]);
 for (const issue of Object.values(issues).filter(
   (issue) => issue.status === "approved",

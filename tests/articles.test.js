@@ -2,13 +2,14 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { handleArticleRequest } from "../server/articles.mjs";
 import { renderBody, imageURL, safeLink, storySlug, storyURL } from "../src/article-content.js";
+import { articleLayout } from "../src/article-layout.js";
 
 test("article reads use the public published perspective with publication-time and draft guards", async () => {
   const now = new Date("2026-10-13T20:00:00Z");
   let call;
   const response = await handleArticleRequest(new Request("https://fandomfiles.netlify.app/api/articles"), { now, fetcher: async (url, options) => {
     call = { url, options };
-    return Response.json({ result: [{ title: "A real story", slug: "a-real-story" }] });
+    return Response.json({ result: { articles: [{ title: "A real story", slug: "a-real-story" }], total: 1 } });
   } });
   assert.equal(response.status, 200);
   assert.equal((await response.json()).articles.length, 1);
@@ -63,4 +64,32 @@ test("story routes accept clean slugs and reject path traversal", () => {
   assert.equal(storySlug("/stories/../../server/"), null);
   assert.equal(storySlug("/stories/not valid/"), null);
   assert.equal(storyURL("the-tumblr-years"), "/stories/the-tumblr-years/");
+});
+test("archive filtering searches real article text with bound parameters and paginates beyond the first page", async () => {
+  let endpoint;
+  const result = await handleArticleRequest(new Request("https://example.test/api/articles?category=style-files&era=2017-2019&q=Emma%20beauty&sort=recent&page=1"), { fetcher: async url => { endpoint = url; return Response.json({ result: { articles: [{ title: "A file on page two" }], total: 49 } }); } });
+  assert.equal(result.status, 200);
+  assert.equal((await result.json()).nextPage, 2);
+  assert.equal(JSON.parse(endpoint.searchParams.get("$category")), "style-files");
+  assert.equal(JSON.parse(endpoint.searchParams.get("$era")), "2017-2019");
+  assert.deepEqual(JSON.parse(endpoint.searchParams.get("$search")), ["*Emma*", "*beauty*"]);
+  assert.match(endpoint.searchParams.get("query"), /pt::text\(body\) match \$search/);
+  assert.match(endpoint.searchParams.get("query"), /\[24\.\.\.48\]/);
+  assert.match(endpoint.searchParams.get("query"), /count\(/);
+  assert.doesNotMatch(endpoint.searchParams.get("query"), /Emma|beauty/);
+});
+test("invalid archive filters are rejected before contacting the CMS", async () => {
+  for (const query of ["category=unknown", "era=all-time", "desk=unknown", "page=-1", "page=1.5", "page=Infinity", "q=" + "x".repeat(101)]) {
+    const result = await handleArticleRequest(new Request("https://example.test/api/articles?" + query), { fetcher: async () => { assert.fail("Invalid input reached Sanity"); } });
+    assert.equal(result.status, 400);
+  }
+});
+test("the article template omits absent optional content, shows annotations, and disables preview actions", () => {
+  const article = { title: "A real file", category: "lore", body: [{ _type: "annotation", title: "A note from the archive", text: '<script>alert("no")</script>' }] };
+  const html = articleLayout(article);
+  assert.match(html, /story-annotation/); assert.doesNotMatch(html, /<script|story-timeline|story-moodboard|story-poll|story-author|story-subtitle/);
+  const preview = articleLayout({ ...article, subtitle: "A second line", poll: { question: "Remember this?", options: ["Yes", "No"] } }, { preview: true });
+  assert.match(preview, /EDITOR PREVIEW \/ UNPUBLISHED CHANGES/);
+  assert.match(preview, /story-subtitle/); assert.match(preview, /disabled data-poll-choice/);
+  assert.match(preview, /story-actions" hidden/);
 });

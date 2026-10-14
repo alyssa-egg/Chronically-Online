@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { archiveTopics, archiveEras } from "../../src/archive-topics.js";
 const imageFields = [
   defineField({ name: "alt", title: "Describe the image (accessibility)", type: "string", validation: rule => rule.required() }),
   defineField({ name: "caption", type: "string" }),
@@ -10,8 +11,11 @@ export const article = defineType({
   groups: [{ name: "story", title: "Write", default: true }, { name: "explore", title: "Interactive extras" }, { name: "publish", title: "Publication" }],
   fields: [
     defineField({ name: "title", type: "string", group: "story", validation: rule => rule.required().max(140) }),
+    defineField({ name: "subtitle", title: "Subtitle (optional)", type: "string", group: "story", validation: rule => rule.max(180) }),
     defineField({ name: "slug", type: "slug", group: "publish", options: { source: "title", maxLength: 96 }, validation: rule => rule.required().custom(value => !value?.current || /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value.current) || "Use lowercase words separated by hyphens." ) }),
     defineField({ name: "category", title: "Editorial desk", type: "string", group: "publish", options: { list: [{ title: "The Lore Files", value: "lore" }, { title: "The Culture Desk", value: "culture" }, { title: "The Moodboard Department", value: "moodboard" }, { title: "The Rabbit Hole", value: "rabbit-hole" }, { title: "The Group Chat", value: "group-chat" }] }, validation: rule => rule.required() }),
+    defineField({ name: "archiveCategory", title: "Archive folder", type: "string", group: "publish", options: { list: archiveTopics.map(topic => ({ title: topic.title, value: topic.id })) }, description: "Pick the subject folder. Existing articles without this field keep a compatible default based on their editorial desk." }),
+    defineField({ name: "era", title: "Internet era (optional)", type: "string", group: "publish", options: { list: archiveEras.map(era => ({ title: era.title, value: era.id })) } }),
     defineField({ name: "author", type: "string", group: "story", validation: rule => rule.required() }),
     defineField({ name: "publishedAt", title: "Publication date & time", type: "datetime", group: "publish", description: "Readers see a published article only once this time has arrived. Drafts never appear on the site.", validation: rule => rule.required() }),
     defineField({ name: "featured", title: "Feature on the cover", type: "boolean", group: "publish", initialValue: false }),
@@ -21,6 +25,7 @@ export const article = defineType({
     defineField({ name: "body", title: "Article body", type: "array", group: "story", of: [
       { type: "block", styles: [{ title: "Paragraph", value: "normal" }, { title: "Heading", value: "h2" }, { title: "Subheading", value: "h3" }, { title: "Quote", value: "blockquote" }], marks: { decorators: [{ title: "Bold", value: "strong" }, { title: "Italic", value: "em" }, { title: "Underline", value: "underline" }], annotations: [{ name: "link", type: "object", title: "Link / source", fields: [{ name: "href", type: "url", validation: rule => rule.uri({ scheme: ["http", "https"] }) }] }] } },
       { type: "image", options: { hotspot: true }, fields: imageFields },
+      { name: "annotation", title: "Editorial side note", type: "object", fields: [text("title", "Little note label"), { name: "text", title: "Your annotation", type: "text", validation: rule => rule.required() }], preview: { select: { title: "title", subtitle: "text" } } },
     ], validation: rule => rule.required().min(1) }),
     defineField({ name: "timeline", type: "array", group: "explore", description: "Clickable moments; keep the intended reading order.", of: [{ name: "moment", type: "object", fields: [text("date", "Date / era label"), text("title", "Moment"), { name: "description", type: "text" }, { name: "source", type: "url" }], preview: { select: { title: "title", subtitle: "date" } } }] }),
     defineField({ name: "moodboard", type: "array", group: "explore", description: "Readers tap each object to open its little story.", of: [{ name: "moodboardItem", type: "object", fields: [text("title", "Object / reference"), { name: "image", type: "image", fields: imageFields }, { name: "description", type: "text" }, { name: "link", title: "Song, playlist or reference link", type: "url" }], preview: { select: { title: "title", media: "image" } } }] }),

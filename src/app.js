@@ -42,6 +42,8 @@ import {
 
 import { createArchiveUI } from "./archive-ui.js";
 import { createPublicationUI } from "./publication.js";
+import { magazineCover, cultureTicker, archiveFolders } from "./cover.js";
+import { drawBrand } from "./collectibles-export.js";
 let booting = true;
 
 const app = document.querySelector("#app");
@@ -156,7 +158,7 @@ function issueLabel() {
 function chrome(content) {
   if (!["editorial", "story"].includes(screen)) {
     publication.leave();
-    if (!booting && (location.pathname.startsWith("/stories/") || new URL(location.href).searchParams.has("desk"))) history.pushState({}, "", "/");
+    if (!booting && (location.pathname.startsWith("/stories/") || location.pathname.startsWith("/archive") || new URL(location.href).searchParams.has("desk"))) history.pushState({}, "", "/");
   }
   app.dataset.mode = mode.id;
   app.innerHTML = `<div class="issue-line"><span><i class="online-dot"></i> THE FANDOM FILES / INTERNET MEMORY</span><span>${issueLabel()} <span class="issue-heart">♡</span></span></div>${content}<p id="storage-note" class="storage"></p>`;
@@ -200,9 +202,12 @@ function home() {
   loadIssue("daily");
   screen = "home";
   chrome(
-    `<section class="cover home-cover"><div class="cover-copy"><span class="label-sticker">${getIssue(day) ? escape(getIssue(day).theme) : "an internet culture publication"} <span>♡</span></span><h1>you had to<br><em>be there.</em></h1><img class="cursor-sticker" src="./src/assets/pixel-cursor.png" alt="" aria-hidden="true" width="68" height="90"></div><div class="cover-note"><p class="cover-subtitle">Music. Fandom.<br>Internet memory.</p><p class="intro">A little magazine for the fan accounts, the pop-girl playlists, and the late-night rabbit holes. Read the lore, follow its connections, and keep your favorite discoveries. Your old dashboard would be proud.</p><nav class="game-shortcuts" aria-label="Find your daily game"><a class="pill" href="#editorial-home">Read the files ↘</a><a class="pill" href="#play-section">Play today’s games ↘</a></nav><div class="daily-note"><span class="tiny-heart" aria-hidden="true">♡</span><div><strong>A new little obsession, every day.</strong><p>Next issue in <span data-countdown>--:--:--</span> <span class="reset-label">· midnight Eastern</span></p></div></div></div></section><section class="editorial-home" id="editorial-home" aria-label="The editorial files"><p class="editorial-notice" role="status">Opening the editorial files…</p></section><div class="section-heading" id="play-section"><div><span class="eyebrow">THE GAME ROOM / FREE DAILY FILES</span><h2>stay a little. <em>play a little.</em></h2></div></div><div class="daily-games" role="group" aria-label="Two free daily games">${quizPost()}${askPost()}</div>${readingDiary()}${archiveUI.homeExtras()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">THE ARCHIVE / RECOVER YOUR INTERNET HISTORY</span><h2 id="archive-title">Choose your <em>internet era.</em></h2><p>Try a free folder in every era. Unlock the full archive for $5 once, with a 24-hour trial.</p></div><span class="small-scribble">pick your personal canon ↙</span></div><div class="era-grid">${eras.map(eraCard).join("")}</div><p class="archive-note">The daily quiz and Anonymous Ask stay free. Era membership is $5 once after your free 24-hour trial. Archive folders stay recovered; classic era remixes refresh daily. ♡</p></section>`,
+    `${magazineCover()}${cultureTicker()}<section class="editorial-home" id="editorial-home" aria-label="Latest files"><p class="editorial-notice" role="status">Retrieving the latest files…</p></section>${archiveFolders()}<div class="file-section-heading game-room-heading" id="play-section"><span class="file-label">THE GAME ROOM / FREE DAILY DISCOVERIES</span><h2>THE INTERNET REMEMBERS<br>EVERYTHING. <em>DO YOU?</em></h2><p>Open a quiz, decode an ask, or recover a lost post. Three daily games. One very online brain.</p><span class="game-reset">New files in <span data-countdown>--:--:--</span> · midnight Eastern</span></div><div class="daily-games" role="group" aria-label="Two free daily games">${quizPost()}${askPost()}</div>${archiveUI.homeExtras()}${readingDiary()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">THE LOCKED DRAWER / CLASSIC ERA GAMES</span><h2 id="archive-title">Your eras. <em>Every receipt.</em></h2><p>One free folder in each era. All the rest for $5 once, with a 24-hour trial.</p></div><span class="small-scribble">your personal canon ↙</span></div><div class="era-grid">${eras.map(eraCard).join("")}</div><p class="archive-note">The daily games and three sample folders are always free. Paid access follows your email account. Your recovered folders stay recovered. ♡</p></section>`,
   );
   publication.mountHome();
+  app.querySelectorAll('[data-topic]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); publication.openArchive({ category: link.dataset.topic }); });
+  const ticker = app.querySelector('.culture-ticker'), tickerButton = app.querySelector('.ticker-toggle');
+  tickerButton.onclick = () => { const paused = ticker.classList.toggle('paused'); tickerButton.setAttribute('aria-pressed', String(paused)); tickerButton.setAttribute('aria-label', paused ? 'Resume culture ticker' : 'Pause culture ticker'); tickerButton.textContent = paused ? '▷' : 'Ⅱ'; };
   archiveUI.bindHome();
   document.querySelector("#play-ask").onclick = startPuzzle;
   document.querySelector("#play").onclick = () => startGame("daily");
@@ -634,7 +639,7 @@ function results() {
   document.querySelector("#share").onclick = () => shareResult(shareText());
   document.querySelector("#download").onclick = () => downloadCard(score);
 }
-function downloadCard(score) {
+async function downloadCard(score) {
   const cardDay = day,
     cardMode = mode,
     cardAnswers = [...answers],
@@ -654,14 +659,14 @@ function downloadCard(score) {
     ctx.roundRect(x, y, w, h, radius);
     ctx.fill();
   };
-  const text = (value, y, size, color = "#3c4650", italic = false) => {
+  const text = (value, y, size, color = "#0B0B0F", italic = false) => {
     ctx.fillStyle = color;
-    ctx.font = `${italic ? "italic " : ""}${size}px Georgia, serif`;
+    ctx.font = `${italic ? "700" : "800"} ${size}px Outfit, sans-serif`;
     ctx.textAlign = "center";
     ctx.fillText(value, 540, y);
   };
-  rect(0, 0, 1080, 1350, 0, "#effbfc");
-  ctx.strokeStyle = "#d5eef0";
+  rect(0, 0, 1080, 1350, 0, "#F8F4EC");
+  ctx.strokeStyle = "#c9c2bc";
   ctx.lineWidth = 1;
   for (let x = 0; x < 1080; x += 40) {
     ctx.beginPath();
@@ -675,15 +680,12 @@ function downloadCard(score) {
     ctx.lineTo(1080, y);
     ctx.stroke();
   }
-  rect(66, 78, 948, 1194, 28, "#cde9ec");
-  rect(55, 65, 948, 1194, 28, "#fffafd");
-  const logo = document.querySelector(".logo img");
-  if (logo?.complete && logo.naturalWidth)
-    ctx.drawImage(logo, 0, 160, logo.naturalWidth, 410, 140, 135, 800, 800 * 410 / logo.naturalWidth);
-  else text("fandomfiles <3", 260, 65, "#147980");
+  rect(66, 78, 948, 1194, 28, "#0B0B0F");
+  rect(55, 65, 948, 1194, 28, "#fffaf3");
+  await drawBrand(ctx, 140, 150, 800);
   text(cardMode.name.toUpperCase(), 385, 28);
-  text(`${score}/${cardMode.count}`, 660, 205, "#ba347e");
-  text(rank(score, cardMode.count), 785, 52, "#147980", true);
+  text(`${score}/${cardMode.count}`, 660, 205, "#0B0B0F");
+  text(rank(score, cardMode.count), 785, 52, "#0B0B0F", true);
   const length = cardAnswers.length,
     start = 540 - ((length - 1) * 58 + 42) / 2;
   cardAnswers.forEach((a, i) =>
@@ -693,10 +695,10 @@ function downloadCard(score) {
       42,
       42,
       12,
-      a === cardQuestions[i].answer ? "#ec87c3" : "#e6e5ee",
+      a === cardQuestions[i].answer ? "#FF5BC8" : "#C8B6FF",
     ),
   );
-  text("you had to be there.", 1030, 56, "#ba347e", true);
+  text("you had to be there.", 1030, 56, "#0B0B0F", true);
   text(`FANDOM FILES · ${cardDay}`, 1160, 23);
   canvas.toBlob((blob) => {
     if (!blob) return;
@@ -754,7 +756,16 @@ const archiveUI = createArchiveUI({
   dailyProgress: () => ({ quiz: savedAnswers("daily", day).length, ask: savedGuesses(day).length, askFinished: puzzleStatus(dailyPuzzle(day), savedGuesses(day)) !== "playing" }),
 });
 const publication = createPublicationUI({ root: app, render: chrome, begin: next => { loadIssue("daily"); screen = next; }, read, save, home });
-document.querySelector("#read-button").onclick = () => publication.openDesk("all");
+document.querySelector("#read-button").onclick = () => publication.openArchive({ sort: "recent" });
+document.querySelector("#archive-button").onclick = () => publication.openArchive();
+const siteHeader = document.querySelector('.site-header'), navToggle = document.querySelector('#nav-toggle');
+function closeNavigation() { siteHeader.classList.remove('nav-open'); navToggle.setAttribute('aria-expanded', 'false'); }
+navToggle.onclick = () => { const open = siteHeader.classList.toggle('nav-open'); navToggle.setAttribute('aria-expanded', String(open)); };
+document.querySelector('#main-navigation').addEventListener('click', closeNavigation);
+siteHeader.addEventListener('keydown', event => { if (event.key === 'Escape') { closeNavigation(); navToggle.focus(); } });
+document.querySelectorAll('[data-site-home]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); home(); window.scrollTo({ top: 0 }); closeNavigation(); });
+document.querySelectorAll('[data-site-play]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); home(); requestAnimationFrame(() => document.querySelector('#play-section').scrollIntoView()); closeNavigation(); });
+document.querySelectorAll('[data-open-archive]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); publication.openArchive(); });
 document.querySelector("#saved-stories-button").onclick = publication.openSaved;
 document.querySelector("#sideblog-button").onclick = archiveUI.openSideblog;
 app.addEventListener("click", event => { if (event.target.closest("[data-saved-stories]")) publication.openSaved(); });

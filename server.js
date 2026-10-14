@@ -17,12 +17,18 @@ const types = {
   ".jpg": "image/jpeg",
   ".webp": "image/webp",
   ".ttf": "font/ttf",
+  ".woff": "font/woff",
   ".txt": "text/plain; charset=utf-8",
 };
 const publicFiles = new Set([
   "/index.html",
   "/src/app.js",
   "/src/publication.js",
+  "/src/archive-topics.js",
+  "/src/cover.js",
+  "/src/design-symbols.js",
+  "/src/article-layout.js",
+  "/src/redesign.css",
   "/src/article-content.js",
   "/src/archive-ui.js",
   "/src/badges.js",
@@ -56,6 +62,8 @@ const publicFiles = new Set([
 
   "/src/assets/fonts/outfit-variable.ttf",
   "/src/assets/fonts/OFL.txt",
+  "/src/assets/fonts/caveat-variable.woff",
+  "/src/assets/fonts/CAVEAT-OFL.txt",
 ]);
 http
   .createServer(async (req, res) => {
@@ -109,7 +117,7 @@ http
         res.writeHead(result.status, Object.fromEntries(result.headers));
         return res.end(Buffer.from(await result.arrayBuffer()));
       }
-      const name = pathname === "/" || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
+      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
       const issues = await loadIssues(root);
       const images = Object.values(issues)
         .filter((issue) => issue.status === "approved")

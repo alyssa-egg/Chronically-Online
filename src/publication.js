@@ -1,9 +1,9 @@
-import { desks, escapeHTML as e, safeLink, imageURL, renderImage, renderBody, storyURL, storySlug } from "./article-content.js";
-const deskName = id => desks.find(desk => desk.id === id)?.name || "The Lore Files";
-const date = value => Number.isFinite(Date.parse(value)) ? new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric", timeZone: "America/New_York" }).format(new Date(value)) : "";
-const card = (article, large = false) => `<article class="story-card ${large ? "story-feature" : ""}"><a href="${storyURL(article.slug)}" data-story="${e(article.slug)}">${renderImage(article.coverImage, "story-card-image", large ? 1200 : 600) || `<div class="story-placeholder" aria-hidden="true"><span>file under:</span><strong>${e(deskName(article.category))}</strong><span>♡ &nbsp; you had to be there.</span></div>`}<div class="story-card-copy"><span class="eyebrow">${e(deskName(article.category))} / ${date(article.publishedAt)}</span><h2>${e(article.title)}</h2><p>${e(article.excerpt)}</p><span class="story-byline">${e(article.author)} <span>Open the file ↗</span></span></div></a></article>`;
+import { arrowIcon } from "./design-symbols.js";
+import { desks, escapeHTML as e, storyURL, storySlug } from "./article-content.js";
+import { archiveTopics, archiveEras, archiveURL } from "./archive-topics.js";
+import { storyCard as card, articleLayout } from "./article-layout.js";
 export function createPublicationUI({ root, render, begin, read, save, home }) {
-  let articles = null, loading = null, loadError = false, visit = 0;
+  let articles = null, loading = null, visit = 0;
   const savedKey = "fandom-files-saved-stories-v1";
   const saved = () => { const value = read(savedKey, []); return Array.isArray(value) ? value.filter(item => item && typeof item.slug === "string" && typeof item.title === "string") : []; };
   async function fetchJSON(url) {
@@ -14,7 +14,7 @@ export function createPublicationUI({ root, render, begin, read, save, home }) {
   }
   async function list() {
     if (articles) return articles;
-    if (!loading) loading = fetchJSON("/api/articles").then(json => { articles = json.articles; loadError = false; return articles; }).catch(error => { loadError = true; throw error; }).finally(() => { loading = null; });
+    if (!loading) loading = fetchJSON("/api/articles?sort=recent").then(json => { articles = json.articles; return articles; }).finally(() => { loading = null; });
     return loading;
   }
   function links() {
@@ -34,34 +34,54 @@ export function createPublicationUI({ root, render, begin, read, save, home }) {
     try {
       const stories = await list();
       if (!target.isConnected) return;
-      target.innerHTML = `<div class="section-heading"><div><span class="eyebrow">THE EDITORIAL FILES / READ. EXPLORE. KEEP.</span><h2>notes from <em>the dashboard.</em></h2><p>Music, fandom, internet history, and the little things that connect them.</p></div><button class="text-button" data-desk="all">All the files ↗</button></div>${deskButtons()}${stories.length ? `<div class="editorial-cover-grid">${stories.slice(0, 3).map((story, index) => card(story, index === 0)).join("")}</div>` : `<div class="editorial-empty"><span class="eyebrow">THE FIRST ISSUE IS ON ITS WAY</span><h3>Every obsession has <em>a little history.</em></h3><p>This is where our stories will live. In the meantime, recover a reference, open an ask, or start your own little archive.</p><a class="pill" href="#play-section">Visit the games ↓</a></div>`}`;
+      target.innerHTML = `<div class="section-heading"><div><span class="file-label">LATEST FILES / FRESHLY UNCOVERED</span><h2>THE LATEST <em>OBSESSIONS.</em></h2><p>The stories behind the screenshots. The lore behind the culture.</p></div><button class="text-button" data-desk="all">All the files ${arrowIcon}</button></div>${deskButtons()}${stories.length ? `<div class="editorial-cover-grid">${stories.slice(0, 3).map((story, index) => card(story, index === 0)).join("")}</div>` : `<div class="editorial-empty"><span class="empty-file-stamp" aria-hidden="true">FILE UNDER: COMING SOON</span><span class="file-label">THE FIRST FILES ARE STILL ON THE DESK</span><h3>GOOD LORE TAKES<br><em>A LITTLE DIGGING.</em></h3><p>The editorial archive is waiting for its first published story. Until then, there’s a quiz to take, an ask to decode, and a lost post with your name on it.</p><a class="pill" href="#play-section">Visit the games ↓</a></div>`}`;
       links();
     } catch {
       if (target.isConnected) { target.innerHTML = `<p class="editorial-notice" role="status">The editorial files couldn’t load. Your games are ready below. <button class="text-button" id="retry-editorial">Try again ↻</button></p>`; root.querySelector("#retry-editorial").onclick = mountHome; }
     }
   }
   function backButton() { root.querySelector("#publication-home").onclick = home; }
-  async function openDesk(id = "all", navigate = true) {
-    const currentVisit = ++visit;
+  function openDesk(id = "all", navigate = true) {
     if (navigate) push(id === "all" ? "/?desk=all" : `/?desk=${encodeURIComponent(id)}`);
-    const desk = desks.find(item => item.id === id);
-    document.title = `${desk?.name || "The Editorial Files"} — The Fandom Files`;
-    show("editorial", `<section class="editorial-page"><button class="text-button" id="publication-home">← Back to the dashboard</button><span class="eyebrow">MUSIC. FANDOM. INTERNET MEMORY.</span><h1>${e(desk?.name || "the editorial files.")}</h1><p>${e(desk?.description || "Follow your current obsession into an older internet era.")}</p>${deskButtons()}<div class="editorial-search"><label for="story-search">Find a rabbit hole<input id="story-search" type="search" maxlength="100" placeholder="an artist, era, creator, or aesthetic…"></label></div><p id="story-count" role="status">Opening the files…</p><div class="story-grid" id="story-list"></div></section>`);
-    backButton();
-    try {
-      const stories = await list();
-      if (currentVisit !== visit || !root.querySelector("#story-list")) return;
-      const filter = () => {
-        const term = root.querySelector("#story-search").value.toLowerCase().trim();
-        const matching = stories.filter(story => (!desk || story.category === id) && `${story.title} ${story.excerpt} ${(story.tags || []).join(" ")}`.toLowerCase().includes(term));
-        root.querySelector("#story-count").textContent = `${matching.length} ${matching.length === 1 ? "file" : "files"} found`;
-        root.querySelector("#story-list").innerHTML = matching.map(story => card(story)).join("") || `<div class="editorial-empty"><h2>${stories.length ? "A quiet corner of the archive." : "The first files are coming soon."}</h2><p>${stories.length ? "Try another desk or search." : "Published stories will appear here. The daily games are open now."}</p></div>`;
-        links();
-      };
-      root.querySelector("#story-search").oninput = filter; filter();
-    } catch { if (currentVisit === visit) root.querySelector("#story-count").textContent = "The files couldn’t load. Please try again shortly."; }
+    return openArchive({ desk: desks.some(desk => desk.id === id) ? id : "", sort: "recent" }, false);
   }
-  const referenceLink = (url, title) => safeLink(url) ? `<a href="${e(safeLink(url))}" target="_blank" rel="noopener noreferrer">${e(title)} ↗</a>` : "";
+  async function openArchive(initial = {}, navigate = true) {
+    const currentVisit = ++visit;
+    let filters = { category: initial.category || "", era: initial.era || "", q: initial.q || "", desk: initial.desk || "", sort: initial.sort || "featured" };
+    if (navigate) push(archiveURL(filters.category));
+    document.title = "The Archive — Fandom Files";
+    const topic = archiveTopics.find(item => item.id === filters.category);
+    show("editorial", `<section class="editorial-page cabinet-page"><button class="text-button" id="publication-home">← Back to the cover</button><div class="cabinet-heading"><span class="file-label">FANDOM FILES / SEARCHABLE INTERNET HISTORY</span><h1 id="cabinet-title">${topic ? e(topic.title) : "THE <em>ARCHIVE.</em>"}</h1><p>Open an obsession. Pull at a thread. See where it takes you.</p><span class="cabinet-scribble" aria-hidden="true">your new rabbit hole <span class="note-arrow">${arrowIcon}</span></span></div><div class="cabinet-filters"><form id="archive-search-form"><label for="story-search">SEARCH THE FILES<input id="story-search" type="search" maxlength="100" value="${e(filters.q)}" placeholder="an artist, an era, a very specific reference…"></label><button class="secondary" type="submit">SEARCH ${arrowIcon}</button></form><div class="cabinet-tabs" aria-label="Filter by archive folder"><button class="pill" data-category="">ALL FILES</button>${archiveTopics.map(item => `<button class="pill" data-category="${item.id}">${e(item.title)}</button>`).join("")}</div><div class="cabinet-selects"><label>ERA<select id="archive-era"><option value="">Every era</option>${archiveEras.map(era => `<option value="${era.id}">${e(era.title)}</option>`).join("")}</select></label><label>ORDER<select id="archive-sort"><option value="featured">Featured files first</option><option value="recent">Freshly uncovered</option></select></label><label>EDITORIAL FORMAT<select id="archive-desk"><option value="">Every desk</option>${desks.map(desk => `<option value="${desk.id}">${e(desk.name)}</option>`).join("")}</select></label><button class="text-button" id="archive-clear">CLEAR FILTERS ×</button></div></div><p id="story-count" role="status">Opening the cabinet…</p><div class="story-grid cabinet-files" id="story-list"></div><button class="secondary" id="archive-more" hidden>OPEN MORE FILES ↓</button></section>`);
+    backButton();
+    const search = root.querySelector('#story-search'), count = root.querySelector('#story-count'), grid = root.querySelector('#story-list'), more = root.querySelector('#archive-more');
+    let requestNumber = 0, nextPage = null, debounce;
+    const update = async (append = false) => {
+      const requestId = ++requestNumber;
+      const selectedTopic = archiveTopics.find(item => item.id === filters.category);
+      root.querySelector('#cabinet-title').innerHTML = selectedTopic ? e(selectedTopic.title) : 'THE <em>ARCHIVE.</em>';
+      document.title = `${selectedTopic?.title || 'The Archive'} — Fandom Files`;
+      const params = new URLSearchParams(Object.entries(filters).filter(([,value]) => value));
+      if (location.pathname.startsWith('/archive')) history.replaceState({}, '', '/archive/' + (params.size ? '?' + params : ''));
+      if (append && nextPage !== null) params.set('page', String(nextPage));
+      root.querySelectorAll('[data-category]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.category === filters.category)));
+      root.querySelector('#archive-era').value = filters.era; root.querySelector('#archive-sort').value = filters.sort; root.querySelector('#archive-desk').value = filters.desk;
+      more.disabled = true; count.textContent = 'Retrieving your files…';
+      try {
+        const result = await fetchJSON('/api/articles?' + params);
+        if (currentVisit !== visit || requestId !== requestNumber || !grid.isConnected) return;
+        grid.innerHTML = (append ? grid.innerHTML : '') + result.articles.map(story => card(story)).join('');
+        if (!grid.children.length) grid.innerHTML = `<div class="editorial-empty"><span class="file-label">NO FILES IN THIS DRAWER</span><h2>${filters.q || filters.category || filters.era ? 'A little too niche? <em>Try another thread.</em>' : 'The first files are <em>coming soon.</em>'}</h2><p>${filters.q || filters.category || filters.era ? 'Change a filter or clear the search to open the rest of the archive.' : 'Published stories will appear here. The game room is open now.'}</p></div>`;
+        count.textContent = `${result.total ?? result.articles.length} ${(result.total ?? result.articles.length) === 1 ? 'file' : 'files'} found`;
+        nextPage = result.nextPage ?? null; more.hidden = nextPage === null; more.disabled = false; links();
+      } catch { if (currentVisit === visit && requestId === requestNumber) { count.textContent = 'The cabinet couldn’t load. Press Search to try again; the game room is still open.'; more.hidden = true; } }
+    };
+    root.querySelector('#archive-search-form').onsubmit = event => { event.preventDefault(); clearTimeout(debounce); filters.q = search.value.trim(); update(); };
+    search.oninput = () => { clearTimeout(debounce); debounce = setTimeout(() => { if (!search.isConnected) return; filters.q = search.value.trim(); update(); }, 250); };
+    root.querySelectorAll('[data-category]').forEach(button => button.onclick = () => { filters.category = button.dataset.category; update(); });
+    for (const [id, field] of [['archive-era','era'],['archive-sort','sort'],['archive-desk','desk']]) root.querySelector('#'+id).onchange = event => { filters[field] = event.target.value; update(); };
+    root.querySelector('#archive-clear').onclick = () => { clearTimeout(debounce); filters = { category: '', era: '', q: '', desk: '', sort: 'featured' }; search.value = ''; update(); };
+    more.onclick = () => update(true); update();
+  }
   async function openStory(slug, navigate = true) {
     const currentVisit = ++visit;
     if (navigate) push(storyURL(slug));
@@ -70,11 +90,9 @@ export function createPublicationUI({ root, render, begin, read, save, home }) {
       const { article } = await fetchJSON(`/api/articles?slug=${encodeURIComponent(slug)}`);
       if (currentVisit !== visit || !root.querySelector(".story-reading")) return;
       document.title = `${article.title} — The Fandom Files`;
-      const timeline = article.timeline?.length ? `<section class="story-extras"><span class="eyebrow">EXPLORE IT / THE TIMELINE</span><h2>How we <em>got here.</em></h2><div class="story-timeline">${article.timeline.map(moment => `<details><summary><span>${e(moment.date)}</span><strong>${e(moment.title)}</strong></summary><p>${e(moment.description)}</p>${referenceLink(moment.source, "Open the source")}</details>`).join("")}</div></section>` : "";
-      const moodboard = article.moodboard?.length ? `<section class="story-extras"><span class="eyebrow">THE MOODBOARD DEPARTMENT</span><h2>Little objects. <em>A whole era.</em></h2><p>Tap an object to open its story.</p><div class="story-moodboard">${article.moodboard.map(item => `<details><summary>${imageURL(item.image, 500) ? `<img class="moodboard-object" src="${e(imageURL(item.image, 500))}" alt="${e(item.image.alt)}" loading="lazy">` : ""}${e(item.title)} <span>+</span></summary><div>${item.image?.caption || item.image?.credit ? `<p class="moodboard-credit">${e(item.image.caption)} ${e(item.image.credit)}</p>` : ""}<p>${e(item.description)}</p>${referenceLink(item.link, "Follow the reference")}</div></details>`).join("")}</div></section>` : "";
+      show("story", articleLayout(article));
       const choices = Array.isArray(article.poll?.options) ? article.poll.options.slice(0, 6) : [];
-      const poll = article.poll?.question && choices.length >= 2 ? `<section class="story-extras story-poll"><span class="eyebrow">THE GROUP CHAT / YOUR PERSONAL TAKE</span><h2>${e(article.poll.question)}</h2><div>${choices.map((choice, index) => `<button class="secondary" data-poll-choice="${index}" aria-pressed="false">${e(choice)}</button>`).join("")}</div><p id="story-poll-status" role="status">Your choice stays in this browser. This isn’t a public vote count.</p></section>` : "";
-      show("story", `<article class="story-reading"><button class="text-button" id="publication-home">← Back to the dashboard</button><header class="story-heading"><span class="eyebrow">${e(deskName(article.category))} / ${date(article.publishedAt)}</span><h1>${e(article.title)}</h1><p class="story-deck">${e(article.excerpt)}</p><p class="story-author">By ${e(article.author)}</p><div class="story-actions"><button class="secondary" id="save-story">Save to my Sideblog ♡</button><button class="pill" id="share-story">Send to the group chat ↗</button></div><p id="story-action-status" role="status"></p></header>${renderImage(article.coverImage, "story-cover", 1400)}<div class="story-body">${renderBody(article.body)}</div>${timeline}${moodboard}${poll}${article.sources?.length ? `<aside class="story-sources"><h2>Sources & little footnotes</h2><ul>${article.sources.map(source => `<li>${referenceLink(source.url, source.title) || e(source.title)}${source.note ? `<p>${e(source.note)}</p>` : ""}</li>`).join("")}</ul></aside>` : ""}<div class="story-tags">${(article.tags || []).map(tag => `<span>#${e(tag)}</span>`).join("")}</div><section class="story-extras"><span class="eyebrow">THE RABBIT HOLE / GO DEEPER</span><h2>Where to <em>next?</em></h2>${article.related?.length ? `<div class="story-grid">${article.related.map(story => card(story)).join("")}</div>` : `<p>Keep following the little connections.</p><button class="secondary" data-desk="${e(article.category || "all")}">More from ${e(deskName(article.category))} ↗</button>`}</section><p class="story-colophon">Filed with love for the group chat. ♡ <button class="text-button" id="story-sideblog">Open my saved stories →</button></p></article>`);
+      const poll = article.poll?.question && choices.length >= 2;
       backButton();
       const saveButton = root.querySelector("#save-story");
       const updateSave = () => { const isSaved = saved().some(item => item.slug === slug); saveButton.textContent = isSaved ? "Saved to my Sideblog ♥" : "Save to my Sideblog ♡"; saveButton.setAttribute("aria-pressed", String(isSaved)); };
@@ -106,10 +124,11 @@ export function createPublicationUI({ root, render, begin, read, save, home }) {
   function route() {
     const slug = storySlug(location.pathname), desk = new URL(location.href).searchParams.get("desk");
     if (slug) { openStory(slug, false); return true; }
+    if (/^\/archive\/?$/.test(location.pathname)) { openArchive(Object.fromEntries(new URL(location.href).searchParams), false); return true; }
     if (desk === "saved") { openSaved(); return true; }
     if (desk) { openDesk(desk, false); return true; }
     return false;
   }
   function leave() { ++visit; document.title = "The Fandom Files — music, fandom & internet memory"; }
-  return { mountHome, openDesk, openStory, openSaved, route, leave };
+  return { mountHome, openArchive, openDesk, openStory, openSaved, route, leave };
 }

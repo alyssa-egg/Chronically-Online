@@ -8,11 +8,12 @@ Your project is **rjg4g3cl**, dataset **production**. The organization ID **obys
 
 1. Open **Article**, then **Create new document** (the plus/pencil button).
 2. In **Write**, add a title, author, short excerpt, article body, and optional cover image. Add descriptive image alt text, captions, and credits. Use images you own or have permission to publish.
-3. In **Publication**, choose a desk, generate the URL slug, enter a publication date/time, and add topic tags. Turn on **Feature on the cover** to prioritize the story on the homepage.
+3. In **Publication**, choose an editorial desk and an **Archive folder** (The Fandom Years, Music Lore, Creator Culture, Style Files, or Internet Mysteries). You can also choose an era. Generate the URL slug, enter a publication date/time, and add topic tags. Turn on **Feature on the cover** to prioritize the story on the homepage.
 4. In **Interactive extras**, optionally add timeline moments, moodboard objects, connected articles, or a question with choices. Keep timeline moments in the intended reading order. Connected articles must also be published to appear to readers.
-5. Add sources for reported facts; label memories, recollections, and opinion clearly.
-6. Drafts save automatically and stay off the reader website. Use Sanity’s **Publish** button when you approve the article. Required fields must be complete. Set a future publication time if it should remain hidden until then.
-7. Refresh the public website to see the story in the editorial section and its desk. Open its individual URL, `/stories/your-slug/`. No code change or Netlify redeploy is required to publish or edit articles.
+5. Add sources for reported facts; label memories, recollections, and opinion clearly. In the body, add **Editorial side note** blocks for highlighted annotations. An optional **Subtitle** appears beneath the title.
+6. Open the document’s **Preview** tab to see your current draft with the reader design. This preview stays in your authenticated editor; it does not publish the story or enable player purchases. Timelines and moodboard details can expand. Saving/sharing and poll voting are disabled in this draft preview.
+7. Drafts save automatically and stay off the reader website. Use Sanity’s **Publish** button when you approve the article. Required fields must be complete. Set a future publication time if it should remain hidden until then.
+8. Refresh the public website to see the story in the editorial section and its desk. Open its individual URL, `/stories/your-slug/`. No code change or Netlify redeploy is required to publish or edit articles.
 
 Sanity’s date picker uses your browser’s timezone; check the displayed offset when scheduling. The stored time is an absolute ISO timestamp. Daily game resets remain midnight America/New_York and are independent of article publication.
 
@@ -28,7 +29,7 @@ To change a live article, edit it and **Publish** the revision. To remove one, u
 | The Rabbit Hole | Stories connected to other articles, sources, songs, and playlists |
 | The Group Chat | Editorial opinions, recollections, and personal reader choices |
 
-Readers can browse desks, search article titles/excerpts/tags, explore expandable timelines and moodboard objects, follow sources and related stories, share a story URL, and save up to 200 stories to their Sideblog reading archive.
+Readers can browse the five archive folders at `/archive/`, filter by era and editorial desk, search titles/subtitles/excerpts/tags/article body text, load more matching files, explore expandable timelines and moodboard objects, follow sources and related stories, share a story URL, and save up to 200 stories to their Sideblog reading archive.
 
 Story saves and poll choices stay in the reader’s browser. Polls are personal choices, **not shared community vote totals**. There is no reader-submission inbox, comment system, newsletter subscription, audio player, or automatic news-writing service in this release. The brief’s ideas for those remain future work. Playlist/song references open the original link rather than importing licensed audio.
 
@@ -68,3 +69,5 @@ In the managed cloud, use `npm --cache /tmp/fandom-npm-cache --prefix studio ci 
 On October 13, 2026, the real production dataset was tested by creating a temporary article draft, publishing it, reading it through the reader API, and confirming a future-dated article was hidden. All temporary test documents were deleted and deletion verified **before deployment**. The dataset contained no real articles at the time of integration; the first-issue placeholder is intentional.
 
 The automated suite passed 69 tests, including new article query and rendering security checks. Reader browser checks cover 320, 390, 768 and 1440 pixel widths, individual URLs/reloads, saved stories and poll persistence, interactive extras, and the existing free games. Studio builds and serves its assets at `/admin/`. Your personal GitHub sign-in and first real article publication remain your final owner checks; the service-token publishing test does not establish an interactive user login.
+
+The October 14 redesign and its compatibility notes are recorded in [REDESIGN_GUIDE.md](REDESIGN_GUIDE.md). The required Sanity project, dataset and CORS origin are unchanged.

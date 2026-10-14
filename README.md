@@ -1,6 +1,6 @@
 # The Fandom Files ♡
 
-“you had to be there.” An interactive internet-culture publication in turquoise and hot pink: music, fandom, fashion, creators, and internet memory. Read the lore, explore timelines and moodboards, and keep stories in your Sideblog. The daily games and collectible archive remain part of the dashboard.
+“you had to be there.” An interactive internet-culture publication in hot pink, archive black, and paper cream: music, fandom, fashion, creators, and internet memory. Read the lore, explore timelines and moodboards, and keep stories in your Sideblog. The daily games and collectible archive remain part of the dashboard.
 
 ## Run it on your Mac
 
@@ -18,7 +18,7 @@ Open `http://localhost:3000`. Requires Node.js **22.12+** (Node 24 recommended).
 
 ## Write articles without editing code
 
-Open **https://fandomfiles.netlify.app/admin/** and sign in with your Sanity GitHub account. [BLOG_GUIDE.md](BLOG_GUIDE.md) walks through writing, images, interactive extras, scheduling, publishing and access. The five editorial desks appear above the games. Article updates appear after refreshing the site, without redeployment. Drafts remain hidden. Saved stories and personal poll choices are browser-local.
+Open **https://fandomfiles.netlify.app/admin/** and sign in with your Sanity GitHub account. [BLOG_GUIDE.md](BLOG_GUIDE.md) walks through writing, images, interactive extras, scheduling, publishing and access. The magazine cover, latest files and five subject folders lead into the games. Search the full published archive by category, era, format, tags and article text. The editor includes a draft Preview tab. Article updates appear after refreshing the site, without redeployment. Drafts remain hidden. Saved stories and personal poll choices are browser-local.
 
 [EDITORIAL_PUBLICATION_BRIEF.md](EDITORIAL_PUBLICATION_BRIEF.md) preserves the supplied magazine concept and future ideas. This release includes the article dashboard and interactive reader experience; shared community submissions/vote totals and a newsletter remain future work.
 
@@ -33,7 +33,7 @@ The homepage features the Daily Quiz and Anonymous Ask in equally sized blog-win
 - **Three eras:** The Fandom Years (2010–2016), The YouTube Era (2017–2019), Current Lore (2020–now). Twelve interactive folders / 36 files, with one free sample folder per era. Classic five-question daily remixes remain available. One explicit **24-hour trial per email account**, then **$5 once for all three eras**. No subscription.
 - Daily games and classic remixes refresh at **midnight Eastern**, automatically accounting for daylight saving. Worldwide players see the same day’s questions. The trial itself lasts 24 elapsed hours from activation.
 - Progress, sound preference, and reading-diary streaks save in this browser. The game still works for the current visit when storage is unavailable. Purchase/trial access follows a verified email account between devices; progress does not sync.
-- The blog aesthetic and “you had to be there.” copy remain. “Eastern edition” is removed; reset explanations still describe the actual timing.
+- The magazine/scrapbook aesthetic and “YOU HAD TO BE THERE.” cover remain. “Eastern edition” is removed; reset explanations still describe the actual timing.
 
 Email/trials/payments require the configured backend. Until it is connected, the era dialog shows coming-soon messaging and disables unavailable actions. Main and Ask remain playable without accounts or provider keys.
 
@@ -89,3 +89,7 @@ See [ARCHIVE_GUIDE.md](ARCHIVE_GUIDE.md) for the new game flow and [CONTENT_ARCH
 The Sideblog includes fourteen artifact cards, locked goals, a featured collectible and pinned finds. New unlocks reveal with a short animation and an optional original chime; reduced motion and sound off are respected. The Lore Book organizes correct-answer receipts with search, era filters, and related pages. Badges stay earned when you miss a day, and legacy progress is retained under the existing internal storage keys. [COLLECTIBLES_BRIEF.md](COLLECTIBLES_BRIEF.md) records the supplied ideas and what shipped.
 
 Start with [LAUNCH_GUIDE.md](LAUNCH_GUIDE.md). The current URL is `https://fandomfiles.netlify.app/`; existing internal account/progress identifiers and the $5 one-time price are retained. [STRIPE_INTEGRATION_TODO.md](STRIPE_INTEGRATION_TODO.md) is the payment launch checklist, including public SMTP and test-to-live steps. Real payment success has not been verified in this cloud environment.
+
+## Magazine cover redesign
+
+[REDESIGN_GUIDE.md](REDESIGN_GUIDE.md) covers the October 14 cover, original camera/CD/player collage, pink-and-black masthead, accessible culture ticker, searchable archive, author preview, and refreshed share cards. [REDESIGN_BRIEF.md](REDESIGN_BRIEF.md) preserves the request. No game data, progress keys, auth tables, payment provider settings, or purchase/trial rules were changed. The Caveat handwriting font is bundled under its SIL Open Font License alongside the existing Outfit font.

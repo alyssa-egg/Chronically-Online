@@ -6,7 +6,7 @@ export async function exportSideblog(state) {
   const canvas = document.createElement("canvas");
   canvas.width = 1200; canvas.height = 1500;
   const ctx = canvas.getContext("2d");
-  const colors = { paper: ["#edfafd", "#143f49"], fandom: ["#fff0f8", "#743455"], video: ["#f1ecff", "#52366e"], current: ["#dff9f5", "#115c5a"], midnight: ["#233644", "#eefaff"] };
+  const colors = { paper: ["#F8F4EC", "#0B0B0F"], fandom: ["#fff0f8", "#743455"], video: ["#f1ecff", "#52366e"], current: ["#dff9f5", "#115c5a"], midnight: ["#233644", "#eefaff"] };
   const [background, ink] = colors[state.theme] || colors.paper;
   ctx.fillStyle = background; ctx.fillRect(0, 0, 1200, 1500);
   ctx.strokeStyle = state.theme === "midnight" ? "#ffffff14" : "#72b8c122";
@@ -21,7 +21,7 @@ export async function exportSideblog(state) {
     }
     if (count < maxLines) ctx.fillText(line, x, y + count * 29);
   };
-  await drawBrand(ctx,65,32,730);
+  await drawBrand(ctx,65,32,730,ink);
   write("YOUR SIDEBLOG / YOU HAD TO BE THERE.", 65, 157, 18);
   const badge = featuredBadge(state);
   const name = state.name || "my little sideblog";
@@ -43,11 +43,11 @@ export async function exportSideblog(state) {
   const receipts = pinnedReceipts(state);
   receipts.forEach((receipt, i) => {
     const x = 65 + (i % 2) * 550, y = 422 + Math.floor(i / 2) * 265;
-    ctx.fillStyle = "#fffafd"; ctx.fillRect(x, y, 515, 238);
-    ctx.strokeStyle = "#c5dfe4"; ctx.strokeRect(x, y, 515, 238);
-    write("RECOVERED RECEIPT", x + 24, y + 34, 15, "#147680");
-    ctx.font = "700 29px Outfit, sans-serif"; ctx.fillStyle = "#143f49"; wrap(receipt.title, x + 24, y + 81, 463, 2);
-    ctx.font = "400 19px Outfit, sans-serif"; ctx.fillStyle = "#5b727c"; wrap(receipt.explanation || "A little piece of your internet history.", x + 24, y + 155, 463, 2);
+    ctx.fillStyle = "#fffaf3"; ctx.fillRect(x, y, 515, 238);
+    ctx.strokeStyle = "#0B0B0F"; ctx.strokeRect(x, y, 515, 238);
+    write("RECOVERED RECEIPT", x + 24, y + 34, 15, "#0B0B0F");
+    ctx.font = "700 29px Outfit, sans-serif"; ctx.fillStyle = "#0B0B0F"; wrap(receipt.title, x + 24, y + 81, 463, 2);
+    ctx.font = "400 19px Outfit, sans-serif"; ctx.fillStyle = "#605a62"; wrap(receipt.explanation || "A little piece of your internet history.", x + 24, y + 155, 463, 2);
   });
   if (!receipts.length) write("your future lore goes here. ♡", 65, 520, 32);
   state.stamps.slice(-4).forEach((stamp, index) => write(`✧ ${stamp.title.slice(0, 42)}`, 65 + (index % 2) * 550, 1240 + Math.floor(index / 2) * 30, 18));

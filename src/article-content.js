@@ -50,6 +50,11 @@ export function renderBody(blocks = []) {
   const closeList = () => { if (listType) html += `</${listType}>`; listType = null; };
   for (const block of Array.isArray(blocks) ? blocks : []) {
     if (block._type === "image") { closeList(); html += renderImage(block, "story-inline-image"); continue; }
+    if (block._type === "annotation") {
+      closeList();
+      html += `<aside class="story-annotation">${block.title ? `<strong>${escapeHTML(block.title)}</strong>` : ""}<p>${escapeHTML(block.text)}</p></aside>`;
+      continue;
+    }
     if (block._type !== "block") continue;
     const list = block.listItem === "bullet" ? "ul" : block.listItem === "number" ? "ol" : null;
     if (list) {

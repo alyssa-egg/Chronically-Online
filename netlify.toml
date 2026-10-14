@@ -29,3 +29,13 @@
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
+
+[[redirects]]
+  from = "/archive"
+  to = "/archive/"
+  status = 301
+
+[[redirects]]
+  from = "/archive/"
+  to = "/index.html"
+  status = 200
