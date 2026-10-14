@@ -65,6 +65,8 @@ const publicFiles = new Set([
   "/src/assets/fonts/OFL.txt",
   "/src/assets/fonts/caveat-variable.woff",
   "/src/assets/fonts/CAVEAT-OFL.txt",
+  "/src/assets/fonts/dm-sans-variable.woff",
+  "/src/assets/fonts/DM-SANS-OFL.txt",
 ]);
 http
   .createServer(async (req, res) => {

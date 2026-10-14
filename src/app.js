@@ -644,6 +644,7 @@ async function downloadCard(score) {
     cardMode = mode,
     cardAnswers = [...answers],
     cardQuestions = questions;
+  await document.fonts.ready;
   const canvas = document.createElement("canvas");
   canvas.width = 1080;
   canvas.height = 1350;
@@ -661,7 +662,7 @@ async function downloadCard(score) {
   };
   const text = (value, y, size, color = "#0B0B0F", italic = false) => {
     ctx.fillStyle = color;
-    ctx.font = `${italic ? "700" : "800"} ${size}px Outfit, sans-serif`;
+    ctx.font = `700 ${size}px ${size >= 100 ? 'Helvetica, "Helvetica Neue", Arial' : '"DM Sans"'}, sans-serif`;
     ctx.textAlign = "center";
     ctx.fillText(value, 540, y);
   };

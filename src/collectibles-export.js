@@ -26,13 +26,13 @@ export async function exportBadge(badge, date) {
   const holo=ctx.createLinearGradient(0,0,800,1050);holo.addColorStop(0,'#B8E7E1');holo.addColorStop(.4,'#FF5BC8');holo.addColorStop(.7,'#C8B6FF');holo.addColorStop(1,'#B8E7E1');
   ctx.fillStyle=holo;ctx.fillRect(0,0,800,1050);ctx.fillStyle='#F8F4EC';ctx.fillRect(28,28,744,994);
   ctx.strokeStyle='#0B0B0F';ctx.lineWidth=2;ctx.setLineDash([7,7]);ctx.strokeRect(48,48,704,954);ctx.setLineDash([]);
-  const text=(value,x,y,size,bold=false,color='#0B0B0F')=>{ctx.fillStyle=color;ctx.font=`${bold?'700':'400'} ${size}px Outfit, sans-serif`;ctx.fillText(value,x,y);};
+  const text=(value,x,y,size,bold=false,color='#0B0B0F')=>{ctx.fillStyle=color;ctx.font=`${bold?'700':'400'} ${size}px "DM Sans", sans-serif`;ctx.fillText(value,x,y);};
   await drawBrand(ctx,70,66,520);
   text(`${badge.era.toUpperCase()} / ${badge.rarity.toUpperCase()}`,70,164,18);
   ctx.drawImage(image,200,205,400,400);
-  ctx.font='700 48px Outfit, sans-serif';
+  ctx.font='700 48px "DM Sans", sans-serif';
   text(badge.title,70,690,Math.min(48,48*660/ctx.measureText(badge.title).width),true);
-  ctx.font='400 24px Outfit, sans-serif';ctx.fillStyle='#605a62';
+  ctx.font='400 24px "DM Sans", sans-serif';ctx.fillStyle='#605a62';
   let line='',row=0;for(const word of badge.description.split(' ')) {const next=line?line+' '+word:word;if(ctx.measureText(next).width>660&&line){ctx.fillText(line,70,747+row*34);row++;line=word;}else line=next;}ctx.fillText(line,70,747+row*34);
   text(`FILED ${date || 'IN MY SIDEBLOG'} · YOU HAD TO BE THERE.`,70,900,18);
   text(new URL('./',location.href).host,70,954,20);
