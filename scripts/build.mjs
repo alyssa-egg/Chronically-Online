@@ -34,6 +34,7 @@ const files = new Set([
   "src/style.css",
   "src/favicon.svg",
   "src/assets/fandom-files-logo.png",
+  "src/assets/fandom-files-heart-logo.png",
   "src/assets/case-doodle.svg",
   "src/assets/ask-moustache.png",
   "src/assets/pixel-cursor.png",

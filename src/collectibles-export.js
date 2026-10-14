@@ -1,16 +1,12 @@
+let suppliedLogo;
 export async function drawBrand(ctx, x, y, width, ink = "#0B0B0F") {
-  await document.fonts.ready;
-  ctx.save(); ctx.textAlign = "left"; ctx.textBaseline = "top";
-  ctx.font = "900 100px Outfit, sans-serif";
-  const fontSize = Math.min(100, width / (ctx.measureText("fandomfiles").width + 82) * 100);
-  ctx.font = `900 ${fontSize}px Outfit, sans-serif`;
-  ctx.fillStyle = "#FF5BC8"; ctx.strokeStyle = ink; ctx.lineWidth = .7;
-  ctx.fillText("fandom", x, y); ctx.strokeText("fandom", x, y);
-  const second = x + ctx.measureText("fandom").width;
-  ctx.fillStyle = ink; ctx.fillText("files", second, y);
-  const heartX = second + ctx.measureText("files").width + fontSize * .12;
-  const unit = Math.max(1, Math.round(fontSize * .065));
-  ["01100110", "11111111", "11111111", "01111110", "00111100", "00011000"].forEach((row, iy) => [...row].forEach((pixel, ix) => { if(pixel === '1') ctx.fillRect(Math.round(heartX) + ix * unit, Math.round(y + fontSize * .15) + iy * unit, unit, unit); }));
+  if (!suppliedLogo) { suppliedLogo = new Image(); suppliedLogo.src = new URL("./assets/fandom-files-heart-logo.png", import.meta.url).href; }
+  await suppliedLogo.decode();
+  const height = width * 328 / 2070;
+  ctx.save();
+  // Keep the supplied black lettering legible on the earned midnight theme.
+  if (ink === "#eefaff") { ctx.fillStyle = "#F8F4EC"; ctx.fillRect(x - 10, y - 8, width + 20, height + 16); }
+  ctx.drawImage(suppliedLogo, 49, 171, 2070, 328, x, y, width, height);
   ctx.restore();
 }
 // Original local artwork only. Shared achievement cards contain no puzzle answers.

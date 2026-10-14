@@ -344,3 +344,8 @@ h1 em,.section-heading h2 em,.daily-game h2 em,#membership h2 em { color:inherit
 .collage-note { background:var(--paper); border:1px solid var(--ink); padding:6px 11px; top:65px; left:-28px; font-size:21px; }
 .cover-margin-note { text-align:left; margin-top:32px; }
 @media (max-width:650px) { .collage-note { left:-3px; top:65px; font-size:18px; } .cover-margin-note { margin-top:56px; } }
+/* Supplied wordmark: the pixel heart replaces the o in fandom. */
+.masthead { display:block; width:min(810px,75%); flex-shrink:1; font-size:0; line-height:1; }
+.brand-logo { display:block; width:100%; height:auto; }
+.footer-wordmark { display:block; width:min(320px,100%); font-size:0; line-height:1; }
+@media (max-width:650px) { .masthead { width:calc(100% - 78px); font-size:0; } }
