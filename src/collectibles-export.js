@@ -1,12 +1,18 @@
+import { originalImageURL, logoPlacement, publishedEraAssets } from "./site-identity.js";
 let suppliedLogo;
 export async function drawBrand(ctx, x, y, width, ink = "#0B0B0F") {
-  if (!suppliedLogo) { suppliedLogo = new Image(); suppliedLogo.src = new URL("./assets/fandom-files-heart-logo.png", import.meta.url).href; }
+  let source = new URL("./assets/fandom-files-heart-logo.png", import.meta.url).href;
+  let box = { x: 49, y: 171, width: 2070, height: 328 };
+  try {
+    const { identity } = await publishedEraAssets(), original = originalImageURL(identity?.logo);
+    if (original) { source = original; box = logoPlacement(identity.logo); }
+  } catch { /* Existing local wordmark remains available offline. */ }
+  if (!suppliedLogo || suppliedLogo.src !== source) { suppliedLogo = new Image(); suppliedLogo.crossOrigin = 'anonymous'; suppliedLogo.src = source; }
   await suppliedLogo.decode();
-  const height = width * 328 / 2070;
+  const height = width * box.height / box.width;
   ctx.save();
-  // Keep the supplied black lettering legible on the earned midnight theme.
   if (ink === "#eefaff") { ctx.fillStyle = "#F8F4EC"; ctx.fillRect(x - 10, y - 8, width + 20, height + 16); }
-  ctx.drawImage(suppliedLogo, 49, 171, 2070, 328, x, y, width, height);
+  ctx.drawImage(suppliedLogo, box.x, box.y, box.width, box.height, x, y, width, height);
   ctx.restore();
 }
 // Original local artwork only. Shared achievement cards contain no puzzle answers.

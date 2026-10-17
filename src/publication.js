@@ -2,7 +2,7 @@ import { arrowIcon } from "./design-symbols.js";
 import { desks, escapeHTML as e, storyURL, storySlug } from "./article-content.js";
 import { archiveTopics, archiveEras, archiveURL } from "./archive-topics.js";
 import { storyCard as card, articleLayout } from "./article-layout.js";
-export function createPublicationUI({ root, render, begin, read, save, home }) {
+export function createPublicationUI({ root, render, begin, read, save, home, openEraIndex, savedDiscoveries = () => "", bindDiscoveries = () => {} }) {
   let articles = null, loading = null, visit = 0;
   const savedKey = "fandom-files-saved-stories-v1";
   const saved = () => { const value = read(savedKey, []); return Array.isArray(value) ? value.filter(item => item && typeof item.slug === "string" && typeof item.title === "string") : []; };
@@ -32,9 +32,9 @@ export function createPublicationUI({ root, render, begin, read, save, home }) {
     const target = root.querySelector("#editorial-home");
     if (!target) return;
     try {
-      const stories = await list();
+      const [stories, radar] = await Promise.all([list(), fetchJSON("/api/articles?radar=1&sort=recent").then(json => json.articles).catch(() => [])]);
       if (!target.isConnected) return;
-      target.innerHTML = `<div class="section-heading"><div><span class="file-label">LATEST FILES / FRESHLY UNCOVERED</span><h2>THE LATEST <em>OBSESSIONS.</em></h2><p>The stories behind the screenshots. The lore behind the culture.</p></div><button class="text-button" data-desk="all">All the files ${arrowIcon}</button></div>${deskButtons()}${stories.length ? `<div class="editorial-cover-grid">${stories.slice(0, 3).map((story, index) => card(story, index === 0)).join("")}</div>` : `<div class="editorial-empty"><span class="empty-file-stamp" aria-hidden="true">FILE UNDER: COMING SOON</span><span class="file-label">THE FIRST FILES ARE STILL ON THE DESK</span><h3>GOOD LORE TAKES<br><em>A LITTLE DIGGING.</em></h3><p>The editorial archive is waiting for its first published story. Until then, there’s a quiz to take, an ask to decode, and a lost post with your name on it.</p><a class="pill" href="#play-section">Visit the games ↓</a></div>`}`;
+      target.innerHTML = `<div class="section-heading"><div><span class="file-label">THE LATEST / CURATED AT OUR OWN PACE</span><h2>one more <em>tab to keep.</em></h2><p>Music, internet culture, and the backstory worth saving. Publication dates belong to each story.</p></div><button class="text-button" data-desk="all">all the written files ↗</button></div>${stories.length ? `<div class="editorial-cover-grid">${stories.slice(0, 3).map((story, index) => card(story, index === 0)).join("")}</div>` : `<div class="editorial-empty"><span class="file-label">A SLOW LITTLE EDITORIAL CORNER</span><h3>the next good rabbit hole<br><em>is still on the desk.</em></h3><p>New stories arrive when there’s something worth sharing. The era archive and today’s Deep Cut are already open.</p></div>`}${radar.length ? `<aside class="currently-on-radar"><span class="file-label">CURRENTLY ON OUR RADAR / EDITOR’S PICKS</span><h3>in the group chat.</h3>${radar.slice(0, 3).map(story => `<a href="${storyURL(story.slug)}" data-story="${e(story.slug)}"><strong>${e(story.title)}</strong><span>${e(story.radarNote || story.excerpt)}</span></a>`).join('')}</aside>` : ''}`;
       links();
     } catch {
       if (target.isConnected) { target.innerHTML = `<p class="editorial-notice" role="status">The editorial files couldn’t load. Your games are ready below. <button class="text-button" id="retry-editorial">Try again ↻</button></p>`; root.querySelector("#retry-editorial").onclick = mountHome; }
@@ -118,13 +118,14 @@ export function createPublicationUI({ root, render, begin, read, save, home }) {
     ++visit; push("/?desk=saved");
     document.title = "My Saved Stories — The Fandom Files";
     const stories = saved().reverse();
-    show("editorial", `<section class="editorial-page"><button class="text-button" id="publication-home">← Back to the dashboard</button><span class="eyebrow">MY SIDEBLOG / KEEP IT</span><h1>my saved <em>stories.</em></h1><p>Your personal reading archive stays in this browser. ${stories.length}/200 files kept.</p><div class="story-grid">${stories.map(story => `<div>${card(story)}<button class="text-button" data-remove-story="${e(story.slug)}">Unsave ${e(story.title)} ×</button></div>`).join("") || `<div class="editorial-empty"><h2>A little room for your next obsession.</h2><p>Open a story and tap “Save to my Sideblog” to keep it here.</p><button class="secondary" data-desk="all">Find a file to keep →</button></div>`}</div></section>`);
+    show("editorial", `<section class="editorial-page"><button class="text-button" id="publication-home">← Back to the dashboard</button><span class="eyebrow">MY FILES / KEEP IT</span><h1>my saved <em>files.</em></h1><p>Your personal reading archive stays in this browser. ${stories.length}/200 files kept.</p><div class="story-grid">${stories.map(story => `<div>${card(story)}<button class="text-button" data-remove-story="${e(story.slug)}">Unsave ${e(story.title)} ×</button></div>`).join("") || `<div class="editorial-empty"><h2>A little room for your next obsession.</h2><p>Open a story and tap “Save to my Sideblog” to keep it here.</p><button class="secondary" data-desk="all">Find a file to keep →</button></div>`}</div></section>`);
+    root.querySelector(".editorial-page").insertAdjacentHTML("beforeend", savedDiscoveries() + `<p><button class="text-button" data-original-sideblog>open my original Sideblog & collectibles →</button></p>`); bindDiscoveries();
     backButton(); root.querySelectorAll("[data-remove-story]").forEach(button => button.onclick = () => { save(savedKey, saved().filter(item => item.slug !== button.dataset.removeStory)); openSaved(); });
   }
   function route() {
     const slug = storySlug(location.pathname), desk = new URL(location.href).searchParams.get("desk");
     if (slug) { openStory(slug, false); return true; }
-    if (/^\/archive\/?$/.test(location.pathname)) { openArchive(Object.fromEntries(new URL(location.href).searchParams), false); return true; }
+    if (/^\/archive\/?$/.test(location.pathname)) { const filters = Object.fromEntries(new URL(location.href).searchParams); if (!Object.keys(filters).length && openEraIndex) openEraIndex(false); else openArchive(filters, false); return true; }
     if (desk === "saved") { openSaved(); return true; }
     if (desk) { openDesk(desk, false); return true; }
     return false;

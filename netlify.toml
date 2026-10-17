@@ -34,3 +34,13 @@
   from = "/archive/"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/eras/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/play/"
+  to = "/index.html"
+  status = 200

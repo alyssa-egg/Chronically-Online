@@ -19,6 +19,8 @@ export const article = defineType({
     defineField({ name: "author", type: "string", group: "story", validation: rule => rule.required() }),
     defineField({ name: "publishedAt", title: "Publication date & time", type: "datetime", group: "publish", description: "Readers see a published article only once this time has arrived. Drafts never appear on the site.", validation: rule => rule.required() }),
     defineField({ name: "featured", title: "Feature on the cover", type: "boolean", group: "publish", initialValue: false }),
+    defineField({ name: "onRadar", title: "Currently on our radar", type: "boolean", group: "publish", initialValue: false, description: "Show this published story in the small curated homepage radar. No automated trend feed." }),
+    defineField({ name: "radarNote", title: "Radar note (optional)", type: "string", group: "publish", validation: rule => rule.max(180) }),
     defineField({ name: "tags", title: "Topics, eras, fandoms & artists", type: "array", of: [{ type: "string" }], options: { layout: "tags" }, group: "publish" }),
     defineField({ name: "excerpt", type: "text", rows: 3, group: "story", validation: rule => rule.required().max(320) }),
     defineField({ name: "coverImage", type: "image", options: { hotspot: true }, fields: imageFields, group: "story" }),

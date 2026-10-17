@@ -374,3 +374,113 @@ h2,h3,h4,h5,h6,.story-subtitle,#membership h2,dialog h2,
 .daily-game h2,.era-copy h3,.folder-surface h3 {
   font-family:var(--sans);
 }
+
+/* A smaller daily hangout: one ritual, three eras, a slow editorial feed. */
+.hangout-cover { display:grid; grid-template-columns:1.2fr 1fr; gap:65px; padding:36px 0 55px; align-items:center; }
+.hangout-intro h1 { font-size:clamp(46px,6vw,78px); margin:20px 0; line-height:1.05; }
+.hangout-intro h1 em { font-style:normal; color:var(--ink); background:var(--pink); padding:0 6px 3px; }
+.hangout-intro > p { max-width:450px; font:17px/1.8 var(--sans); }
+.hangout-note { display:inline-block; font:24px/1.5 var(--marker); transform:rotate(-3deg); margin-top:10px; }
+.deep-cut-teaser { position:relative; padding:32px; border:1px solid var(--ink); box-shadow:5px 5px 0 var(--ink); background:var(--lilac); }
+.deep-cut-teaser:before { content:'daily_deep_cut.txt'; position:absolute; left:0; right:0; top:0; padding:7px 12px; border-bottom:1px solid var(--ink); font:10px/1.5 monospace; background:var(--paper); }
+.deep-cut-teaser > .file-label { display:block; margin-top:27px; }
+.deep-cut-teaser h2 { font:700 clamp(32px,4vw,50px)/1.14 var(--sans); letter-spacing:-.025em; margin:20px 0; }
+.deep-cut-teaser h2 em { font-style:normal; }
+.deep-cut-teaser > p { font:15px/1.8 var(--sans); margin-bottom:25px; }
+.deep-cut-teaser .primary { display:inline-flex; min-height:50px; align-items:center; padding:13px 18px; }
+.deep-cut-caption { display:block; font:12px/1.7 var(--sans); color:var(--muted); margin-top:20px; }
+.era-home,.era-index { border-top:2px solid var(--ink); padding:38px 0 50px; }
+.era-home .section-heading { margin-bottom:30px; }
+.era-entrances { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:25px; }
+.era-entrance { text-decoration:none; min-width:0; display:flex; flex-direction:column; border:1px solid var(--ink); background:var(--paper); }
+.era-entrance-image { aspect-ratio:16/10; overflow:hidden; border-bottom:1px solid var(--ink); background:var(--pink); }
+.era-entrance-image > img { width:100%; height:100%; object-fit:contain; display:block; filter:none; }
+.era-entrance-copy { padding:24px; flex:1; display:flex; flex-direction:column; }
+.era-entrance-copy h3 { font:700 28px/1.13 var(--sans); letter-spacing:-.02em; margin:15px 0; }
+.era-entrance-copy > p { font:14px/1.75 var(--sans); margin:0 0 22px; }
+.era-entrance-copy .folder-open { margin-top:auto; }
+.era-image-pending { height:100%; min-height:190px; display:flex; flex-direction:column; justify-content:center; gap:18px; padding:25px; color:var(--ink); background:var(--pink); }
+.era-entrance-influencer-era .era-image-pending { background:var(--lilac); }
+.era-entrance-current-lore .era-image-pending { background:var(--mint); }
+.era-image-pending span { font:11px/1.6 var(--sans); }
+.era-image-pending strong { font:700 30px/1.15 var(--sans); }
+.era-index > h1,.era-introduction h1 { font-size:clamp(40px,5.5vw,68px); max-width:850px; margin:25px 0; }
+.era-index > p,.era-introduction > p { max-width:680px; line-height:1.8; margin-bottom:34px; }
+.era-index-footnote { border-top:1px solid var(--line); margin-top:45px; padding-top:22px; }
+.era-discovery-page { padding:25px 0 50px; }
+.era-introduction { padding:25px 0 10px; }
+.era-interactive-collage { position:relative; background:var(--paper); border:1px solid var(--ink); }
+.era-interactive-collage > img { display:block; width:100%; height:auto; filter:none; }
+.era-interactive-collage .era-image-pending { min-height:240px; background:var(--lilac); }
+.era-lore-pin { position:absolute; display:flex; align-items:center; justify-content:center; transform:translate(-50%,-50%); width:44px; height:44px; background:var(--paper); color:var(--ink); border:2px solid var(--ink); border-radius:50%; font:700 17px var(--sans); text-decoration:none; box-shadow:3px 3px 0 var(--pink); }
+.era-lore-pin:hover { background:var(--pink); }
+.image-credit { font:12px/1.6 var(--sans); color:var(--muted); }
+.era-discoveries-heading { margin:35px 0 20px; }
+.era-discoveries-heading h2,.era-connected h2,.era-related h2,.saved-discoveries h2 { font:700 clamp(26px,3vw,36px)/1.2 var(--sans); letter-spacing:-.02em; }
+.era-discoveries { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+.era-discoveries details { border:1px solid var(--ink); padding:0; background:#fffaf3; }
+.era-discoveries summary { display:flex; align-items:center; gap:16px; padding:20px; min-height:100px; cursor:pointer; list-style:none; }
+.era-discoveries summary::-webkit-details-marker { display:none; }
+.era-discoveries summary small { display:block; font:10px/1.6 var(--sans); color:var(--muted); margin-bottom:6px; }
+.era-discoveries summary strong { font:700 19px/1.35 var(--sans); }
+.era-discoveries summary > span:last-child { margin-left:auto; }
+.discovery-number { font:700 18px var(--sans); background:var(--lilac); padding:7px 11px; border:1px solid var(--ink); }
+.discovery-copy { padding:0 22px 20px; font:15px/1.8 var(--sans); }
+.discovery-copy a,.discovery-copy button { display:block; margin-top:15px; }
+.era-connected,.era-related,.saved-discoveries { border-top:1px solid var(--line); margin-top:40px; padding-top:22px; }
+.era-connected .pill { display:inline-block; margin:8px 8px 0 0; text-decoration:none; }
+.saved-discoveries li { margin:20px 0; }
+.saved-discoveries li span { display:block; font-size:12px; color:var(--muted); margin-top:7px; }
+.editorial-home { border-top:2px solid var(--ink); padding-top:34px; }
+.editorial-empty { min-height:0; padding:28px; box-shadow:none; }
+.editorial-empty h3 { font-size:clamp(25px,3vw,36px); line-height:1.2; }
+.currently-on-radar { margin-top:35px; border-left:5px solid var(--pink); padding:10px 25px; }
+.currently-on-radar h3 { font:700 27px var(--sans); }
+.currently-on-radar a { display:block; padding:14px 0; border-top:1px solid var(--line); text-decoration:none; }
+.currently-on-radar a > span { display:block; font-size:14px; line-height:1.7; margin-top:7px; }
+.more-to-explore { margin:0 0 45px; border-top:1px solid var(--ink); }
+.more-to-explore > summary { padding:24px 0; cursor:pointer; font:700 24px/1.5 var(--sans); }
+.more-to-explore > summary > span { display:block; font:12px/1.8 var(--sans); margin-top:5px; }
+.more-to-explore .game-room-heading { padding-top:25px; }
+.deep-cut-game { max-width:850px; margin:25px auto 55px; }
+.deep-cut-window { border:1px solid var(--ink); box-shadow:5px 5px 0 var(--ink); background:#fffaf3; margin-top:20px; }
+.deep-cut-window .window-bar { background:var(--ink); color:var(--paper); font:12px/1.5 var(--sans); }
+.deep-cut-content { padding:36px; }
+.deep-cut-content h1 { font:700 clamp(30px,4vw,46px)/1.15 var(--headline); letter-spacing:-.02em; margin:25px 0; text-transform:lowercase; }
+.deep-cut-content > p { line-height:1.8; }
+.deep-cut-clues { margin:20px 0; }
+.deep-cut-clues > p { background:var(--lilac); padding:14px; font:14px/1.7 var(--sans); }
+.deep-cut-clues > p span { display:block; font-weight:700; }
+.deep-cut-content .answers > button { font-family:var(--sans); opacity:1; }
+.deep-cut-content .answers > button:disabled { color:var(--ink); cursor:default; }
+.deep-cut-content .answers .deep-answer-correct { border:2px solid var(--ink); background:var(--mint); }
+.deep-cut-content .answers .deep-answer-wrong { background:#ffd6e6; border:2px dashed var(--ink); }
+.deep-cut-content .answers button > span:last-child:not(:nth-child(2)) { font-size:11px; }
+.deep-cut-result { margin-top:30px; border-top:1px solid var(--ink); padding-top:22px; }
+.deep-cut-score { font:700 64px/1.2 var(--headline); }
+.deep-cut-score small { font:400 22px var(--sans); }
+.deep-cut-result h2 { font:700 26px/1.3 var(--sans); }
+.deep-cut-result > p { font:15px/1.8 var(--sans); }
+.deep-cut-result > a { display:block; margin-top:24px; }
+.deep-cut-result textarea { width:100%; min-height:135px; padding:15px; font:14px/1.6 var(--sans); }
+@media (hover:hover) { .era-entrance:hover .folder-open,.currently-on-radar a:hover strong { text-decoration:underline; text-decoration-color:var(--pink); text-decoration-thickness:3px; text-underline-offset:4px; } }
+@media (max-width:900px) { .hangout-cover { gap:30px; } .era-entrances { gap:16px; } .era-entrance-copy { padding:18px; } .era-entrance-copy h3 { font-size:24px; } }
+@media (max-width:650px) {
+  .hangout-cover { grid-template-columns:1fr; gap:26px; padding:20px 0 40px; }
+  .hangout-intro h1 { font-size:clamp(43px,12vw,65px); }
+  .hangout-intro > p { font-size:15px; }
+  .hangout-note { font-size:21px; }
+  .deep-cut-teaser { padding:23px; }
+  .deep-cut-teaser h2 { font-size:36px; }
+  .era-entrances { grid-template-columns:1fr; gap:24px; }
+  .era-entrance-image { aspect-ratio:16/9; }
+  .era-entrance-copy h3 { font-size:28px; }
+  .era-home { padding-top:25px; }
+  .era-discoveries { grid-template-columns:1fr; }
+  .era-discoveries summary { padding:16px; }
+  .deep-cut-content { padding:22px 18px; }
+  .deep-cut-content h1 { font-size:30px; }
+  .deep-cut-content .answers button { gap:10px; padding:15px 10px; }
+  .deep-cut-content .answers button > span:nth-child(2) { flex:1; min-width:0; }
+  .deep-cut-content .answers button > span:last-child:not(:nth-child(2)) { max-width:45px; }
+}

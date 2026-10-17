@@ -1,4 +1,6 @@
-# The Fandom Files ♡
+# The Fandom Files
+
+The smaller daily hangout is documented in [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md): Today’s Deep Cut, three eras, curated stories, original image uploads and saved files.
 
 “you had to be there.” An interactive internet-culture publication in hot pink, archive black, and paper cream: music, fandom, fashion, creators, and internet memory. Read the lore, explore timelines and moodboards, and keep stories in your Sideblog. The daily games and collectible archive remain part of the dashboard.
 
@@ -18,7 +20,7 @@ Open `http://localhost:3000`. Requires Node.js **22.12+** (Node 24 recommended).
 
 ## Write articles without editing code
 
-Open **https://fandomfiles.netlify.app/admin/** and sign in with your Sanity GitHub account. [BLOG_GUIDE.md](BLOG_GUIDE.md) walks through writing, images, interactive extras, scheduling, publishing and access. The magazine cover, latest files and five subject folders lead into the games. Search the full published archive by category, era, format, tags and article text. The editor includes a draft Preview tab. Article updates appear after refreshing the site, without redeployment. Drafts remain hidden. Saved stories and personal poll choices are browser-local.
+Open **https://fandomfiles.netlify.app/admin/** and sign in with your Sanity GitHub account. [BLOG_GUIDE.md](BLOG_GUIDE.md) walks through writing, images, interactive extras, scheduling, publishing and access. The homepage features Today’s Deep Cut, three era entrances and curated editorial stories. The full editorial search retains its five subject folders. Search the full published archive by category, era, format, tags and article text. The editor includes a draft Preview tab. Article updates appear after refreshing the site, without redeployment. Drafts remain hidden. Saved stories and personal poll choices are browser-local.
 
 [EDITORIAL_PUBLICATION_BRIEF.md](EDITORIAL_PUBLICATION_BRIEF.md) preserves the supplied magazine concept and future ideas. This release includes the article dashboard and interactive reader experience; shared community submissions/vote totals and a newsletter remain future work.
 

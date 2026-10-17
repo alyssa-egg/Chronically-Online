@@ -8,14 +8,14 @@ Your project is **rjg4g3cl**, dataset **production**. The organization ID **obys
 
 1. Open **Article**, then **Create new document** (the plus/pencil button).
 2. In **Write**, add a title, author, short excerpt, article body, and optional cover image. Add descriptive image alt text, captions, and credits. Use images you own or have permission to publish.
-3. In **Publication**, choose an editorial desk and an **Archive folder** (The Fandom Years, Music Lore, Creator Culture, Style Files, or Internet Mysteries). You can also choose an era. Generate the URL slug, enter a publication date/time, and add topic tags. Turn on **Feature on the cover** to prioritize the story on the homepage.
+3. In **Publication**, choose an editorial desk and an **Archive folder** (The Fandom Years, Music Lore, Creator Culture, Style Files, or Internet Mysteries). You can also choose an era. Generate the URL slug, enter a publication date/time, and add topic tags. The homepage lists the latest stories by publication date. **Feature on the cover** still prioritizes results in the featured archive view. Turn on **Currently on our radar** and add an optional **Radar note** to curate a homepage pick.
 4. In **Interactive extras**, optionally add timeline moments, moodboard objects, connected articles, or a question with choices. Keep timeline moments in the intended reading order. Connected articles must also be published to appear to readers.
 5. Add sources for reported facts; label memories, recollections, and opinion clearly. In the body, add **Editorial side note** blocks for highlighted annotations. An optional **Subtitle** appears beneath the title.
 6. Open the document’s **Preview** tab to see your current draft with the reader design. This preview stays in your authenticated editor; it does not publish the story or enable player purchases. Timelines and moodboard details can expand. Saving/sharing and poll voting are disabled in this draft preview.
 7. Drafts save automatically and stay off the reader website. Use Sanity’s **Publish** button when you approve the article. Required fields must be complete. Set a future publication time if it should remain hidden until then.
 8. Refresh the public website to see the story in the editorial section and its desk. Open its individual URL, `/stories/your-slug/`. No code change or Netlify redeploy is required to publish or edit articles.
 
-Sanity’s date picker uses your browser’s timezone; check the displayed offset when scheduling. The stored time is an absolute ISO timestamp. Daily game resets remain midnight America/New_York and are independent of article publication.
+Sanity’s date picker uses your browser’s timezone; check the displayed offset when scheduling. The stored time is an absolute ISO timestamp. The original daily games reset at midnight America/New_York. The new Today’s Deep Cut resets at the visitor’s local midnight. Both schedules are independent of article publication.
 
 To change a live article, edit it and **Publish** the revision. To remove one, use the document menu’s **Unpublish**. Visitors should refresh open pages to see changes. Keep a published slug stable so shared links continue to work. Draft edits never replace the last published revision until you publish them.
 
@@ -29,7 +29,7 @@ To change a live article, edit it and **Publish** the revision. To remove one, u
 | The Rabbit Hole | Stories connected to other articles, sources, songs, and playlists |
 | The Group Chat | Editorial opinions, recollections, and personal reader choices |
 
-Readers can browse the five archive folders at `/archive/`, filter by era and editorial desk, search titles/subtitles/excerpts/tags/article body text, load more matching files, explore expandable timelines and moodboard objects, follow sources and related stories, share a story URL, and save up to 200 stories to their Sideblog reading archive.
+Readers start with the three era collages at `/archive/`. The editorial search still supports the five subject folders; use “search all the files” to filter by era and editorial desk, search titles/subtitles/excerpts/tags/article body text, load more matching files, explore expandable timelines and moodboard objects, follow sources and related stories, share a story URL, and save up to 200 stories to their Sideblog reading archive.
 
 Story saves and poll choices stay in the reader’s browser. Polls are personal choices, **not shared community vote totals**. There is no reader-submission inbox, comment system, newsletter subscription, audio player, or automatic news-writing service in this release. The brief’s ideas for those remain future work. Playlist/song references open the original link rather than importing licensed audio.
 
@@ -71,3 +71,5 @@ On October 13, 2026, the real production dataset was tested by creating a tempor
 The automated suite passed 69 tests, including new article query and rendering security checks. Reader browser checks cover 320, 390, 768 and 1440 pixel widths, individual URLs/reloads, saved stories and poll persistence, interactive extras, and the existing free games. Studio builds and serves its assets at `/admin/`. Your personal GitHub sign-in and first real article publication remain your final owner checks; the service-token publishing test does not establish an interactive user login.
 
 The October 14 redesign and its compatibility notes are recorded in [REDESIGN_GUIDE.md](REDESIGN_GUIDE.md). The required Sanity project, dataset and CORS origin are unchanged.
+
+For original logo/era-image uploads, the new era discoveries, the smaller homepage and the daily one-question game, see [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md).

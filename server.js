@@ -1,5 +1,6 @@
 import { publicArchiveModule } from "./server/archive.mjs";
 import http from "node:http";
+import { handleEraPagesRequest } from "./server/era-pages.mjs";
 import { handleArticleRequest } from "./server/articles.mjs";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -26,6 +27,12 @@ const publicFiles = new Set([
   "/src/publication.js",
   "/src/archive-topics.js",
   "/src/cover.js",
+  "/src/deep-cut-questions.js",
+  "/src/deep-cut.js",
+  "/src/deep-cut-ui.js",
+  "/src/era-discoveries.js",
+  "/src/era-discovery-ui.js",
+  "/src/site-identity.js",
   "/src/design-symbols.js",
   "/src/article-layout.js",
   "/src/redesign.css",
@@ -76,6 +83,11 @@ http
         "http://" + (req.headers.host || "localhost"),
       );
       const pathname = decodeURIComponent(url.pathname);
+      if (pathname === "/api/era-pages") {
+        const result = await handleEraPagesRequest(new Request(url, { method: req.method }));
+        res.writeHead(result.status, Object.fromEntries(result.headers));
+        return res.end(Buffer.from(await result.arrayBuffer()));
+      }
       if (pathname === "/api/articles") {
         const result = await handleArticleRequest(new Request(url, { method: req.method }));
         res.writeHead(result.status, Object.fromEntries(result.headers));
@@ -120,7 +132,7 @@ http
         res.writeHead(result.status, Object.fromEntries(result.headers));
         return res.end(Buffer.from(await result.arrayBuffer()));
       }
-      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
+      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/play\/?$/.test(pathname) || /^\/eras\/[a-z0-9-]+\/?$/.test(pathname) || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
       const issues = await loadIssues(root);
       const images = Object.values(issues)
         .filter((issue) => issue.status === "approved")

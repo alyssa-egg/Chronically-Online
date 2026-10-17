@@ -5,7 +5,7 @@ export const archiveTopics = [
   { id: "style-files", title: "Style Files", label: "MOODBOARDS / BEAUTY / FASHION", description: "Bedroom walls, beauty rituals, and outfits saved to a very specific folder.", icon: "✳", number: "04" },
   { id: "internet-mysteries", title: "Internet Mysteries", label: "LOST POSTS / DEEP CUTS", description: "Forgotten references, strange little connections, and one more rabbit hole.", icon: "↖", number: "05" },
 ];
-export const archiveEras = [{ id: "2010-2016", title: "2010–2016 / Fandom Years" }, { id: "2017-2019", title: "2017–2019 / YouTube Era" }, { id: "2020-now", title: "2020–now / Current Lore" }];
+export const archiveEras = [{ id: "2010-2016", title: "2010–2016 / Fandom Years" }, { id: "2017-2020", title: "2017–2020 / Influencer Era" }, { id: "2021-now", title: "2021–now / Current Lore" }, { id: "2017-2019", title: "2017–2019 / Earlier YouTube-era tag" }, { id: "2020-now", title: "2020–now / Earlier current-lore tag" }];
 export function topicFor(article) {
   if (archiveTopics.some(topic => topic.id === article?.archiveCategory)) return article.archiveCategory;
   return ({ culture: "music-lore", moodboard: "style-files", "rabbit-hole": "internet-mysteries", "group-chat": "creator-culture" })[article?.category] || "fandom-years";
