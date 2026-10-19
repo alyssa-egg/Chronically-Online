@@ -2,6 +2,10 @@
 
 This is the current source of truth for The Fandom Files's payment setup. The offer remains **$5 USD once for all three eras**, with a separate 24-hour trial. The Daily Quiz, Anonymous Ask, Lost Post, and three sample archive folders are free. This integration uses the requested **Checkout Form preview**, not a subscription or a redirect to hosted Checkout.
 
+## Moving to Render
+
+For a host migration, follow [RENDER_MIGRATION.md](RENDER_MIGRATION.md) for service deployment, private environment values, Supabase redirects, Sanity CORS and the new webhook signing secret. The payment checks in this file still apply on the new host. Use your actual new HTTPS URL wherever the older Netlify address appears below. The existing $5 one-time product and Supabase memberships do not need to be recreated.
+
 ## Values to Replace
 
 **Files containing environment placeholders:**
@@ -19,7 +23,7 @@ Enter account values in Netlify's production **Functions/runtime** environment v
 | `STRIPE_PUBLISHABLE_KEY` | Empty | Your matching `pk_test_...` key, then `pk_live_...`. This public key is supplied to the browser by the existing config endpoint. |
 | `STRIPE_PRICE_ID` | Empty | A real, active **one-time $5.00 USD** price ID from the same Stripe mode. |
 | `STRIPE_WEBHOOK_SECRET` | Empty | The signing secret for the matching webhook destination. |
-| `SITE_URL` | `https://YOUR_SITE.netlify.app/` | `https://deepcutt.netlify.app/`. |
+| `SITE_URL` | `https://YOUR_SITE.example/` | Your actual public HTTPS site URL on the current host, with a trailing slash. |
 
 **No sample Checkout Session parameters were substituted.** The existing call in [server/premium.mjs](server/premium.mjs) retains `mode: payment`, quantity `1`, and the runtime `STRIPE_PRICE_ID`. The price is validated as an active, non-recurring $5 USD price before creating a session. Do not replace that runtime reference with the sample literal `price_...` or change the mode to a subscription.
 

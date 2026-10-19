@@ -8,6 +8,7 @@ import path from "node:path";
 import { bank } from "./src/questions.js";
 import { loadIssues, publicIssueModule } from "./server/editorial.mjs";
 import { handlePremiumRequest } from "./server/premium.mjs";
+import { publicRequestURL } from "./server/request-url.mjs";
 const root = path.resolve(fileURLToPath(new URL("./", import.meta.url)));
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -78,10 +79,7 @@ const publicFiles = new Set([
 http
   .createServer(async (req, res) => {
     try {
-      const url = new URL(
-        req.url,
-        "http://" + (req.headers.host || "localhost"),
-      );
+      const url = publicRequestURL(req.url, req.headers.host, process.env.SITE_URL);
       const pathname = decodeURIComponent(url.pathname);
       if (pathname === "/api/era-pages") {
         const result = await handleEraPagesRequest(new Request(url, { method: req.method }));

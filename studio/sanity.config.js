@@ -14,8 +14,11 @@ export default defineConfig({
   plugins: [structureTool({ defaultDocumentNode: (S, { schemaType }) => schemaType === "article" ? S.document().views([S.view.form().title("Write"), S.view.component(ArticlePreview).title("Preview")]) : S.document() })],
   schema: { types: [article, eraPage, siteIdentity] },
   document: {
-    productionUrl: async (_, { document }) => document.slug?.current
-      ? `https://fandomfiles.netlify.app/stories/${encodeURIComponent(document.slug.current)}/`
-      : "https://fandomfiles.netlify.app/",
+    productionUrl: async (_, { document }) => {
+      const origin = typeof window !== "undefined" ? window.location.origin : "https://fandomfiles.netlify.app";
+      return document.slug?.current
+        ? `${origin}/stories/${encodeURIComponent(document.slug.current)}/`
+        : `${origin}/`;
+    },
   },
 });
