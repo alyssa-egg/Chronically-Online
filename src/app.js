@@ -42,6 +42,8 @@ import {
 
 import { createArchiveUI } from "./archive-ui.js";
 import { createPublicationUI } from "./publication.js";
+import { createScrapbookUI } from "./scrapbook-ui.js";
+import { pixelIcon } from "./archive-atoms.js";
 import { createDeepCutUI } from "./deep-cut-ui.js";
 import { createEraDiscoveryUI } from "./era-discovery-ui.js";
 import { mountOriginalLogo } from "./site-identity.js";
@@ -206,10 +208,11 @@ function home() {
   loadIssue("daily");
   screen = "home";
   chrome(
-    `<section class="hangout-cover"><div class="hangout-intro"><span class="file-label">AN ARCHIVE OF A VERY ONLINE LIFE</span><h1>you had<br>to be <em>there.</em></h1><p>For the songs, screenshots, first fan accounts, and tiny references that became your whole personality.</p><span class="hangout-note">your old dashboard called. &lt;3</span></div>${deepCut.teaser()}</section><section class="era-home"><div class="section-heading"><div><span class="file-label">THE ARCHIVE / 03 ERAS</span><h2>where did your<br><em>internet start?</em></h2><p>Pick an era. Open a little file. Follow the reference.</p></div><button class="text-button" id="home-all-eras">all three eras ↗</button></div><div id="era-home-entrances"></div></section><section class="editorial-home" id="editorial-home" aria-label="The latest editorial stories"><p class="editorial-notice" role="status">Opening the latest published files…</p></section><details class="more-to-explore"><summary>more to explore <span>the original games, diary & era collections +</span></summary><div class="legacy-games"><div class="file-section-heading game-room-heading"><span class="file-label">THE ORIGINAL GAME ROOM</span><h2>still keeping <em>the receipts.</em></h2><p>The longer quiz, Anonymous Ask, and Lost Post are here whenever you want another rabbit hole.</p><span class="game-reset">These original games reset at midnight Eastern · <span data-countdown>--:--:--</span></span></div><div class="daily-games" role="group" aria-label="The original free daily games">${quizPost()}${askPost()}</div>${archiveUI.homeExtras()}${readingDiary()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">YOUR EXISTING ERA GAME COLLECTIONS</span><h2 id="archive-title">your eras. <em>every receipt.</em></h2><p>One free folder in each era. Existing Era Pass access still applies to the remaining game collections.</p></div></div><div class="era-grid">${eras.map(eraCard).join("")}</div></section></div></details>`,
+    `${scrapbook.statusMarkup()}<section class="hangout-cover"><div class="hangout-intro"><span class="file-label">AN ARCHIVE OF A VERY ONLINE LIFE</span><h1>you had<br>to be <em>there.</em></h1><p>For the songs, screenshots, first fan accounts, and tiny references that became your whole personality.</p><span class="hangout-note">your old dashboard called. ${pixelIcon("heart")}</span></div>${deepCut.teaser()}</section><section class="era-home"><div class="section-heading"><div><span class="file-label">THE ARCHIVE / 03 ERAS</span><h2>where did your<br><em>internet start?</em></h2><p>Pick an era. Open a little file. Follow the reference.</p></div><button class="text-button" id="home-all-eras">all three eras ↗</button></div><div id="era-home-entrances"></div></section><section class="editorial-home" id="editorial-home" aria-label="The latest editorial stories"><p class="editorial-notice" role="status">Opening the latest published files…</p></section>${scrapbook.homeMarkup()}<details class="more-to-explore"><summary>more to explore <span>the original games, diary & era collections +</span></summary><div class="legacy-games"><div class="file-section-heading game-room-heading"><span class="file-label">THE ORIGINAL GAME ROOM</span><h2>still keeping <em>the receipts.</em></h2><p>The longer quiz, Anonymous Ask, and Lost Post are here whenever you want another rabbit hole.</p><span class="game-reset">These original games reset at midnight Eastern · <span data-countdown>--:--:--</span></span></div><div class="daily-games" role="group" aria-label="The original free daily games">${quizPost()}${askPost()}</div>${archiveUI.homeExtras()}${readingDiary()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">YOUR EXISTING ERA GAME COLLECTIONS</span><h2 id="archive-title">your eras. <em>every receipt.</em></h2><p>One free folder in each era. Existing Era Pass access still applies to the remaining game collections.</p></div></div><div class="era-grid">${eras.map(eraCard).join("")}</div></section></div></details>`,
   );
   publication.mountHome();
   eraDiscovery.mountHome();
+  scrapbook.mountHome();
   document.querySelector('#home-all-eras').onclick = () => eraDiscovery.openIndex();
   document.querySelector('[data-deep-cut]').onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); deepCut.open(); };
 
@@ -761,9 +764,10 @@ const archiveUI = createArchiveUI({
   finishDay, startGame, startPuzzle, share: shareResult,
   dailyProgress: () => ({ quiz: savedAnswers("daily", day).length, ask: savedGuesses(day).length, askFinished: puzzleStatus(dailyPuzzle(day), savedGuesses(day)) !== "playing" }),
 });
+const scrapbook = createScrapbookUI({ root: app, read, save });
 const publication = createPublicationUI({ root: app, render: chrome, begin: next => { eraDiscovery.leave(); loadIssue("daily"); screen = next; }, read, save, home, openEraIndex: (...args) => eraDiscovery.openIndex(...args), savedDiscoveries: () => eraDiscovery.savedMarkup(), bindDiscoveries: () => eraDiscovery.bind() });
-const eraDiscovery = createEraDiscoveryUI({ root: app, render: chrome, begin: next => { publication.leave(); loadIssue("daily"); screen = next; }, home, read, save, openArticles: filters => publication.openArchive(filters), openDeepCut: () => deepCut.open() });
-const deepCut = createDeepCutUI({ root: app, render: chrome, begin: next => { publication.leave(); eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home, read, save, openEra: id => eraDiscovery.openEra(id) });
+const eraDiscovery = createEraDiscoveryUI({ root: app, render: chrome, begin: next => { publication.leave(); loadIssue("daily"); screen = next; }, home, read, save, openArticles: filters => publication.openArchive(filters), openDeepCut: () => deepCut.open(), recordDiscovery: scrapbook.recordDiscovery });
+const deepCut = createDeepCutUI({ root: app, render: chrome, begin: next => { publication.leave(); eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home, read, save, openEra: id => eraDiscovery.openEra(id), recordRound: scrapbook.recordRound });
 function routeSite() {
   if (/^\/play\/?$/.test(location.pathname)) { deepCut.open(false); return true; }
   const era = location.pathname.match(/^\/eras\/([a-z0-9-]+)\/?$/);

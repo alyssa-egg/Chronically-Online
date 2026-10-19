@@ -18,6 +18,8 @@ The frontend reads original Sanity image-asset URLs without resize, crop, recolo
 
 The browser editor requires no new account, paid CMS, write token in frontend code, or additional Netlify secret. The public API reads published documents only. Unpublished image drafts stay off the website.
 
+For the scrapbook icon/window system, manual Now Playing pick, era colors and earned stamp wall, see [ASSET_SYSTEM.md](ASSET_SYSTEM.md).
+
 ## The three eras
 
 | Era | Page | Dates |

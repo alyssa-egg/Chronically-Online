@@ -4,6 +4,8 @@ The smaller daily hangout is documented in [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md):
 
 “you had to be there.” An interactive internet-culture publication in hot pink, archive black, and paper cream: music, fandom, fashion, creators, and internet memory. Read the lore, explore timelines and moodboards, and keep stories in your Sideblog. The daily games and collectible archive remain part of the dashboard.
 
+The reusable pixel icons, era palettes, lore windows, music pick and earned stamp wall are documented in [ASSET_SYSTEM.md](ASSET_SYSTEM.md).
+
 ## Hosting without Netlify
 
 [RENDER_MIGRATION.md](RENDER_MIGRATION.md) covers moving this existing Node app to Render, including the free-service limits, environment variables, sign-in URLs, Sanity CORS and Stripe webhook cutover. [render.yaml](render.yaml) provides the service configuration.

@@ -73,3 +73,5 @@ The automated suite passed 69 tests, including new article query and rendering s
 The October 14 redesign and its compatibility notes are recorded in [REDESIGN_GUIDE.md](REDESIGN_GUIDE.md). The required Sanity project, dataset and CORS origin are unchanged.
 
 For original logo/era-image uploads, the new era discoveries, the smaller homepage and the daily one-question game, see [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md).
+
+The shared scrapbook style and the **Now Playing · editor’s music pick** document are documented in [ASSET_SYSTEM.md](ASSET_SYSTEM.md). Lore-pin entries now support an optional image and date label, and open in a keyboard-accessible file window.
