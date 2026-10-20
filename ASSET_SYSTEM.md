@@ -1,8 +1,8 @@
 # The Fandom Files scrapbook asset system
 
-The homepage keeps Today’s Deep Cut and the three era entrances visible first. Stories, the music pick, personal status and stamps are in the collapsed **around the archive** section; the original games remain under **more to explore**. Open either section when you want it. Editorial/widget reads mount when their section is first opened.
+The homepage keeps Today’s Deep Cut and the three era entrances visible first; the original games remain under **more to explore**. The public editorial section and music widget have been removed. Saved discoveries, the stamp wall, and original Sideblog/collectibles remain in **My Files**.
 
-The site now shares a small pixel-icon library, retro window frames, paper/tape accents, lore popup windows, era palettes, a curated music widget and a four-stamp wall. This refines the existing site; the logo, article editor, original games and Render deployment configuration stay in place.
+The site shares pixel icons, retro window frames, paper/tape accents, lore popup windows and era palettes. The Sanity editor still manages original logos, collages and lore pins.
 
 ## Asset inventory and where new images go
 
@@ -56,21 +56,13 @@ To add lore without changing layouts:
 
 Leave the discoveries array empty to retain the starter entries from [src/era-discoveries.js](src/era-discoveries.js). Opened inline entries and collage-pin popup entries both count as discoveries. Reopening a file does not add another discovery. Popup save buttons and inline save buttons use the existing My Files list. Direct links to `#discovery-your-id` still open the inline entry.
 
-## Now Playing: a manual editorial pick
+## Preserved editorial content
 
-In **`/admin/`**, create **Now Playing · editor’s music pick**:
-
-1. Enter the **Song title**, **Artist**, and a link to the original music service or artist page.
-2. Optionally upload an image with alt text/credit, and write a short personal note.
-3. **Publish**, then refresh the homepage. Keep one published pick; the most recently updated published document is used if there are several.
-
-The widget opens your selected external link. It **does not stream audio**, connect a Spotify account, show a fabricated playback timer, or claim to track what anyone is listening to. No extra API keys are needed. With no valid published pick, it shows an honest “between songs” state. Unpublish the document to remove the pick.
-
-The existing curated **Currently on our radar** article fields are unchanged. Both features depend on your publication choices; neither is scraped or automatically written.
+Article and Now Playing schemas/documents remain in Sanity, but the public game interface no longer renders their sections or requests article lists. Publishing those documents does not add them back to the homepage or era pages. No existing content has been deleted.
 
 ## Stamp wall and truthful archive status
 
-The small homepage wall awards four cosmetic stamps:
+The wall in **My Files** awards four cosmetic stamps:
 
 | Stamp | Earned by |
 | --- | --- |
@@ -79,17 +71,17 @@ The small homepage wall awards four cosmetic stamps:
 | dashboard digger | Opening five different lore discoveries |
 | era traveller | Opening at least one discovery in each era |
 
-[src/scrapbook.js](src/scrapbook.js) records and validates the underlying activity. Repeated opens and repeated visits to a completed result do not increase counts. Known earned stamps remain filed when you miss a day. Existing Deep Cut results can earn their corresponding stamps when reopened or loaded on the homepage.
+[src/scrapbook.js](src/scrapbook.js) records and validates the underlying activity. Repeated opens and repeated visits to a completed result do not increase counts. Known earned stamps remain filed when you miss a day. Existing Deep Cut results can earn their corresponding stamps when reopened or loaded in My Files.
 
-The status strip displays local opened-discovery, saved-file and earned-stamp counts. These are **personal browser data**, not visitor counts, public totals or account entitlements. They live under `fandom-files-scrapbook-v1`; no existing progress keys were renamed. The original fourteen collectible cards and Sideblog are unchanged and remain accessible through My Files. There are no new accounts, payments, public profiles, comments or server-side achievements.
+Stamp goals use local opened-discovery and daily-round counts. These are **personal browser data**, not visitor counts, public totals or account entitlements. They live under `fandom-files-scrapbook-v1`; no existing progress keys were renamed. The original fourteen collectible cards and Sideblog are unchanged and remain accessible through My Files. There are no new accounts, payments, public profiles, comments or server-side achievements.
 
 As with existing browser saves, changing website origins from Netlify to Render will not automatically transfer this data. See [RENDER_MIGRATION.md](RENDER_MIGRATION.md). Sanity articles/assets, Supabase memberships and Stripe products stay in their existing services.
 
 ## Verification and publication
 
-Run `npm run check`, `npm test`, and `npm run build`. Studio schema validation runs from `studio/` with `npm exec -- sanity schema validate --level error`. Browser checks exercise original-image rendering, curator-link safety, stamp goals/persistence, mobile layouts, keyboard opening, Escape, focus return, saved files and the original daily quiz.
+Run `npm run check`, `npm test`, and `npm run build`. Studio schema validation runs from `studio/` with `npm exec -- sanity schema validate --level error`. Browser checks exercise original-image rendering, stamp goals/persistence, mobile layouts, keyboard opening, Escape, focus return, saved files and the original daily quiz.
 
-The code must be deployed on Render before the new editor fields and widgets appear publicly. No Render service URL has yet been supplied in this conversation; a local build and GitHub push do not establish a live deployment. No original-image source files or real curated song were published by these code changes.
+The code must be deployed on Render before the current interface appear publicly. No Render service URL has yet been supplied in this conversation; a local build and GitHub push do not establish a live deployment. No original-image source files or real curated song were published by these code changes.
 
 ## Use the modern collage
 

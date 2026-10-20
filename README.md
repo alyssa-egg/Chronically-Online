@@ -1,10 +1,10 @@
 # The Fandom Files
 
-The smaller daily hangout is documented in [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md): Today’s Deep Cut, three eras, curated stories, original image uploads and saved files.
+The smaller daily hangout is documented in [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md): Today’s Deep Cut, three eras, original image uploads and saved discoveries.
 
-“you had to be there.” An interactive internet-culture publication in hot pink, archive black, and paper cream: music, fandom, fashion, creators, and internet memory. Read the lore, explore timelines and moodboards, and keep stories in your Sideblog. The daily games and collectible archive remain part of the dashboard.
+“you had to be there.” A daily fandom game in hot pink, black, and paper cream. Play Today’s Deep Cut, explore three internet eras, save discoveries and collect stamps. Original games and paid era collections stay under more to explore; public editorial sections have been removed.
 
-The reusable pixel icons, era palettes, lore windows, music pick and earned stamp wall are documented in [ASSET_SYSTEM.md](ASSET_SYSTEM.md).
+The reusable pixel icons, era palettes, lore windows and earned stamp wall are documented in [ASSET_SYSTEM.md](ASSET_SYSTEM.md).
 
 ## Hosting without Netlify
 

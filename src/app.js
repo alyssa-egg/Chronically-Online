@@ -41,7 +41,6 @@ import {
 } from "./puzzle.js";
 
 import { createArchiveUI } from "./archive-ui.js";
-import { createPublicationUI } from "./publication.js";
 import { createScrapbookUI } from "./scrapbook-ui.js";
 import { pixelIcon } from "./archive-atoms.js";
 import { createDeepCutUI } from "./deep-cut-ui.js";
@@ -160,9 +159,9 @@ function issueLabel() {
   }).format(new Date(day + "T12:00:00Z"));
 }
 function chrome(content) {
-  if (screen !== "editorial") eraDiscovery.leave();
-  if (!["editorial", "story", "deepcut"].includes(screen)) {
-    publication.leave();
+  if (screen !== "era") eraDiscovery.leave();
+  if (!["era", "myfiles", "deepcut"].includes(screen)) {
+    document.title = "The Fandom Files — daily fandom games & internet eras";
     if (!booting && (location.pathname.startsWith("/stories/") || location.pathname.startsWith("/archive") || location.pathname.startsWith("/eras/") || location.pathname.startsWith("/play") || new URL(location.href).searchParams.has("desk"))) history.pushState({}, "", "/");
   }
   app.dataset.mode = mode.id;
@@ -208,18 +207,9 @@ function home() {
   loadIssue("daily");
   screen = "home";
   chrome(
-    `<section class="hangout-cover"><div class="hangout-intro"><span class="file-label">AN ARCHIVE OF A VERY ONLINE LIFE</span><h1>you had<br>to be <em>there.</em></h1><p>For the songs, screenshots, first fan accounts, and tiny references that became your whole personality.</p><span class="hangout-note">your old dashboard called. ${pixelIcon("heart")}</span></div>${deepCut.teaser()}</section><section class="era-home"><div class="section-heading"><div><span class="file-label">THE ARCHIVE / 03 ERAS</span><h2>where did your<br><em>internet start?</em></h2><p>Pick an era. Open a little file. Follow the reference.</p></div><button class="text-button" id="home-all-eras">all three eras ↗</button></div><div id="era-home-entrances"></div></section><details class="archive-extras" id="archive-extras"><summary>around the archive <span>stories, music & my stamp wall +</span></summary>${scrapbook.statusMarkup()}<section class="editorial-home" id="editorial-home" aria-label="The latest editorial stories"><p class="editorial-notice" role="status">Opening the latest published files…</p></section>${scrapbook.homeMarkup()}</details><details class="more-to-explore"><summary>more to explore <span>the original games, diary & era collections +</span></summary><div class="legacy-games"><div class="file-section-heading game-room-heading"><span class="file-label">THE ORIGINAL GAME ROOM</span><h2>still keeping <em>the receipts.</em></h2><p>The longer quiz, Anonymous Ask, and Lost Post are here whenever you want another rabbit hole.</p><span class="game-reset">These original games reset at midnight Eastern · <span data-countdown>--:--:--</span></span></div><div class="daily-games" role="group" aria-label="The original free daily games">${quizPost()}${askPost()}</div>${archiveUI.homeExtras()}${readingDiary()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">YOUR EXISTING ERA GAME COLLECTIONS</span><h2 id="archive-title">your eras. <em>every receipt.</em></h2><p>One free folder in each era. Existing Era Pass access still applies to the remaining game collections.</p></div></div><div class="era-grid">${eras.map(eraCard).join("")}</div></section></div></details>`,
+    `<section class="hangout-cover"><div class="hangout-intro"><span class="file-label">AN ARCHIVE OF A VERY ONLINE LIFE</span><h1>you had<br>to be <em>there.</em></h1><p>For the songs, screenshots, first fan accounts, and tiny references that became your whole personality.</p><span class="hangout-note">your old dashboard called. ${pixelIcon("heart")}</span></div>${deepCut.teaser()}</section><section class="era-home"><div class="section-heading"><div><span class="file-label">CHOOSE YOUR INTERNET ERA / 03 ERAS</span><h2>where did your<br><em>internet start?</em></h2><p>Pick an era. Open a little file. Follow the reference.</p></div><button class="text-button" id="home-all-eras">all three eras ↗</button></div><div id="era-home-entrances"></div></section><details class="more-to-explore"><summary>more to explore <span>the original games, diary & era collections +</span></summary><div class="legacy-games"><div class="file-section-heading game-room-heading"><span class="file-label">THE ORIGINAL GAME ROOM</span><h2>still keeping <em>the receipts.</em></h2><p>The longer quiz, Anonymous Ask, and Lost Post are here whenever you want another rabbit hole.</p><span class="game-reset">These original games reset at midnight Eastern · <span data-countdown>--:--:--</span></span></div><div class="daily-games" role="group" aria-label="The original free daily games">${quizPost()}${askPost()}</div>${archiveUI.homeExtras()}${readingDiary()}<section class="archive-section" aria-labelledby="archive-title"><div class="section-heading"><div><span class="eyebrow">YOUR EXISTING ERA GAME COLLECTIONS</span><h2 id="archive-title">your eras. <em>every receipt.</em></h2><p>One free folder in each era. Existing Era Pass access still applies to the remaining game collections.</p></div></div><div class="era-grid">${eras.map(eraCard).join("")}</div></section></div></details>`,
   );
   eraDiscovery.mountHome();
-  const extras = document.querySelector('#archive-extras');
-  let extrasMounted = false;
-  extras.addEventListener('toggle', () => {
-    if (extras.open && !extrasMounted) {
-      extrasMounted = true;
-      publication.mountHome();
-      scrapbook.mountHome();
-    }
-  });
   document.querySelector('#home-all-eras').onclick = () => eraDiscovery.openIndex();
   document.querySelector('[data-deep-cut]').onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); deepCut.open(); };
 
@@ -743,7 +733,7 @@ function refreshDay() {
   return true;
 }
 function tick() {
-  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "story", "editorial", "deepcut"].includes(screen)) {
+  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "era", "myfiles", "deepcut"].includes(screen)) {
     refreshDay();
     return;
   }
@@ -772,16 +762,29 @@ const archiveUI = createArchiveUI({
   dailyProgress: () => ({ quiz: savedAnswers("daily", day).length, ask: savedGuesses(day).length, askFinished: puzzleStatus(dailyPuzzle(day), savedGuesses(day)) !== "playing" }),
 });
 const scrapbook = createScrapbookUI({ root: app, read, save });
-const publication = createPublicationUI({ root: app, render: chrome, begin: next => { eraDiscovery.leave(); loadIssue("daily"); screen = next; }, read, save, home, openEraIndex: (...args) => eraDiscovery.openIndex(...args), savedDiscoveries: () => eraDiscovery.savedMarkup(), bindDiscoveries: () => eraDiscovery.bind() });
-const eraDiscovery = createEraDiscoveryUI({ root: app, render: chrome, begin: next => { publication.leave(); loadIssue("daily"); screen = next; }, home, read, save, openArticles: filters => publication.openArchive(filters), openDeepCut: () => deepCut.open(), recordDiscovery: scrapbook.recordDiscovery });
-const deepCut = createDeepCutUI({ root: app, render: chrome, begin: next => { publication.leave(); eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home, read, save, openEra: id => eraDiscovery.openEra(id), recordRound: scrapbook.recordRound });
+const eraDiscovery = createEraDiscoveryUI({ root: app, render: chrome, begin: next => { loadIssue("daily"); screen = next; }, home, read, save, openDeepCut: () => deepCut.open(), recordDiscovery: scrapbook.recordDiscovery });
+const deepCut = createDeepCutUI({ root: app, render: chrome, begin: next => { eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home, read, save, openEra: id => eraDiscovery.openEra(id), recordRound: scrapbook.recordRound });
+function openMyFiles(navigate = true) {
+  eraDiscovery.leave();
+  loadIssue("daily");
+  screen = "myfiles";
+  if (navigate && location.search !== "?desk=saved") history.pushState({}, "", "/?desk=saved");
+  document.title = "My Files — The Fandom Files";
+  chrome(`<section class="my-files-page"><button class="text-button" id="files-home">← back to the dashboard</button><span class="file-label">MY FILES / YOUR PLAYS & DISCOVERIES</span><h1>my little <em>files.</em></h1><p>Saved discoveries and earned stamps stay in this browser.</p>${eraDiscovery.savedMarkup() || '<p>No discoveries saved yet. Open an era and choose “save this file” to keep a reference here.</p>'}${scrapbook.wall()}<p><button class="secondary" data-original-sideblog>open my Sideblog & collectibles →</button></p></section>`);
+  eraDiscovery.bind();
+  document.querySelector('#files-home').onclick = home;
+  const heading = app.querySelector('h1');
+  heading.tabIndex = -1; heading.focus({ preventScroll: true });
+}
 function routeSite() {
   if (/^\/play\/?$/.test(location.pathname)) { deepCut.open(false); return true; }
   const era = location.pathname.match(/^\/eras\/([a-z0-9-]+)\/?$/);
   if (era) { eraDiscovery.openEra(era[1], false); return true; }
-  return publication.route();
+  if (/^\/archive\/?$/.test(location.pathname)) { eraDiscovery.openIndex(false); return true; }
+  if (new URL(location.href).searchParams.get("desk") === "saved") { openMyFiles(false); return true; }
+  if (location.pathname.startsWith("/stories/") || new URL(location.href).searchParams.has("desk")) history.replaceState({}, "", "/");
+  return false;
 }
-document.querySelector("#read-button").onclick = () => publication.openArchive({ sort: "recent" });
 document.querySelector("#archive-button").onclick = () => eraDiscovery.openIndex();
 const siteHeader = document.querySelector('.site-header'), navToggle = document.querySelector('#nav-toggle');
 function closeNavigation() { siteHeader.classList.remove('nav-open'); navToggle.setAttribute('aria-expanded', 'false'); }
@@ -791,9 +794,8 @@ siteHeader.addEventListener('keydown', event => { if (event.key === 'Escape') { 
 document.querySelectorAll('[data-site-home]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); home(); window.scrollTo({ top: 0 }); closeNavigation(); });
 document.querySelectorAll('[data-site-play]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); deepCut.open(); closeNavigation(); });
 document.querySelectorAll('[data-open-archive]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); eraDiscovery.openIndex(); });
-document.querySelector("#saved-stories-button").onclick = publication.openSaved;
-document.querySelector("#sideblog-button").onclick = publication.openSaved;
-app.addEventListener("click", event => { if (event.target.closest("[data-saved-stories]")) publication.openSaved(); if (event.target.closest("[data-original-sideblog]")) archiveUI.openSideblog(); });
+document.querySelector("#sideblog-button").onclick = () => openMyFiles();
+app.addEventListener("click", event => { if (event.target.closest("[data-saved-discoveries]")) openMyFiles(); if (event.target.closest("[data-original-sideblog]")) archiveUI.openSideblog(); });
 setSoundEnabled(read("deep-cut-sound", true) !== false);
 updateSoundButton();
 home();
@@ -808,7 +810,7 @@ window.addEventListener("hashchange", () => {
 document.querySelector("#membership-button").onclick = () => showMembership();
 setInterval(() => { tick(); if (screen === "deepcut") deepCut.refresh(); }, 1000);
 window.addEventListener("focus", () => {
-  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "story", "editorial", "deepcut"].includes(screen)) refreshDay();
+  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "era", "myfiles", "deepcut"].includes(screen)) refreshDay();
   tick();
 });
 window.addEventListener("storage", (event) => {

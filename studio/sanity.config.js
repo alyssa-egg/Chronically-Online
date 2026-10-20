@@ -6,7 +6,7 @@ import { ArticlePreview } from "./ArticlePreview.js";
 
 export default defineConfig({
   name: "fandom-files",
-  title: "The Fandom Files · Editorial",
+  title: "The Fandom Files · Studio",
   projectId: "rjg4g3cl",
   dataset: "production",
   // The CLI mounts the Studio at /admin; this is the workspace within it.

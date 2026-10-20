@@ -86,3 +86,17 @@ You cannot take a `netlify.app` subdomain to Render. Use the new `onrender.com` 
 Supabase accounts, paid access and Sanity articles stay in their existing services. Browser-local quiz answers, daily rounds, reading saves, receipts and collectibles are tied to the old website origin and **will not automatically transfer** to a new domain. Save/share any desired cards before leaving the old site if it remains accessible. This migration adds no data-export/import feature.
 
 Keep the old Netlify project until the new site passes the checks. Once the migration is verified, stop its automatic builds if you want to avoid consuming more Netlify credits.
+
+## Request a free fandomfiles address
+
+The owner has chosen a free Render address, with `fandomfiles.onrender.com` as the preferred spelling. This is a requested address, not a confirmed or reserved one. A GitHub commit or the blueprint service name cannot rename an existing deployed service’s URL.
+
+Open your existing service in the Render dashboard → **Settings**, and find the controls for its Render-provided `onrender.com` address. Request `fandomfiles` if the dashboard permits editing it and it is available. If it is unavailable or no address-edit control is shown, keep the current working URL until an alternative is selected; do not delete the existing service just to rename it. The actual assigned URL in the dashboard is authoritative.
+
+After Render confirms the new HTTPS address:
+
+1. Set Render’s `SITE_URL` to that exact address and redeploy.
+2. Update Supabase Site URL and redirect URLs, Sanity CORS/Studio registration, and the Stripe webhook destination using section 3 above.
+3. Verify sign-in, Studio access, checkout return and webhook delivery before sharing the new link. A new Stripe destination has its own signing secret.
+
+Only image uploads and era discoveries are shown from Sanity on the current public site; articles and Now Playing content are preserved in the dataset but their public sections are removed. Browser-local progress remains tied to the old origin when the address changes.

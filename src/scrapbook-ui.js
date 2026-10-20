@@ -30,5 +30,5 @@ export function createScrapbookUI({ root, read, save }) {
     const target = root.querySelector('#now-playing'); if (!target) return;
     try { const data = await publishedEraAssets(); if (target.isConnected) target.innerHTML = nowPlaying(data.nowPlaying); } catch { /* The empty listening shelf remains readable. */ }
   }
-  return { recordDiscovery, recordRound, homeMarkup, statusMarkup, mountHome };
+  return { recordDiscovery, recordRound, wall, homeMarkup, statusMarkup, mountHome };
 }

@@ -1,7 +1,6 @@
 import { archiveFileCard, createFileWindow, fileStamp, pixelIcon } from './archive-atoms.js';
 import { discoveryEras, discoveryEra, eraURL } from './era-discoveries.js';
 import { escapeHTML as e, safeLink } from './article-content.js';
-import { storyCard } from './article-layout.js';
 import { originalImageURL, publishedEraAssets } from './site-identity.js';
 const image = (era, large = false) => originalImageURL(era.collage) ? `<img src="${e(originalImageURL(era.collage))}" alt="${e(era.collage.alt || `${era.title} collage`)}" ${large ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">` : `<div class="era-image-pending"><span>file ${era.number}</span><strong>${e(era.title)}</strong><span>the collage is still being filed.</span></div>`;
 function mergeEra(era, data) {
@@ -15,7 +14,7 @@ function discoveryBody(item, era) {
   const picture = originalImageURL(item.image);
   return `${picture ? `<figure class="discovery-picture"><img src="${e(picture)}" alt="${e(item.image.alt || item.title)}" loading="lazy">${item.image.credit ? `<figcaption>${e(item.image.credit)}</figcaption>` : ''}</figure>` : ''}<p class="discovery-date">${e(item.dateLabel || era.years)}</p><p>${e(item.text)}</p>${safeLink(item.source) ? `<a href="${e(safeLink(item.source))}" target="_blank" rel="noopener noreferrer">follow the reference ${pixelIcon('arrow')}</a>` : ''}<button class="text-button" data-save-discovery="${e(item.id)}">save this file</button><p class="save-discovery-status" role="status"></p>`;
 }
-export function createEraDiscoveryUI({ root, begin, render, home, read, save, openArticles, openDeepCut, recordDiscovery = () => {} }) {
+export function createEraDiscoveryUI({ root, begin, render, home, read, save, openDeepCut, recordDiscovery = () => {} }) {
   let visit = 0;
   const fileWindow = createFileWindow();
   const key = 'fandom-files-saved-discoveries-v1';
@@ -29,13 +28,13 @@ export function createEraDiscoveryUI({ root, begin, render, home, read, save, op
     try { const data = await publishedEraAssets(); if (target.isConnected) { target.innerHTML = eraEntrances(data); bind(target); } } catch { /* Evergreen text remains available. */ }
   }
   function show(html, title) {
-    begin('editorial'); document.title = `${title} — Fandom Files`; render(html); bind();
+    begin('era'); document.title = `${title} — Fandom Files`; render(html); bind();
     const heading = root.querySelector('h1'); if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
   }
   function openIndex(navigate = true) {
     ++visit; if (navigate && location.pathname + location.search !== '/archive/') history.pushState({}, '', '/archive/');
-    show(`<section class="era-index"><button class="text-button" id="era-home">← back to the dashboard</button><span class="file-label">THE ARCHIVE / THREE VERY ONLINE LIVES</span><h1>choose your <em>internet era.</em></h1><p>A few references become a whole rabbit hole. Start with the era that raised your feed.</p><div id="era-home-entrances"></div><div class="era-index-footnote"><h2>looking for something specific?</h2><p>Find a published story by artist, aesthetic, subject, or era.</p><button class="secondary" id="all-written-files">search all the files ↗</button></div></section>`, 'The Archive');
-    root.querySelector('#era-home').onclick = home; root.querySelector('#all-written-files').onclick = () => openArticles({ sort: 'recent' }); mountHome();
+    show(`<section class="era-index"><button class="text-button" id="era-home">← back to the dashboard</button><span class="file-label">THREE ERAS / THREE VERY ONLINE LIVES</span><h1>choose your <em>internet era.</em></h1><p>A few references become a whole rabbit hole. Start with the era that raised your feed.</p><div id="era-home-entrances"></div></section>`, 'The Eras');
+    root.querySelector('#era-home').onclick = home; mountHome();
   }
   async function openEra(id, navigate = true, fragment = location.hash) {
     const original = discoveryEra(id); if (!original) return openIndex(navigate);
@@ -45,8 +44,8 @@ export function createEraDiscoveryUI({ root, begin, render, home, read, save, op
     function paint(era) {
       if (currentVisit !== visit) return;
       const collage = originalImageURL(era.collage), pins = era.discoveries.map((item, i) => ({ ...item, index: i + 1 }));
-      show(`<section class="era-discovery-page" data-era="${id}"><button class="text-button" id="era-back">← all three eras</button><div class="era-introduction">${fileStamp("open archive")}<span class="file-label">FILE ${era.number} / ${e(era.years)} / EVERGREEN ARCHIVE</span><h1>${e(era.title)}</h1><p>${e(era.description)}</p></div><div class="era-interactive-collage">${image(era, true)}${collage ? pins.filter(item => Number.isFinite(item.x) && Number.isFinite(item.y)).map(item => `<a class="era-lore-pin" href="#discovery-${e(item.id)}" data-lore-pin="${e(item.id)}" style="left:${Math.max(3, Math.min(97, item.x))}%;top:${Math.max(3, Math.min(97, item.y))}%" aria-label="Open ${e(item.title)}">${item.index}</a>`).join('') : ''}</div>${era.collage?.credit ? `<p class="image-credit">${e(era.collage.credit)}</p>` : ''}<div class="era-discoveries-heading"><h2>pull on a little thread.</h2><p>${collage ? 'Tap a numbered pin or open a file below.' : 'Open a file below. The written lore works while the collage is being added.'}</p></div><div class="era-discoveries">${pins.map(item => archiveFileCard({ id: item.id, number: item.index, title: item.title, kind: item.kind, body: discoveryBody(item, era) + `<button class="text-button" data-open-discovery="${e(item.id)}">open this file in a window ${pixelIcon('arrow')}</button>` })).join('')}</div><div class="era-connected"><h2>one tab leads to another.</h2><p>Different eras, familiar fandom habits.</p>${discoveryEras.filter(item => item.id !== id).map(item => `<a class="pill" href="${eraURL(item.id)}" data-discovery-era="${item.id}">${e(item.title)} →</a>`).join('')}<a class="pill" href="/play/" id="era-deep-cut">today’s deep cut ↗</a></div><section class="era-related" aria-label="Published stories from this era"><h2>more from this era.</h2><div id="era-related-stories"><p role="status">Opening the published files…</p></div><button class="text-button" id="era-written-files">search the editorial archive ↗</button></section></section>`, era.title);
-      root.querySelector('#era-back').onclick = () => openIndex(); root.querySelector('#era-written-files').onclick = () => openArticles({ era: era.articleEra, sort: 'recent' });
+      show(`<section class="era-discovery-page" data-era="${id}"><button class="text-button" id="era-back">← all three eras</button><div class="era-introduction">${fileStamp("open archive")}<span class="file-label">FILE ${era.number} / ${e(era.years)} / EVERGREEN ARCHIVE</span><h1>${e(era.title)}</h1><p>${e(era.description)}</p></div><div class="era-interactive-collage">${image(era, true)}${collage ? pins.filter(item => Number.isFinite(item.x) && Number.isFinite(item.y)).map(item => `<a class="era-lore-pin" href="#discovery-${e(item.id)}" data-lore-pin="${e(item.id)}" style="left:${Math.max(3, Math.min(97, item.x))}%;top:${Math.max(3, Math.min(97, item.y))}%" aria-label="Open ${e(item.title)}">${item.index}</a>`).join('') : ''}</div>${era.collage?.credit ? `<p class="image-credit">${e(era.collage.credit)}</p>` : ''}<div class="era-discoveries-heading"><h2>pull on a little thread.</h2><p>${collage ? 'Tap a numbered pin or open a file below.' : 'Open a file below. The written lore works while the collage is being added.'}</p></div><div class="era-discoveries">${pins.map(item => archiveFileCard({ id: item.id, number: item.index, title: item.title, kind: item.kind, body: discoveryBody(item, era) + `<button class="text-button" data-open-discovery="${e(item.id)}">open this file in a window ${pixelIcon('arrow')}</button>` })).join('')}</div><div class="era-connected"><h2>one tab leads to another.</h2><p>Different eras, familiar fandom habits.</p>${discoveryEras.filter(item => item.id !== id).map(item => `<a class="pill" href="${eraURL(item.id)}" data-discovery-era="${item.id}">${e(item.title)} →</a>`).join('')}<a class="pill" href="/play/" id="era-deep-cut">today’s deep cut ↗</a></div></section>`, era.title);
+      root.querySelector('#era-back').onclick = () => openIndex();
       root.querySelector('#era-deep-cut').onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); openDeepCut(); };
       const bindSaves = scope => scope.querySelectorAll('[data-save-discovery]').forEach(button => {
         const update = () => { const kept = saved().some(item => item.era === id && item.id === button.dataset.saveDiscovery); button.innerHTML = `${pixelIcon('bookmark')}${kept ? 'saved in my files' : 'save this file'}`; button.setAttribute('aria-pressed', String(kept)); };
@@ -63,11 +62,7 @@ export function createEraDiscoveryUI({ root, begin, render, home, read, save, op
       root.querySelectorAll('.era-discoveries details').forEach(detail => detail.addEventListener('toggle', () => { if (detail.open) recordDiscovery(id, detail.id.replace('discovery-', '')); }));
       bindSaves(root);
       if (/^#discovery-[a-z0-9-]+$/.test(fragment)) { const kept = root.querySelector(fragment); if (kept) { kept.open = true; kept.scrollIntoView({ block: 'center' }); } }
-      const related = root.querySelector('#era-related-stories');
-      fetch('/api/articles?era=' + encodeURIComponent(era.articleEra) + '&sort=recent').then(async response => { if (!response.ok) throw new Error(); return response.json(); }).then(data => {
-        if (!related.isConnected || currentVisit !== visit) return;
-        related.innerHTML = data.articles?.length ? `<div class="story-grid">${data.articles.slice(0, 3).map(story => storyCard(story)).join('')}</div>` : '<p>No editorial stories have been filed in this era yet. The discoveries above stay open.</p>';
-      }).catch(() => { if (related.isConnected) related.innerHTML = '<p>The editorial files could not load. The discoveries above stay open.</p>'; });
+
     }
     // Wait briefly for the original image metadata; render text immediately on CMS failure.
     let data = null; try { data = await publishedEraAssets(); } catch { /* No fabricated image replacement. */ }

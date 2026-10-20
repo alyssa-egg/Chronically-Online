@@ -580,7 +580,7 @@ h2,h3,h4,h5,h6,.story-subtitle,#membership h2,dialog h2,
 
 .scrapbook-cursor { position:absolute; right:14px; bottom:-18px; width:30px; height:40px; object-fit:contain; image-rendering:pixelated; pointer-events:none; transform:rotate(12deg); }
 
-/* The game and three era subsections lead; editorial extras stay tucked away. */
+/* The game and three era subsections lead. */
 .hangout-cover { grid-template-columns:1fr 1.65fr; gap:45px; padding:30px 0 45px; }
 .hangout-intro h1 { font-size:clamp(36px,4vw,54px); }
 .hangout-intro > p { font-size:15px; max-width:340px; }
@@ -589,12 +589,6 @@ h2,h3,h4,h5,h6,.story-subtitle,#membership h2,dialog h2,
 .hangout-cover .deep-cut-teaser h2 { font:700 clamp(40px,5vw,64px)/1.08 var(--headline); letter-spacing:-.03em; }
 .hangout-cover .deep-cut-teaser .primary { min-height:54px; padding:15px 22px; font-size:15px; }
 .era-home .section-heading h2 { font-size:clamp(28px,3vw,40px); }
-.archive-extras { border-top:1px solid var(--ink); margin:0 0 28px; }
-.archive-extras > summary { padding:23px 0; font:700 22px/1.5 var(--sans); cursor:pointer; }
-.archive-extras > summary > span { display:block; font:12px/1.8 var(--sans); margin-top:5px; color:var(--muted); }
-.archive-extras .archive-status { padding-top:15px; }
-.archive-extras .editorial-home { border-top:0; padding-top:24px; }
-.archive-extras .editorial-home .section-heading h2 { font-size:32px; }
 .more-to-explore > summary { font-size:22px; }
 @media (max-width:650px) {
   .hangout-cover { grid-template-columns:1fr; gap:20px; padding:15px 0 36px; }
@@ -603,7 +597,7 @@ h2,h3,h4,h5,h6,.story-subtitle,#membership h2,dialog h2,
   .hangout-cover .deep-cut-teaser { padding:24px 22px 27px; }
   .hangout-cover .deep-cut-teaser h2 { font-size:42px; }
   .hangout-cover .deep-cut-teaser .primary { width:100%; justify-content:space-between; font-size:14px; padding:14px 16px; }
-  .archive-extras > summary,.more-to-explore > summary { font-size:20px; }
+  .more-to-explore > summary { font-size:20px; }
 }
 
 /* Clean annotation type: DM Sans throughout; no handwriting font or fallback. */
