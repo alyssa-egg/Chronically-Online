@@ -1,5 +1,7 @@
 # The Fandom Files scrapbook asset system
 
+The homepage keeps Today’s Deep Cut and the three era entrances visible first. Stories, the music pick, personal status and stamps are in the collapsed **around the archive** section; the original games remain under **more to explore**. Open either section when you want it. Editorial/widget reads mount when their section is first opened.
+
 The site now shares a small pixel-icon library, retro window frames, paper/tape accents, lore popup windows, era palettes, a curated music widget and a four-stamp wall. This refines the existing site; the logo, article editor, original games and Render deployment configuration stay in place.
 
 ## Asset inventory and where new images go

@@ -1,5 +1,7 @@
 # Fandom Files: the smaller daily hangout
 
+The homepage keeps Today’s Deep Cut and the three era entrances visible first. Stories, the music pick, personal status and stamps are in the collapsed **around the archive** section; the original games remain under **more to explore**. Open either section when you want it. Editorial/widget reads mount when their section is first opened.
+
 The homepage now focuses on **Today’s Deep Cut**, **three era entrances**, and **The Latest**. It reuses the existing site, Sanity editor, reader, saved stories and game collections.
 
 ## Add your original logo and era collages
