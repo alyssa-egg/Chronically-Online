@@ -100,4 +100,4 @@ Start with [LAUNCH_GUIDE.md](LAUNCH_GUIDE.md). The current URL is `https://fando
 
 ## Magazine cover redesign
 
-[REDESIGN_GUIDE.md](REDESIGN_GUIDE.md) covers the October 14 cover, original camera/CD/player collage, pink-and-black masthead, accessible culture ticker, searchable archive, author preview, and refreshed share cards. [REDESIGN_BRIEF.md](REDESIGN_BRIEF.md) preserves the request. No game data, progress keys, auth tables, payment provider settings, or purchase/trial rules were changed. The Caveat handwriting font is bundled under its SIL Open Font License alongside the existing Outfit font.
+[REDESIGN_GUIDE.md](REDESIGN_GUIDE.md) covers the October 14 cover, original camera/CD/player collage, pink-and-black masthead, accessible culture ticker, searchable archive, author preview, and refreshed share cards. [REDESIGN_BRIEF.md](REDESIGN_BRIEF.md) preserves the request. No game data, progress keys, auth tables, payment provider settings, or purchase/trial rules were changed. The earlier Caveat handwriting font is retired; current notes and annotations use DM Sans. Existing archived font licensing remains in the repository.

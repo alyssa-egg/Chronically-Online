@@ -63,6 +63,6 @@ No new monetization infrastructure was added. An existing player’s paid game c
 
 ## Typography and deployment
 
-Primary headings use lowercase **Helvetica Bold**, with Helvetica Neue / Arial fallbacks for devices without Helvetica. Exact cross-platform Helvetica needs an owner-supplied licensed webfont. Secondary headings, body text and interface labels use locally bundled **DM Sans**. Handwritten annotations remain intentional scrapbook accents.
+Primary headings use lowercase **Helvetica Bold**, with Helvetica Neue / Arial fallbacks for devices without Helvetica. Exact cross-platform Helvetica needs an owner-supplied licensed webfont. Secondary headings, body text and interface labels use locally bundled **DM Sans**. Annotation labels and notes also use DM Sans; the handwriting font has been retired.
 
 GitHub commits and Netlify publishing are separate steps. The last checked live site was serving older assets: the DM Sans file returned 404. The application builds locally, but that does not prove Netlify has deployed it. In Netlify, check **Fandomfiles → Deploys** and verify the latest commit. If builds fail, use the actual deployment error to diagnose them. The committed build command installs Studio dependencies, builds `dist`, and includes server functions. Do not use a static drag-and-drop deployment for the payment backend.

@@ -1,5 +1,7 @@
 # Fandom Files · The Internet Archive redesign
 
+Current typography update: handwriting is retired. Notes and annotations use DM Sans, while primary headings retain lowercase Helvetica Bold. Caveat remains in historical source files only and is not served or included in new builds.
+
 The redesign updates the existing vanilla JavaScript / Node / Netlify project. The existing Sanity editor remains at **https://fandomfiles.netlify.app/admin/** with project **rjg4g3cl**, dataset **production**. No replacement site, framework migration, new payment flow, or new runtime dependency was introduced.
 
 ## The magazine cover

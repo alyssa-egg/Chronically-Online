@@ -16,7 +16,7 @@ The site now shares a small pixel-icon library, retro window frames, paper/tape 
 | Small favicon | `src/favicon.svg`; existing black/pink pixel-heart mark retained. |
 | Main headline type | System Helvetica Bold, lowercase, with Helvetica Neue / Arial fallbacks. No unlicensed Helvetica font is distributed. |
 | Secondary type | `src/assets/fonts/dm-sans-variable.woff`, bundled with `DM-SANS-OFL.txt`. |
-| Handwritten annotations | `src/assets/fonts/caveat-variable.woff`, bundled with `CAVEAT-OFL.txt`. |
+| Annotations and small notes | DM Sans, matching the secondary type. The earlier Caveat handwriting font is retired and is no longer served or bundled. |
 | Retired brand artwork | `deep-cut-logo.png` and `fandom-files-logo.png` stay in the source for compatibility/history; they are not new logo replacements. |
 
 Original Sanity images use direct asset URLs without AI processing, filters, recoloring, or format conversion. Layout frames and overlaid pins are separate UI. The supplied logo’s blank canvas is framed for placement without changing its file. Use images you own or have permission to publish, and add alt text and credits in the editor. This release does not scrape Pinterest or download album artwork automatically.
@@ -90,3 +90,9 @@ As with existing browser saves, changing website origins from Netlify to Render 
 Run `npm run check`, `npm test`, and `npm run build`. Studio schema validation runs from `studio/` with `npm exec -- sanity schema validate --level error`. Browser checks exercise original-image rendering, curator-link safety, stamp goals/persistence, mobile layouts, keyboard opening, Escape, focus return, saved files and the original daily quiz.
 
 The code must be deployed on Render before the new editor fields and widgets appear publicly. No Render service URL has yet been supplied in this conversation; a local build and GitHub push do not establish a live deployment. No original-image source files or real curated song were published by these code changes.
+
+## Use the modern collage
+
+On your deployed site, open **`/admin/` → Era collage & discoveries**. Open the document for **the current lore / 2021–now**, or create one and select that era if it does not exist yet. Upload the supplied modern collage in **Collage**, enter descriptive alt text such as “Collage of 2020s music, artists, creators and internet references,” add an appropriate credit, and **Publish**. Refresh the homepage and `/eras/current-lore/` to see the same full original image in both places. This is an image-content update and does not require another code change or redeploy after the editor version is live.
+
+Handwriting was removed from the current interface at the owner’s request. Main headings retain lowercase Helvetica Bold; secondary text, annotation labels, music notes and footer text use DM Sans.
