@@ -35,6 +35,6 @@ test('clue penalties, wrong answers and share results do not expose the solution
   assert.equal(deepCutScore(q, { choice: q.answer, hints: 3 }), 40);
   assert.equal(deepCutScore(q, { choice: (q.answer + 1) % 4, hints: 0 }), 0);
   const share = deepCutShare(day, q, { choice: q.answer, hints: 2 }, 'https://example.test');
-  assert.match(share, /60\/100/); assert.match(share, /2\/3 clues/); assert.match(share, /https:\/\/example.test\/play\//);
+  assert.match(share, /60\/100/); assert.match(share, /2\/3 clues/); assert.match(share, /Today’s Quick Cut/); assert.match(share, /https:\/\/example.test\/play\/\?game=quick-cut/);
   assert(!share.includes(q.options[q.answer]));
 });

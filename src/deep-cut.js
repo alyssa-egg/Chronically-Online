@@ -22,5 +22,5 @@ export function deepCutState(value, question) {
 }
 export const deepCutScore = (question, state) => state.choice === question.answer ? 100 - state.hints * 20 : 0;
 export function deepCutShare(day, question, state, origin) {
-  return `Fandom Files · Today’s Deep Cut\n${day} · ${deepCutScore(question, state)}/100\n${state.choice === question.answer ? '🟩' : '⬛'}${'🟨'.repeat(state.hints)}\n${state.hints}/3 clues · you had to be there.\n${origin}/play/`;
+  return `Fandom Files · Today’s Quick Cut\n${day} · ${deepCutScore(question, state)}/100\n${state.choice === question.answer ? '🟩' : '⬛'}${'🟨'.repeat(state.hints)}\n${state.hints}/3 clues · you had to be there.\n${origin}/play/?game=quick-cut`;
 }

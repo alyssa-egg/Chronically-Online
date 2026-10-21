@@ -1,7 +1,7 @@
 import { escapeHTML as e, safeLink } from './article-content.js';
 import { originalImageURL, publishedEraAssets } from './site-identity.js';
 import { archiveWindow, fileStamp, pixelIcon } from './archive-atoms.js';
-import { SCRAPBOOK_KEY, scrapbookState, scrapbookProgress, scrapbookStamps, rememberDiscovery, rememberRound } from './scrapbook.js';
+import { SCRAPBOOK_KEY, scrapbookState, scrapbookProgress, scrapbookStamps, rememberDiscovery, rememberRound, rememberPuzzle } from './scrapbook.js';
 import { localCalendarDay, dailyDeepCut, deepCutKey, deepCutState } from './deep-cut.js';
 function nowPlaying(pick) {
   const href = safeLink(pick?.link), ready = typeof pick?.song === 'string' && typeof pick?.artist === 'string' && pick.song.trim() && pick.artist.trim() && href;
@@ -13,6 +13,7 @@ export function createScrapbookUI({ root, read, save }) {
   const write = next => { const before = state(); if (JSON.stringify(before) !== JSON.stringify(next)) save(SCRAPBOOK_KEY, next); };
   const recordDiscovery = (era, id) => write(rememberDiscovery(state(), era, id));
   const recordRound = (day, result) => write(rememberRound(state(), day, result));
+  const recordPuzzle = (day, guesses) => write(rememberPuzzle(state(), day, guesses));
   function syncToday() { const day = localCalendarDay(), question = dailyDeepCut(day), result = deepCutState(read(deepCutKey(day), null), question); if (result.choice !== null) recordRound(day, result); }
   function wall() {
     syncToday(); const progress = scrapbookProgress(state()), owned = state().earned;
@@ -30,5 +31,5 @@ export function createScrapbookUI({ root, read, save }) {
     const target = root.querySelector('#now-playing'); if (!target) return;
     try { const data = await publishedEraAssets(); if (target.isConnected) target.innerHTML = nowPlaying(data.nowPlaying); } catch { /* The empty listening shelf remains readable. */ }
   }
-  return { recordDiscovery, recordRound, wall, homeMarkup, statusMarkup, mountHome };
+  return { recordDiscovery, recordRound, recordPuzzle, wall, homeMarkup, statusMarkup, mountHome };
 }

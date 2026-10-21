@@ -1,4 +1,5 @@
 import { dailyDeepCut, deepCutState } from './deep-cut.js';
+import { dailyPuzzle, validGuesses, puzzleStatus } from './puzzle.js';
 import { discoveryEra } from './era-discoveries.js';
 export const SCRAPBOOK_KEY = 'fandom-files-scrapbook-v1';
 const validId = value => typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
@@ -25,9 +26,19 @@ export function rememberDiscovery(value, era, id) {
 export function rememberRound(value, day, result) {
   return unlockScrapbookStamps({ ...scrapbookState(value), rounds: [...scrapbookState(value).rounds.filter(item => item.day !== day), { ...result, day }] });
 }
+// Keep the original Ask progress keys; the main game has only changed its name.
+export function rememberPuzzle(value, day, guesses) {
+  const state = scrapbookState(value);
+  try {
+    const puzzle = dailyPuzzle(day);
+    if (!validGuesses(guesses, puzzle) || puzzleStatus(puzzle, guesses) === 'playing') return state;
+    state.earned = [...new Set([...state.earned, 'first-deep-cut', ...(puzzleStatus(puzzle, guesses) === 'won' && guesses.length === 1 ? ['no-clues'] : [])])];
+  } catch { /* Invalid dates or progress cannot earn stamps. */ }
+  return state;
+}
 export const scrapbookStamps = [
-  { id: 'first-deep-cut', label: 'deep cut detective', icon: 'search', goal: 'Finish one Today’s Deep Cut', metric: 'rounds', target: 1 },
-  { id: 'no-clues', label: 'kept the receipt', icon: 'stamp', goal: 'Answer a Deep Cut correctly without clues', metric: 'perfect', target: 1 },
+  { id: 'first-deep-cut', label: 'deep cut detective', icon: 'search', goal: 'Finish a Deep Cut or Quick Cut', metric: 'rounds', target: 1 },
+  { id: 'no-clues', label: 'kept the receipt', icon: 'stamp', goal: 'Solve Deep Cut on the first clue or Quick Cut without hints', metric: 'perfect', target: 1 },
   { id: 'five-files', label: 'dashboard digger', icon: 'folder', goal: 'Open five different lore discoveries', metric: 'discoveries', target: 5 },
   { id: 'three-eras', label: 'era traveller', icon: 'heart', goal: 'Open a discovery in all three eras', metric: 'eras', target: 3 },
 ];

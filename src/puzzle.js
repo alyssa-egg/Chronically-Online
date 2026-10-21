@@ -428,7 +428,7 @@ export function submitGuess(puzzle, guesses, guess) {
     !validGuesses(guesses, puzzle) ||
     puzzleStatus(puzzle, guesses) !== "playing"
   )
-    throw new Error("This ask is already filed.");
+    throw new Error("This Deep Cut is already filed.");
   if (guess !== null) {
     if (
       typeof guess !== "string" ||
@@ -457,7 +457,7 @@ export function puzzleShare(puzzle, guesses, day, link) {
       matches(puzzle, guess) ? "💗" : guess === null ? "🤍" : "🩶",
     )
     .join("");
-  return `The Fandom Files <3 · The Anonymous Ask\n${day}\n${status === "won" ? guesses.length : "X"}/6 ${tiles}\nyou had to be there.\nYour turn → ${link}`;
+  return `The Fandom Files <3 · Deep Cut\n${day}\n${status === "won" ? guesses.length : "X"}/6 ${tiles}\nyou had to be there.\nYour turn → ${link}`;
 }
 // A reading streak counts completed days, regardless of score. No accounts needed.
 export function diaryStats(value, today) {

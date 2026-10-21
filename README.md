@@ -2,7 +2,7 @@
 
 The smaller daily hangout is documented in [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md): Today’s Deep Cut, three eras, original image uploads and saved discoveries.
 
-“you had to be there.” A daily fandom game in hot pink, black, and paper cream. Play Today’s Deep Cut, explore three internet eras, save discoveries and collect stamps. Original games and paid era collections stay under more to explore; public editorial sections have been removed.
+“you had to be there.” A daily fandom game in hot pink, black, and paper cream. Play Today’s Deep Cut (six clues and six turns), explore three internet eras, save discoveries and collect stamps. The quiz, bonus four-choice Quick Cut, Lost Post and paid era collections stay under more to explore; public editorial sections have been removed.
 
 The reusable pixel icons, era palettes, lore windows and earned stamp wall are documented in [ASSET_SYSTEM.md](ASSET_SYSTEM.md).
 

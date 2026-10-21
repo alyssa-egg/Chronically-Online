@@ -1,6 +1,6 @@
 # Fandom Files: the smaller daily hangout
 
-The public site focuses on **Today’s Deep Cut**, **three era entrances**, and the original games under **more to explore**. The editorial homepage section, The Latest, article search, related stories, and music widget have been removed from the public navigation and pages.
+The public site focuses on **Today’s Deep Cut** (the renamed Anonymous Ask), **three era entrances**, and the original games under **more to explore**. The editorial homepage section, The Latest, article search, related stories, and music widget have been removed from the public navigation and pages.
 
 **My Files** holds saved era discoveries and the four-stamp wall, with access to the original Sideblog and collectible cards. Existing articles and their local saved-story records have not been deleted; the public site no longer opens editorial stories. Old article links return to the dashboard.
 
@@ -34,18 +34,23 @@ Each page has four short evergreen discoveries, expandable reference files, opti
 
 Readers can save discoveries in **My Files**. Their previous Sideblog, receipts and collectibles remain available from My Files. These saves remain on that browser; this release does not add cross-device reading accounts.
 
-## Today’s Deep Cut
+## Today’s Deep Cut: the main clue game
 
-Open `/play/` or the featured homepage activity.
+The former Anonymous Ask is now **Deep Cut**, featured above the eras on the homepage. `/play/`, header/footer Play links, game-room shortcuts and era-page Deep Cut links all open this same six-clue game.
 
-- One question and four choices; one answer locks the round.
-- Three optional clues, costing 20 points each. A correct answer starts at 100; a wrong answer scores 0 and still opens the explanation.
-- Progress and completed answers persist in the browser, including after refresh. Closing the tab does not create another attempt.
-- The new game uses the **visitor’s local calendar date** as requested in the new brief. A prepared 45-question rotation alternates the three eras and avoids a repeated question within its full 45-day cycle. Refreshing does not select a new question. The labels distinguish archive rotation from new editorial publication.
-- Results can be shared without revealing the answer, with a link back to `/play/` and a link to the question’s era.
-- Play remains free with no sign-in. Browser storage restrictions or deleting browser data can remove local progress; there is no server-enforced competition or shared leaderboard.
+- Type the person, fandom, platform, or title hiding behind the clues.
+- Six turns. Each incorrect guess or pass uses a turn and reveals the next clue. Empty and repeated guesses do not use a turn.
+- A correct guess or the sixth used turn ends the round. The explanation and a spoiler-free share result follow.
+- One daily reference for everyone, resetting at **midnight America/New_York**, including daylight-saving changes. The fallback archive has 30 clue sets, avoiding repeats for its full 30-day cycle. Approved dated issues can supply a themed puzzle.
+- The original `deep-cut-ask-*` progress keys, aliases, reading diary, receipts, and collectible identifiers are preserved. This is a name and placement change, not a new attempt for existing players.
+- Completing the puzzle earns the Deep Cut detective stamp; solving on the first clue can also earn kept the receipt. Previously earned stamps remain.
+- It is free with no account required. Browser-local progress can be lost if browser data is cleared.
 
-Question content is separate from the layout in [src/deep-cut-questions.js](src/deep-cut-questions.js). Each entry contains a stable ID, era ID, prompt, correct answer, three alternatives, three clues and an explanation. Append new questions deliberately; changing the bank changes the future rotation. Keep IDs and published content stable so saved rounds continue to match. The existing dated ten-question quiz approvals still use [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md); none of those drafts were approved by this change.
+Edit the fallback clue sets in [src/puzzle.js](src/puzzle.js). Follow its versioning rule when changing published clues. Dated issues and day-before review still use [EDITORIAL_WORKFLOW.md](EDITORIAL_WORKFLOW.md); no drafts were approved by this change.
+
+## Quick Cut: the bonus multiple-choice game
+
+The previous four-choice Deep Cut is preserved as **Quick Cut** under **more to explore**, at `/play/?game=quick-cut`. Its 45-question, three-era rotation, three optional hints (20 points each), local-midnight reset, result sharing and `fandom-files-deep-cut-*` saved progress remain intact. Question content is in [src/deep-cut-questions.js](src/deep-cut-questions.js). Keep IDs and published bank content stable so saved rounds keep matching. Correct answers without hints can still earn kept the receipt.
 
 ## Site editor
 
@@ -53,7 +58,7 @@ Open `/admin/` to manage **Era collage & discoveries** and **Original site logo*
 
 ## Existing games and purchases
 
-The longer ten-question quiz, Anonymous Ask, Lost Post, reading diary, free game folders, existing paid collections, Sideblog and collectible exports remain available under **more to explore**. Their progress keys, signed-in access and $5 one-time purchase are unchanged. The original daily games still reset at midnight Eastern; Today’s Deep Cut has its separately labelled local-midnight schedule.
+The longer ten-question quiz, bonus Quick Cut, Lost Post, reading diary, free game folders, existing paid collections, Sideblog and collectible exports remain available under **more to explore**. Their progress keys, signed-in access and $5 one-time purchase are unchanged. Deep Cut, the quiz, and Lost Post reset at midnight Eastern; Quick Cut has its separately labelled local-midnight schedule.
 
 No new monetization infrastructure was added. An existing player’s paid game collections remain available. New public era discovery pages are free and distinct from the existing paid game collections. Payment launch instructions remain in [STRIPE_INTEGRATION_TODO.md](STRIPE_INTEGRATION_TODO.md).
 

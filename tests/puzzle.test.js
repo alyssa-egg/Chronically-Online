@@ -97,9 +97,12 @@ test("shared puzzle results show turns and Eastern day without revealing guesses
     puzzle,
     [null, "secret wrong guess", puzzle.answer],
     "2026-10-10",
-    "https://example.com/#anonymous-ask",
+    "https://example.com/play/",
   );
   assert.match(text, /3\/6 🤍🩶💗/);
+  assert.match(text, /Deep Cut/);
+  assert.ok(!text.includes("Anonymous Ask"));
+  assert.match(text, /https:\/\/example.com\/play\//);
   assert.match(text, /2026-10-10/);
   assert.ok(!text.includes("Eastern edition"));
   assert.ok(!text.includes(puzzle.answer));

@@ -66,12 +66,12 @@ The wall in **My Files** awards four cosmetic stamps:
 
 | Stamp | Earned by |
 | --- | --- |
-| deep cut detective | Completing one Today’s Deep Cut, including an incorrect answer |
-| kept the receipt | A correct Deep Cut without clues |
+| deep cut detective | Finishing the six-clue Deep Cut or the bonus Quick Cut, including an unsuccessful round |
+| kept the receipt | Solving Deep Cut on the first clue, or Quick Cut without hints |
 | dashboard digger | Opening five different lore discoveries |
 | era traveller | Opening at least one discovery in each era |
 
-[src/scrapbook.js](src/scrapbook.js) records and validates the underlying activity. Repeated opens and repeated visits to a completed result do not increase counts. Known earned stamps remain filed when you miss a day. Existing Deep Cut results can earn their corresponding stamps when reopened or loaded in My Files.
+[src/scrapbook.js](src/scrapbook.js) records and validates the underlying activity. Repeated opens and repeated visits to a completed result do not increase counts. Known earned stamps remain filed when you miss a day. Existing clue-game and Quick Cut results can earn their corresponding stamps when reopened or loaded in My Files. The original Ask progress keys and stamp IDs remain unchanged after the Deep Cut rename.
 
 Stamp goals use local opened-discovery and daily-round counts. These are **personal browser data**, not visitor counts, public totals or account entitlements. They live under `fandom-files-scrapbook-v1`; no existing progress keys were renamed. The original fourteen collectible cards and Sideblog are unchanged and remain accessible through My Files. There are no new accounts, payments, public profiles, comments or server-side achievements.
 

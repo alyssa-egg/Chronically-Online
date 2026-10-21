@@ -611,3 +611,6 @@ h2,h3,h4,h5,h6,.story-subtitle,#membership h2,dialog h2,
 .story-annotation strong { font:700 15px/1.6 var(--sans); }
 .archive-status > span:last-child { font:400 11px/1.7 var(--sans); }
 .music-pick-note { font:400 15px/1.8 var(--sans); transform:none; }
+
+.deep-cut-mystery-sticker { margin:-6px 0 10px; }
+.deep-cut-mystery-sticker .ask-moustache { display:block; position:static; width:110px; height:auto; margin:0; transform:none; }

@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { dailyPuzzle } from '../src/puzzle.js';
 import { dailyDeepCut } from '../src/deep-cut.js';
-import { rememberDiscovery, rememberRound, scrapbookProgress, scrapbookState } from '../src/scrapbook.js';
+import { rememberDiscovery, rememberRound, rememberPuzzle, scrapbookProgress, scrapbookState } from '../src/scrapbook.js';
 import { archiveWindow, archiveFileCard, fileStamp, pixelIcon } from '../src/archive-atoms.js';
 
 test('only completed, valid daily rounds earn a stamp; a perfect no-clue answer has a separate stamp', () => {
@@ -37,4 +38,19 @@ test('reusable window labels and file headings escape content; pixel icons canno
   const file=archiveFileCard({id:'clean',number:1,title:'<img onerror=x>',kind:'<script>',body:'<p>internal</p>'});
   assert.doesNotMatch(file,/<img|<script>/);assert.match(file,/&lt;img/);
   assert.doesNotMatch(fileStamp('<script>'),/<script>/);assert.doesNotMatch(pixelIcon('" onload="bad'),/onload/);
+});
+
+test('the renamed clue game awards stamps only for valid finished guesses and keeps existing earned stamps', () => {
+  const day = '2026-10-21', puzzle = dailyPuzzle(day);
+  for (const guesses of [[], ['a wrong reference'], [puzzle.answer, 'another guess'], [null, null, null, null, null, null, null]]) {
+    assert.deepEqual(rememberPuzzle({}, day, guesses).earned, []);
+  }
+  assert.deepEqual(rememberPuzzle({}, 'invalid', [puzzle.answer]).earned, []);
+  const lost = rememberPuzzle({}, day, Array(6).fill(null));
+  assert.deepEqual(lost.earned, ['first-deep-cut']);
+  const later = rememberPuzzle({}, day, [null, puzzle.answer]);
+  assert.deepEqual(later.earned, ['first-deep-cut']);
+  const first = rememberPuzzle({ earned: ['three-eras'] }, day, [puzzle.answer]);
+  assert.deepEqual(first.earned, ['three-eras', 'first-deep-cut', 'no-clues']);
+  assert.deepEqual(rememberPuzzle(first, day, [puzzle.answer]), first);
 });
