@@ -40,6 +40,7 @@ import {
   MAX_TURNS,
 } from "./puzzle.js";
 
+import { createMemoriesUI } from "./memories-ui.js";
 import { createArchiveUI } from "./archive-ui.js";
 import { createScrapbookUI } from "./scrapbook-ui.js";
 import { fileStamp, pixelIcon } from "./archive-atoms.js";
@@ -159,10 +160,11 @@ function issueLabel() {
   }).format(new Date(day + "T12:00:00Z"));
 }
 function chrome(content) {
+  if (screen !== "memories") memories.leave();
   if (screen !== "era") eraDiscovery.leave();
-  if (!["era", "myfiles", "deepcut", "puzzle", "puzzle-results"].includes(screen)) {
+  if (!["era", "memories", "myfiles", "deepcut", "puzzle", "puzzle-results"].includes(screen)) {
     document.title = "The Fandom Files — daily fandom games & internet eras";
-    if (!booting && (location.pathname.startsWith("/stories/") || location.pathname.startsWith("/archive") || location.pathname.startsWith("/eras/") || location.pathname.startsWith("/play") || new URL(location.href).searchParams.has("desk"))) history.pushState({}, "", "/");
+    if (!booting && (location.pathname.startsWith("/stories/") || location.pathname.startsWith("/archive") || location.pathname.startsWith("/eras/") || location.pathname.startsWith("/play") || location.pathname.startsWith("/memories") || new URL(location.href).searchParams.has("desk"))) history.pushState({}, "", "/");
   }
   app.dataset.mode = mode.id;
   app.innerHTML = `<div class="issue-line"><span><i class="online-dot"></i> THE FANDOM FILES / INTERNET MEMORY</span><span>${issueLabel()} <span class="issue-heart">♡</span></span></div>${content}<p id="storage-note" class="storage"></p>`;
@@ -736,7 +738,7 @@ function refreshDay() {
 }
 function tick() {
   if (dayKey() !== day && ["puzzle", "puzzle-results"].includes(screen)) { startPuzzle(false); return; }
-  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "era", "myfiles", "deepcut"].includes(screen)) {
+  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "era", "memories", "myfiles", "deepcut"].includes(screen)) {
     refreshDay();
     return;
   }
@@ -764,6 +766,7 @@ const archiveUI = createArchiveUI({
   finishDay, startGame, startPuzzle, share: shareResult,
   dailyProgress: () => ({ quiz: savedAnswers("daily", day).length, ask: savedGuesses(day).length, askFinished: puzzleStatus(dailyPuzzle(day), savedGuesses(day)) !== "playing" }),
 });
+const memories = createMemoriesUI({ root: app, render: chrome, begin: next => { eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home });
 const scrapbook = createScrapbookUI({ root: app, read, save });
 const eraDiscovery = createEraDiscoveryUI({ root: app, render: chrome, begin: next => { loadIssue("daily"); screen = next; }, home, read, save, openDeepCut: () => startPuzzle(), recordDiscovery: scrapbook.recordDiscovery });
 const deepCut = createDeepCutUI({ root: app, render: chrome, begin: next => { eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home, read, save, openEra: id => eraDiscovery.openEra(id), recordRound: scrapbook.recordRound });
@@ -781,6 +784,7 @@ function openMyFiles(navigate = true) {
   heading.tabIndex = -1; heading.focus({ preventScroll: true });
 }
 function routeSite() {
+  if (/^\/memories\/?$/.test(location.pathname)) { memories.open(new URL(location.href).searchParams.get("era"), false); return true; }
   if (/^\/play\/?$/.test(location.pathname)) {
     if (new URL(location.href).searchParams.get("game") === "quick-cut") deepCut.open(false);
     else startPuzzle(false);
@@ -801,9 +805,10 @@ document.querySelector('#main-navigation').addEventListener('click', closeNaviga
 siteHeader.addEventListener('keydown', event => { if (event.key === 'Escape') { closeNavigation(); navToggle.focus(); } });
 document.querySelectorAll('[data-site-home]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); home(); window.scrollTo({ top: 0 }); closeNavigation(); });
 document.querySelectorAll('[data-site-play]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); startPuzzle(); closeNavigation(); });
+document.querySelectorAll('[data-open-memories]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); memories.open(); closeNavigation(); });
 document.querySelectorAll('[data-open-archive]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); eraDiscovery.openIndex(); });
 document.querySelector("#sideblog-button").onclick = () => openMyFiles();
-app.addEventListener("click", event => { if (event.target.closest("[data-saved-discoveries]")) openMyFiles(); if (event.target.closest("[data-original-sideblog]")) archiveUI.openSideblog(); });
+app.addEventListener("click", event => { if (event.target.closest("[data-era-memories]")) { const link = event.target.closest("[data-era-memories]"); if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); memories.open(link.dataset.eraMemories); } if (event.target.closest("[data-saved-discoveries]")) openMyFiles(); if (event.target.closest("[data-original-sideblog]")) archiveUI.openSideblog(); });
 setSoundEnabled(read("deep-cut-sound", true) !== false);
 updateSoundButton();
 home();
@@ -818,7 +823,7 @@ window.addEventListener("hashchange", () => {
 document.querySelector("#membership-button").onclick = () => showMembership();
 setInterval(() => { tick(); if (screen === "deepcut") deepCut.refresh(); }, 1000);
 window.addEventListener("focus", () => {
-  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "era", "myfiles", "deepcut"].includes(screen)) refreshDay();
+  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "era", "memories", "myfiles", "deepcut"].includes(screen)) refreshDay();
   tick();
 });
 window.addEventListener("storage", (event) => {

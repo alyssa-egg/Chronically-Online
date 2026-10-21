@@ -1,5 +1,7 @@
 import { publicArchiveModule } from "./server/archive.mjs";
 import http from "node:http";
+import { isIP } from "node:net";
+import { handleMemoriesRequest } from "./server/memories.mjs";
 import { handleEraPagesRequest } from "./server/era-pages.mjs";
 import { handleArticleRequest } from "./server/articles.mjs";
 import { readFile } from "node:fs/promises";
@@ -25,6 +27,7 @@ const types = {
 const publicFiles = new Set([
   "/index.html",
   "/src/app.js",
+  "/src/memories-ui.js",
   "/src/publication.js",
   "/src/archive-topics.js",
   "/src/cover.js",
@@ -125,13 +128,14 @@ http
           headers: req.headers,
           ...(["GET", "HEAD"].includes(req.method) ? {} : { body }),
         });
-        const result = await handlePremiumRequest(request, process.env, {
-          issues: await loadIssues(root),
-        });
+        const forwarded = typeof req.headers['x-forwarded-for'] === 'string' ? req.headers['x-forwarded-for'].split(',').at(-1).trim() : '';
+        const result = pathname === '/api/memories'
+          ? await handleMemoriesRequest(request, process.env, { clientId: isIP(forwarded) ? forwarded : req.socket.remoteAddress })
+          : await handlePremiumRequest(request, process.env, { issues: await loadIssues(root) });
         res.writeHead(result.status, Object.fromEntries(result.headers));
         return res.end(Buffer.from(await result.arrayBuffer()));
       }
-      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/play\/?$/.test(pathname) || /^\/eras\/[a-z0-9-]+\/?$/.test(pathname) || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
+      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/(?:play|memories)\/?$/.test(pathname) || /^\/eras\/[a-z0-9-]+\/?$/.test(pathname) || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
       const issues = await loadIssues(root);
       const images = Object.values(issues)
         .filter((issue) => issue.status === "approved")

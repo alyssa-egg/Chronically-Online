@@ -11,6 +11,7 @@ const issues = await loadIssues(root);
 const files = new Set([
   "index.html",
   "src/app.js",
+  "src/memories-ui.js",
   "src/publication.js",
   "src/archive-topics.js",
   "src/cover.js",

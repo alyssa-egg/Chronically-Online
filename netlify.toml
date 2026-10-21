@@ -44,3 +44,8 @@
   from = "/play/"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/memories/"
+  to = "/index.html"
+  status = 200

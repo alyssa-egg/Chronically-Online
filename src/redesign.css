@@ -614,3 +614,39 @@ h2,h3,h4,h5,h6,.story-subtitle,#membership h2,dialog h2,
 
 .deep-cut-mystery-sticker { margin:-6px 0 10px; }
 .deep-cut-mystery-sticker .ask-moustache { display:block; position:static; width:110px; height:auto; margin:0; transform:none; }
+
+.memories-page { padding:25px 0 50px; }
+.memories-page > .file-label { display:block; margin-top:30px; }
+.memories-intro { max-width:680px; line-height:1.9; }
+.memory-filters { display:flex; flex-wrap:wrap; gap:10px; margin:30px 0; }
+.memory-filters button { white-space:normal; text-align:left; }
+.memory-filters button span { display:block; font-size:10px; margin-top:4px; }
+.memory-filters [aria-pressed="true"] { background:var(--pink); color:var(--ink); border-color:var(--ink); }
+.memories-layout { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:38px; align-items:start; }
+.memory-wall-heading { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; }
+.memory-wall h2,.memory-inbox h2 { font:700 clamp(25px,3vw,34px)/1.2 var(--headline); text-transform:lowercase; letter-spacing:-.025em; }
+.memory-wall h2 em,.memory-inbox h2 em { font-style:normal; }
+#memories-status,#memory-submit-status { font:13px/1.8 var(--sans); overflow-wrap:anywhere; }
+.memory-list { display:grid; gap:22px; margin:25px 0; }
+.memory-note { padding:26px; background:var(--paper); border:1px solid var(--ink); box-shadow:4px 4px 0 var(--lilac); overflow-wrap:anywhere; }
+.memory-note[data-era="fandom-years"] { border-top:5px solid var(--pink); }
+.memory-note[data-era="influencer-era"] { border-top:5px solid #b5df24; }
+.memory-note[data-era="current-lore"] { border-top:5px solid #ba2347; }
+.memory-note > p { white-space:pre-wrap; font:16px/1.85 var(--sans); }
+.memory-byline { font:12px/1.7 var(--sans); color:var(--muted); }
+.memory-inbox { border:1px solid var(--ink); background:#f1eaff; box-shadow:5px 5px 0 var(--ink); min-width:0; }
+.memory-inbox > .window-bar { display:flex; justify-content:space-between; background:var(--ink); color:var(--paper); padding:10px 16px; font:11px var(--sans); }
+#memory-form { padding:24px; }
+#memory-form > p { font:13px/1.8 var(--sans); }
+#memory-form label { display:block; font:500 13px/1.7 var(--sans); margin:18px 0 8px; }
+#memory-form label > span { font-weight:400; }
+#memory-form input,#memory-form textarea,#memory-form select { display:block; width:100%; min-width:0; margin-top:7px; padding:12px; font:16px/1.5 var(--sans); color:var(--ink); background:#fffaf3; border:1px solid var(--ink); border-radius:0; }
+#memory-form textarea { resize:vertical; }
+.memory-count { display:block; font:11px/1.7 var(--sans); margin:8px 0 20px; }
+#send-memory { width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.memory-honeypot { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+@media(max-width:800px) {
+  .memories-layout { grid-template-columns:minmax(0,1fr); gap:35px; }
+  .memory-inbox { order:-1; }
+  .memory-note { padding:22px; }
+}

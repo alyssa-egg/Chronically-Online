@@ -4,6 +4,10 @@ The public site focuses on **Today’s Deep Cut** (the renamed Anonymous Ask), *
 
 **My Files** holds saved era discoveries and the four-stamp wall, with access to the original Sideblog and collectible cards. Existing articles and their local saved-story records have not been deleted; the public site no longer opens editorial stories. Old article links return to the dashboard.
 
+## Era memories
+
+**Memories** in the header/footer opens `/memories/`. Readers filter by era and send a 10–600 character memory with an optional nickname. Each era discovery page also links to its own memory wall. Submissions arrive as private Sanity drafts; **Publish** is your approval step. See [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) to open the inbox on Render and review submissions.
+
 ## Add your original logo and era collages
 
 The four images shown in chat were visible references, but their original files were not available to the coding workspace. **They have not been replaced with generated collages or an AI-redrawn logo.** The previously installed logo remains until an original is uploaded. The new era tiles explicitly show that their collages are pending; their written discoveries work now.

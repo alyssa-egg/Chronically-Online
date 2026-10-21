@@ -6,6 +6,8 @@ The smaller daily hangout is documented in [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md):
 
 The reusable pixel icons, era palettes, lore windows and earned stamp wall are documented in [ASSET_SYSTEM.md](ASSET_SYSTEM.md).
 
+The **Memories** tab lets readers share a memory from each era. Submissions remain private drafts until you review and publish them in Sanity. See [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) for the one server token and moderation steps.
+
 ## Hosting without Netlify
 
 [RENDER_MIGRATION.md](RENDER_MIGRATION.md) covers moving this existing Node app to Render, including the free-service limits, environment variables, sign-in URLs, Sanity CORS and Stripe webhook cutover. [render.yaml](render.yaml) provides the service configuration.

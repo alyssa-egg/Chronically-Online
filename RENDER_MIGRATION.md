@@ -31,6 +31,7 @@ In **Render → your service → Environment**, enter these names. Copy existing
 | Name | Value |
 | --- | --- |
 | `SITE_URL` | Your actual new HTTPS Render URL, including the trailing slash. |
+| `SANITY_EDITOR_TOKEN` | A private Sanity Editor API token for the moderated memory inbox; see [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md). |
 | `SUPABASE_URL` | Your existing Supabase project URL. |
 | `SUPABASE_ANON_KEY` | Your existing anon key. |
 | `SUPABASE_SERVICE_ROLE_KEY` | Your existing private service-role key. |
@@ -41,7 +42,7 @@ In **Render → your service → Environment**, enter these names. Copy existing
 
 Save and redeploy after changing these. The backend uses `SITE_URL` to preserve HTTPS behind Render’s proxy, send auth links to the right site, and construct payment returns. Use the exact same public domain throughout the steps below.
 
-No Sanity editor token is required on Render. Do not add `SANITY_EDITOR_TOKEN` or any private key to browser-accessible variables.
+Reading published images/lore and signing into the Studio need no server editor token. The new reader-memory inbox requires `SANITY_EDITOR_TOKEN` **only on the server** to create private review drafts. Never use a `SANITY_STUDIO_` or `VITE_` prefix for it, and never add it to browser-accessible variables. Without it the published wall still works, but the submission button stays disabled.
 
 ## 3. Update the three services that know the old URL
 
