@@ -49,3 +49,13 @@
   from = "/memories/"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/quizzes/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/my-files/"
+  to = "/index.html"
+  status = 200

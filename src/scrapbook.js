@@ -37,8 +37,8 @@ export function rememberPuzzle(value, day, guesses) {
   return state;
 }
 export const scrapbookStamps = [
-  { id: 'first-deep-cut', label: 'deep cut detective', icon: 'search', goal: 'Finish a Deep Cut or Quick Cut', metric: 'rounds', target: 1 },
-  { id: 'no-clues', label: 'kept the receipt', icon: 'stamp', goal: 'Solve Deep Cut on the first clue or Quick Cut without hints', metric: 'perfect', target: 1 },
+  { id: 'first-deep-cut', label: 'deep cut detective', icon: 'search', goal: 'Finish Name That Reference or Quick Cut', metric: 'rounds', target: 1 },
+  { id: 'no-clues', label: 'kept the receipt', icon: 'stamp', goal: 'Solve Name That Reference on its first clue or Quick Cut without hints', metric: 'perfect', target: 1 },
   { id: 'five-files', label: 'dashboard digger', icon: 'folder', goal: 'Open five different lore discoveries', metric: 'discoveries', target: 5 },
   { id: 'three-eras', label: 'era traveller', icon: 'heart', goal: 'Open a discovery in all three eras', metric: 'eras', target: 3 },
 ];

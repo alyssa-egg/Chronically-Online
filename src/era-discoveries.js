@@ -22,3 +22,11 @@ export const discoveryEras = [
 ];
 export const eraURL = id => `/eras/${encodeURIComponent(id)}/`;
 export const discoveryEra = id => discoveryEras.find(era => era.id === id);
+
+// Exact copies of the owner’s original Sanity uploads, with no image processing.
+const originalCollageRefs = {
+ 'fandom-years':'image-d56739a6bb75f8d7965bb1c086146f8bd61ca345-2048x1152-jpg',
+ 'influencer-era':'image-34257b1bd4d58edf9b98654d8724f0b1df09d175-1920x1080-jpg',
+ 'current-lore':'image-1de2df23a12757c591ac0b2c627bbdc22e0056b5-1920x1080-jpg',
+};
+for (const era of discoveryEras) era.collage = { src: `/src/assets/eras/${era.id}.jpg`, asset:{_ref:originalCollageRefs[era.id]}, alt: `${era.title} original collage` };

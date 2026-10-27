@@ -1,5 +1,7 @@
 # The Fandom Files scrapbook asset system
 
+**Current launch:** see [DEEP_CUT_LAUNCH.md](DEEP_CUT_LAUNCH.md) for the new five-prompt daily game, quiz library and personal files. The earlier main-game descriptions below are retained as implementation history.
+
 The homepage keeps Today’s Deep Cut and the three era entrances visible first; the original games remain under **more to explore**. The public editorial section and music widget have been removed. Saved discoveries, the stamp wall, and original Sideblog/collectibles remain in **My Files**.
 
 The site shares pixel icons, retro window frames, paper/tape accents, lore popup windows and era palettes. The Sanity editor still manages original logos, collages and lore pins.

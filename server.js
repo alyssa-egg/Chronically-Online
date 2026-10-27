@@ -27,10 +27,15 @@ const types = {
 const publicFiles = new Set([
   "/index.html",
   "/src/app.js",
+  "/src/open-cut-content.js",
+  "/src/open-cut.js",
+  "/src/open-cut-ui.js",
+  "/src/quiz-library.js",
+  "/src/quiz-library-ui.js",
+  "/src/assets/eras/fandom-years.jpg",
+  "/src/assets/eras/influencer-era.jpg",
+  "/src/assets/eras/current-lore.jpg",
   "/src/memories-ui.js",
-  "/src/publication.js",
-  "/src/archive-topics.js",
-  "/src/cover.js",
   "/src/deep-cut-questions.js",
   "/src/deep-cut.js",
   "/src/deep-cut-ui.js",
@@ -40,9 +45,8 @@ const publicFiles = new Set([
   "/src/archive-atoms.js",
   "/src/scrapbook.js",
   "/src/scrapbook-ui.js",
-  "/src/design-symbols.js",
-  "/src/article-layout.js",
   "/src/redesign.css",
+  "/src/launch.css",
   "/src/article-content.js",
   "/src/archive-ui.js",
   "/src/badges.js",
@@ -135,7 +139,7 @@ http
         res.writeHead(result.status, Object.fromEntries(result.headers));
         return res.end(Buffer.from(await result.arrayBuffer()));
       }
-      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/(?:play|memories)\/?$/.test(pathname) || /^\/eras\/[a-z0-9-]+\/?$/.test(pathname) || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
+      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/(?:play|memories|quizzes|my-files)\/?$/.test(pathname) || /^\/quizzes\/[a-z0-9-]+\/?$/.test(pathname) || /^\/eras\/[a-z0-9-]+\/?$/.test(pathname) || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
       const issues = await loadIssues(root);
       const images = Object.values(issues)
         .filter((issue) => issue.status === "approved")

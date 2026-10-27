@@ -1,12 +1,10 @@
 # The Fandom Files
 
-The smaller daily hangout is documented in [HANGOUT_GUIDE.md](HANGOUT_GUIDE.md): Today’s Deep Cut, three eras, original image uploads and saved discoveries.
+The current launch version is documented in [DEEP_CUT_LAUNCH.md](DEEP_CUT_LAUNCH.md). **The Deep Cut** is five daily open-answer prompts, curated scoring out of 500, 28 prepared files, saved results, personal history, streaks and stamps. [DEEP_CUT_CALENDAR.md](DEEP_CUT_CALENDAR.md) lists the first 28 days for review.
 
-“you had to be there.” A daily fandom game in hot pink, black, and paper cream. Play Today’s Deep Cut (six clues and six turns), explore three internet eras, save discoveries and collect stamps. The quiz, bonus four-choice Quick Cut, Lost Post and paid era collections stay under more to explore; public editorial sections have been removed.
+“YOU HAD TO BE THERE.” The existing logo, original era collages, Helvetica Bold headlines, DM Sans, pixel details and game components are preserved. There are six free era knowledge quizzes and a personality quiz. Main navigation is **HOME · THE DEEP CUT · THE ERAS · QUIZZES · MY FILES**; public article/news sections are removed.
 
-The reusable pixel icons, era palettes, lore windows and earned stamp wall are documented in [ASSET_SYSTEM.md](ASSET_SYSTEM.md).
-
-The **Memories** tab lets readers share a memory from each era. Submissions remain private drafts until you review and publish them in Sanity. See [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) for the one server token and moderation steps.
+The older games, Sideblog, collectibles, existing purchases and moderated Memories remain accessible as secondary files. [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) covers the existing optional submission inbox. No account, payment, judging API or new dependency is required for the new daily game or launch quizzes.
 
 ## Hosting without Netlify
 
@@ -85,6 +83,10 @@ Node tests cover the archive, scores/ranks, Eastern midnight and DST, puzzles/al
 Browser checks cover free play, disabled membership without configuration, mocked sign-in/trial/purchase restoration, all three era quizzes, saved progress, approved themed questions and Ask, a credited image, and layouts at 320/390/768/1440 pixels. Real email, Stripe test/live checkout, Safari/Firefox, and phone audio/share sheets need launch checks.
 
 ## Where to edit
+
+New daily prompts, aliases, tiers and dated overrides: `src/open-cut-content.js`. Matching, daily state and personal history: `src/open-cut.js`. Main game/results: `src/open-cut-ui.js`. Optional quizzes/profiles: `src/quiz-library.js`, with UI in `src/quiz-library-ui.js`. Launch styling: `src/launch.css`. See [DEEP_CUT_LAUNCH.md](DEEP_CUT_LAUNCH.md) for examples and publication rules.
+
+The following paths maintain the earlier games and integrations:
 
 Dated content: `content/issues/`. Review/publication: `scripts/editorial.mjs`, `src/issue-schema.js`, `server/editorial.mjs`. Browser: `src/app.js`, `src/style.css`, `src/game.js`, `src/puzzle.js`, `src/sound.js`. Auth/checkout/access: `src/membership.js`, `server/premium.mjs`, `netlify/functions/api.mjs`. Database: `config/membership.sql`.
 

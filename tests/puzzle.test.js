@@ -100,7 +100,7 @@ test("shared puzzle results show turns and Eastern day without revealing guesses
     "https://example.com/play/",
   );
   assert.match(text, /3\/6 🤍🩶💗/);
-  assert.match(text, /Deep Cut/);
+  assert.match(text, /Name That Reference/);
   assert.ok(!text.includes("Anonymous Ask"));
   assert.match(text, /https:\/\/example.com\/play\//);
   assert.match(text, /2026-10-10/);

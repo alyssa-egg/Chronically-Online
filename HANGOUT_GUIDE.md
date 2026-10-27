@@ -1,5 +1,7 @@
 # Fandom Files: the smaller daily hangout
 
+**Current launch:** see [DEEP_CUT_LAUNCH.md](DEEP_CUT_LAUNCH.md) for the new five-prompt daily game, quiz library and personal files. The earlier main-game descriptions below are retained as implementation history.
+
 The public site focuses on **Today’s Deep Cut** (the renamed Anonymous Ask), **three era entrances**, and the original games under **more to explore**. The editorial homepage section, The Latest, article search, related stories, and music widget have been removed from the public navigation and pages.
 
 **My Files** holds saved era discoveries and the four-stamp wall, with access to the original Sideblog and collectible cards. Existing articles and their local saved-story records have not been deleted; the public site no longer opens editorial stories. Old article links return to the dashboard.

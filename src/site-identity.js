@@ -1,3 +1,4 @@
+export const eraImageURL = image => typeof image?.src === "string" && /^\/src\/assets\/eras\/(fandom-years|influencer-era|current-lore)\.jpg$/.test(image.src) ? image.src : originalImageURL(image);
 // Original Sanity asset URLs intentionally omit resize, crop and format transforms.
 export function originalImageURL(image) {
   const ref = image?.asset?._ref;
