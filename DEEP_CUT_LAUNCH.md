@@ -4,7 +4,7 @@ The homepage now leads with the five-prompt **The Deep Cut**: “The obvious ans
 
 ## What is live in the code
 
-- `/play/`: five daily open-answer prompts, one completed file per Eastern date, up to 500 points, actual answer feedback and a saved results card. The optional 25-second timer is off by default and never submits, hides an answer, advances a prompt, or changes points. Players can turn it off at any time.
+- `/play/`: five daily open-answer prompts, one completed file per Eastern date, up to 500 points, actual answer feedback and a saved results card. Each prompt has a mandatory 25-second timer, starting after the player chooses Start. At zero the typed answer is filed and the next prompt opens automatically; blanks score zero. Filed answers are locked, future prompts stay sealed, and the timer resumes from its saved deadline after refresh. If the player leaves, expired prompts are caught up using their original deadlines.
 - `/archive/` and `/eras/fandom-years/`, `/eras/influencer-era/`, `/eras/current-lore/`: original collages, existing clickable reference files, two free knowledge quizzes per era, personal quiz stamps, and related game/era links.
 - `/quizzes/`: six five-question knowledge quizzes and a six-choice personality quiz with three distinct profiles. Quizzes are free and untimed, resumable, repeatable, and independent of the daily file. Knowledge results show correct answers and explanations. Personality results describe preferences, not factual correctness, and ties use the first choice among tied profiles.
 - `/my-files/`: completed daily results, current/best streak information, personal best, daily history, four milestone stamps, optional-quiz results, and saved era references. The original Sideblog, collectibles, purchase restoration and moderated Memories remain under a secondary disclosure.
@@ -28,11 +28,11 @@ Each accepted answer has one curated tier:
 | `100` | 100 | deep cut |
 | `"accepted"` | 100 | full category match, without claiming obscurity |
 
-The fixed-lineup topics use `"accepted"`, so no member is ranked as more obscure than another. These matches do **not** count toward “deep cuts found.” The tiers are editorial choices in the answer bank, never live answer percentages. The lists are intentionally finite; an unrecognised answer earns zero with an explanation that it may fit but is not listed. There is no fuzzy guesswork, AI judgement, public ranking or fabricated player count.
+The fixed-lineup topics use `"accepted"`, so no member is ranked as more obscure than another. These matches do **not** count toward “deep cuts found.” The tiers are editorial choices in the answer bank, never live answer percentages. The lists are still finite; an unrecognised answer earns zero with an explanation that it may fit but is not listed. Bounded, unambiguous spelling correction is used, never AI judgement, public ranking or fabricated player counts.
 
-Matching removes case, punctuation, spacing and accents. Common names and alternate spellings are explicit aliases. Players type one answer of up to 120 characters per prompt. Empty, whitespace-only, control-character, overly long and incomplete submissions are rejected without completing the round. The finish action is guarded against repeat submissions and another tab completing the same file.
+Matching removes case, punctuation, spacing and accents. Over a thousand accepted answer entries cover the 35 topics, including more 1D/5SOS songs, creators, member names, artists and era references. Song-title/artist formats and member/group formats are supported. Small spelling slips are accepted only when the nearest match is unique: one edit for names of at least five characters, up to two for at least ten; numeric-only titles and short names are not fuzzy-matched. Exact aliases take priority, and ambiguous typos stay unscored. Players type one answer of up to 120 characters per prompt. Manual empty, whitespace-only, control-character and overly long entries are rejected. Players may skip explicitly; a timeout files a blank as zero if no valid text was entered. The finish action is guarded against repeat submissions and another tab completing the same file.
 
-Completed files store a validated score/explanation snapshot. A later alias or tier correction does not retroactively change an already completed result. Keep already-published prompt IDs, prompt wording, and dated challenge IDs stable so saved files remain associated with their original questions.
+Completed files store a validated score/explanation snapshot. Previously awarded points remain fixed. A formerly unrecognised answer that now matches the expanded archive receives its missing credit automatically, in both the saved daily result and personal history; no replay is needed and existing earned points are never reduced. Keep already-published prompt IDs, prompt wording, and dated challenge IDs stable so saved files remain associated with their original questions.
 
 ## Add a reasonable answer variation
 
@@ -42,7 +42,7 @@ Open [src/open-cut-content.js](src/open-cut-content.js). The local helper is:
 answer('Robbers', 80, ['robbers by the 1975'])
 ```
 
-The first argument is the canonical answer, the second the curated tier, the third an array of accepted variations, and the optional fourth a short explanation specific to that answer. Case/punctuation/spacing variations already match automatically; aliases are for different wordings, nicknames, abbreviations or alternate spellings.
+The first argument is the canonical answer, the second the curated tier, the third an array of accepted variations, and the optional fourth a short explanation specific to that answer. Case/punctuation/spacing variations already match automatically, alongside conservative spelling correction; aliases are for different wordings, nicknames, abbreviations or alternate spellings. Broader additions and artist metadata live in `src/open-cut-extra-answers.js`, merged into the same topic lists before prompts are assembled.
 
 Do not add an alias that could match a different answer in the same prompt. Run the tests: they check alias collisions, tiers, accepted answers and scoring. Avoid changing the current date’s lists mid-round. Use new prompts and future dated overrides for substantial content changes. Accepted lists live in code; the game does not collect everybody’s submissions or produce real population rarity statistics.
 
@@ -110,3 +110,9 @@ The existing Netlify build/functions setup is retained, with direct-route rules 
 On **Render**, choose your service → **Manual Deploy → Deploy latest commit**, wait for **Live**, then refresh. On **Netlify**, use the Git-connected production deployment for `main`. Provider credits, service limits, account settings and payment test/live state are separate from a code push. No new real charge was made and no public-host deployment was performed by these changes.
 
 Before sharing publicly, check `/`, `/play/`, `/archive/`, all three era pages, `/quizzes/`, a quiz detail URL and `/my-files/` on your actual host, including refreshing direct links. Keep existing paid-access restoration available if anyone has bought it. Payment launch instructions remain [STRIPE_INTEGRATION_TODO.md](STRIPE_INTEGRATION_TODO.md).
+
+## Answer fairness and feedback update
+
+The reported examples **She Looks So Perfect**, **David Dobrik**, and **sofia from katsye** all count in the first daily file. With the screenshot’s existing 80- and 40-point answers, the corrected saved score is **300/500**, with all five references counted. Correct references earn immediate point feedback, the recognised answer is shown, accepted spelling variations are explained, and a running total accompanies each timed prompt. A five-for-five result gets its own positive result label and completion message, independently of the obscurity score.
+
+Timing and progress are still local, not server-enforced competition. If browser storage is unavailable, the existing visit-only limitation applies. A started timed round can finish across an Eastern date boundary; an unstarted file updates to the new date. The old optional-timer preference is ignored.

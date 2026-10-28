@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {openCutTopics,openCutPrompts,preparedChallenges,challengeOverrides} from '../src/open-cut-content.js';
 import {dayKey,nextReset} from '../src/game.js';
-import {dailyOpenCut,normalizeOpenAnswer,validOpenAnswer,scoreOpenAnswer,scoreOpenCut,openCutState,completeOpenCut,openCutHistory,openCutPersonal,openCutShare,tierPoints,openCutResult} from '../src/open-cut.js';
+import {dailyOpenCut,normalizeOpenAnswer,validOpenAnswer,scoreOpenAnswer,scoreOpenCut,openCutState,completeOpenCut,openCutHistory,openCutPersonal,openCutShare,tierPoints,openCutResult,startTimedOpenCut,advanceTimedOpenCut,submitTimedOpenCut,matchOpenAnswer} from '../src/open-cut.js';
 import {launchQuizzes,knowledgeQuizzes,personalityQuiz,eraProfiles,knowledgeResult,personalityResult,validQuizAnswers} from '../src/quiz-library.js';
 
 test('28 complete daily files contain 140 distinct prompts, balanced eras, valid curated tiers and unambiguous normalized aliases',()=>{
@@ -80,4 +80,38 @@ test('future dated overrides bind real five-prompt files without shifting the pr
  const before=dailyOpenCut('2026-10-27');
  challengeOverrides['2026-11-24']={id:'test-future-file',title:'temporary test',promptIds:openCutPrompts.slice(-5).map(prompt=>prompt.id)};
  try{assert.equal(dailyOpenCut('2026-11-24').id,'test-future-file');assert.deepEqual(dailyOpenCut('2026-10-27'),before);}finally{delete challengeOverrides['2026-11-24'];}
+});
+
+test('the actual rejected examples now match, including song artist wording and a member/group spelling slip',()=>{
+ const challenge=dailyOpenCut('2026-10-27');
+ for(const answer of ['she looks so perfect','She Looks So Perfect by 5SOS','5 Seconds of Summer - She Looks So Perfect'])assert.equal(scoreOpenAnswer(challenge.prompts[0],answer).answer,'She Looks So Perfect');
+ assert.equal(scoreOpenAnswer(challenge.prompts[1],'david dobrik').answer,'David Dobrik');
+ const sophia=scoreOpenAnswer(challenge.prompts[2],'sofia from katsye');assert.equal(sophia.answer,'Sophia');assert.equal(sophia.points,100);assert.equal(sophia.match,'spelling');
+ const result=scoreOpenCut(challenge,['she looks so perfect','david dobrik','sofia from katsye','Four','Hydro Flask']);assert.equal(result.total,300);assert.equal(result.accepted,5);assert.match(result.label,/five for five/);
+ assert.equal(scoreOpenAnswer(challenge.prompts[0],'Espresso by Sabrina Carpenter').accepted,false);
+ assert.equal(scoreOpenAnswer(challenge.prompts[2],'David Dobrik').accepted,false);
+ const ambiguous={answers:[{label:'Zoe Sugg',aliases:[]},{label:'Zoey Sugg',aliases:[]}]};assert.equal(matchOpenAnswer(ambiguous,'Zoee Sugg'),null);
+});
+test('existing saved false negatives get credit automatically without replaying or reducing earned points',()=>{
+ const challenge=dailyOpenCut('2026-10-27'),answers=['she looks so perfect','david dobrik','sofia from katsye','Four','Hydro Flask'];
+ const correct=scoreOpenCut(challenge,answers),parts=correct.parts.map((part,i)=>i<3?{raw:answers[i],accepted:false,points:0,tier:null,label:'unmatched',deep:false,explanation:'The previous small list did not match this.'}:part);
+ const old={...openCutState(null,challenge),answers,completed:true,completedAt:'2026-10-27T18:00:00Z',result:{parts,total:120,accepted:2,deep:0,label:'a few very familiar files.'}};
+ const fixed=openCutState(old,challenge);assert(fixed.completed);assert.equal(fixed.result.total,300);assert.equal(fixed.result.accepted,5);assert.equal(fixed.result.parts.filter(part=>part.creditedLater).length,3);assert.equal(fixed.result.parts[3].points,80);assert.equal(fixed.result.parts[4].points,40);
+ assert.equal(openCutHistory([fixed,fixed],'2026-10-27').length,1);
+});
+test('mandatory timing saves typed answers at expiry, locks prompts and preserves deadlines across a reload',()=>{
+ const challenge=dailyOpenCut('2026-10-27'),now=Date.parse('2026-10-27T18:00:00Z');let state=startTimedOpenCut(null,challenge,now);
+ assert.equal(state.timing.deadline,now+25000);state.answers[0]='She Looks So Perfect';
+ const resumed=openCutState(state,challenge);assert.equal(resumed.timing.deadline,now+25000);
+ state=advanceTimedOpenCut(resumed,challenge,now+25000);assert.equal(state.step,1);assert.equal(state.answers[0],'She Looks So Perfect');assert.equal(state.timing.locked[0],true);assert.equal(state.timing.expired[0],true);assert.equal(state.timing.deadline,now+50000);
+ const late=submitTimedOpenCut(resumed,challenge,'a late different answer',now+26000);assert.equal(late.answers[0],'She Looks So Perfect');assert.equal(late.step,1);
+ assert.equal(startTimedOpenCut(state,challenge,now+27000).timing.deadline,now+50000);
+});
+test('manual filing starts the next 25-second clock and absence catches up to a real completed result with zero for blanks',()=>{
+ const challenge=dailyOpenCut('2026-10-27'),now=Date.parse('2026-10-27T18:00:00Z');
+ let state=startTimedOpenCut(null,challenge,now);assert.throws(()=>submitTimedOpenCut(state,challenge,'',now+1000));
+ state=submitTimedOpenCut(state,challenge,'She Looks So Perfect',now+1000);assert.equal(state.step,1);assert.equal(state.timing.deadline,now+26000);
+ const done=advanceTimedOpenCut(state,challenge,now+101000);assert.equal(done.completed,true);assert.equal(done.result.total,40);assert.equal(done.result.accepted,1);assert.equal(done.answers.filter(Boolean).length,1);assert.deepEqual(done.timing.locked,Array(5).fill(true));assert.equal(done.timing.deadline,null);
+ assert(openCutState(done,challenge).completed);assert.deepEqual(advanceTimedOpenCut(done,challenge,now+200000),done);
+ const blank=submitTimedOpenCut(startTimedOpenCut(null,challenge,now),challenge,'',now+1000,{skip:true});assert.equal(blank.step,1);assert.equal(blank.answers[0],'');
 });

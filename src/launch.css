@@ -18,13 +18,9 @@ textarea:focus-visible { outline:3px solid var(--ink); outline-offset:4px; }
 .open-answer-window > .window-bar { display:flex; justify-content:space-between; gap:12px; padding:12px 18px; background:var(--ink); color:var(--paper); font:11px/1.5 var(--sans); }
 #open-answer-form { padding:34px; }
 #open-answer-form h2,.launch-quiz-window h2 { font:700 clamp(25px,3.4vw,35px)/1.22 var(--headline); letter-spacing:-.02em; text-transform:lowercase; margin:22px 0 30px; }
-#open-answer-form > label:not(.soft-timer-toggle) { display:block; font:500 14px/1.7 var(--sans); }
+#open-answer-form > label { display:block; font:500 14px/1.7 var(--sans); }
 #open-answer { display:block; width:100%; margin-top:9px; padding:16px 13px; border:1px solid var(--ink); border-radius:0; color:var(--ink); background:white; font:16px/1.6 var(--sans); }
 #open-answer-help { font:12px/1.8 var(--sans); color:var(--muted); }
-.soft-timer-toggle { display:flex; align-items:center; flex-wrap:wrap; gap:8px; font:13px/1.7 var(--sans); margin:24px 0 8px; }
-.soft-timer-toggle input { width:18px; height:18px; accent-color:var(--ink); }
-.soft-timer-toggle > span { font-size:12px; }
-.soft-timer-status { font:12px/1.8 var(--sans); padding:10px 13px; background:#eee8f8; }
 #open-answer-error { font:500 13px/1.7 var(--sans); color:#93203f; }
 .open-answer-actions { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:15px; margin-top:25px; }
 .open-answer-actions button { padding:13px 17px; }
@@ -136,3 +132,28 @@ textarea:focus-visible { outline:3px solid var(--ink); outline-offset:4px; }
  .launch-home-footer a { display:inline-block; margin:15px 15px 0 0; }
  .prompt-steps { gap:6px; }
 }
+
+/* Mandatory timed file and real, supportive answer feedback. */
+.timed-start-card { border:1px solid var(--ink); box-shadow:5px 5px 0 var(--ink); padding:32px; background:#eee7fb; margin:28px 0; }
+.timed-start-card h2 { font:700 32px/1.15 var(--headline); letter-spacing:-.02em; }
+.timed-start-card p { font:14px/1.9 var(--sans); }
+.timed-start-card .primary { margin:15px 0 5px; padding:15px 20px; }
+.timed-prompt-steps { list-style:none; padding:0; }
+.timed-prompt-steps li { border:1px solid var(--ink); padding:12px 5px; text-align:center; background:var(--paper); }
+.timed-prompt-steps li strong { display:block; font:700 20px var(--headline); }
+.timed-prompt-steps li span { display:block; font:11px/1.7 var(--sans); margin-top:5px; }
+.mandatory-timer { border:1px solid var(--ink); background:var(--lilac); padding:12px 14px; font:700 16px/1.5 var(--sans); font-variant-numeric:tabular-nums; }
+.mandatory-timer.timer-last-seconds { background:var(--pink); }
+.live-file-progress { display:flex; align-items:center; flex-wrap:wrap; justify-content:space-between; gap:12px; margin:0 0 20px; font:12px/1.7 var(--sans); }
+.live-file-progress strong { font-size:15px; }
+.prompt-feedback { padding:18px 22px; border:1px solid var(--ink); margin:22px 0; background:#e7e1dc; }
+.prompt-feedback.feedback-match { background:var(--mint); box-shadow:4px 4px 0 var(--ink); }
+.prompt-feedback strong { display:block; font:700 20px/1.4 var(--headline); }
+.prompt-feedback span { display:block; font:13px/1.8 var(--sans); margin-top:7px; }
+.all-answers-counted { background:var(--mint); border:1px solid var(--ink); padding:12px 15px; font:700 15px/1.8 var(--sans); }
+@media(max-width:600px){.timed-start-card{padding:25px 20px}.mandatory-timer{font-size:14px}.prompt-feedback{padding:16px}.prompt-feedback strong{font-size:19px}}
+
+@media(prefers-reduced-motion:no-preference){.feedback-match{animation:memory-filed .2s ease-out} @keyframes memory-filed{from{transform:translateY(4px);opacity:.6}to{transform:translateY(0);opacity:1}}}
+
+#open-answer-form .prompt-feedback { margin:0 0 22px; }
+@media(max-width:600px){.timed-game-active #open-answer-form h2{font-size:24px;margin:18px 0}.timed-game-active #open-answer-form .prompt-feedback{padding:12px 14px;margin-bottom:18px}.timed-game-active .prompt-feedback strong{font-size:17px}}

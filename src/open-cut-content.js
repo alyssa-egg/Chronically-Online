@@ -1,3 +1,4 @@
+import { extraOpenAnswers, openAnswerArtists } from './open-cut-extra-answers.js';
 // Curated answer lists, never player-wide popularity statistics.
 // Each topic has four distinct prompts. The schedule mixes five topics a day.
 const answer = (label, tier, aliases = [], note = '') => ({ label, tier, aliases, note });
@@ -110,6 +111,23 @@ export const openCutTopics = [
   'Name an album released in 2018.', 'Name a record for your 2018 listening-history folder.', 'Which album could be new on a 2018 release shelf?', 'Name a 2018 album for the Influencer Era time capsule.'
  ],[answer('Sweetener',40),answer('Youngblood',40),answer('Isolation',80),answer('Be the Cowboy',60),answer('Bloom',60,['troye sivan bloom']),answer('Dirty Computer',80),answer('Golden Hour',60),answer('Oil of Every Pearl’s Un-Insides',100,['oil of every pearls un insides','oil of every pearls uninsides']),answer('Lush',100,['snail mail lush'])]),
 ];
+
+// Expand category coverage while retaining already-curated tiers on existing entries.
+const normalize = value => value.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+for (const group of openCutTopics) {
+ for (const addition of extraOpenAnswers[group.id] || []) {
+  const existing=group.answers.find(item=>[item.label,...item.aliases].some(label=>normalize(label)===normalize(addition.label)));
+  if(existing){existing.aliases=[...new Set([...existing.aliases,...addition.aliases])];if(addition.artist?.length)existing.artist=addition.artist;}
+  else group.answers.push({...addition,aliases:[...addition.aliases]});
+ }
+ for (const entry of group.answers) {
+  const context=openAnswerArtists[group.id],artists=entry.artist?.length?entry.artist:typeof context==='string'?[context]:Array.isArray(context)?context:context?.[entry.label]||[];
+  const aliases=[entry.label,...entry.aliases];
+  for(const artist of artists)for(const label of aliases)entry.aliases.push(`${label} by ${artist}`,`${label} ${artist}`,`${artist} ${label}`,`${artist}'s ${label}`);
+  if(group.id==='katseye-members')for(const label of aliases)entry.aliases.push(`${label} from KATSEYE`,`${label} of KATSEYE`,`KATSEYE ${label}`);
+  entry.aliases=[...new Set(entry.aliases)];
+ }
+}
 
 // Lineup categories award a full match without ranking members by obscurity.
 for (const group of openCutTopics.filter(item => ['katseye-members','5sos-members','1d-members','slushy-universe'].includes(item.id))) group.answers = group.answers.map(item => ({ ...item, tier: 'accepted' }));

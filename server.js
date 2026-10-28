@@ -28,6 +28,7 @@ const publicFiles = new Set([
   "/index.html",
   "/src/app.js",
   "/src/open-cut-content.js",
+  "/src/open-cut-extra-answers.js",
   "/src/open-cut.js",
   "/src/open-cut-ui.js",
   "/src/quiz-library.js",
