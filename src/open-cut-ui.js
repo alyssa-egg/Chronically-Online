@@ -27,7 +27,7 @@ export function createOpenCutUI({root,read,save,render,begin,home,openEra,openQu
  function openHistory(day){const challenge=dailyOpenCut(day),state=openCutHistory(read(OPEN_CUT_HISTORY,[])).find(item=>item.day===day);if(!state)return;leave();begin('opencut');shownDay=day;document.title='A Closed File — The Fandom Files';paintResult(challenge,state,true);}
  function open(navigate=true){
   leave();active=true;shownDay=dayKey();
-  if(navigate&&location.pathname+location.search!=='/play/')history.pushState({},'','/play/');
+  if(navigate&&location.pathname+location.search!=='/play/?game=open-cut')history.pushState({},'','/play/?game=open-cut');
   begin('opencut');document.title='The Deep Cut — The Fandom Files';
   const challenge=dailyOpenCut(shownDay),state=advanceTimedOpenCut(getState(challenge),challenge);
   if(state.completed){remember(state);paintResult(challenge,state);return;}

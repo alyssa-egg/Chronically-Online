@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { publicArchiveModule } from "../server/archive.mjs";
+import { validateConnectionBank } from "../src/connection.js";
 import { mkdir, copyFile, rm, lstat, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -7,6 +8,8 @@ import { bank } from "../src/questions.js";
 import { loadIssues, publicIssueModule } from "../server/editorial.mjs";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = path.join(root, "dist");
+const connectionErrors=validateConnectionBank();
+if(connectionErrors.length)throw new Error(`Invalid Daily Connection content:\n${connectionErrors.join('\n')}`);
 const issues = await loadIssues(root);
 const files = new Set([
   "index.html",
@@ -14,6 +17,12 @@ const files = new Set([
   "src/open-cut-content.js",
   "src/open-cut-extra-answers.js",
   "src/open-cut.js",
+  "src/connection-content.js",
+  "src/connection-puzzles.json",
+  "src/connection.js",
+  "src/connection-ui.js",
+  "src/connection.css",
+  "src/era-personality.js",
   "src/open-cut-ui.js",
   "src/quiz-library.js",
   "src/quiz-library-ui.js",

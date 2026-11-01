@@ -1,10 +1,10 @@
 # The Fandom Files
 
-The current launch version is documented in [DEEP_CUT_LAUNCH.md](DEEP_CUT_LAUNCH.md). **The Deep Cut** is five daily open-answer prompts, curated scoring out of 500, 28 prepared files, saved results, personal history, streaks and stamps. [DEEP_CUT_CALENDAR.md](DEEP_CUT_CALENDAR.md) lists the first 28 days for review.
+The current relaunch is documented in [DAILY_CONNECTION_GUIDE.md](DAILY_CONNECTION_GUIDE.md). **The Daily Connection** is a sixteen-tile daily grouping puzzle, with four categories, four mistakes, local-midnight resets, saved progress, solve streaks, history and shareable results. Seven curated sample puzzles are ready; the 28-slot schedule repeats those samples until more approved content is added. Edit [src/connection-puzzles.json](src/connection-puzzles.json).
 
-“YOU HAD TO BE THERE.” The existing logo, original era collages, Helvetica Bold headlines, DM Sans, pixel details and game components are preserved. There are six free era knowledge quizzes and a personality quiz. Main navigation is **HOME · THE DEEP CUT · THE ERAS · QUIZZES · MY FILES**; public article/news sections are removed.
+“YOU HAD TO BE THERE.” The installed logo and original era collage files are unchanged. Logo images display in full, without a new crop or recoloring. Lowercase Helvetica Bold headings, bundled DM Sans, paper/ink and small archive details surround the game. Main navigation is **HOME · DAILY GAME · THE ARCHIVE · QUIZZES · ABOUT**. Three eight-question era personality quizzes lead the quiz section; public article/news sections are absent.
 
-The older games, Sideblog, collectibles, existing purchases and moderated Memories remain accessible as secondary files. [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) covers the existing optional submission inbox. No account, payment, judging API or new dependency is required for the new daily game or launch quizzes.
+Earlier games (including the improved five-prompt Deep Cut), saved results, Sideblog, collectibles, existing purchases and moderated Memories remain available in secondary files. [DEEP_CUT_LAUNCH.md](DEEP_CUT_LAUNCH.md) documents the earlier typed game; [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) covers the optional review inbox. No new account, payment, package dependency or judging API is required for the daily puzzle and era quizzes.
 
 ## Hosting without Netlify
 

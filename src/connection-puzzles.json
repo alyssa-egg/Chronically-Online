@@ -1,0 +1,456 @@
+{
+  "anchor": "2026-11-01",
+  "puzzles": [
+    {
+      "id": "opening-the-files",
+      "theme": "opening the files",
+      "era": "mixed",
+      "difficulty": "mixed",
+      "categories": [
+        {
+          "id": "1d-albums",
+          "name": "One Direction studio albums",
+          "difficulty": "Easy",
+          "tiles": [
+            "Up All Night",
+            "Take Me Home",
+            "Midnight Memories",
+            "Made in the A.M."
+          ],
+          "explanation": "Four of One Direction’s five studio albums, released between 2011 and 2015.",
+          "source": "https://www.onedirectionmusic.com/"
+        },
+        {
+          "id": "5sos-lineup",
+          "name": "5 Seconds of Summer members",
+          "difficulty": "Medium",
+          "tiles": [
+            "Luke Hemmings",
+            "Calum Hood",
+            "Michael Clifford",
+            "Ashton Irwin"
+          ],
+          "explanation": "The four members of the Sydney band formed in 2011.",
+          "source": "https://5sos.com/"
+        },
+        {
+          "id": "pure-heroine",
+          "name": "Songs on Pure Heroine",
+          "difficulty": "Hard",
+          "tiles": [
+            "Tennis Court",
+            "Ribs",
+            "Royals",
+            "Buzzcut Season"
+          ],
+          "explanation": "All four appear on Lorde’s 2013 debut album.",
+          "source": "https://www.lorde.co.nz/"
+        },
+        {
+          "id": "youtube-handles",
+          "name": "Early British YouTube handles",
+          "difficulty": "Expert",
+          "tiles": [
+            "danisnotonfire",
+            "AmazingPhil",
+            "PointlessBlog",
+            "ThatcherJoe"
+          ],
+          "explanation": "Original channel names used by Dan Howell, Phil Lester, Alfie Deyes and Joe Sugg.",
+          "source": "https://www.youtube.com/@danielhowell"
+        }
+      ]
+    },
+    {
+      "id": "music-and-margins",
+      "theme": "music & margins",
+      "era": "current-lore",
+      "difficulty": "mixed",
+      "categories": [
+        {
+          "id": "katseye",
+          "name": "KATSEYE members",
+          "difficulty": "Easy",
+          "tiles": [
+            "Sophia",
+            "Manon",
+            "Lara",
+            "Yoonchae"
+          ],
+          "explanation": "Four members of the six-person group formed through Dream Academy.",
+          "source": "https://www.katseye.world/"
+        },
+        {
+          "id": "to-hell",
+          "name": "Songs on to hell with it",
+          "difficulty": "Medium",
+          "tiles": [
+            "Pain",
+            "Break It Off",
+            "I must apologise",
+            "Noticed I cried"
+          ],
+          "explanation": "All four are on PinkPantheress’s 2021 mixtape.",
+          "source": "https://www.pantheress.pink/"
+        },
+        {
+          "id": "filters",
+          "name": "Instagram filter names",
+          "difficulty": "Hard",
+          "tiles": [
+            "Clarendon",
+            "Gingham",
+            "Juno",
+            "Lark"
+          ],
+          "explanation": "These are named filters in Instagram’s photo editor.",
+          "source": "https://about.instagram.com/"
+        },
+        {
+          "id": "ao3-ratings",
+          "name": "AO3 content ratings",
+          "difficulty": "Expert",
+          "tiles": [
+            "General Audiences",
+            "Teen And Up Audiences",
+            "Mature",
+            "Explicit"
+          ],
+          "explanation": "Four rating options on Archive of Our Own. “Not Rated” is also an option, but isn’t in this board.",
+          "source": "https://archiveofourown.org/faq/tags"
+        }
+      ]
+    },
+    {
+      "id": "tabs-still-open",
+      "theme": "tabs still open",
+      "era": "mixed",
+      "difficulty": "mixed",
+      "categories": [
+        {
+          "id": "beauty",
+          "name": "Cosmetics brands",
+          "difficulty": "Easy",
+          "tiles": [
+            "Glossier",
+            "ColourPop",
+            "Fenty Beauty",
+            "Milk Makeup"
+          ],
+          "explanation": "All four are cosmetics brands established by the end of 2017.",
+          "source": "https://www.glossier.com/"
+        },
+        {
+          "id": "sister-squad",
+          "name": "The Sister Squad lineup",
+          "difficulty": "Medium",
+          "tiles": [
+            "Emma Chamberlain",
+            "James Charles",
+            "Ethan Dolan",
+            "Grayson Dolan"
+          ],
+          "explanation": "The four creators who collaborated under the Sister Squad name in 2018.",
+          "source": "https://www.youtube.com/@emmachamberlain"
+        },
+        {
+          "id": "brat",
+          "name": "Songs on the original Brat",
+          "difficulty": "Hard",
+          "tiles": [
+            "B2b",
+            "Rewind",
+            "Mean girls",
+            "So I"
+          ],
+          "explanation": "All four appear on Charli xcx’s original 2024 Brat tracklist.",
+          "source": "https://www.charlixcx.com/"
+        },
+        {
+          "id": "theme-code",
+          "name": "Tumblr theme variables & blocks",
+          "difficulty": "Expert",
+          "tiles": [
+            "{Title}",
+            "{Description}",
+            "{PortraitURL-64}",
+            "{block:Posts}"
+          ],
+          "explanation": "Tumblr theme code uses these placeholders and the Posts block to render a blog.",
+          "source": "https://www.tumblr.com/docs/en/custom_themes"
+        }
+      ]
+    },
+    {
+      "id": "saved-to-ipod",
+      "theme": "saved to the iPod",
+      "era": "mixed",
+      "difficulty": "mixed",
+      "categories": [
+        {
+          "id": "1989",
+          "name": "Songs on the original 1989",
+          "difficulty": "Easy",
+          "tiles": [
+            "Blank Space",
+            "Style",
+            "Out of the Woods",
+            "Wildest Dreams"
+          ],
+          "explanation": "These tracks are on Taylor Swift’s 2014 album.",
+          "source": "https://www.taylorswift.com/"
+        },
+        {
+          "id": "photo-apps",
+          "name": "Photo-editing apps",
+          "difficulty": "Medium",
+          "tiles": [
+            "VSCO",
+            "HUJI Cam",
+            "Afterlight",
+            "Snapseed"
+          ],
+          "explanation": "These are apps for editing or applying camera effects to photos.",
+          "source": "https://www.vsco.co/"
+        },
+        {
+          "id": "5sos-debut",
+          "name": "Songs on 5SOS’s debut album",
+          "difficulty": "Hard",
+          "tiles": [
+            "Heartbreak Girl",
+            "Good Girls",
+            "Amnesia",
+            "Beside You"
+          ],
+          "explanation": "All four appear on 5 Seconds of Summer’s self-titled 2014 album.",
+          "source": "https://5sos.com/"
+        },
+        {
+          "id": "school-nights",
+          "name": "Songs on Chappell’s School Nights EP",
+          "difficulty": "Expert",
+          "tiles": [
+            "Good Hurt",
+            "Bad for You",
+            "Die Young",
+            "Sugar High"
+          ],
+          "explanation": "Four tracks from Chappell Roan’s 2017 debut EP, School Nights.",
+          "source": "https://www.iamchappellroan.com/"
+        }
+      ]
+    },
+    {
+      "id": "new-tabs-old-habits",
+      "theme": "new tabs, old habits",
+      "era": "mixed",
+      "difficulty": "mixed",
+      "categories": [
+        {
+          "id": "blackpink",
+          "name": "BLACKPINK members",
+          "difficulty": "Easy",
+          "tiles": [
+            "Jisoo",
+            "Jennie",
+            "Rosé",
+            "Lisa"
+          ],
+          "explanation": "The four members of BLACKPINK.",
+          "source": "https://www.blackpinkmusic.com/"
+        },
+        {
+          "id": "fancy-that",
+          "name": "Songs on Fancy That",
+          "difficulty": "Medium",
+          "tiles": [
+            "Stateside",
+            "Illegal",
+            "Romeo",
+            "Stars"
+          ],
+          "explanation": "Four tracks from PinkPantheress’s 2025 mixtape Fancy That.",
+          "source": "https://www.pantheress.pink/"
+        },
+        {
+          "id": "minecraft",
+          "name": "Minecraft crafting materials",
+          "difficulty": "Hard",
+          "tiles": [
+            "Cobblestone",
+            "Oak Planks",
+            "Iron Ingot",
+            "Redstone Dust"
+          ],
+          "explanation": "These items or blocks are ingredients in Minecraft crafting recipes.",
+          "source": "https://www.minecraft.net/"
+        },
+        {
+          "id": "gaming",
+          "name": "Minecraft YouTube channel names",
+          "difficulty": "Expert",
+          "tiles": [
+            "iHasCupquake",
+            "LDShadowLady",
+            "stampylonghead",
+            "CaptainSparklez"
+          ],
+          "explanation": "These creators published Minecraft videos under these channel names.",
+          "source": "https://www.youtube.com/@ldshadowlady"
+        }
+      ]
+    },
+    {
+      "id": "camera-roll-2019",
+      "theme": "camera roll: 2019",
+      "era": "influencer-era",
+      "difficulty": "mixed",
+      "categories": [
+        {
+          "id": "fine-line",
+          "name": "Songs on Fine Line",
+          "difficulty": "Easy",
+          "tiles": [
+            "Golden",
+            "Adore You",
+            "Lights Up",
+            "Watermelon Sugar"
+          ],
+          "explanation": "Four tracks on Harry Styles’s 2019 album Fine Line.",
+          "source": "https://www.hstyles.co.uk/"
+        },
+        {
+          "id": "naked",
+          "name": "Urban Decay Naked palettes",
+          "difficulty": "Medium",
+          "tiles": [
+            "Naked",
+            "Naked2",
+            "Naked3",
+            "Naked Heat"
+          ],
+          "explanation": "Names from Urban Decay’s Naked eyeshadow palette range.",
+          "source": "https://www.urbandecay.com/"
+        },
+        {
+          "id": "uk-youtube",
+          "name": "British YouTube creators",
+          "difficulty": "Hard",
+          "tiles": [
+            "Joe Sugg",
+            "Alfie Deyes",
+            "Tanya Burr",
+            "Louise Pentland"
+          ],
+          "explanation": "Four British creators whose YouTube channels were established in the early 2010s.",
+          "source": "https://www.youtube.com/@thatcherjoe"
+        },
+        {
+          "id": "ao3-categories",
+          "name": "AO3 relationship category labels",
+          "difficulty": "Expert",
+          "tiles": [
+            "F/F",
+            "F/M",
+            "M/M",
+            "Gen"
+          ],
+          "explanation": "AO3 uses these labels for relationship categories; Gen is used for works without a central romantic or sexual relationship.",
+          "source": "https://archiveofourown.org/faq/tags"
+        }
+      ]
+    },
+    {
+      "id": "the-old-fan-account",
+      "theme": "the old fan account",
+      "era": "fandom-years",
+      "difficulty": "mixed",
+      "categories": [
+        {
+          "id": "1d-lineup",
+          "name": "Original One Direction members",
+          "difficulty": "Easy",
+          "tiles": [
+            "Harry Styles",
+            "Niall Horan",
+            "Liam Payne",
+            "Louis Tomlinson"
+          ],
+          "explanation": "Four members of the original five-person lineup; Zayn is the fifth, but isn’t on this board.",
+          "source": "https://www.onedirectionmusic.com/"
+        },
+        {
+          "id": "tv",
+          "name": "Live-action TV series",
+          "difficulty": "Medium",
+          "tiles": [
+            "Supernatural",
+            "Sherlock",
+            "Doctor Who",
+            "Teen Wolf"
+          ],
+          "explanation": "All four are live-action television series with established online fandoms.",
+          "source": "https://www.bbc.co.uk/programmes/b018ttws"
+        },
+        {
+          "id": "born-to-die",
+          "name": "Songs on Born to Die",
+          "difficulty": "Hard",
+          "tiles": [
+            "Blue Jeans",
+            "Video Games",
+            "National Anthem",
+            "Off to the Races"
+          ],
+          "explanation": "These tracks appear on Lana Del Rey’s 2012 album Born to Die.",
+          "source": "https://www.lanadelrey.com/"
+        },
+        {
+          "id": "1975-eps",
+          "name": "The 1975’s pre-debut EPs",
+          "difficulty": "Expert",
+          "tiles": [
+            "Facedown",
+            "Sex",
+            "Music for Cars",
+            "IV"
+          ],
+          "explanation": "The four EPs released in 2012–2013 before The 1975’s self-titled debut album.",
+          "source": "https://the1975.com/"
+        }
+      ]
+    }
+  ],
+  "schedule": [
+    "opening-the-files",
+    "music-and-margins",
+    "tabs-still-open",
+    "saved-to-ipod",
+    "new-tabs-old-habits",
+    "camera-roll-2019",
+    "the-old-fan-account",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "overrides": {}
+}

@@ -1,5 +1,7 @@
 # Fandom Files · The Deep Cut launch version
 
+> This documents the earlier typed game, now in Quizzes → extras at `/play/?game=open-cut`. The signature game and current homepage are documented in [DAILY_CONNECTION_GUIDE.md](DAILY_CONNECTION_GUIDE.md).
+
 The homepage now leads with the five-prompt **The Deep Cut**: “The obvious answer won’t get you very far.” The existing vanilla JavaScript app, Node server, Netlify functions, Render configuration, logo, sounds, fonts, era discoveries, sharing/export helpers, and useful older games are reused. No framework rewrite or judging API was added.
 
 ## What is live in the code

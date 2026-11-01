@@ -107,7 +107,7 @@ export function openCutPersonal(value,today=dayKey()) {
  return {history,diary,stamps,best:results.length?Math.max(...results.map(item=>item.total)):0};
 }
 export function openCutShare(challenge, result, origin) {
- return `Fandom Files · THE DEEP CUT #${challenge.number}\n${challenge.day} · ${result.total}/500\n${result.parts.map(part=>part.deep?'💗':part.accepted?'🟪':'⬜').join('')}\n${result.accepted}/5 matched · ${result.deep} deep cuts\nThink you know the lore? #TheDeepCut\n${origin}/play/`;
+ return `Fandom Files · THE DEEP CUT #${challenge.number}\n${challenge.day} · ${result.total}/500\n${result.parts.map(part=>part.deep?'💗':part.accepted?'🟪':'⬜').join('')}\n${result.accepted}/5 matched · ${result.deep} deep cuts\nThink you know the lore? #TheDeepCut\n${origin}/play/?game=open-cut`;
 }
 
 export const OPEN_CUT_SECONDS=25;

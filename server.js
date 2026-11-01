@@ -13,6 +13,7 @@ import { handlePremiumRequest } from "./server/premium.mjs";
 import { publicRequestURL } from "./server/request-url.mjs";
 const root = path.resolve(fileURLToPath(new URL("./", import.meta.url)));
 const types = {
+  ".json": "application/json; charset=utf-8",
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -30,6 +31,12 @@ const publicFiles = new Set([
   "/src/open-cut-content.js",
   "/src/open-cut-extra-answers.js",
   "/src/open-cut.js",
+  "/src/connection-content.js",
+  "/src/connection-puzzles.json",
+  "/src/connection.js",
+  "/src/connection-ui.js",
+  "/src/connection.css",
+  "/src/era-personality.js",
   "/src/open-cut-ui.js",
   "/src/quiz-library.js",
   "/src/quiz-library-ui.js",

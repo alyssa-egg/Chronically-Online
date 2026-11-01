@@ -18,9 +18,9 @@ export function publishedEraAssets() {
 export function logoPlacement(image) {
   const dimensions = image?.asset?._ref?.match(/-(\d+)x(\d+)-/);
   const width = Number(dimensions?.[1]), height = Number(dimensions?.[2]);
-  // Place the supplied 1919×644 canvas within a normal layout viewport.
+  // Use the complete supplied canvas; never crop the logo.
   // The original image bytes and pixel artwork remain unchanged.
-  return width === 1919 && height === 644 ? { x: 380, y: 160, width: 1050, height: 180, naturalWidth: width, naturalHeight: height } : { x: 0, y: 0, width: width || 1, height: height || 1, naturalWidth: width || 1, naturalHeight: height || 1 };
+  return { x:0,y:0,width:width||1,height:height||1,naturalWidth:width||1,naturalHeight:height||1 };
 }
 export async function mountOriginalLogo() {
   try {
@@ -28,6 +28,7 @@ export async function mountOriginalLogo() {
     if (!url) return;
     const box = logoPlacement(identity.logo);
     document.querySelectorAll('.brand-logo').forEach(svg => {
+      if(svg.tagName==='IMG'){svg.src=url;svg.width=box.naturalWidth;svg.height=box.naturalHeight;return;}
       svg.setAttribute('viewBox', `${box.x} ${box.y} ${box.width} ${box.height}`);
       svg.setAttribute('width', box.width); svg.setAttribute('height', box.height);
       const image = svg.querySelector('image');

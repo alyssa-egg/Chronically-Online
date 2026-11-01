@@ -1,14 +1,17 @@
 import { originalImageURL, logoPlacement, publishedEraAssets } from "./site-identity.js";
 let suppliedLogo;
-export async function drawBrand(ctx, x, y, width, ink = "#0B0B0F") {
+export async function drawBrand(ctx, x, y, width, ink = "#0B0B0F", maxHeight = width * 328 / 2070) {
   let source = new URL("./assets/fandom-files-heart-logo.png", import.meta.url).href;
-  let box = { x: 49, y: 171, width: 2070, height: 328 };
+  let box = { x: 0, y: 0, width: 2159, height: 728 };
   try {
     const { identity } = await publishedEraAssets(), original = originalImageURL(identity?.logo);
     if (original) { source = original; box = logoPlacement(identity.logo); }
   } catch { /* Existing local wordmark remains available offline. */ }
   if (!suppliedLogo || suppliedLogo.src !== source) { suppliedLogo = new Image(); suppliedLogo.crossOrigin = 'anonymous'; suppliedLogo.src = source; }
   await suppliedLogo.decode();
+  const fullWidth=width;
+  width=Math.min(width,maxHeight*box.width/box.height);
+  x+=(fullWidth-width)/2;
   const height = width * box.height / box.width;
   ctx.save();
   if (ink === "#eefaff") { ctx.fillStyle = "#F8F4EC"; ctx.fillRect(x - 10, y - 8, width + 20, height + 16); }

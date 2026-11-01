@@ -1,3 +1,5 @@
+import { eraPersonalityQuizzes } from './era-personality.js';
+export { eraPersonalityQuizzes } from './era-personality.js';
 import { deepCutQuestions } from './deep-cut-questions.js';
 import { discoveryEras } from './era-discoveries.js';
 export const QUIZ_VERSION='v1';
@@ -22,7 +24,7 @@ export const personalityQuiz={id:'internet-girl',type:'personality',title:'what 
  {id:'first-instinct',question:'A new obsession arrives. Your first move…',options:choices('Find the lore, the fan accounts, and the edit archive.','Figure out the visual mood and save a few references.','Learn the joke, find the community, send it to someone.')},
  {id:'kept-receipt',question:'The receipt you would never delete…',options:choices('The fan project that made you feel part of something.','A photo that instantly brings a specific year back.','The first message where you predicted the next big thing.')},
 ]};
-export const launchQuizzes=[...knowledgeQuizzes,personalityQuiz];
+export const launchQuizzes=[...eraPersonalityQuizzes,...knowledgeQuizzes,personalityQuiz];
 export const findLaunchQuiz=id=>launchQuizzes.find(quiz=>quiz.id===id);
 export function validQuizAnswers(quiz,value,finished=false){return Array.isArray(value)&&value.length<=quiz.questions.length&&(!finished||value.length===quiz.questions.length)&&Array.from(value).every((answer,i)=>Number.isInteger(answer)&&answer>=0&&answer<quiz.questions[i].options.length);}
 export function knowledgeResult(quiz,answers){if(!validQuizAnswers(quiz,answers,true))throw new Error('Complete this quiz first.');return {score:answers.filter((answer,i)=>answer===quiz.questions[i].answer).length,total:quiz.questions.length};}
@@ -32,4 +34,13 @@ export function personalityResult(answers){
  const first=personalityQuiz.questions[0].options[answers[0]].era;
  const profile=[...eraProfiles].sort((a,b)=>counts[b.id]-counts[a.id]||(a.id===first?-1:b.id===first?1:eraProfiles.indexOf(a)-eraProfiles.indexOf(b)))[0];
  return {...profile,counts};
+}
+
+export function quizPersonalityResult(quiz,answers){
+ if(quiz.id===personalityQuiz.id)return personalityResult(answers);
+ if(!validQuizAnswers(quiz,answers,true)||!quiz.profiles?.length)throw new Error('Complete this personality file first.');
+ const counts=Array(quiz.profiles.length).fill(0);answers.forEach((answer,i)=>counts[quiz.questions[i].options[answer].profile]++);
+ const first=quiz.questions[0].options[answers[0]].profile;
+ const highest=Math.max(...counts),winner=counts[first]===highest?first:counts.indexOf(highest),profile=quiz.profiles[winner];
+ return {...profile,profileId:profile.id,id:quiz.era,counts};
 }
