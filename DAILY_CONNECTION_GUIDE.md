@@ -1,5 +1,7 @@
 # Fandom Files · The Daily Connection
 
+> This grouping puzzle is now a preserved extra at `/play/?game=connection`. The current signature game is documented in [TIME_CAPSULE_GUIDE.md](TIME_CAPSULE_GUIDE.md).
+
 The new homepage leads with **The Daily Connection**: sixteen tiles, four specific connections and four allowed mix-ups. Navigation is **HOME · DAILY GAME · THE ARCHIVE · QUIZZES · ABOUT**. My Files is a secondary header/footer link. There is no article feed or daily publishing requirement.
 
 ## Assets and existing structure

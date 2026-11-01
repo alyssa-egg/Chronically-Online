@@ -1,3 +1,4 @@
+import { handleCapsuleRequest } from './server/capsule.mjs';
 import { publicArchiveModule } from "./server/archive.mjs";
 import http from "node:http";
 import { isIP } from "node:net";
@@ -34,6 +35,11 @@ const publicFiles = new Set([
   "/src/connection-content.js",
   "/src/connection-puzzles.json",
   "/src/connection.js",
+  "/src/capsule-content.js",
+  "/src/capsule.js",
+  "/src/capsule-ui.js",
+  "/src/capsule-api.js",
+  "/src/capsule.css",
   "/src/connection-ui.js",
   "/src/connection.css",
   "/src/era-personality.js",
@@ -143,11 +149,11 @@ http
         const forwarded = typeof req.headers['x-forwarded-for'] === 'string' ? req.headers['x-forwarded-for'].split(',').at(-1).trim() : '';
         const result = pathname === '/api/memories'
           ? await handleMemoriesRequest(request, process.env, { clientId: isIP(forwarded) ? forwarded : req.socket.remoteAddress })
-          : await handlePremiumRequest(request, process.env, { issues: await loadIssues(root) });
+          : pathname.startsWith('/api/capsule/') ? await handleCapsuleRequest(request,process.env) : await handlePremiumRequest(request, process.env, { issues: await loadIssues(root) });
         res.writeHead(result.status, Object.fromEntries(result.headers));
         return res.end(Buffer.from(await result.arrayBuffer()));
       }
-      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/(?:play|memories|quizzes|my-files)\/?$/.test(pathname) || /^\/quizzes\/[a-z0-9-]+\/?$/.test(pathname) || /^\/eras\/[a-z0-9-]+\/?$/.test(pathname) || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
+      const name = (pathname === "/" || pathname === "/archive" || pathname === "/archive/") || /^\/(?:play|memories|quizzes|my-files|infinite|profile|leaderboard|challenge)\/?$/.test(pathname) || /^\/quizzes\/[a-z0-9-]+\/?$/.test(pathname) || /^\/eras\/[a-z0-9-]+\/?$/.test(pathname) || /^\/stories\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(pathname) ? "/index.html" : pathname;
       const issues = await loadIssues(root);
       const images = Object.values(issues)
         .filter((issue) => issue.status === "approved")

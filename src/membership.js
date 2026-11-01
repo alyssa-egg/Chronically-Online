@@ -71,7 +71,7 @@ async function raw(action, { body, token, path = "premium" } = {}) {
   }
   return data;
 }
-async function accessToken() {
+export async function accessToken() {
   let current = session();
   if (!current?.access_token)
     throw new MembershipError("Sign in to open your eras.", 401);
