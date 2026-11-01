@@ -56,3 +56,176 @@ export const openAnswerArtists={
  '2016-songs':{'Into You':['Ariana Grande'],'Closer':['The Chainsmokers','The Chainsmokers and Halsey'],'Starboy':['The Weeknd'],'Somebody Else':['The 1975'],'Work':['Rihanna'],'Needed Me':['Rihanna'],'Love on the Brain':['Rihanna'],'Nights':['Frank Ocean'],'Ivy':['Frank Ocean'],'Pink + White':['Frank Ocean']},
  '2019-songs':{'bad guy':['Billie Eilish'],'Old Town Road':['Lil Nas X'],'Cruel Summer':['Taylor Swift'],'Juice':['Lizzo'],'Sofia':['Clairo'],'Bags':['Clairo'],'Doin’ Time':['Lana Del Rey'],'Cellophane':['FKA twigs'],'Are You Bored Yet?':['Wallows'],'Movies':['Weyes Blood']}
 };
+
+// Keep discography additions grouped by artist so both bare titles and title + artist
+// remain supported. These are released records, not guesses at unreleased snippets.
+const music = (topic, artists, titles, tier=60) => {
+ const names=Array.isArray(artists)?artists:[artists];
+ for(const title of titles){
+  (extraOpenAnswers[topic]??=[]).push(a(title,tier,[],names));
+ }
+};
+music('pinkpantheress-songs','PinkPantheress',[
+ 'Feelings','Stars','Intermission','Nice to Know You','Romeo','Picture in my mind',
+ 'Turn Your Phone Off','Bbycakes','Way Back','Snap My Finger','Tinkerbell is overrated','Evian','Pretty Girl'
+]);
+extraOpenAnswers['pinkpantheress-songs'].push(
+ a('Internet baby',100,['Internet baby interlude','interlude internet baby']),
+ a('I must apologise',80,['i must apologize','must apologise','must apologize']),
+ a('Noticed I cried',100,['noticed i cry']),
+ a('Boy’s a liar',40,['boy is a liar','boys a liar part ii','boy is a liar part 2','boys a liar pt 2 feat ice spice','boys a liar pt 2 ft ice spice','boys a liar pt 2 with ice spice'],['PinkPantheress and Ice Spice','PinkPantheress feat. Ice Spice']),
+ a('Pretty Girl',60,[],['Ice Spice','Ice Spice and PinkPantheress']),
+ a('Picture in my mind',60,[],['PinkPantheress and Sam Gellaitry']),
+ a('Where you are',60,['where you are ft willow','where you are feat willow'],['PinkPantheress and Willow']),
+ a('Turn Your Phone Off',60,['turn your phone off ft destroy lonely','turn your phone off feat destroy lonely']),
+ a('Bbycakes',60,['babycakes','bby cakes'],['Mura Masa']),
+ a('Way Back',60,[],['Skrillex']),
+ a('Snap My Finger',60,[],['Kaytranada']),
+ a('Tinkerbell is overrated',60,[],['beabadoobee']),
+ a('Evian',60,[],['GoldLink'])
+);
+for(const [title,guest] of [['Another life','Rema'],['Nice to meet you','Central Cee'],['Bury me','Kelela']]){
+ extraOpenAnswers['pinkpantheress-songs'].push(a(title,60,[`${title} ft ${guest}`,`${title} feat ${guest}`,`${title} featuring ${guest}`,`${title} with ${guest}`],[`PinkPantheress and ${guest}`]));
+}
+// Songs commonly named for a Tumblr/fandom edit, through the mid-2010s.
+music('tumblr-songs','Taylor Swift',['Style','Blank Space','Wildest Dreams','Out of the Woods','New Romantics','Shake It Off','I Know Places','All Too Well','Enchanted','Love Story','You Belong with Me']);
+music('tumblr-songs','One Direction',['Steal My Girl','Little Black Dress','They Don’t Know About Us','More Than This','Moments','Little White Lies','Through the Dark','No Control','Spaces','Clouds','Ready to Run','Change Your Ticket']);
+music('tumblr-songs',['5 Seconds of Summer','5SOS'],['Voodoo Doll','Try Hard','Everything I Didn’t Say','Social Casualty','End Up Here','Lost Boy','English Love Affair','Never Be','Wrapped Around Your Finger','Jet Black Heart']);
+music('tumblr-songs','Lana Del Rey',['Ride','Lucky Ones','This Is What Makes Us Girls','Pretty When You Cry','Shades of Cool','Sad Girl','Black Beauty','Old Money','Without You']);
+music('tumblr-songs','Marina and the Diamonds',['Oh No!','I Am Not a Robot','Numb','Starring Role','Lies','Valley of the Dolls','Obsessions','Froot']);
+music('tumblr-songs','The Neighbourhood',['Float','How','Everybody’s Watching Me (Uh Oh)','Flawless','Alleyways','Baby Came Home']);
+music('tumblr-songs','The 1975',['Menswear','The City','She Way Out','Is There Somebody Who Can Watch You']);
+music('tumblr-songs','Arctic Monkeys',['Snap Out of It','One for the Road','No. 1 Party Anthem','Suck It and See','Cornerstone']);
+music('tumblr-songs','Melanie Martinez',['Dollhouse','Carousel','Pity Party','Soap','Cry Baby','Pacify Her','Mad Hatter','Training Wheels']);
+music('tumblr-songs','Twenty One Pilots',['Car Radio','Holding On to You','Migraine','House of Gold','Stressed Out','Tear in My Heart']);
+music('tumblr-songs','Paramore',['Still Into You','The Only Exception','Misery Business','Ain’t It Fun']);
+music('tumblr-songs','Fall Out Boy',['Sugar, We’re Goin Down','Centuries','My Songs Know What You Did in the Dark (Light Em Up)']);
+music('tumblr-songs','Panic! at the Disco',['I Write Sins Not Tragedies','This Is Gospel','Nicotine']);
+music('tumblr-songs','My Chemical Romance',['Welcome to the Black Parade','Teenagers','Helena','I’m Not Okay (I Promise)']);
+music('tumblr-songs','The xx',['Crystalised']);
+music('tumblr-songs','Daughter',['Landfill','Still']);
+music('tumblr-songs','Bastille',['Pompeii','Flaws']);
+music('tumblr-songs','Troye Sivan',['Happy Little Pill','Youth']);
+music('tumblr-songs','Halsey',['Is There Somewhere','Roman Holiday','Young God']);
+
+// Original release years matter for the dated prompts.
+music('2016-songs','Ariana Grande',['Into You','Side to Side','Dangerous Woman','Be Alright','Greedy','Let Me Love You','Everyday','Sometimes','Touch It','Thinking Bout You']);
+music('2016-songs','The Chainsmokers',['Closer','Don’t Let Me Down','All We Know']);
+music('2016-songs','The Weeknd',['Starboy','I Feel It Coming','Party Monster','Reminder']);
+music('2016-songs','The 1975',['Somebody Else','The Sound','A Change of Heart','She’s American']);
+music('2016-songs','Rihanna',['Work','Needed Me','Love on the Brain','Kiss It Better','Desperado']);
+music('2016-songs','Frank Ocean',['Nights','Ivy','Pink + White','Self Control','White Ferrari','Solo']);
+music('2016-songs','Beyoncé',['All Night','Sorry','Formation','Hold Up','Freedom']);
+music('2016-songs','Sia',['Cheap Thrills']);
+music('2016-songs','Calvin Harris',['This Is What You Came For']);
+music('2016-songs','Twenty One Pilots',['Heathens']);
+music('2016-songs','Drake',['One Dance','Controlla','Too Good','Fake Love']);
+music('2016-songs','Rae Sremmurd',['Black Beatles']);
+music('2016-songs','Desiigner',['Panda']);
+music('2016-songs','Maroon 5',['Don’t Wanna Know']);
+music('2016-songs','Shawn Mendes',['Treat You Better','Mercy']);
+music('2016-songs','gnash',['i hate u, i love u']);
+music('2016-songs','Charlie Puth',['We Don’t Talk Anymore']);
+music('2016-songs','Aminé',['Caroline']);
+music('2016-songs','Childish Gambino',['Redbone']);
+music('2016-songs','Bruno Mars',['24K Magic']);
+music('2016-songs','ZAYN',['PILLOWTALK']);
+music('2016-songs','Kungs',['This Girl']);
+music('early-tiktok-sounds','Megan Thee Stallion',['Savage']);
+music('early-tiktok-sounds','BENEE',['Supalonely']);
+music('early-tiktok-sounds','Absofacto',['Dissolve']);
+music('early-tiktok-sounds','Beach Bunny',['Prom Queen']);
+music('early-tiktok-sounds','AJR',['Sober Up']);
+music('early-tiktok-sounds','Arizona Zervas',['Roxanne']);
+music('early-tiktok-sounds','Millie B',['M to the B']);
+
+music('2019-songs','Billie Eilish',['bad guy','everything i wanted','bury a friend','wish you were gay','all the good girls go to hell','ilomilo','when i was older']);
+music('2019-songs','Taylor Swift',['Cruel Summer','Lover','The Archer','You Need to Calm Down','ME!','Cornelia Street','Death by a Thousand Cuts','Paper Rings','Miss Americana & the Heartbreak Prince']);
+music('2019-songs','Ariana Grande',['7 rings','break up with your girlfriend, i’m bored','needy','NASA','bloodline','ghostin','bad idea','in my head','fake smile','boyfriend']);
+music('2019-songs','Harry Styles',['Adore You','Watermelon Sugar','Lights Up','Falling','Golden','Cherry','She','Fine Line']);
+music('2019-songs','Lana Del Rey',['Doin’ Time','Cinnamon Girl','The greatest','Norman fucking Rockwell','California','Happiness is a butterfly','Fuck it I love you','hope is a dangerous thing for a woman like me to have – but I have it']);
+music('2019-songs','Clairo',['Sofia','Bags','Closer to You','Softly']);
+music('2019-songs','Lil Nas X',['Old Town Road','Panini']);
+music('2019-songs','Lizzo',['Juice']);
+music('2019-songs','FKA twigs',['Cellophane','Home with You','Sad Day']);
+music('2019-songs','Wallows',['Are You Bored Yet?']);
+music('2019-songs','Weyes Blood',['Movies','Andromeda','Everyday']);
+music('2019-songs',['Shawn Mendes','Camila Cabello'],['Señorita']);
+music('2019-songs','Lewis Capaldi',['Someone You Loved']);
+music('2019-songs','Jonas Brothers',['Sucker']);
+music('2019-songs','Dua Lipa',['Don’t Start Now']);
+music('2019-songs','The Weeknd',['Blinding Lights','Heartless']);
+music('2019-songs',['Sam Smith','Normani'],['Dancing with a Stranger']);
+music('2019-songs','Post Malone',['Circles','Goodbyes']);
+music('2019-songs','Tyler, the Creator',['EARFQUAKE','A BOY IS A GUN*','I THINK','NEW MAGIC WAND']);
+music('2019-songs',['5 Seconds of Summer','5SOS'],['Easier','Teeth']);
+music('2019-songs','Conan Gray',['Maniac','Comfort Crowd','Checkmate']);
+music('2019-songs','Melanie Martinez',['Show & Tell','Strawberry Shortcake','Lunchbox Friends']);
+
+music('recent-breakout-tracks','Sabrina Carpenter',['Espresso','Please Please Please','Taste','Feather','Nonsense','because i liked a boy','Bed Chem','Manchild','Juno','Busy Woman']);
+music('recent-breakout-tracks','Olivia Rodrigo',['drivers license','deja vu','good 4 u','vampire','bad idea right?','get him back!','obsessed','traitor','brutal','happier','jealousy, jealousy','favorite crime','all-american bitch','love is embarrassing','so american']);
+music('recent-breakout-tracks','Chappell Roan',['Good Luck, Babe!','HOT TO GO!','Red Wine Supernova','Casual','My Kink Is Karma','Naked in Manhattan','Femininomenon','Super Graphic Ultra Modern Girl','Picture You','The Giver','The Subway']);
+music('recent-breakout-tracks','Charli xcx',['Apple','360','365','Von dutch','Club classics','Girl, so confusing','Sympathy is a knife','Guess','Speed Drive','Good Ones','Beg for You']);
+music('recent-breakout-tracks','Troye Sivan',['Rush','One of Your Girls','Got Me Started']);
+music('recent-breakout-tracks','Tate McRae',['greedy','exes','Sports car','It’s ok I’m ok','Revolving door']);
+music('recent-breakout-tracks','Addison Rae',['Diet Pepsi','Aquamarine','Headphones On','Fame is a Gun']);
+music('recent-breakout-tracks','Billie Eilish',['BIRDS OF A FEATHER','WILDFLOWER','Lunch','What Was I Made For?','Happier Than Ever','CHIHIRO','Blue','L’amour de ma vie','TV']);
+music('recent-breakout-tracks','Kendrick Lamar',['Not Like Us','luther','squabble up']);
+music('recent-breakout-tracks',['ROSÉ','Bruno Mars'],['APT.']);
+music('recent-breakout-tracks','ILLIT',['Magnetic']);
+music('recent-breakout-tracks','NewJeans',['Super Shy','Ditto','Hype Boy','OMG','Attention','ETA','New Jeans']);
+music('recent-breakout-tracks','KATSEYE',['Touch','Gnarly','Gabriela','Debut','My Way','Gameboy']);
+music('recent-breakout-tracks','aespa',['Whiplash','Supernova','Drama','Armageddon','Spicy','Next Level']);
+music('recent-breakout-tracks','Taylor Swift',['Anti-Hero','Lavender Haze','Karma','Fortnight','Who’s Afraid of Little Old Me?','You’re on Your Own, Kid','Bejeweled','Is It Over Now?']);
+music('recent-breakout-tracks','Ariana Grande',['yes, and?','we can’t be friends (wait for your love)','the boy is mine','supernatural','eternal sunshine']);
+music('recent-breakout-tracks','SZA',['Kill Bill','Snooze','Shirt','Nobody Gets Me','Saturn']);
+music('recent-breakout-tracks','Harry Styles',['As It Was','Late Night Talking','Music for a Sushi Restaurant','Satellite']);
+music('recent-breakout-tracks','Dua Lipa',['Dance the Night','Houdini','Training Season','Illusion']);
+music('recent-breakout-tracks','Lorde',['Solar Power','Mood Ring','What Was That']);
+music('recent-breakout-tracks','Lana Del Rey',['A&W','Did you know that there’s a tunnel under Ocean Blvd','Say Yes to Heaven']);
+music('recent-breakout-tracks','Gracie Abrams',['I Love You, I’m Sorry','That’s So True']);
+music('recent-breakout-tracks','Clairo',['Sexy to Someone','Juna']);
+music('recent-breakout-tracks','Doechii',['Anxiety','DENIAL IS A RIVER','NISSAN ALTIMA']);
+music('recent-breakout-tracks','PinkPantheress',[
+ 'Pain','Break It Off','Just for me','I must apologise','Passion','Nineteen','Mosquito','Nice to meet you','Capable of love',
+ 'Angel','Blue','Feel complete','True romance','Ophelia','Another life','The aisle','Internet baby','Bury me','Reason',
+ 'All my friends know','Last valentines','Noticed I cried','Do you miss me?','Where you are','Take me home',
+ 'Turn it up','Tonight','Illegal','Stateside','Noises','Girl Like Me','Feelings','Stars','Intermission','Nice to Know You',
+ 'Romeo','Picture in my mind','Turn Your Phone Off','Bbycakes','Way Back','Snap My Finger','Tinkerbell is overrated','Evian',
+ 'Boy’s a liar','Pretty Girl','Attracted To You'
+]);
+// Album artist formats need the same coverage as song formats.
+const albumArtists={
+ 'new-pop-albums':{
+  'Charli xcx':['Brat','Crash'],'Olivia Rodrigo':['Sour','Guts'],'Sabrina Carpenter':['Short n’ Sweet','emails i can’t send'],
+  'Chappell Roan':['The Rise and Fall of a Midwest Princess'],'PinkPantheress':['Heaven knows','to hell with it','Fancy That'],
+  'Beyoncé':['Renaissance','Cowboy Carter'],'Caroline Polachek':['Desire, I Want to Turn Into You'],'Rina Sawayama':['Hold the Girl'],
+  'Billie Eilish':['Happier Than Ever','Hit Me Hard and Soft'],'Ariana Grande':['Eternal Sunshine'],
+  'Taylor Swift':['Midnights','The Tortured Poets Department'],'SZA':['SOS'],'Troye Sivan':['Something to Give Each Other'],
+  'Jessie Ware':['That! Feels Good!'],'Amaarae':['Fountain Baby'],'Maisie Peters':['The Good Witch'],
+  'BLACKPINK':['Born Pink'],'Conan Gray':['Superache','Found Heaven'],'Clairo':['Charm']
+ },
+ '2017-albums':{'Lorde':['Melodrama'],'Lana Del Rey':['Lust for Life'],'Harry Styles':['Harry Styles'],'Taylor Swift':['Reputation'],
+  'Tyler, the Creator':['Flower Boy'],'SZA':['Ctrl'],'Dua Lipa':['Dua Lipa'],'HAIM':['Something to Tell You'],
+  'St. Vincent':['MASSEDUCTION'],'King Krule':['The OOZ'],'Khalid':['American Teen'],'Kendrick Lamar':['DAMN.'],
+  'Daniel Caesar':['Freudian'],'Lil Uzi Vert':['Luv Is Rage 2'],'JAY-Z':['4:44'],'BROCKHAMPTON':['Saturation','Saturation II','Saturation III'],
+  'P!nk':['Beautiful Trauma'],'Kesha':['Rainbow'],'Halsey':['Hopeless Fountain Kingdom'],'Demi Lovato':['Tell Me You Love Me'],
+  'Miley Cyrus':['Younger Now'],'Niall Horan':['Flicker'],'Ed Sheeran':['Divide'],
+  'Paramore':['After Laughter'],'Sampha':['Process'],'Syd':['Fin']},
+ '2013-albums':{'Lorde':['Pure Heroine'],'Arctic Monkeys':['AM'],'One Direction':['Midnight Memories'],'The 1975':['The 1975'],
+  'Miley Cyrus':['Bangerz'],'Paramore':['Paramore'],'Daughter':['If You Leave'],'Sky Ferreira':['Night Time, My Time'],
+  'Ariana Grande':['Yours Truly'],'Beyoncé':['Beyoncé'],'Lady Gaga':['ARTPOP'],'Katy Perry':['Prism'],'Demi Lovato':['Demi'],
+  'Drake':['Nothing Was the Same'],'Childish Gambino':['Because the Internet'],'Chance the Rapper':['Acid Rap'],
+  'Fall Out Boy':['Save Rock and Roll'],'Panic! at the Disco':['Too Weird to Live, Too Rare to Die!'],
+  'Vampire Weekend':['Modern Vampires of the City'],'The National':['Trouble Will Find Me'],
+  'Nine Inch Nails':['Hesitation Marks'],'Daft Punk':['Random Access Memories'],'Disclosure':['Settle'],'HAIM':['Days Are Gone']},
+ '2018-albums':{'Ariana Grande':['Sweetener'],'5 Seconds of Summer':['Youngblood'],'Kali Uchis':['Isolation'],'Mitski':['Be the Cowboy'],
+  'Troye Sivan':['Bloom'],'Janelle Monáe':['Dirty Computer'],'Kacey Musgraves':['Golden Hour'],
+  'SOPHIE':['Oil of Every Pearl’s Un-Insides'],'Snail Mail':['Lush'],'Drake':['Scorpion'],'Travis Scott':['Astroworld'],
+  'J. Cole':['KOD'],'Cardi B':['Invasion of Privacy'],'Post Malone':['Beerbongs & Bentleys'],'Camila Cabello':['Camila'],
+  'Shawn Mendes':['Shawn Mendes'],'Little Mix':['LM5'],'BTS':['Love Yourself: Tear','Love Yourself: Answer'],
+  'The 1975':['A Brief Inquiry into Online Relationships'],'Arctic Monkeys':['Tranquility Base Hotel & Casino'],
+  'Twenty One Pilots':['Trench'],'BROCKHAMPTON':['iridescence'],'Mac Miller':['Swimming'],'Earl Sweatshirt':['Some Rap Songs'],
+  'Blood Orange':['Negro Swan'],'Robyn':['Honey']}
+};
+for(const [topic,artists] of Object.entries(albumArtists))for(const [artist,titles] of Object.entries(artists))music(topic,artist,titles);

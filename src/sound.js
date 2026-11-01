@@ -12,6 +12,8 @@ const melodies = {
   finish: [523.25, 659.25, 783.99, 1046.5],
   click: [880],
   unlock: [659.25, 987.77, 1318.51, 1567.98],
+  tick: [440],
+  deepcut: [659.25, 830.61, 987.77, 1318.51],
 };
 export function playSound(kind = "click") {
   if (!enabled) return;
@@ -28,7 +30,7 @@ export function playSound(kind = "click") {
         oscillator.type = "sine";
         oscillator.frequency.value = frequency;
         gain.gain.setValueAtTime(0, start);
-        gain.gain.linearRampToValueAtTime(0.045, start + 0.012);
+        gain.gain.linearRampToValueAtTime(kind === 'tick' ? 0.014 : 0.045, start + 0.012);
         gain.gain.exponentialRampToValueAtTime(0.001, start + 0.16);
         oscillator.connect(gain);
         gain.connect(context.destination);

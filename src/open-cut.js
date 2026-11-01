@@ -8,7 +8,7 @@ export const OPEN_CUT_ANCHOR = '2026-10-27';
 export const tierPoints = {40:40,60:60,80:80,100:100,accepted:100};
 export const tierNames = {40:'classic reference',60:'familiar file',80:'niche reference',100:'deep cut',accepted:'category match'};
 const prompts = new Map(openCutPrompts.map(prompt => [prompt.id,prompt]));
-export const normalizeOpenAnswer = value => typeof value === 'string' ? value.replaceAll('÷','divide').normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]/g,'') : '';
+export const normalizeOpenAnswer = value => typeof value === 'string' ? value.replaceAll('÷','divide').replaceAll('&','and').normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]/g,'') : '';
 export const validOpenAnswer = value => typeof value === 'string' && value.trim().length > 0 && value.length <= 120 && normalizeOpenAnswer(value).length > 0 && !/[\u0000-\u001f]/.test(value);
 export const openCutKey = day => `fandom-files-open-cut-${OPEN_CUT_VERSION}-${day}`;
 export function dailyOpenCut(day = dayKey()) {
@@ -30,12 +30,18 @@ export function spellingDistance(left,right){
 }
 export function matchOpenAnswer(prompt,raw){
  if(!validOpenAnswer(raw))return null;
- const normalized=normalizeOpenAnswer(raw);
+ // Remove only neutral answer framing and video labels. Do not turn an unknown
+ // song/artist pair into a title-only match, or accept arbitrary substrings.
+ const cleaned=raw.trim().replace(/^(?:my answer is|i choose|i pick|the song|the track|the album)\s*[:—-]?\s+/i,'').replace(/\s*[(\[]?(?:official\s+(?:music\s+)?(?:video|audio)|lyric(?:s| video)?|audio only)[)\]]?\s*$/i,'').trim();
+ const normalized=normalizeOpenAnswer(cleaned);
  const candidates=prompt.answers.map(answer=>({answer,aliases:[...new Set([answer.label,...answer.aliases].map(normalizeOpenAnswer))]}));
  const exact=candidates.find(item=>item.aliases.includes(normalized));if(exact)return {answer:exact.answer,kind:'exact'};
+ // An artist on their own isn't a song. In particular, don't mistake a missing
+ // two-digit title ("PinkPantheress 19") for a small typo in the artist's name.
+ if(candidates.some(item=>item.answer.artist?.some(artist=>normalizeOpenAnswer(artist)===normalized)))return null;
  if(!/[a-z]/.test(normalized))return null;
  const close=[];
- for(const item of candidates){let best=Infinity;for(const alias of item.aliases){const min=Math.min(alias.length,normalized.length),limit=min>=10?2:min>=5?1:0;if(!limit||Math.abs(alias.length-normalized.length)>limit)continue;const distance=spellingDistance(normalized,alias);if(distance<=limit)best=Math.min(best,distance);}
+ for(const item of candidates){let best=Infinity;for(const alias of item.aliases){const min=Math.min(alias.length,normalized.length),limit=min>=10?2:min>=4?1:0;if(!limit||Math.abs(alias.length-normalized.length)>limit)continue;const distance=spellingDistance(normalized,alias);if(distance<=limit)best=Math.min(best,distance);}
   if(Number.isFinite(best))close.push({answer:item.answer,distance:best});
  }
  close.sort((a,b)=>a.distance-b.distance);

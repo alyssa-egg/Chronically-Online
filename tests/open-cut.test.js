@@ -99,6 +99,34 @@ test('existing saved false negatives get credit automatically without replaying 
  const fixed=openCutState(old,challenge);assert(fixed.completed);assert.equal(fixed.result.total,300);assert.equal(fixed.result.accepted,5);assert.equal(fixed.result.parts.filter(part=>part.creditedLater).length,3);assert.equal(fixed.result.parts[3].points,80);assert.equal(fixed.result.parts[4].points,40);
  assert.equal(openCutHistory([fixed,fixed],'2026-10-27').length,1);
 });
+
+test('PinkPantheress album tracks, singles and collaborations accept natural title formats',()=>{
+ const prompt=openCutPrompts.find(item=>item.topic==='pinkpantheress-songs');
+ for(const title of ['Feelings','Stars','Intermission','Nice to Know You','Romeo','Picture in my mind','Turn Your Phone Off','Pretty Girl','Bbycakes','Way Back','Snap My Finger','Tinkerbell is overrated','Evian']){
+  assert(scoreOpenAnswer(prompt,title).accepted,title);
+  assert(scoreOpenAnswer(prompt,`${title} by Pink Pantheress`).accepted,`${title} + artist`);
+ }
+ for(const raw of ['The song Pain by PinkPantheress','PinkPantheress - Stateside (Official Audio)','I must apologize','Internet Baby (interlude)','babycakes','boys a liar pt 2 ft ice spice','Picture in my mind by PinkPantheress and Sam Gellaitry','Noticed I cry','Paon','Bury Me (feat. Kelela)'])assert(scoreOpenAnswer(prompt,raw).accepted,raw);
+ for(const raw of ['PinkPantheress','a song by PinkPantheress','Pain by Taylor Swift','Stateside by Olivia Rodrigo','Espresso','Fancy That','random pain nonsense'])assert.equal(scoreOpenAnswer(prompt,raw).accepted,false,raw);
+});
+test('common songs and albums support correct artists while keeping release years and categories meaningful',()=>{
+ const prompt=topic=>openCutPrompts.find(item=>item.topic===topic);
+ const cases={
+  'tumblr-songs':['Blank Space by Taylor Swift','No Control by One Direction','Voodoo Doll by 5SOS','Dollhouse by Melanie Martinez','Teenagers by My Chemical Romance','Youth by Troye Sivan','Youth by Daughter','Oh No by Marina','The City by 1975'],
+  '2016-songs':['The Sound by The 1975','Self Control by Frank Ocean','24K Magic by Bruno Mars','PILLOWTALK by Zayn'],
+  '2019-songs':['Golden by Harry Styles','NASA by Ariana Grande','Maniac by Conan Gray','Circles by Post Malone','Teeth by 5SOS'],
+  'recent-breakout-tracks':['Nice to Know You by PinkPantheress','CHIHIRO by Billie Eilish','Anti-Hero by Taylor Swift','Juno by Sabrina Carpenter','we cant be friends by ariana grande','Denial is a River by Doechii','Gabriela by KATSEYE'],
+  'new-pop-albums':['Fancy That by PinkPantheress','to hell with it by PinkPantheress','Guts by Olivia Rodrigo'],
+  '2018-albums':['Sweetener by Ariana Grande','Youngblood by 5 Seconds of Summer'],
+  '2013-albums':['AM by Arctic Monkeys','Pure Heroine by Lorde'],
+  '2017-albums':['Melodrama by Lorde','Reputation by Taylor Swift']
+ };
+ for(const [topic,answers] of Object.entries(cases))for(const answer of answers)assert(scoreOpenAnswer(prompt(topic),answer).accepted,`${topic}: ${answer}`);
+ for(const [topic,answer] of [['2016-songs','Love Me'],['2016-songs','7 Years'],['2019-songs','thank u next'],['2019-songs','Wow'],['recent-breakout-tracks','positions'],['recent-breakout-tracks','Good Days'],['2018-albums','1989'],['pinkpantheress-songs','Juno']])assert.equal(scoreOpenAnswer(prompt(topic),answer).accepted,false,`${topic}: ${answer}`);
+ // A distant date is rejected; small spelling errors don't require perfect punctuation.
+ assert.equal(scoreOpenAnswer(prompt('pinkpantheress-songs'),'Intermision').answer,'Intermission');
+ const tied={answers:[{label:'Pain',aliases:[]},{label:'Rain',aliases:[]}]};assert.equal(matchOpenAnswer(tied,'Gain'),null);
+});
 test('mandatory timing saves typed answers at expiry, locks prompts and preserves deadlines across a reload',()=>{
  const challenge=dailyOpenCut('2026-10-27'),now=Date.parse('2026-10-27T18:00:00Z');let state=startTimedOpenCut(null,challenge,now);
  assert.equal(state.timing.deadline,now+25000);state.answers[0]='She Looks So Perfect';

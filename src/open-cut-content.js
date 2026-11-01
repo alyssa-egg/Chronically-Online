@@ -114,15 +114,29 @@ export const openCutTopics = [
 
 // Expand category coverage while retaining already-curated tiers on existing entries.
 const normalize = value => value.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+const artistAliases={
+ 'Marina and the Diamonds':['Marina'],'Marina':['Marina and the Diamonds'],
+ '5 Seconds of Summer':['5SOS'],'One Direction':['1D'],'The 1975':['1975'],
+ 'The Neighbourhood':['The Neighborhood','The NBHD'],
+ 'Taylor Swift':['Taylor'],'Ariana Grande':['Ariana'],'Billie Eilish':['Billie'],
+ 'Harry Styles':['Harry'],'Olivia Rodrigo':['Olivia'],'Sabrina Carpenter':['Sabrina'],
+ 'Charli xcx':['Charli'],'Chappell Roan':['Chappell'],'Lana Del Rey':['Lana']
+};
 for (const group of openCutTopics) {
  for (const addition of extraOpenAnswers[group.id] || []) {
   const existing=group.answers.find(item=>[item.label,...item.aliases].some(label=>normalize(label)===normalize(addition.label)));
-  if(existing){existing.aliases=[...new Set([...existing.aliases,...addition.aliases])];if(addition.artist?.length)existing.artist=addition.artist;}
+  if(existing){existing.aliases=[...new Set([...existing.aliases,...addition.aliases])];if(addition.artist?.length)existing.artist=[...new Set([...(existing.artist||[]),...addition.artist])];}
   else group.answers.push({...addition,aliases:[...addition.aliases]});
  }
  for (const entry of group.answers) {
-  const context=openAnswerArtists[group.id],artists=entry.artist?.length?entry.artist:typeof context==='string'?[context]:Array.isArray(context)?context:context?.[entry.label]||[];
+  const context=openAnswerArtists[group.id],artists=[...new Set([...(entry.artist||[]),...(typeof context==='string'?[context]:Array.isArray(context)?context:context?.[entry.label]||[])])];
+  artists.push(...artists.flatMap(name=>artistAliases[name]||[]));
+  entry.artist=[...new Set(artists)];
   const aliases=[entry.label,...entry.aliases];
+  // Parenthetical subtitles may be omitted, but never discard a supplied artist.
+  const shortTitle=entry.label.replace(/\s*\([^)]*\)/g,'').trim();
+  if(artists.length&&shortTitle&&shortTitle!==entry.label)aliases.push(shortTitle);
+  entry.aliases.push(...aliases);
   for(const artist of artists)for(const label of aliases)entry.aliases.push(`${label} by ${artist}`,`${label} ${artist}`,`${artist} ${label}`,`${artist}'s ${label}`);
   if(group.id==='katseye-members')for(const label of aliases)entry.aliases.push(`${label} from KATSEYE`,`${label} of KATSEYE`,`KATSEYE ${label}`);
   entry.aliases=[...new Set(entry.aliases)];

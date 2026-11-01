@@ -157,3 +157,58 @@ textarea:focus-visible { outline:3px solid var(--ink); outline-offset:4px; }
 
 #open-answer-form .prompt-feedback { margin:0 0 22px; }
 @media(max-width:600px){.timed-game-active #open-answer-form h2{font-size:24px;margin:18px 0}.timed-game-active #open-answer-form .prompt-feedback{padding:12px 14px;margin-bottom:18px}.timed-game-active .prompt-feedback strong{font-size:17px}}
+
+/* A little game energy, still filed inside the old dashboard window. */
+.mandatory-timer { padding:13px 16px 10px; background:#eee7fb; }
+.timer-readout { display:flex; align-items:center; gap:12px; min-height:40px; }
+.timer-heart { color:#9c226f; font-size:26px; }
+#timer-seconds { display:flex; align-items:baseline; gap:5px; font:700 32px/1 var(--headline); min-width:78px; }
+#timer-seconds small { font:700 10px var(--sans); letter-spacing:.08em; }
+#timer-message { font:700 13px/1.5 var(--sans); }
+.timer-track { height:12px; overflow:hidden; border:1px solid var(--ink); background:#fffaf3; margin:10px 0 4px; }
+#timer-fill { display:block; width:100%; height:100%; background:var(--ink); }
+.timer-save-note { font:10px/1.5 var(--sans); }
+.mandatory-timer.timer-halfway { background:#f7e7af; }
+.mandatory-timer.timer-last-seconds { background:#ffc6e8; border-width:2px; padding:12px 15px 9px; }
+.prompt-feedback.feedback-match { display:flex; align-items:center; gap:18px; background:#e3edcb; }
+.prompt-feedback.feedback-match:has(.match-combo) { border-color:#31502b; }
+.reward-points { flex:none; margin:0!important; font:700 38px/1 var(--headline)!important; letter-spacing:-.04em; text-align:center; }
+.reward-points small { display:block; font:700 8px/1.5 var(--sans); letter-spacing:.06em; margin-top:7px; }
+.prompt-feedback .match-combo { display:inline-block; background:var(--ink); color:#fffaf3; padding:3px 9px; font:700 10px/1.7 var(--sans); margin-top:7px; }
+.round-receipts { margin-top:30px; }
+.round-receipts h2 { font:700 30px/1.15 var(--headline); letter-spacing:-.02em; }
+.round-receipts > p { font:13px/1.8 var(--sans); }
+.round-receipts ol { padding:0; list-style:none; display:grid; gap:10px; }
+.round-receipt { display:flex; align-items:center; gap:15px; border:1px solid var(--ink); padding:18px; background:#eee9e4; }
+.round-receipt.receipt-match { background:#eee7fb; }
+.round-receipt.receipt-deep { background:#ffe0f3; }
+.receipt-number { border:1px solid var(--ink); width:25px; height:25px; text-align:center; font:700 12px/23px var(--sans); flex:none; }
+.round-receipt > div { flex:1; min-width:0; }
+.round-receipt strong { display:block; font:700 18px/1.35 var(--sans); overflow-wrap:anywhere; }
+.round-receipt div > span { display:block; font:11px/1.7 var(--sans); margin-top:4px; }
+.round-receipt b { font:700 30px/1.1 var(--headline); text-align:center; }
+.round-receipt b small { display:block; font:700 8px/1.5 var(--sans); margin-top:4px; letter-spacing:.08em; }
+.round-stamp-awards { padding:20px; border:1px dashed var(--ink); background:#eee7fb; margin-top:25px; }
+.round-stamp-awards > div { display:flex; flex-wrap:wrap; gap:12px; margin-top:15px; }
+.round-stamp { display:inline-flex; align-items:center; gap:7px; background:var(--pink); border:1px solid var(--ink); padding:9px 12px; box-shadow:2px 2px 0 var(--ink); font:700 12px/1.6 var(--sans); }
+@media(prefers-reduced-motion:no-preference) {
+ #timer-fill { transition:width .2s linear; }
+ .timer-last-seconds .timer-heart { animation:timer-heartbeat 1s ease-in-out infinite; }
+ .reward-points { animation:points-kept .4s ease-out; }
+ .round-stamp { animation:stamp-filed .35s ease-out both; }
+ @keyframes timer-heartbeat { 50% { transform:scale(1.16); } }
+ @keyframes points-kept { from { transform:scale(.8); opacity:.4; } to { transform:scale(1); opacity:1; } }
+ @keyframes stamp-filed { from { transform:translateY(-6px) rotate(-4deg); opacity:.2; } to { transform:none; opacity:1; } }
+}
+@media(max-width:600px) {
+ .timer-readout { gap:9px; }
+ #timer-message { font-size:11px; }
+ #timer-seconds { font-size:28px; min-width:68px; }
+ .prompt-feedback.feedback-match { gap:12px; }
+ .reward-points { font-size:31px!important; }
+ .prompt-feedback span { font-size:11px; line-height:1.6; }
+ .round-receipt { gap:10px; padding:13px; }
+ .round-receipt strong { font-size:15px; }
+ .round-receipt b { font-size:26px; }
+ .round-stamp-awards { padding:15px; }
+}
