@@ -110,3 +110,9 @@ npm start
 The existing Render/Netlify build/start configuration is preserved. New modules, stylesheet and API routing are included in the public/server allowlists. After deploying, verify home → daily → all five answers/feedback → results → copy/image/challenge link → friend comparison; then an Infinite Archive set, all category filters, Profile, Leaderboard, the three era pages, quizzes, earlier games and `/admin/`.
 
 Run the SQL and a real signed-in end-to-end provider test before advertising public leaderboards. The code push, local tests and production build do not establish that the hosted database has been configured.
+
+## Clearer round flow
+
+The question and answer feedback share the same round heading, five-step progress strip and score bar. Each round states the answer format in plain language. Soundtrack questions name the artist, start with a distinguishing song detail, use a **Song title** field, and show how many of the three clues are open. Optional help buttons display the real first-hint cost (4 points, including the lost no-hint bonus), then 2 points for the next hint. Saved input/selected choices survive hint reveals; revealing a clue retains the original question clock.
+
+Feedback labels the correct answer and previews the next round by name. The next question only starts when the player continues. Prompts and selected hints have been clarified; question IDs, accepted answers, daily order, score rules and existing saved records are retained. Existing text/artist aliases and spelling tolerance still apply. No logo, image, account or payment behavior changed.

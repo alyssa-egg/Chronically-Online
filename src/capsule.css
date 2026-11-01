@@ -169,3 +169,54 @@
  .capsule-era-stamp { margin-left:0; }
  .capsule-preview-rounds small { font-size:8px; }
 }
+
+/* A consistent round frame keeps the question, feedback and next step together. */
+.capsule-round-page .capsule-title { margin:25px 0; }
+.capsule-round-page .capsule-title h1 { font-size:clamp(30px,4.5vw,45px); margin:15px 0; }
+.capsule-round-page .capsule-title > p { max-width:680px; margin:12px 0; }
+.capsule-round-page .capsule-steps { margin:20px 0; }
+.capsule-round-page .capsule-live { position:sticky; top:0; z-index:3; background:var(--paper); padding:12px 0; border-bottom:1px solid var(--line); }
+#capsule-question-title,#capsule-feedback-title { scroll-margin-top:80px; }
+.capsule-step-done { background:#e8efde!important; }
+.capsule-clock-paused { padding:8px 12px; border:1px solid var(--ink); background:#e8efde; font:700 11px var(--sans); }
+.capsule-clue-caption { display:flex; justify-content:space-between; gap:15px; align-items:baseline; }
+.capsule-clue-caption h3 { font:700 12px/1.6 var(--sans); text-transform:uppercase; letter-spacing:.05em; margin:0; }
+.capsule-clue-caption > span { font:11px/1.6 var(--sans); color:var(--muted); }
+.capsule-clue-section { padding:18px 20px; border:1px solid var(--line); background:#f3eee4; margin:24px 0; }
+.capsule-clue-section .capsule-clues { margin:10px 0 0; }
+.capsule-clue-section .capsule-clues li:last-child { border-bottom:0; }
+.capsule-clue-help,.capsule-answer-help,.capsule-hint-cost { font:12px/1.8 var(--sans)!important; color:var(--muted); }
+.capsule-clue-help { margin:8px 0 0; }
+.capsule-answer-help { margin:0 0 16px; }
+.capsule-hint-cost { margin:8px 0; }
+.capsule-round-page .capsule-answer-actions { margin-bottom:10px; }
+.capsule-round-page .capsule-skip { margin-top:12px; }
+.capsule-round-feedback .capsule-feedback-card { border:0; box-shadow:none; margin:0; }
+.capsule-feedback-heading { display:flex; align-items:center; gap:20px; margin:0 0 25px; }
+.capsule-feedback-heading .capsule-point-stamp { font-size:34px; padding:13px 17px; flex:none; }
+.capsule-feedback-heading h2 { font-size:32px; margin:8px 0 0; }
+.capsule-page .capsule-feedback-question { font-size:13px; margin-bottom:20px; }
+.capsule-page .capsule-answer-caption { font-size:11px; font-weight:700; margin:18px 0 0; }
+.capsule-page .capsule-correct-reference { margin:5px 0 18px; }
+.capsule-submitted-answer { background:#fffaf3; border:1px solid var(--line); padding:10px 13px; overflow-wrap:anywhere; }
+.capsule-answer-details { font:12px/1.8 var(--sans); margin:20px 0; }
+.capsule-answer-details summary { cursor:pointer; font-weight:700; }
+.capsule-next-preview { border-top:1px solid var(--line); padding-top:22px; margin-top:25px; }
+.capsule-next-preview h3 { font:700 24px/1.2 var(--headline); margin:10px 0 8px; text-transform:lowercase; }
+.capsule-next-preview p { font-size:12px; }
+.capsule-next-preview .primary { margin-top:10px; }
+@media(max-width:650px){
+ .capsule-round-page .capsule-title h1 { font-size:30px; }
+ .capsule-round-page .capsule-title { margin:22px 0; }
+ .capsule-clue-section { padding:16px 13px; }
+ .capsule-clue-caption { gap:8px; }
+ .capsule-clue-caption > span { font-size:10px; }
+ .capsule-round-page .capsule-answer-actions { flex-direction:column; align-items:stretch; gap:13px; }
+ .capsule-round-page .capsule-answer-actions > .primary { justify-content:center; padding:14px; font-size:13px; }
+ .capsule-round-page .capsule-answer-actions > .text-button { text-align:left; align-self:flex-start; padding:8px 0; font-size:12px; }
+ .capsule-feedback-heading { gap:14px; }
+ .capsule-feedback-heading h2 { font-size:27px; }
+ .capsule-feedback-heading .capsule-point-stamp { font-size:30px; padding:12px 13px; }
+ .capsule-round-feedback .capsule-feedback-card { padding:24px 18px; }
+ .capsule-next-preview .primary { width:100%; justify-content:center; font-size:12px; padding:15px 12px; }
+}

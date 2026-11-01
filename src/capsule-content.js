@@ -1,11 +1,11 @@
 // Append verified questions; never change the meaning of a released question ID.
 export const CAPSULE_BANK_VERSION='capsule-v1';
 export const capsuleRounds=[
- {id:'era',name:'name that era',description:'Four receipts. One year.'},
- {id:'soundtrack',name:'the soundtrack',description:'A song, three clues, your music memory.'},
- {id:'before',name:'before or after?',description:'Which file belongs earlier in the archive?'},
- {id:'file',name:'the album / artist file',description:'Open a music, creator or style file.'},
- {id:'deep',name:'the deep cut',description:'The final boss of your internet history.'}
+ {id:'era',name:'name that era',description:'Match four clues to one year.',instruction:'Read all four clues, then choose the year they share.'},
+ {id:'soundtrack',name:'the soundtrack',description:'Name the song from the clues.',instruction:'Read the clue, then type one song title. Reveal more clues if you need them.'},
+ {id:'before',name:'before or after?',description:'Put two events in order.',instruction:'Select the event that happened first.'},
+ {id:'file',name:'the album / artist file',description:'Identify the artist, album or creator.',instruction:'Read the question and choose one answer.'},
+ {id:'deep',name:'the deep cut',description:'One last test of your internet memory.',instruction:'Choose one answer to the final question.'}
 ];
 const F='fandom-years',I='influencer-era',C='current-lore';
 const source={
@@ -22,9 +22,9 @@ const source={
  neighbourhood:'https://thenbhd.com/',marina:'https://www.marinaofficial.co.uk/',clairo:'https://clairo.com/'
 };
 const q=(id,round,era,categories,difficulty,format,question,answer,options,clues,hints,explanation,sources,aliases=[])=>({id,round,era,categories,difficulty,format,question,answer,options,clues,hints,explanation,sources:sources.map(s=>source[s]||s),aliases});
-const era=(id,year,world,tags,clues,alternatives,refs)=>q(id,'era',world,tags,2,'choice','Which year connects these four receipts?',String(year),[String(year),...alternatives.map(String)],clues,['All four files belong to the same calendar year.','Look at the release years, rather than when you discovered them.'],`All four of these events or releases are from ${year}.`,refs);
-const song=(id,world,level,title,artist,clues,refs,aliases=[],format='text',alternatives=[])=>q(id,'soundtrack',world,['music','fandoms'],level,format,'Name the song in this soundtrack file.',title,[title,...alternatives],clues,clues.slice(1),`${title} is a song by ${artist}. ${clues.join(' ')}`,refs,[...aliases,...[title,...aliases.filter(a=>!a.includes(' by '))].flatMap(label=>[`${label} by ${artist}`,`${artist} ${label}`,`${label} ${artist}`])]);
-const before=(id,world,tags,left,right,years,refs)=>q(id,'before',world,tags,2,'choice','Which happened first?',left,[left,right],[],['Compare the original release or launch, not a later rebrand.'],`${left} (${years[0]}) came before ${right} (${years[1]}).`,refs);
+const era=(id,year,world,tags,clues,alternatives,refs)=>q(id,'era',world,tags,2,'choice','In which year did all four of these things happen?',String(year),[String(year),...alternatives.map(String)],clues,['All four files belong to the same calendar year.','Look at the release years, rather than when you discovered them.'],`All four of these events or releases are from ${year}.`,refs);
+const song=(id,world,level,title,artist,clues,refs,aliases=[],format='text',alternatives=[])=>q(id,'soundtrack',world,['music','fandoms'],level,format,`Which song by ${artist} do these clues describe?`,title,[title,...alternatives],clues,clues.slice(1),`${title} is a song by ${artist}. ${clues.join(' ')}`,refs,[...aliases,...[title,...aliases.filter(a=>!a.includes(' by '))].flatMap(label=>[`${label} by ${artist}`,`${artist} ${label}`,`${label} ${artist}`])]);
+const before=(id,world,tags,left,right,years,refs)=>q(id,'before',world,tags,2,'choice','Which event happened first?',left,[left,right],[],['Compare the original release or launch, not a later rebrand.'],`${left} (${years[0]}) came before ${right} (${years[1]}).`,refs);
 const file=(id,world,tags,level,question,answer,other,clues,hints,explanation,refs,aliases=[])=>q(id,'file',world,tags,level,'choice',question,answer,[answer,...other],clues,hints,explanation,refs,aliases);
 const deep=(id,world,tags,question,answer,other,hints,explanation,refs,aliases=[])=>q(id,'deep',world,tags,4,'choice',question,answer,[answer,...other],[],hints,explanation,refs,aliases);
 export const capsuleQuestions=[
@@ -40,18 +40,18 @@ export const capsuleQuestions=[
  era('era-2020',2020,I,['music','fashion'],['Rare Beauty launched.','Dua Lipa released Future Nostalgia.','Taylor Swift released folklore.','5SOS released CALM.'],[2019,2021,2022],['rare','https://www.dualipa.com/','taylor','sos']),
  era('era-2023',2023,C,['music','fandoms'],['The Debut: Dream Academy aired.','Olivia Rodrigo released GUTS.','PinkPantheress released Heaven knows.','Chappell Roan released The Rise and Fall of a Midwest Princess.'],[2022,2024,2025],['katseye','pink','chappell','https://www.oliviarodrigo.com/']),
  era('era-2024',2024,C,['music','fandoms'],['Charli xcx released Brat.','Sabrina Carpenter released Short n’ Sweet.','Billie Eilish released Hit Me Hard and Soft.','KATSEYE made their official debut.'],[2022,2023,2025],['charli','sabrina','billie','katseye']),
- song('sound-sweater',F,1,'Sweater Weather','The Neighbourhood',['A single from the early 2010s.','It appears on the album I Love You.','Its title pairs knitwear with the forecast.'],['neighbourhood'],['sweater weather by the neighborhood','sweater weather by the nbhd']),
- song('sound-505',F,3,'505','Arctic Monkeys',['A song from a 2007 British rock album.','It closes Favourite Worst Nightmare.','Its title is a three-digit number beginning with 5.'],['am']),
- song('sound-robbers',F,3,'Robbers','The 1975',['A track on a 2013 self-titled debut.','Its band is named after a year.','Its title is a plural word for people who steal.'],['https://the1975.com/']),
- song('sound-pain',C,2,'Pain','PinkPantheress',['A song on a 2021 debut mixtape.','The mixtape is to hell with it.','Its title is a four-letter word for hurt.'],['pink']),
- song('sound-just-for-me',C,2,'Just for me','PinkPantheress',['A single from a 2021 debut mixtape.','It appears on to hell with it.','The three-word title begins “Just” and ends “me.”'],['pink'],['justforme']),
- song('sound-break-it-off',C,3,'Break It Off','PinkPantheress',['An early PinkPantheress song.','It appears on to hell with it.','Its three-word title starts with “Break.”'],['pink']),
- song('sound-boys-liar',C,1,'Boy’s a liar Pt. 2','PinkPantheress',['A 2023 collaboration.','The guest rapper is Ice Spice.','The title calls a boy untruthful, then adds a sequel number.'],['pink'],['boys a liar','boys a liar part 2','boys a liar pt2','boys a liar part two']),
- song('sound-slsp',F,1,'She Looks So Perfect','5 Seconds of Summer',['A 2014 single by an Australian four-piece.','It appears on the band’s self-titled debut.','The title is four words, starting “She Looks.”'],['sos'],['slsp','she looks so perfect by 5sos']),
+ song('sound-sweater',F,1,'Sweater Weather','The Neighbourhood',['Its two-word title pairs a knitted jumper with the forecast.','It appears on the 2013 album I Love You.','The title begins with “Sweater”.'],['neighbourhood'],['sweater weather by the neighborhood','sweater weather by the nbhd']),
+ song('sound-505',F,3,'505','Arctic Monkeys',['The closing track on Favourite Worst Nightmare has a numbered title.','Its title contains only three digits.','The first and last digits are both 5.'],['am']),
+ song('sound-robbers',F,3,'Robbers','The 1975',['Its one-word title names a group of people who steal.','It appears on the band’s 2013 self-titled debut album.','The title starts with “Rob”.'],['https://the1975.com/']),
+ song('sound-pain',C,2,'Pain','PinkPantheress',['Its title is a four-letter word for a feeling of hurt.','It appears on the 2021 mixtape to hell with it.','The title starts with P.'],['pink']),
+ song('sound-just-for-me',C,2,'Just for me','PinkPantheress',['The three-word title sounds like something meant only for you, starting with “Just”.','It appears on the 2021 mixtape to hell with it.','The title ends with “me”.'],['pink'],['justforme']),
+ song('sound-break-it-off',C,3,'Break It Off','PinkPantheress',['Its three-word title sounds like ending a relationship.','It appears on the 2021 mixtape to hell with it.','The title starts with “Break”.'],['pink']),
+ song('sound-boys-liar',C,1,'Boy’s a liar Pt. 2','PinkPantheress',['A 2023 collaboration with Ice Spice about a boy who can’t be trusted.','It is a follow-up version of Boy’s a liar.','This is the “Pt. 2” version.'],['pink'],['boys a liar','boys a liar part 2','boys a liar pt2','boys a liar part two']),
+ song('sound-slsp',F,1,'She Looks So Perfect','5 Seconds of Summer',['A 2014 single with a four-word title starting “She Looks”.','It appears on the band’s self-titled debut album.','The final word of the title is “Perfect”.'],['sos'],['slsp','she looks so perfect by 5sos']),
  song('sound-wmyb',F,1,'What Makes You Beautiful','One Direction',['A debut single released in 2011.','It appears on Up All Night.','The four-word title ends with “Beautiful.”'],[1],['wmyb','what makes you beautiful by 1d']),
- song('sound-pretty-girl',I,2,'Pretty Girl','Clairo',['A DIY bedroom-video breakout from 2017.','The artist’s first name is Claire.','Its two-word title ends with “Girl.”'],['clairo']),
- song('sound-primadonna',F,3,'Primadonna','Marina and the Diamonds',['A single from the Electra Heart era.','The artist now releases music as Marina.','Its title is also a word for a demanding diva.'],['marina'],['prima donna','primadonna by marina']),
- song('sound-espresso',C,1,'Espresso','Sabrina Carpenter',['A single released in 2024.','It appears on Short n’ Sweet.','Its title is a strong coffee.'],['sabrina']),
+ song('sound-pretty-girl',I,2,'Pretty Girl','Clairo',['A song that broke out through a DIY bedroom video in 2017.','The title describes a girl in two words.','The second word is “Girl”; the first starts with “Pre”.'],['clairo']),
+ song('sound-primadonna',F,3,'Primadonna','Marina and the Diamonds',['The title is also a word for a demanding diva.','It appears on the 2012 album Electra Heart.','The title starts with “Prima”.'],['marina'],['prima donna','primadonna by marina']),
+ song('sound-espresso',C,1,'Espresso','Sabrina Carpenter',['A 2024 single named after a strong coffee.','It appears on Short n’ Sweet.','The seven-letter title starts with “Es”.'],['sabrina']),
  before('before-tumblr-instagram',F,['internet','fandoms'],'Tumblr launched','Instagram launched',[2007,2010],['https://www.tumblr.com/about','https://about.instagram.com/']),
  before('before-youtube-vine',F,['internet','creators'],'YouTube launched','Vine launched',[2005,2013],['youtube','https://en.wikipedia.org/wiki/Vine_(service)']),
  before('before-musically-tiktok',I,['internet','creators'],'Musical.ly launched','TikTok launched internationally',[2014,2017],['tiktok']),
