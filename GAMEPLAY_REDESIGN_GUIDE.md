@@ -1,5 +1,7 @@
 # Fandom Files — gameplay redesign
 
+This describes the earlier three-round Daily File, now at `/play/?game=daily-file`. The current main story experience is documented in [LOGGED_ON_GUIDE.md](LOGGED_ON_GUIDE.md). Its existing practice modes and records remain available.
+
 ## Phase 1: implemented
 
 The homepage and `/play/` now lead to **The Daily File**, with three genuinely different rounds:

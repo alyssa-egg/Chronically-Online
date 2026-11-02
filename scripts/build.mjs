@@ -1,3 +1,4 @@
+import { validateLoggedOn } from '../src/logged-on.js';
 import { validateDailyFiles } from '../src/daily-file.js';
 import { validateCapsuleBank } from '../src/capsule.js';
 import { execFileSync } from "node:child_process";
@@ -14,6 +15,7 @@ const connectionErrors=validateConnectionBank();
 if(connectionErrors.length)throw new Error(`Invalid Daily Connection content:\n${connectionErrors.join('\n')}`);
 const capsuleErrors=validateCapsuleBank();if(capsuleErrors.length)throw new Error(capsuleErrors.join('\n'));
 const fileErrors=validateDailyFiles();if(fileErrors.length)throw new Error(fileErrors.join('\n'));
+const storyErrors=validateLoggedOn();if(storyErrors.length)throw new Error(storyErrors.join('\n'));
 const issues = await loadIssues(root);
 const files = new Set([
   "index.html",
@@ -28,6 +30,10 @@ const files = new Set([
   "src/capsule.js",
   "src/daily-file-content.js",
   "src/daily-file.js",
+  "src/logged-on-content.js",
+  "src/logged-on.js",
+  "src/logged-on-ui.js",
+  "src/logged-on.css",
   "src/daily-file-ui.js",
   "src/daily-file.css",
   "src/capsule-ui.js",

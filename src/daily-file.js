@@ -129,5 +129,5 @@ export function dailyFilePersonal(value,today=fileDay()){
 }
 export function dailyFileShare(state,origin){
   const r=dailyFileResult(state);
-  return `FANDOM FILES · ${state.spec.kind==='daily'?'DAILY FILE '+state.spec.day:'PRACTICE FILE'}\n${r.score}/${r.max} · ${connectionTime(r.time)}\n${state.records.map(p=>`${fileModes.find(m=>m.id===fileQuestion(p.id).mode).icon} ${p.base}/100${p.bonus?` +${p.bonus} combo`:''}`).join('\n')}\nyou had to be there.\n${origin}/play/`;
+  return `FANDOM FILES · ${state.spec.kind==='daily'?'DAILY FILE '+state.spec.day:'PRACTICE FILE'}\n${r.score}/${r.max} · ${connectionTime(r.time)}\n${state.records.map(p=>`${fileModes.find(m=>m.id===fileQuestion(p.id).mode).icon} ${p.base}/100${p.bonus?` +${p.bonus} combo`:''}`).join('\n')}\nyou had to be there.\n${origin}/play/?game=daily-file`;
 }
