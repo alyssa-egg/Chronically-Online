@@ -1,3 +1,4 @@
+import { createDailyFileUI } from './daily-file-ui.js';
 import { createCapsuleUI } from './capsule-ui.js';
 import { createConnectionUI } from './connection-ui.js';
 import { connectionDay, CONNECTION_HISTORY } from './connection.js';
@@ -158,7 +159,7 @@ function updateStorageNote() {
       : "Browser storage is unavailable. Progress lasts for this visit.";
 }
 function issueLabel() {
-  if (["home","connection","capsule"].includes(screen)) return new Intl.DateTimeFormat("en",{month:"short",day:"numeric",year:"numeric"}).format(new Date());
+  if (["home","connection","capsule","dailyfile"].includes(screen)) return new Intl.DateTimeFormat("en",{month:"short",day:"numeric",year:"numeric"}).format(new Date());
   return new Intl.DateTimeFormat("en", {
     month: "short",
     day: "numeric",
@@ -167,12 +168,13 @@ function issueLabel() {
   }).format(new Date(day + "T12:00:00Z"));
 }
 function chrome(content) {
+  if (screen !== "dailyfile") fileGame.leave();
   if (screen !== "capsule") capsule.leave();
   if (screen !== "connection") connection.leave();
   if (screen !== "opencut") openCut.leave();
   if (screen !== "memories") memories.leave();
   if (screen !== "era") eraDiscovery.leave();
-  if (!["capsule", "connection", "opencut", "quizlibrary", "era", "memories", "myfiles", "deepcut", "puzzle", "puzzle-results"].includes(screen)) {
+  if (!["dailyfile", "capsule", "connection", "opencut", "quizlibrary", "era", "memories", "myfiles", "deepcut", "puzzle", "puzzle-results"].includes(screen)) {
     document.title = "The Fandom Files — daily fandom games & internet eras";
     if (!booting && (location.pathname.startsWith("/stories/") || location.pathname.startsWith("/archive") || location.pathname.startsWith("/eras/") || location.pathname.startsWith("/play") || location.pathname.startsWith("/memories") || location.pathname.startsWith("/quizzes") || location.pathname.startsWith("/my-files") || location.pathname.startsWith("/profile") || location.pathname.startsWith("/infinite") || location.pathname.startsWith("/leaderboard") || location.pathname.startsWith("/challenge") || new URL(location.href).searchParams.has("desk"))) history.pushState({}, "", "/");
   }
@@ -211,10 +213,10 @@ function readingDiary() {
 let homeLocalDay;
 function home() {
   eraDiscovery.leave(); loadIssue("daily"); screen = "home"; homeLocalDay=connectionDay();
-  chrome(`<section class="relaunch-hero"><div class="relaunch-intro"><span class="file-label">YOUR INTERNET HISTORY / REOPENED DAILY</span><h1>you had<br>to be there.</h1><p>How well do you really remember the internet?</p><a class="primary" href="/play/" id="hero-daily">PLAY TODAY’S TIME CAPSULE ${pixelIcon('arrow')}</a><span class="relaunch-margin-note">a little archive of a very online life. ♥</span></div>${capsule.teaser()}</section>${capsule.infiniteHome()}<section class="capsule-home-board" hidden><div><span class="file-label">THE RECEIPTS DEPARTMENT</span><h2>who kept<br>the most lore?</h2></div><div id="capsule-leaderboard-preview"><p>Checking for shared records…</p></div><a class="text-button" href="/leaderboard/" id="home-leaderboard">open the leaderboard ↗</a></section><section class="relaunch-archive"><div class="section-heading"><div><span class="file-label">THE ARCHIVE / THREE VERY ONLINE LIVES</span><h2>your eras.<br>still on file.</h2><p>Open a folder. Follow a reference. Remember who you were online.</p></div><a class="text-button" href="/archive/" id="home-all-eras">open the archive ↗</a></div><div id="era-home-entrances"></div></section><section class="relaunch-quizzes"><div class="section-heading"><div><span class="file-label">THE QUIZ FOLDERS / NO RIGHT ANSWERS</span><h2>which corner<br>was yours?</h2><p>Three eras. Three personality files. Find a little of yourself in the references.</p></div><a class="text-button" href="/quizzes/" id="home-quizzes">all quizzes ↗</a></div>${quizLibrary.homeMarkup()}</section><aside class="relaunch-postscript"><span>filed with love. kept by you.</span><a href="/my-files/" id="home-files">my puzzle history & saved files ↗</a></aside>`);
-  eraDiscovery.mountHome();quizLibrary.bind();capsule.bindHomeLinks();capsule.mountLeaderboardPreview();
-  rootLink('#hero-daily',()=>capsule.openDaily());rootLink('#home-leaderboard',()=>capsule.openLeaderboard());
-  rootLink('#home-all-eras',()=>eraDiscovery.openIndex());rootLink('#home-quizzes',()=>quizLibrary.open());rootLink('#home-files',()=>capsule.openProfile());
+  chrome(`<section class="relaunch-hero"><div class="relaunch-intro"><span class="file-label">YOUR INTERNET HISTORY / REOPENED DAILY</span><h1>you had<br>to be there.</h1><p>Your daily dose of internet lore, fandoms, music, and everything the internet made iconic.</p><a class="primary" href="/play/" id="hero-daily">PLAY TODAY’S FILE ${pixelIcon('arrow')}</a><span class="relaunch-margin-note">a little archive of a very online life. ♥</span></div>${fileGame.homeMarkup()}</section>${fileGame.practiceMarkup()}<section class="relaunch-archive"><div class="section-heading"><div><span class="file-label">THE ARCHIVE / THREE VERY ONLINE LIVES</span><h2>your eras.<br>still on file.</h2><p>Open a folder. Follow a reference. Remember who you were online.</p></div><a class="text-button" href="/archive/" id="home-all-eras">open the archive ↗</a></div><div id="era-home-entrances"></div></section><section class="relaunch-quizzes"><div class="section-heading"><div><span class="file-label">THE QUIZ FOLDERS / NO RIGHT ANSWERS</span><h2>which corner<br>was yours?</h2><p>Three eras. Three personality files. Find a little of yourself in the references.</p></div><a class="text-button" href="/quizzes/" id="home-quizzes">all quizzes ↗</a></div>${quizLibrary.homeMarkup()}</section><aside class="relaunch-postscript"><span>filed with love. kept by you.</span><a href="/my-files/" id="home-files">my puzzle history & saved files ↗</a></aside>`);
+  eraDiscovery.mountHome();quizLibrary.bind();fileGame.bindLinks();
+  rootLink('#hero-daily',()=>fileGame.openDaily());
+  rootLink('#home-all-eras',()=>eraDiscovery.openIndex());rootLink('#home-quizzes',()=>quizLibrary.open());rootLink('#home-files',()=>openMyFiles());
 }
 function rootLink(selector,action){const link=app.querySelector(selector);if(link)link.onclick=event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();action();};}
 function legacyGames(){
@@ -226,7 +228,8 @@ function legacyGames(){
   rootLink('[data-quick-cut]',()=>deepCut.open());archiveUI.bindHome();
 }
 function openLegacy(id){
- if(id==='connection')connection.open();
+ if(id==='capsule')capsule.openDaily();
+ else if(id==='connection')connection.open();
  else if(id==='open-cut')openCut.open();
  else if(id==='name-that-reference')startPuzzle();
  else if(id==='quick-cut')deepCut.open();
@@ -753,7 +756,7 @@ function refreshDay() {
 function tick() {
   if(screen==="home"&&homeLocalDay!==connectionDay()){home();return;}
   if (dayKey() !== day && ["puzzle", "puzzle-results"].includes(screen)) { startPuzzle(false); return; }
-  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "capsule", "connection", "opencut", "quizlibrary", "era", "memories", "myfiles", "deepcut"].includes(screen)) {
+  if (dayKey() !== day && !["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "dailyfile", "capsule", "connection", "opencut", "quizlibrary", "era", "memories", "myfiles", "deepcut"].includes(screen)) {
     refreshDay();
     return;
   }
@@ -782,19 +785,20 @@ const archiveUI = createArchiveUI({
   dailyProgress: () => ({ quiz: savedAnswers("daily", day).length, ask: savedGuesses(day).length, askFinished: puzzleStatus(dailyPuzzle(day), savedGuesses(day)) !== "playing" }),
 });
 const memories = createMemoriesUI({ root: app, render: chrome, begin: next => { eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home });
-const capsule = createCapsuleUI({root:app,read,save,render:chrome,begin:next=>{eraDiscovery.leave();loadIssue("daily");screen=next;},home,openEra:id=>eraDiscovery.openEra(id),openQuizzes:()=>quizLibrary.open(),openOldFiles:()=>openMyFiles()});
+const fileGame = createDailyFileUI({root:app,read,save,render:chrome,begin:next=>{eraDiscovery.leave();loadIssue("daily");screen=next;},home,openEarlier:()=>capsule.openInfinite()});
+const capsule = createCapsuleUI({root:app,read,save,render:chrome,begin:next=>{eraDiscovery.leave();loadIssue("daily");screen=next;},home,openEra:id=>eraDiscovery.openEra(id),openQuizzes:()=>quizLibrary.open(),openOldFiles:()=>openMyFiles(),dailyFileMarkup:()=>fileGame.personalMarkup(),bindDailyFile:()=>fileGame.bindLinks()});
 const connection = createConnectionUI({root:app,read,save,render:chrome,begin:next=>{eraDiscovery.leave();loadIssue("daily");screen=next;},home,openFiles:()=>openMyFiles(),openQuizzes:()=>quizLibrary.open()});
 const openCut = createOpenCutUI({ root:app,read,save,render:chrome,begin:next=>{eraDiscovery.leave();loadIssue("daily");screen=next;},home,openEra:id=>eraDiscovery.openEra(id),openQuizzes:()=>quizLibrary.open(),openFiles:()=>openMyFiles() });
-const quizLibrary = createQuizLibraryUI({root:app,read,save,render:chrome,begin:next=>{eraDiscovery.leave();loadIssue("daily");screen=next;},home,openEra:id=>eraDiscovery.openEra(id),openDaily:()=>capsule.openDaily(),openLegacy});
+const quizLibrary = createQuizLibraryUI({root:app,read,save,render:chrome,begin:next=>{eraDiscovery.leave();loadIssue("daily");screen=next;},home,openEra:id=>eraDiscovery.openEra(id),openDaily:()=>fileGame.openDaily(),openLegacy});
 const scrapbook = createScrapbookUI({ root: app, read, save });
-const eraDiscovery = createEraDiscoveryUI({ root: app, render: chrome, begin: next => { loadIssue("daily"); screen = next; }, home, read, save, openDeepCut: () => capsule.openDaily(), eraQuizMarkup:id=>capsule.eraMarkup(id)+quizLibrary.eraMarkup(id),bindQuizzes:()=>{quizLibrary.bind();capsule.bindWorlds();}, recordDiscovery: scrapbook.recordDiscovery });
+const eraDiscovery = createEraDiscoveryUI({ root: app, render: chrome, begin: next => { loadIssue("daily"); screen = next; }, home, read, save, openDeepCut: () => fileGame.openDaily(), eraQuizMarkup:id=>capsule.eraMarkup(id)+quizLibrary.eraMarkup(id),bindQuizzes:()=>{quizLibrary.bind();capsule.bindWorlds();}, recordDiscovery: scrapbook.recordDiscovery });
 const deepCut = createDeepCutUI({ root: app, render: chrome, begin: next => { eraDiscovery.leave(); loadIssue("daily"); screen = next; }, home, read, save, openEra: id => eraDiscovery.openEra(id), recordRound: scrapbook.recordRound });
 function openMyFiles(navigate = true) {
  eraDiscovery.leave();loadIssue("daily");screen="myfiles";
  if(navigate&&location.pathname+location.search!=="/my-files/")history.pushState({},"","/my-files/");
  document.title="My Files — The Fandom Files";
- chrome(`<section class="my-files-page"><button class="text-button" id="files-home">← back to the dashboard</button><span class="file-label">MY FILES / KEPT IN THIS BROWSER</span><h1>your little <em>internet history.</em></h1>${connection.personalMarkup()}<details class="legacy-game-folder"><summary>my earlier Deep Cut files +</summary>${openCut.personalMarkup()}</details>${quizLibrary.savedMarkup()}${eraDiscovery.savedMarkup()}<details class="legacy-game-folder"><summary>my original collections & community +</summary>${scrapbook.wall()}<p><button class="secondary" data-original-sideblog>my Sideblog & collectibles ↗</button><button class="text-button" data-member-account>restore my existing purchases</button><a class="text-button" href="/memories/" data-files-memories>era memories ↗</a></p></details></section>`);
- document.querySelector('#files-home').onclick=home;openCut.bindHistory();quizLibrary.bind();eraDiscovery.bind();rootLink('[data-files-memories]',()=>memories.open());
+ chrome(`<section class="my-files-page"><button class="text-button" id="files-home">← back to the dashboard</button><span class="file-label">MY FILES / KEPT IN THIS BROWSER</span><h1>your little <em>internet history.</em></h1>${fileGame.personalMarkup()}${connection.personalMarkup()}<details class="legacy-game-folder"><summary>my earlier Deep Cut files +</summary>${openCut.personalMarkup()}</details>${quizLibrary.savedMarkup()}${eraDiscovery.savedMarkup()}<details class="legacy-game-folder"><summary>my original collections & community +</summary>${scrapbook.wall()}<p><button class="secondary" data-original-sideblog>my Sideblog & collectibles ↗</button><button class="text-button" data-member-account>restore my existing purchases</button><a class="text-button" href="/memories/" data-files-memories>era memories ↗</a></p></details></section>`);
+ fileGame.bindLinks();document.querySelector('#files-home').onclick=home;openCut.bindHistory();quizLibrary.bind();eraDiscovery.bind();rootLink('[data-files-memories]',()=>memories.open());
  app.querySelector('[data-member-account]').onclick=()=>showMembership();
  const heading=app.querySelector('h1');heading.tabIndex=-1;heading.focus({preventScroll:true});
 }
@@ -813,7 +817,9 @@ function routeSite() {
     else if (new URL(location.href).searchParams.get("game") === "name-that-reference") startPuzzle(false);
     else if (new URL(location.href).searchParams.get("game") === "open-cut") openCut.open(false);
     else if (new URL(location.href).searchParams.get("game") === "connection") connection.open(false);
-    else capsule.openDaily(false);
+    else if (new URL(location.href).searchParams.get("game") === "capsule") capsule.openDaily(false);
+    else if (new URL(location.href).searchParams.has("mode")) fileGame.openPractice(new URL(location.href).searchParams.get("mode"),false);
+    else fileGame.openDaily(false);
     return true;
   }
   const era = location.pathname.match(/^\/eras\/([a-z0-9-]+)\/?$/);
@@ -830,7 +836,7 @@ navToggle.onclick = () => { const open = siteHeader.classList.toggle('nav-open')
 document.querySelector('#main-navigation').addEventListener('click', closeNavigation);
 siteHeader.addEventListener('keydown', event => { if (event.key === 'Escape') { closeNavigation(); navToggle.focus(); } });
 document.querySelectorAll('[data-site-home]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); home(); window.scrollTo({ top: 0 }); closeNavigation(); });
-document.querySelectorAll('[data-site-play]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); capsule.openDaily(); closeNavigation(); });
+document.querySelectorAll('[data-site-play]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); fileGame.openDaily(); closeNavigation(); });
 document.querySelectorAll('[data-open-quizzes]').forEach(link => link.onclick=event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();quizLibrary.open();closeNavigation();});
 document.querySelectorAll('[data-open-memories]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); memories.open(); closeNavigation(); });
 document.querySelectorAll('[data-open-archive]').forEach(link => link.onclick = event => { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); eraDiscovery.openIndex(); });
@@ -851,13 +857,14 @@ window.addEventListener("hashchange", () => {
   if (hasEmailLink()) resumeMembership();
 });
 document.querySelector("#membership-button")?.addEventListener("click",()=>showMembership());
-setInterval(() => { tick(); if (screen === "deepcut") deepCut.refresh(); if(screen==="opencut")openCut.refresh();if(screen==="connection")connection.refresh();if(screen==="capsule")capsule.refresh(); }, 1000);
+setInterval(() => { tick(); if (screen === "deepcut") deepCut.refresh(); if(screen==="opencut")openCut.refresh();if(screen==="connection")connection.refresh();if(screen==="capsule")capsule.refresh();if(screen==="dailyfile")fileGame.refresh(); }, 1000);
 window.addEventListener("focus", () => {
-  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "capsule", "connection", "opencut", "quizlibrary", "era", "memories", "myfiles", "deepcut"].includes(screen)) refreshDay();
+  if (!["quiz", "puzzle", "archive-file", "sideblog", "lore-book", "lore-page", "dailyfile", "capsule", "connection", "opencut", "quizlibrary", "era", "memories", "myfiles", "deepcut"].includes(screen)) refreshDay();
   tick();
 });
 window.addEventListener("storage", (event) => {
-  if(screen==="home"&&event.key?.startsWith("fandom-files-capsule-")){home();return;}
+  if(screen==="dailyfile"&&event.key?.startsWith("fandom-files-daily-file-")){fileGame.sync();return;}
+  if(screen==="home"&&(event.key?.startsWith("fandom-files-capsule-")||event.key?.startsWith("fandom-files-daily-file-"))){home();return;}
   if(event.key?.startsWith("fandom-files-connection-v1-")||event.key===CONNECTION_HISTORY){if(screen==="connection")connection.open(false);else if(screen==="home")home();else if(screen==="myfiles")openMyFiles(false);}
   if(screen==="opencut"&&event.key?.startsWith("fandom-files-open-cut-v1-"))openCut.open(false);
   if(screen==="home"&&(event.key?.startsWith("fandom-files-open-cut-")||event.key===OPEN_CUT_HISTORY)){home();return;}

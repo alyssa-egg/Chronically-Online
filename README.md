@@ -1,12 +1,12 @@
 # The Fandom Files
 
-The current game is documented in [TIME_CAPSULE_GUIDE.md](TIME_CAPSULE_GUIDE.md). **The Time Capsule** is a five-round daily internet-history challenge, scored out of 100, with written clues, hints, feedback, local-midnight dates, saved records and collectible stamps. **The Infinite Archive** provides repeatable, curated five-question sets across nine filters. The starter bank has 60 questions with source references; it is finite, and the daily starter cycle repeats after 12 days.
+The current game is documented in [GAMEPLAY_REDESIGN_GUIDE.md](GAMEPLAY_REDESIGN_GUIDE.md). **The Daily File** combines three interactions: uncover a recreated internet artifact in **Decode the Screenshot**, reorder five events in **Rewind**, then name a song from progressive text clues in **The Soundtrack**. The same local date selects the same three files. Guess/reveal costs, partial timeline credit and consecutive-round combo bonuses give a maximum daily score of **315**.
 
-Friend links preserve the exact question set/order and show a comparison of self-reported local results. Profile tracks real personal statistics, era progress and achievements. Three era personality quizzes and the original collage worlds remain secondary experiences. Installed logo/collage image files, lowercase Helvetica Bold headings, bundled DM Sans, existing purchases, account sign-in, Memories and older game saves are preserved.
+Phase 1 includes the three games, daily selection, saved local progress, single-mode practice at three difficulties, feedback, personal bests, completion streaks, copied results and PNG cards. The starter bank has **36 curated files** and a fixed **12-day daily cycle**; it is finite. The next phases cover the new three-life Endless Archive, exact-set friend challenges and verified shared rankings. The new game currently has **local results only**.
 
-Optional shared leaderboards reuse the existing Supabase setup. Server-created attempts validate answers, hints and timing; public records require confirmed accounts and explicit profile visibility. **The new game database is not connected merely by deploying code.** Run [config/capsule.sql](config/capsule.sql), configure the existing server-only Supabase keys and `CAPSULE_LEADERBOARD_ENABLED=true`, then perform a real hosted sign-in/game test. Until then, local play/friend links work and the public board honestly says it is not connected. Full steps and trust limits are in the guide.
+The installed logo/collages, lowercase Helvetica Bold headings, bundled DM Sans, era archives, purchases, email sign-in, Memories and earlier game saves are preserved. The earlier five-round [Time Capsule](TIME_CAPSULE_GUIDE.md) remains at `/play/?game=capsule`; its Infinite Archive, friend links, profile and optional Supabase leaderboard remain accessible and separate from the new Daily File. Its database setup does not enable rankings for the new game.
 
-Earlier games remain under quiz extras: [Daily Connection guide](DAILY_CONNECTION_GUIDE.md), [Deep Cut guide](DEEP_CUT_LAUNCH.md), Sideblog, collectibles and original collections. [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) covers the optional review inbox. No new framework, package, paid judging API or licensed audio is required.
+Earlier games remain under quiz extras: [Daily Connection guide](DAILY_CONNECTION_GUIDE.md), [Deep Cut guide](DEEP_CUT_LAUNCH.md), Sideblog, collectibles and original collections. [MEMORIES_GUIDE.md](MEMORIES_GUIDE.md) covers the optional review inbox. No new framework, dependency or licensed audio is required.
 
 ## Hosting without Netlify
 
@@ -26,15 +26,15 @@ npm start
 
 Open `http://localhost:3000`. Requires Node.js **22.12+** (Node 24 recommended). Sanity Studio dependencies are installed separately in `studio/`; the game server has no runtime dependencies. If that port is occupied, use `PORT=3001 npm start`. The repository/folder remains `Chronically-Online`; the website is The Fandom Files. In the cloud, use `/workspace/Chronically-Online`.
 
-## Write articles without editing code
+## Earlier editorial tools
 
-Open **https://fandomfiles.netlify.app/admin/** and sign in with your Sanity GitHub account. [BLOG_GUIDE.md](BLOG_GUIDE.md) walks through writing, images, interactive extras, scheduling, publishing and access. The homepage features Today’s Deep Cut, three era entrances and curated editorial stories. The full editorial search retains its five subject folders. Search the full published archive by category, era, format, tags and article text. The editor includes a draft Preview tab. Article updates appear after refreshing the site, without redeployment. Drafts remain hidden. Saved stories and personal poll choices are browser-local.
+Open **your deployed site’s `/admin/` address** and sign in with your Sanity account. The existing CMS manages era imagery and earlier editorial content; it does not edit the new game bank. [BLOG_GUIDE.md](BLOG_GUIDE.md) preserves the earlier article workflow. The current public homepage focuses on games and the three era archives.
 
 [EDITORIAL_PUBLICATION_BRIEF.md](EDITORIAL_PUBLICATION_BRIEF.md) preserves the supplied magazine concept and future ideas. This release includes the article dashboard and interactive reader experience; shared community submissions/vote totals and a newsletter remain future work.
 
-## Play
+## Earlier games
 
-The homepage features the Daily Quiz and Anonymous Ask in equally sized blog-window cards, with separate buttons and saved progress. Both are free main games. The Ask has a transparent moustache sticker prepared from your attached reference; it also appears inside the inbox game.
+The earlier Daily Quiz and Anonymous Ask remain accessible through the original-game extras. Both are free. The Ask has a transparent moustache sticker prepared from your attached reference; it also appears inside the inbox game.
 
 - **Main daily quiz:** ten questions, always free; explanations, ranks, answer review, sharing, and downloadable PNG report cards.
 - **Anonymous Ask:** one mystery reference, six increasingly helpful clues. Type a guess or pass. Empty/repeated guesses use no turns. Always free.

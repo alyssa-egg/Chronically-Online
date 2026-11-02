@@ -1,3 +1,4 @@
+import { validateDailyFiles } from '../src/daily-file.js';
 import { validateCapsuleBank } from '../src/capsule.js';
 import { execFileSync } from "node:child_process";
 import { publicArchiveModule } from "../server/archive.mjs";
@@ -12,6 +13,7 @@ const output = path.join(root, "dist");
 const connectionErrors=validateConnectionBank();
 if(connectionErrors.length)throw new Error(`Invalid Daily Connection content:\n${connectionErrors.join('\n')}`);
 const capsuleErrors=validateCapsuleBank();if(capsuleErrors.length)throw new Error(capsuleErrors.join('\n'));
+const fileErrors=validateDailyFiles();if(fileErrors.length)throw new Error(fileErrors.join('\n'));
 const issues = await loadIssues(root);
 const files = new Set([
   "index.html",
@@ -24,6 +26,10 @@ const files = new Set([
   "src/connection.js",
   "src/capsule-content.js",
   "src/capsule.js",
+  "src/daily-file-content.js",
+  "src/daily-file.js",
+  "src/daily-file-ui.js",
+  "src/daily-file.css",
   "src/capsule-ui.js",
   "src/capsule-api.js",
   "src/capsule.css",

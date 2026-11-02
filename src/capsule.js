@@ -110,7 +110,7 @@ export function capsuleEraProgress(value,era){
  const history=capsuleHistory(value),records=history.flatMap(r=>r.records).filter(r=>capsuleQuestion(r.questionId).era===era),seen=new Set(records.map(r=>r.questionId)),available=capsuleQuestions.filter(q=>q.era===era).length;
  return {seen:seen.size,available,answers:records.length,correct:records.filter(r=>r.correct).length,accuracy:records.length?Math.round(records.filter(r=>r.correct).length/records.length*100):0,chapters:[Math.min(5,available),Math.min(10,available),available].filter(target=>seen.size>=target).length};
 }
-export function capsuleShare(state,origin){const r=capsuleResult(state);return `FANDOM FILES · THE TIME CAPSULE\n${state.mode==='daily'?state.day:state.mode==='infinite'?'THE INFINITE ARCHIVE':'FRIEND CHALLENGE'}\n${r.score}/100 · ${r.correct}/5 correct\nTime: ${connectionTime(r.time)}\n${state.records.map(r=>r.correct?'💿':'⬜').join('')}\n${r.rank}\nyou had to be there.\n${origin}/play/`;}
+export function capsuleShare(state,origin){const r=capsuleResult(state);return `FANDOM FILES · THE TIME CAPSULE\n${state.mode==='daily'?state.day:state.mode==='infinite'?'THE INFINITE ARCHIVE':'FRIEND CHALLENGE'}\n${r.score}/100 · ${r.correct}/5 correct\nTime: ${connectionTime(r.time)}\n${state.records.map(r=>r.correct?'💿':'⬜').join('')}\n${r.rank}\nyou had to be there.\n${origin}/play/?game=capsule`;}
 export function makeCapsuleChallenge(state,nickname,nonce){
  if(!state.completedAt)throw new Error('Finish this capsule first.');const result=capsuleResult(state);
  const data={v:1,bank:CAPSULE_BANK_VERSION,id:nonce,ids:state.questionIds,name:(nickname||'a mutual').slice(0,24),score:result.score,correct:result.correct,time:result.time};

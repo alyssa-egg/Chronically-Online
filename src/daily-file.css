@@ -1,0 +1,257 @@
+/* Phase 1: three different interactions, using the existing brand type and assets. */
+.df-page { max-width:860px; margin:30px auto 65px; color:var(--ink); font:14px/1.7 var(--sans); }
+.df-page h1,.df-page h2,.df-home-file h2,.df-home-practice h2,.df-home-practice h3,.df-personal h2 { font-family:var(--headline); font-weight:700; letter-spacing:-.035em; text-transform:lowercase; }
+.df-page h1 { font-size:clamp(29px,4vw,46px); line-height:1.08; margin:20px 0; scroll-margin-top:95px; }
+.df-page h1:focus { outline:none; }
+.df-page h2 { font-size:28px; line-height:1.12; }
+.df-page button { border-radius:0; }
+.df-page .primary,.df-home-file .primary { justify-content:center; min-height:48px; }
+.df-intro > .file-label,.df-practice > .file-label { display:block; margin-top:30px; }
+.df-mode-tickets { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; padding:0; list-style:none; border:1px solid var(--ink); }
+.df-mode-tickets > * { padding:23px 20px; border-right:1px solid var(--ink); }
+.df-mode-tickets > :last-child { border-right:0; }
+.df-mode-tickets h2,.df-mode-tickets h3 { font:700 24px/1.1 var(--headline); letter-spacing:-.025em; margin:16px 0; }
+.df-mode-tickets p { font:12px/1.8 var(--sans); }
+.df-mode-tickets > :nth-child(1) { background:#e5eddf; }
+.df-mode-tickets > :nth-child(2) { background:#e2eaf0; }
+.df-mode-tickets > :nth-child(3) { background:#eee4d6; }
+.df-mode-icon { display:block; font:700 38px/1 var(--sans); margin-bottom:22px; }
+.df-start-row { display:flex; gap:25px; align-items:center; margin:30px 0; }
+.df-start-row p { font-size:12px; }
+.df-rules { font:12px/1.85 var(--sans); border-top:1px solid var(--line); padding:17px 0; margin:18px 0; }
+.df-rules summary { cursor:pointer; font-weight:700; }
+.df-rules li { margin-bottom:9px; }
+.df-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:25px; }
+.df-top .file-label { font-size:10px; }
+.df-progress { padding:0; list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.df-progress li { border:1px solid var(--ink); padding:10px 13px; display:flex; align-items:center; justify-content:space-between; gap:8px; background:#e9e5de; }
+.df-progress li:only-child { grid-column:1/-1; }
+.df-progress li.is-current { box-shadow:3px 3px 0 var(--ink); background:#e2eaf0; }
+.df-progress li.is-filed { background:#e5eddf; }
+.df-progress span { font-weight:700; text-transform:lowercase; }
+.df-progress small { font-size:10px; }
+.df-live { position:sticky; top:0; z-index:3; display:flex; align-items:center; justify-content:space-between; gap:15px; border-bottom:1px solid var(--ink); padding:15px 0; background:var(--paper); }
+.df-live strong { font:700 25px var(--headline); }
+.df-live small { font:12px var(--sans); }
+#df-clock { font:500 12px var(--sans); font-variant-numeric:tabular-nums; padding:6px 10px; background:#e2eaf0; border:1px solid var(--line); }
+.df-level { font-size:11px; border:1px solid var(--line); padding:4px 10px; text-transform:uppercase; }
+.df-round-heading { margin:30px 0 24px; }
+.df-round-heading p { font-size:13px; margin-bottom:0; }
+.df-browser { background:var(--ink); color:var(--paper); display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px 15px; font:10px/1.5 var(--sans); }
+.df-artifact { border:1px solid var(--ink); box-shadow:4px 4px 0 #c8c1b6; background:#e5e9e3; }
+.df-artifact-grid { display:grid; grid-template-columns:60px minmax(0,1fr); }
+.df-artifact-grid > aside { display:flex; flex-direction:column; align-items:center; gap:20px; padding:20px 8px; color:#5c6a65; border-right:1px solid #bbc3bc; font:20px var(--sans); }
+.df-artifact-grid > aside b { font:700 22px var(--headline); color:var(--ink); }
+.df-artifact-paper { background:#fffdf6; margin:18px; padding:22px; border:1px solid #c8c1b6; min-width:0; }
+.df-artifact-paper > .file-label { font-size:9px; color:#635e55; }
+.df-artifact-user { display:flex; align-items:center; gap:10px; margin:18px 0 12px; font:700 11px var(--sans); }
+.df-artifact-user > span { display:grid; place-items:center; width:30px; height:30px; background:#e5eddf; border:1px solid #8f9d91; font-size:18px; }
+.df-artifact-lead { font-size:16px; line-height:1.65; margin:12px 0 20px; }
+.df-evidence { display:grid; gap:11px; }
+.df-redaction { border:1px dashed #7a7a6a; padding:14px; background:#eeece3; cursor:pointer; color:var(--ink); text-align:left; }
+.df-redaction:hover,.df-redaction:focus-visible { border-style:solid; background:#e1eadd; }
+.df-redaction > span:last-child { display:flex; align-items:center; justify-content:space-between; gap:12px; font:700 11px/1.6 var(--sans); }
+.df-redaction small { font:11px var(--sans); white-space:nowrap; }
+.df-redacted-lines { display:flex; flex-direction:column; gap:5px; margin:0 0 12px; }
+.df-redacted-lines i { display:block; width:70%; height:8px; background:#292a2b; }
+.df-redacted-lines i:last-child { width:45%; }
+.df-evidence-open { border-left:3px solid #809e82; padding:10px 14px; background:#edf2e7; animation:df-uncover .25s ease-out; }
+.df-evidence-open .file-label { font-size:9px; }
+.df-evidence-open p { margin:5px 0; font-size:13px; }
+.df-artifact-note { font:10px/1.7 var(--sans); padding:0 18px 12px; margin:0; color:#4e5a50; }
+.df-artifact-chat .df-artifact-paper { background:#f4eee5; }
+.df-artifact-chat .df-evidence-open { margin-left:18px; background:#e0e7ed; border-color:#8297a6; }
+.df-artifact-search .df-artifact-grid > aside,.df-artifact-playlist .df-artifact-grid > aside { background:#d4dfe7; }
+.df-artifact-blog .df-artifact-paper > .file-label { border-bottom:2px solid var(--ink); padding-bottom:8px; display:block; }
+.df-artifact-profile .df-artifact-user { background:#e9e5ec; padding:12px; }
+.df-artifact-comments .df-evidence { margin-left:20px; border-left:1px solid #c8c1b6; padding-left:14px; }
+.df-player { padding:25px; border:1px solid var(--ink); background:#e8e4dc; display:grid; grid-template-columns:125px minmax(0,1fr); gap:22px; box-shadow:4px 4px 0 #c1b8aa; }
+.df-cd { width:125px; height:125px; border-radius:50%; display:grid; place-items:center; position:relative; border:1px solid #9b9da1; background:conic-gradient(#d8ddd6,#b6ced8,#f2e3ee,#d9d8bd,#b6ced8,#d8ddd6); }
+.df-cd::after { content:''; display:block; width:22px; height:22px; border-radius:50%; background:#e8e4dc; border:8px solid #c5c6be; position:absolute; top:44px; left:44px; }
+.df-cd > span { font:700 10px/1.4 var(--sans); position:absolute; top:12px; text-align:center; }
+.df-player-label { display:flex; flex-direction:column; justify-content:center; gap:8px; min-width:0; }
+.df-player-label .file-label { font-size:9px; }
+.df-player-label strong { font:700 30px/1.1 var(--headline); letter-spacing:-.025em; overflow-wrap:anywhere; }
+.df-player-label small { font:10px var(--sans); }
+.df-track-line { overflow:hidden; color:#5f777e; white-space:nowrap; }
+.df-track-clues { list-style:none; padding:0; margin:0; grid-column:1/-1; }
+.df-track-clues li { display:flex; align-items:baseline; gap:18px; padding:15px 0; border-top:1px solid #c1b8aa; animation:df-uncover .25s ease-out; }
+.df-track-clues span { font:700 12px var(--sans); color:#586d74; }
+.df-track-clues p { font:15px/1.7 var(--sans); margin:0; }
+.df-clue-dots { display:flex; align-items:center; gap:6px; grid-column:1/-1; font:10px var(--sans); }
+.df-clue-dots i { display:block; width:14px; height:6px; border:1px solid #5e727b; }
+.df-clue-dots .is-open { background:#5e727b; }
+.df-clue-dots span { margin-left:8px; }
+.df-player > .secondary { grid-column:1/-1; justify-self:start; font-size:12px; }
+.df-guess-form { margin-top:28px; padding:23px; border:1px solid var(--ink); background:#fffdf6; }
+.df-guess-meta { display:flex; justify-content:space-between; gap:15px; margin-bottom:18px; font:12px var(--sans); }
+.df-guess-meta strong { background:#e5eddf; padding:5px 8px; }
+.df-guess-meta > span { align-self:center; }
+.df-guess-form label { display:block; font:700 12px/1.8 var(--sans); }
+#df-answer { display:block; width:100%; border:1px solid var(--ink); background:#fff; border-radius:0; color:var(--ink); font:16px/1.5 var(--sans); padding:15px; margin-top:7px; }
+#df-answer-help { font:11px/1.8 var(--sans); color:#635e55; margin:10px 0 18px; }
+.df-guess-form > .primary { width:100%; }
+.df-guess-history { padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin-bottom:0; font-size:11px; }
+.df-guess-history li { padding:4px 8px; background:#ede0d5; overflow-wrap:anywhere; }
+.df-status { min-height:40px; padding-top:10px; font:500 12px/1.8 var(--sans); }
+.df-local-note { font:11px/1.8 var(--sans)!important; color:#635e55; }
+.df-rewind-label { display:flex; align-items:center; justify-content:space-between; gap:15px; border-block:1px solid var(--ink); padding:13px 0; }
+.df-rewind-label strong { font:700 18px var(--headline); }
+.df-rewind-label > span { font:10px var(--sans); white-space:nowrap; }
+#df-move-help { font-size:12px; }
+.df-timeline { padding:0; list-style:none; margin:20px 0; }
+.df-timeline li { display:flex; align-items:center; gap:12px; background:#fffdf6; border:1px solid var(--ink); margin:10px 0; padding:12px; position:relative; }
+.df-timeline li.is-dragging { opacity:.6; border-style:dashed; }
+.df-timeline li.is-drop-target { box-shadow:0 4px 0 #668aa2; background:#e2eaf0; }
+.df-position { flex:none; width:20px; font:700 14px var(--headline); }
+.df-drag { flex:none; cursor:grab; touch-action:none; background:transparent; border:0; min-width:36px; min-height:44px; font:22px var(--sans); color:#5c6b70; padding:0; }
+.df-event-label { flex:1; font:500 14px/1.5 var(--sans); min-width:0; }
+.df-move-buttons { display:flex; flex:none; gap:3px; }
+.df-move-buttons button { min-width:40px; min-height:44px; border:1px solid var(--line); background:#e2eaf0; font:18px var(--sans); color:var(--ink); }
+.df-move-buttons button:disabled { opacity:.3; }
+.df-order-note { font:11px/1.8 var(--sans); }
+#df-lock { width:100%; }
+.df-feedback-title { display:flex; align-items:center; gap:24px; margin:30px 0; }
+.df-feedback-title h1 { margin:10px 0 0; }
+.df-score-stamp { font:700 42px/1 var(--headline); background:#e5eddf; padding:20px; border:1px solid var(--ink); box-shadow:3px 3px 0 var(--ink); flex:none; transform:rotate(-3deg); animation:df-stamp .3s ease-out; }
+.df-score-stamp small { display:block; font:9px/1.8 var(--sans); margin-top:9px; }
+.df-combo { padding:12px 15px; background:#e9d8c5; font:700 12px var(--sans); border-left:3px solid #8f6647; animation:df-uncover .3s ease-out; }
+.df-answer-reveal { font-size:38px!important; padding-bottom:20px; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
+.df-solved-timeline { list-style:none; padding:0; margin:25px 0; border-left:2px solid #819e87; }
+.df-solved-timeline li { display:flex; align-items:baseline; gap:25px; padding:14px 20px; border-bottom:1px solid var(--line); animation:df-uncover .3s ease-out; }
+.df-solved-timeline strong { font:700 24px var(--headline); color:#44654c; }
+.df-next { background:#e2eaf0; border:1px solid var(--ink); padding:23px; margin:28px 0; }
+.df-next h2 { margin:14px 0; }
+.df-next p { font-size:12px; }
+.df-next .primary { width:100%; margin-top:10px; }
+.df-result-paper { padding:40px; border:1px solid var(--ink); box-shadow:5px 5px 0 #a9bca4; background:#fffdf6; margin:25px 0; }
+.df-result-score { display:flex; align-items:baseline; margin:30px 0; font:700 45px var(--headline); letter-spacing:-.07em; }
+.df-result-score > strong { font-size:clamp(85px,15vw,150px); line-height:1; }
+.df-result-rounds { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:25px 0; }
+.df-result-rounds > div { padding:14px; background:#e2eaf0; border:1px solid var(--ink); display:flex; flex-direction:column; gap:8px; }
+.df-result-rounds > div:nth-child(2) { background:#e5eddf; }
+.df-result-rounds > div:nth-child(3) { background:#eee4d6; }
+.df-result-rounds strong { font:700 34px var(--headline); }
+.df-result-rounds small { font:10px var(--sans); }
+.df-result-rounds strong small { font-size:14px; }
+.df-result-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.df-practice-again { border-top:1px solid var(--ink); margin-top:30px; padding-top:25px; }
+.df-practice-again > div,.df-practice-tabs { display:flex; gap:10px; flex-wrap:wrap; }
+.df-practice-tabs .secondary { font-size:12px; }
+.df-practice-tabs [aria-pressed=true] { background:#e2eaf0; box-shadow:3px 3px 0 var(--ink); }
+.df-difficulty { display:flex; gap:15px; border:0; padding:0; margin:30px 0; }
+.df-difficulty legend { font-weight:700; margin-bottom:15px; }
+.df-difficulty label { display:flex; align-items:center; gap:8px; border:1px solid var(--ink); padding:10px 15px; cursor:pointer; }
+.df-difficulty input { accent-color:var(--ink); }
+.df-resume { padding:15px 20px; border-left:3px solid #819e87; margin:25px 0; background:#e5eddf; }
+.df-home-file { border:1px solid var(--ink); box-shadow:5px 5px 0 #a9bca4; background:#fffdf6; }
+.df-home-body { padding:28px; }
+.df-home-body h2 { font-size:clamp(32px,3.8vw,48px); line-height:1; margin:22px 0; }
+.df-home-body ol { list-style:none; padding:0; margin:22px 0; }
+.df-home-body li { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:9px 0; border-bottom:1px solid var(--line); font:700 12px var(--sans); }
+.df-home-body li small { font:10px var(--sans); }
+.df-home-body .primary { width:100%; }
+.df-mini-artifact { background:#e2eaf0; border:1px solid #98a4a8; padding:18px; position:relative; }
+.df-mini-artifact > span { font:9px var(--sans); }
+.df-mini-artifact > div { display:flex; flex-direction:column; gap:6px; margin-top:15px; width:65%; }
+.df-mini-artifact i { height:10px; background:#292a2b; width:90%; }
+.df-mini-artifact i:nth-child(2) { width:65%; }
+.df-mini-artifact b { position:absolute; right:24px; top:25px; font:700 48px var(--headline); }
+.df-home-practice { padding:45px 0; border-bottom:1px solid var(--ink); }
+.df-home-practice > div:first-child { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:20px; margin-bottom:25px; }
+.df-home-practice > div:first-child .file-label { width:100%; }
+.df-home-practice h2 { font-size:40px; line-height:1.05; margin:0; }
+.df-home-practice > div:first-child p { font:13px/1.8 var(--sans); max-width:240px; }
+.df-home-practice .text-button { font-size:12px; }
+.df-personal { border-bottom:1px solid var(--ink); margin-bottom:30px; padding:20px 0 30px; }
+.df-personal li { display:flex; justify-content:space-between; padding:10px; border-top:1px solid var(--line); font:12px var(--sans); }
+.df-personal ul { list-style:none; padding:0; }
+.df-placed { animation:df-place .25s ease-out; }
+.df-miss { animation:df-nudge .25s ease-in-out; }
+@keyframes df-uncover { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+@keyframes df-stamp { from { opacity:.5; transform:scale(1.2) rotate(-8deg); } to { opacity:1; transform:scale(1) rotate(-3deg); } }
+@keyframes df-place { 50% { background:#d6e3e9; } }
+@keyframes df-nudge { 25% { transform:translateX(-4px); } 75% { transform:translateX(4px); } }
+@media(max-width:650px){
+ .df-page { margin-top:22px; }
+ .df-mode-tickets { grid-template-columns:1fr; }
+ .df-mode-tickets > * { border-right:0; border-bottom:1px solid var(--ink); padding:18px; }
+ .df-mode-tickets > :last-child { border-bottom:0; }
+ .df-mode-tickets .df-mode-icon { float:left; margin:0 18px 25px 0; font-size:32px; }
+ .df-mode-tickets h2,.df-mode-tickets h3 { font-size:22px; margin:10px 0; }
+ .df-mode-tickets p { margin:8px 0; }
+ .df-start-row { display:block; }
+ .df-start-row .primary { width:100%; }
+ .df-top .file-label { font-size:9px; }
+ .df-progress li { padding:10px 6px; display:block; }
+ .df-progress li span { display:block; font-size:11px; }
+ .df-progress small { display:block; margin-top:3px; font-size:9px; }
+ .df-live { gap:8px; padding:12px 0; }
+ .df-live strong { font-size:22px; }
+ .df-live small { font-size:10px; }
+ #df-clock { font-size:10px; padding:5px 7px; }
+ .df-level { font-size:9px; padding:4px 7px; }
+ .df-round-heading { margin:24px 0 20px; }
+ .df-round-heading h1 { font-size:29px; }
+ .df-round-heading p { font-size:12px; }
+ .df-artifact-grid { grid-template-columns:32px minmax(0,1fr); }
+ .df-artifact-grid > aside { font-size:15px; gap:17px; padding:18px 3px; }
+ .df-artifact-grid > aside b { font-size:17px; }
+ .df-artifact-paper { padding:14px; margin:10px; }
+ .df-artifact-paper > .file-label { font-size:8px; }
+ .df-artifact-user { font-size:10px; gap:7px; }
+ .df-artifact-lead { font-size:14px; margin-bottom:15px; }
+ .df-redaction { padding:12px; }
+ .df-redaction > span:last-child { flex-wrap:wrap; gap:5px; font-size:10px; }
+ .df-redaction small { font-size:10px; }
+ .df-evidence-open { padding:8px 10px; }
+ .df-evidence-open p { font-size:12px; }
+ .df-artifact-comments .df-evidence { margin-left:0; padding-left:8px; }
+ .df-artifact-note { font-size:9px; padding-inline:12px; }
+ .df-player { grid-template-columns:75px minmax(0,1fr); padding:18px; gap:15px; }
+ .df-cd { width:75px; height:75px; }
+ .df-cd::after { width:12px; height:12px; top:27px; left:27px; border-width:5px; }
+ .df-cd > span { font-size:7px; top:8px; }
+ .df-player-label strong { font-size:25px; }
+ .df-player-label .file-label { font-size:8px; }
+ .df-player-label small { font-size:9px; }
+ .df-track-clues p { font-size:14px; }
+ .df-track-clues li { gap:12px; }
+ .df-player > .secondary { font-size:11px; }
+ .df-guess-form { padding:18px; }
+ .df-guess-meta { font-size:11px; }
+ .df-timeline li { gap:5px; padding:9px 7px; }
+ .df-position { width:14px; font-size:12px; }
+ .df-drag { min-width:26px; }
+ .df-event-label { font-size:12px; }
+ .df-move-buttons { flex-direction:column; }
+ .df-move-buttons button { min-width:34px; min-height:32px; font-size:16px; }
+ .df-rewind-label strong { font-size:16px; }
+ .df-rewind-label > span { font-size:9px; }
+ .df-feedback-title { gap:16px; }
+ .df-feedback-title h1 { font-size:29px; }
+ .df-score-stamp { font-size:32px; padding:17px 13px; }
+ .df-score-stamp small { font-size:8px; }
+ .df-answer-reveal { font-size:33px!important; }
+ .df-solved-timeline li { padding:12px; gap:17px; font-size:12px; }
+ .df-solved-timeline strong { font-size:22px; }
+ .df-result-paper { padding:25px 18px; }
+ .df-result-paper h1 { font-size:31px; }
+ .df-result-score { font-size:35px; }
+ .df-result-paper > p { font-size:12px; }
+ .df-result-rounds { gap:6px; }
+ .df-result-rounds > div { padding:10px 8px; }
+ .df-result-rounds span { font-size:10px; }
+ .df-result-rounds strong { font-size:28px; }
+ .df-result-rounds small { font-size:9px; }
+ .df-result-actions { display:grid; }
+ .df-result-actions button { width:100%; }
+ .df-difficulty { gap:8px; }
+ .df-difficulty label { padding:10px; font-size:12px; }
+ .df-home-body { padding:22px; }
+ .df-home-practice h2 { font-size:34px; }
+ .df-home-practice > div:first-child { gap:16px; }
+}
+@media(prefers-reduced-motion:reduce){
+ .df-page * { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+}
